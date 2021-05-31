@@ -1,0 +1,9 @@
+﻿EquationCalculator Release History:
+
+Version 1.0.0, 31 May 2021:
+*Seperated out from EquationResolver.
+*Introduced readOnlyElements vs. currentRunElements, allowing the same equation to be calculated in multiple ways.
+
+Moved here to seperate out areas of responsibility:
+ -Finding brackets and Random.
+ -Replacing Variables (using valuesOfVariables).

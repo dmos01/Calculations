@@ -1,0 +1,60 @@
+﻿Calculations 2 Release History:
+
+Version 2.3 - 21 April 2019:
+*Constants can contain 'mod' and 'factorial'.
+*% can be used as the modulus operator.
+*Insert constant button.
+*In Decimal (2 dp) mode, when the answer will round to 0.00 the entire answer is shown instead.
+*Sub-windows are 'owned' by the main one.
+*About window is resizable.
+*User input is trimmed before use.
+*Simplified changing font methods.
+
+Version 2.2.1 - 9 March 2019:
+*Crash fixes.
+*Major bug fixes related to mod.
+*The equation can start with a negative word.
+
+Version 2.2 - 17 January 2019:
+*When the Search Constants textbox is empty, no constant is selected by default.
+*Changing intersection textboxes and checkboxes re-enables the Calculate button.
+*Changing Radians/Degrees updates the current equation answer.
+*X can be added as a constant. (Overriden when using Intersection.)
+*Enabling/disabling of constant and Intersection buttons.
+*Added Natural Log.
+
+Version 2.1.1 - 30 November 2017:
+*Basic tab renamed to Home.
+
+Version 2.1 - 1 September 2017:
+*Changed the Intersection's inequality comparison from a drop-down to checkboxes.
+*The answer can be selected with the cursor.
+*Error message added when Copy button is clicked without a calculated answer.
+*Copy button no longer copies 'X = ' when finding an intersection.
+
+Version 2.0 - 8 August 2017:
+*The answer can be displayed as a fraction.
+*Constants can contain spaces (ignored in comparisons).
+*Intersections.
+*Remember History for next time.
+*Constants have associated tags, and a description.
+*Fonts replaced with three choices: Segoe UI, Courier New and Consolas.
+*History items may appear more than once. (Equations with random will always appear more than once.)
+*'Round' rounds up on 5. ('To the even integer' has been renamed 'Even Round'.)
+*Factorial and Mod use words instead of symbols.
+*Conventional buttons for choosing font size.
+*Improved Home tab layout by separating numbers, operators and brackets.
+
+
+Earlier Versions:
+
+Calculations (July - December 2014):
+*Keypad returns.
+*Functions (trig, log and advanced) in the main equation.
+*Constants can be used in the main equation, and can be numbers or equations.
+
+Calculation Pack (last updated in October 2013):
+*Equations are entered into one textbox and only parsed and calculated upon pressing the calculate button.
+*Constants store user-defined numbers inside the program.
+
+Early calculators: Basic Calculator, Scientific Calculator II, Scientific Calculator III and Scientific Calculator #.

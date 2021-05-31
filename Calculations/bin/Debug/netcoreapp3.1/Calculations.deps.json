@@ -1,0 +1,78 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Calculations/4.0.0": {
+        "dependencies": {
+          "EquationBuilder": "1.0.0",
+          "EquationCalculator": "1.0.0",
+          "EquationElements": "1.0.0",
+          "NumberFormats": "1.0.0"
+        },
+        "runtime": {
+          "Calculations.dll": {}
+        }
+      },
+      "EquationBuilder/1.0.0": {
+        "dependencies": {
+          "EquationElements": "1.0.0"
+        },
+        "runtime": {
+          "EquationBuilder.dll": {}
+        }
+      },
+      "EquationCalculator/1.0.0": {
+        "dependencies": {
+          "EquationElements": "1.0.0"
+        },
+        "runtime": {
+          "EquationCalculator.dll": {}
+        }
+      },
+      "EquationElements/1.0.0": {
+        "runtime": {
+          "EquationElements.dll": {}
+        }
+      },
+      "NumberFormats/1.0.0": {
+        "dependencies": {
+          "EquationElements": "1.0.0"
+        },
+        "runtime": {
+          "NumberFormats.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Calculations/4.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EquationBuilder/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EquationCalculator/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EquationElements/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NumberFormats/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

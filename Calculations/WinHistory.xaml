@@ -1,0 +1,60 @@
+﻿<Window x:Class="Calculations.WinHistory"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculations"
+        mc:Ignorable="d"
+        Title="History" Height="300" Width="439" MinHeight="220" MinWidth="439" Closing="WinHistory_Closing" Icon="Calculator.ico" WindowStartupLocation="CenterOwner">
+
+    <DockPanel LastChildFill="True">
+        <DockPanel Height="25" DockPanel.Dock="Top" LastChildFill="True">
+            <Button x:Name="btnUse" Content="Use Selected..." Width="125" IsEnabled="False" Click="BtnUse_Click" FontSize="13" HorizontalAlignment="Right" DockPanel.Dock="Right" TabIndex="4">
+                <Button.ContextMenu>
+                    <ContextMenu x:Name="cntxtUseHistory">
+                        <MenuItem Header="Copy Calculation" x:Name="miCopyHistoryCalculation" Click="MiCopyCalculation_Click"/>
+                        <MenuItem Header="Copy Answer" x:Name="miCopyHistoryAnswer" Click="MiCopyAnswer_Click"/>
+                        <MenuItem Header="Copy Calculation and Answer" x:Name="miCopyHistory" Click="MiCopy_Click"/>
+                        <Separator/>
+                        <MenuItem Header="Insert Calculation at Cursor" x:Name="miInsertHistoryCalculation" Click="MiInsertCalculation_Click"/>
+                        <MenuItem Header="Insert Answer at Cursor" x:Name="miInsertHistoryAnswer" Click="MiInsertAnswer_Click"/>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
+            <UniformGrid Rows="1">
+                <UniformGrid.Resources>
+                    <Style x:Key="TopButtonStyle" TargetType="Button">
+                        <Setter Property="Width" Value="100" />
+                        <Setter Property="FontSize" Value="13" />
+                        <Setter Property="HorizontalAlignment" Value="Left" />
+                    </Style>
+                </UniformGrid.Resources>
+                <Button x:Name="btnClear" Content="Clear" Click="BtnClear_Click" TabIndex="0" Style="{StaticResource TopButtonStyle}" />
+                <Button x:Name="btnImport" Content="Import" Click="BtnImport_Click" TabIndex="1" Style="{StaticResource TopButtonStyle}" />
+                <Button x:Name="btnExport" Content="Export" Click="BtnExport_Click" TabIndex="3" Style="{StaticResource TopButtonStyle}"/>
+            </UniformGrid>
+        </DockPanel>
+
+        <Grid Width="50" DockPanel.Dock="Right">
+            <Grid.Resources>
+                <Style x:Key="RightButtonStyle" TargetType="Button">
+                    <Setter Property="Height" Value="50" />
+                    <Setter Property="Width" Value="50" />
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                    <Setter Property="IsEnabled" Value="False" />
+                </Style>
+            </Grid.Resources>
+            <Button TabIndex="6" x:Name="btnMoveUp" VerticalAlignment="Top" Click="BtnMoveUp_Click" Style="{StaticResource RightButtonStyle}">
+                <Image x:Name="imgMoveUp" Source="Resources/ArrowUpDisabled.png" ToolTip="Move item up."/>
+            </Button>
+            <Button TabIndex="7" x:Name="btnRemove" VerticalAlignment="Center" Click="BtnRemove_Click" Style="{StaticResource RightButtonStyle}">
+                <Image x:Name="imgRemove" Source="Resources/RecycleBinGrey.png" ToolTip="Delete selected item." />
+            </Button>
+            <Button TabIndex="8" x:Name="btnMoveDown" VerticalAlignment="Bottom" Click="BtnMoveDown_Click" Style="{StaticResource RightButtonStyle}" >
+                <Image x:Name="imgMoveDown" Source="Resources/ArrowDownDisabled.png" ToolTip="Move item down." />
+            </Button>
+        </Grid>
+
+        <ListBox TabIndex="5" x:Name="lstHistory"  SelectionChanged="LstHistory_SelectionChanged" MouseDoubleClick="LstHistory_DoubleClick" FontSize="15"/>
+    </DockPanel>
+</Window>

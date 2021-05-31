@@ -1,0 +1,37 @@
+﻿Calculations 4 Release History:
+
+Known bugs:
+"root", "mod" or "e", next to a digit may cause error or wrong answer. 
+"23mode24" with Constants 3mod = 6 and e24 = 4 calculates as 23%4 not 6*4.
+
+
+Version 4.0, 31 May 2021:
+*All projects and class libraries moved to the same solution.
+*Digit and  symbol buttons are now 1 font point larger than function and E buttons.
+*Intersections removed as a result of the EquationResolver changes.
+*New and rewritten class libraries, with increased separation of responsibilities.
+*Rebuilt as a .NET Core 3.1 project.
+
+*New CalculatorAndAnswer makes it easy to switch between NumberFormats, and between radians and degrees, without using SplitAndValidate again. By making it a subclass of the Controller class, it uses the Controller's Radians and CurrentAnswerFormat properties.
+
+*Constants (U.I.):
+ -Dropdown and Name textbox merged.
+ -Multi-line Description textbox.
+ -Search, Name and Value textboxes now line up.
+
+*Constants (Code):
+ -GetNameValuePairs (replacing GetKeyValuePairs) returns an IDictionary copy of sortedConstants.
+ -Implement IComparable and overloads equality (based on Name).
+ -NameWithoutSpaces no longer stored inside each Constant.
+ -Support for mod, root and e surrounded by digits. However, when found (moved to MainWindow/Constants Tab), a warning question is given to the user. They are now found with regex.IsMatch().
+
+
+Featured changes in class libraries:
+*Expanded use of error messages containing the applicable parameter.
+*Increased use of design patterns.
+*Resource files to assist with localization.
+*Root now available as a word operator. ! now available as a factorial symbol.
+*String equality now primarily uses CurrentCultureIgnoreCase.
+*ToLowerAndRemoveSpaces replaced with RemoveSpaces due to IgnoreCase being used for most string comparisons. All Lower variables replaced with WithoutSpaces variables.
+*Top-Heavy Fractions uses IsApproximatelyThirdsOrSixths.
+*Word name validation now prevents the same name as operators (mod and root).

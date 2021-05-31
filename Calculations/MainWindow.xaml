@@ -1,0 +1,448 @@
+﻿<Window x:Name="winCalculator" x:Class="Calculations.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculations"
+        mc:Ignorable="d"
+        Title="Calculations" WindowStartupLocation="CenterScreen" MinWidth="407" Width="407"
+        MinHeight="390" Height="450" Closing="WinMain_Closing" Icon="Calculator.ico"
+        Loaded="MainWindow_OnLoaded">
+
+    <Window.Resources>
+        <Style x:Key="GeneralMarginsStyleBase" TargetType="{x:Type FrameworkElement}">
+            <Setter Property="Margin" Value="10,10,10,10" />
+        </Style>
+        <Style x:Key="GeneralMarginsStyleDockPanel" TargetType="DockPanel"
+               BasedOn="{StaticResource GeneralMarginsStyleBase}" />
+        <Style x:Key="MainTabStackPanel" TargetType="StackPanel" BasedOn="{StaticResource GeneralMarginsStyleBase}">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Width" Value="345" />
+        </Style>
+
+        <!--Comboboxes not done.-->
+        <Style x:Key="NormalLabelFontSize" TargetType="Label">
+            <Setter Property="FontSize" Value="13" />
+        </Style>
+        <Style x:Key="NormalTextboxFontSize" TargetType="TextBox">
+            <Setter Property="FontSize" Value="13" />
+        </Style>
+        <Style x:Key="NormalButtonFontSize" TargetType="Button">
+            <Setter Property="FontSize" Value="13" />
+        </Style>
+        <Style x:Key="NormalRadioFontSize" TargetType="RadioButton">
+            <Setter Property="FontSize" Value="13" />
+        </Style>
+        <Style x:Key="NormalCheckboxFontSize" TargetType="CheckBox">
+            <Setter Property="FontSize" Value="13" />
+        </Style>
+    </Window.Resources>
+
+    <DockPanel LastChildFill="True" x:Name="dockPanelMain" Style="{StaticResource GeneralMarginsStyleDockPanel}">
+        <TabControl DockPanel.Dock="Bottom" x:Name="tabKeypad" Height="237" HorizontalContentAlignment="Stretch"
+                    VerticalAlignment="Bottom">
+            <TabControl.Resources>
+                <Style x:Key="GridWithBottomMargin" TargetType="Grid">
+                    <Setter Property="Margin" Value="0,0,0,15" />
+                </Style>
+                <Style x:Key="KeypadButtonHeight" TargetType="Button">
+                    <Setter Property="Height" Value="35" />
+                </Style>
+                <Style x:Key="TextboxLabelBase" TargetType="Label" BasedOn="{StaticResource NormalLabelFontSize}">
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                </Style>
+                <Style x:Key="LeftAlignedTextboxLabelStyle" TargetType="Label"
+                       BasedOn="{StaticResource TextboxLabelBase}">
+                    <Setter Property="HorizontalAlignment" Value="Left" />
+                </Style>
+                <Style x:Key="TextboxStyleBase" TargetType="TextBox" BasedOn="{StaticResource NormalTextboxFontSize}">
+                    <Setter Property="Height" Value="23" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <EventSetter Event="GotFocus" Handler="SetDefaultButton" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                </Style>
+                <Style x:Key="TextboxWithLeftMarginStyle" TargetType="TextBox"
+                       BasedOn="{StaticResource TextboxStyleBase}">
+                    <Setter Property="Margin" Value="5,0,0,0" />
+                </Style>
+            </TabControl.Resources>
+
+            <TabItem x:Name="tabHome" Header="Home" MouseUp="FocusOnMainCalculation">
+                <StackPanel x:Name="stackPanelHomeTab" Orientation="Horizontal"
+                            Style="{StaticResource MainTabStackPanel}">
+                    <StackPanel.Resources>
+                        <Style x:Key="HomeKeypadButtonStyle" TargetType="Button"
+                               BasedOn="{StaticResource KeypadButtonHeight}">
+                            <Setter Property="Width" Value="35" />
+                            <Setter Property="FontSize" Value="15" />
+                            <EventSetter Event="Click" Handler="BtnKeypad_NotFollowed_Click" />
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <StackPanel Width="135" Margin="0,0,20,0">
+                        <Grid Style="{StaticResource GridWithBottomMargin}">
+                            <Button x:Name="btn1" Content="1" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Left" />
+                            <Button x:Name="btn2" Content="2" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Center" />
+                            <Button x:Name="btn3" Content="3" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Right" />
+                        </Grid>
+                        <Grid Style="{StaticResource GridWithBottomMargin}">
+                            <Button x:Name="btn4" Content="4" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Left" />
+                            <Button x:Name="btn5" Content="5" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Center" />
+                            <Button x:Name="btn6" Content="6" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Right" />
+                        </Grid>
+                        <Grid Style="{StaticResource GridWithBottomMargin}">
+                            <Button x:Name="btn7" Content="7" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Left" />
+                            <Button x:Name="btn8" Content="8" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Center" />
+                            <Button x:Name="btn9" Content="9" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Right" />
+                        </Grid>
+                        <Grid>
+                            <Button x:Name="btnE" Content="E" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Left" />
+                            <Button x:Name="btn0" Content="0" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Center" />
+                            <Button x:Name="btnDecimalPoint" Content="." Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Right" />
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Width="85" Margin="0,50,20,0">
+                        <Grid Style="{StaticResource GridWithBottomMargin}">
+                            <Button x:Name="btnRoot" Content="√" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Left" />
+                            <Button x:Name="btnPower" Content="^" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Right" />
+                        </Grid>
+                        <Grid Style="{StaticResource GridWithBottomMargin}">
+                            <Button x:Name="btnPlus" Content="+" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Left" />
+                            <Button x:Name="btnMinus" Content="-" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Right" />
+                        </Grid>
+                        <Grid>
+                            <Button x:Name="btnTimes" Content="*" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Left" />
+                            <Button x:Name="btnDivide" Content="/" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Right" />
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Width="85">
+                        <Button x:Name="btnHistory" Content="History" Height="27" Margin="0,0,0,23"
+                                Click="BtnHistory_Click" Style="{StaticResource NormalButtonFontSize}" />
+
+                        <Grid Style="{StaticResource GridWithBottomMargin}">
+                            <Button x:Name="btnSquareOpen" Content="[" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Left" />
+                            <Button x:Name="btnSquareClose" Content="]" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Right" />
+                        </Grid>
+                        <Grid Style="{StaticResource GridWithBottomMargin}">
+                            <Button x:Name="btnCurlyOpen" Content="{}{" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Left" />
+                            <Button x:Name="btnCurlyClose" Content="}" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Right" />
+                        </Grid>
+                        <Grid Style="{StaticResource GridWithBottomMargin}">
+                            <Button x:Name="btnBracketOpen" Content="(" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Left" />
+                            <Button x:Name="btnBracketClose" Content=")" Style="{StaticResource HomeKeypadButtonStyle}"
+                                    HorizontalAlignment="Right" />
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem x:Name="tabTrigLog" Header="Trig, Log" MouseUp="FocusOnMainCalculation">
+                <StackPanel x:Name="stackPanelTrigLogTab" Style="{StaticResource MainTabStackPanel}">
+                    <StackPanel.Resources>
+                        <Style x:Key="TrigLogButtonStyleBase" TargetType="Button"
+                               BasedOn="{StaticResource KeypadButtonHeight}">
+                            <Setter Property="Width" Value="85" />
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                        <Style x:Key="TrigLnButtonWithBracketsStyle" TargetType="Button"
+                               BasedOn="{StaticResource TrigLogButtonStyleBase}">
+                            <EventSetter Event="Click" Handler="BtnKeypad_FollowedByBrackets_Click" />
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <Grid Style="{StaticResource GridWithBottomMargin}">
+                        <Button x:Name="btnSin" Content="Sin()" Style="{StaticResource TrigLnButtonWithBracketsStyle}"
+                                HorizontalAlignment="Left" />
+                        <Button x:Name="btnCos" Content="Cos()" Style="{StaticResource TrigLnButtonWithBracketsStyle}"
+                                HorizontalAlignment="Center" />
+                        <Button x:Name="btnTan" Content="Tan()" Style="{StaticResource TrigLnButtonWithBracketsStyle}"
+                                HorizontalAlignment="Right" />
+                    </Grid>
+                    <Grid Style="{StaticResource GridWithBottomMargin}">
+                        <Button x:Name="btnASin" Content="aSin()"
+                                Style="{StaticResource TrigLnButtonWithBracketsStyle}" HorizontalAlignment="Left" />
+                        <Button x:Name="btnACos" Content="aCos()"
+                                Style="{StaticResource TrigLnButtonWithBracketsStyle}" HorizontalAlignment="Center" />
+                        <Button x:Name="btnATan" Content="aTan()"
+                                Style="{StaticResource TrigLnButtonWithBracketsStyle}" HorizontalAlignment="Right" />
+                    </Grid>
+                    <Grid Style="{StaticResource GridWithBottomMargin}">
+                        <Button x:Name="btnSinh" Content="Sinh()"
+                                Style="{StaticResource TrigLnButtonWithBracketsStyle}" HorizontalAlignment="Left" />
+                        <Button x:Name="btnCosh" Content="Cosh()"
+                                Style="{StaticResource TrigLnButtonWithBracketsStyle}" HorizontalAlignment="Center" />
+                        <Button x:Name="btnTanh" Content="Tanh()"
+                                Style="{StaticResource TrigLnButtonWithBracketsStyle}" HorizontalAlignment="Right" />
+                    </Grid>
+                    <Grid>
+                        <Button x:Name="btnLn" Content="Ln()" Style="{StaticResource TrigLnButtonWithBracketsStyle}"
+                                HorizontalAlignment="Left" />
+                        <Grid HorizontalAlignment="Center">
+                            <Grid.Resources>
+                                <Style x:Key="RadioButtonStyle" TargetType="RadioButton"
+                                       BasedOn="{StaticResource NormalRadioFontSize}">
+                                    <Setter Property="GroupName" Value="RadiansDegrees" />
+                                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                                </Style>
+                            </Grid.Resources>
+                            <RadioButton x:Name="rbtRadians" Content="Radians"
+                                         VerticalAlignment="Top" Style="{StaticResource RadioButtonStyle}" />
+                            <RadioButton x:Name="rbtDegrees" Content="Degrees"
+                                         VerticalAlignment="Bottom" Style="{StaticResource RadioButtonStyle}" />
+                        </Grid>
+                        <Button x:Name="btnLog" Content="Log(,)" Style="{StaticResource TrigLogButtonStyleBase}"
+                                HorizontalAlignment="Right" Click="BtnKeypad_FollowedByBracketsAndComma_Click" />
+                    </Grid>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem x:Name="tabAdvanced" Header="Advanced" MouseUp="FocusOnMainCalculation">
+                <StackPanel x:Name="stackPanelAdvancedTab" Style="{StaticResource MainTabStackPanel}">
+                    <StackPanel.Resources>
+                        <Style x:Key="AdvancedButtonStyleBase" TargetType="Button"
+                               BasedOn="{StaticResource KeypadButtonHeight}">
+                            <Setter Property="Width" Value="105" />
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                        <Style x:Key="AdvancedButtonWithBracketsStyle" TargetType="Button"
+                               BasedOn="{StaticResource AdvancedButtonStyleBase}">
+                            <EventSetter Event="Click" Handler="BtnKeypad_FollowedByBrackets_Click" />
+                        </Style>
+                        <Style x:Key="AdvancedButtonWithCommaStyle" TargetType="Button"
+                               BasedOn="{StaticResource AdvancedButtonStyleBase}">
+                            <EventSetter Event="Click" Handler="BtnKeypad_FollowedByBracketsAndComma_Click" />
+                        </Style>
+                        <Style x:Key="AdvancedButtonNoBracketsStyle" TargetType="Button"
+                               BasedOn="{StaticResource AdvancedButtonStyleBase}">
+                            <EventSetter Event="Click" Handler="BtnKeypad_NotFollowed_Click" />
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <Grid Style="{StaticResource GridWithBottomMargin}">
+                        <Button x:Name="btnFloor" Content="Floor()"
+                                Style="{StaticResource AdvancedButtonWithBracketsStyle}" HorizontalAlignment="Left" />
+                        <Button x:Name="btnRandom" Content="Random(,)"
+                                Style="{StaticResource AdvancedButtonWithCommaStyle}" HorizontalAlignment="Center" />
+                        <Button x:Name="btnCeiling" Content="Ceiling()"
+                                Style="{StaticResource AdvancedButtonWithBracketsStyle}" HorizontalAlignment="Right" />
+                    </Grid>
+                    <Grid Style="{StaticResource GridWithBottomMargin}">
+                        <Button x:Name="btnRound" Content="Round()"
+                                Style="{StaticResource AdvancedButtonWithBracketsStyle}" HorizontalAlignment="Left" />
+                        <Button x:Name="btnTruncate" Content="Truncate()"
+                                Style="{StaticResource AdvancedButtonWithBracketsStyle}" HorizontalAlignment="Center" />
+                        <Button x:Name="btnEvenRound" Content="EvenRound()"
+                                Style="{StaticResource AdvancedButtonWithBracketsStyle}" HorizontalAlignment="Right" />
+                    </Grid>
+                    <Grid>
+                        <Button x:Name="btnFactorial" Content="Factorial"
+                                Style="{StaticResource AdvancedButtonNoBracketsStyle}" HorizontalAlignment="Left" />
+                        <Button x:Name="btnAbsolute" Content="Absolute()"
+                                Style="{StaticResource AdvancedButtonWithBracketsStyle}" HorizontalAlignment="Center" />
+                        <Button x:Name="btnMod" Content="Mod" Style="{StaticResource AdvancedButtonNoBracketsStyle}"
+                                HorizontalAlignment="Right" />
+                    </Grid>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem x:Name="tabConstants" Header="Constants">
+                <StackPanel x:Name="stackPanelConstantsTab" Style="{StaticResource MainTabStackPanel}">
+                    <StackPanel.Resources>
+                        <Style x:Key="BottomMarginInsideGroup" TargetType="DockPanel">
+                            <Setter Property="Margin" Value="0,0,0,2" />
+                        </Style>
+                        <Style x:Key="BottomMarginBetweenGroups" TargetType="{x:Type FrameworkElement}">
+                            <Setter Property="Margin" Value="0,0,0,5" />
+                        </Style>
+                        <Style x:Key="ConstantsTabButton" TargetType="Button">
+                            <Setter Property="Width" Value="60" />
+                            <Setter Property="Height" Value="25" />
+                            <Setter Property="FontSize" Value="15" />
+                        </Style>
+                        <Style x:Key="ConstantsTabButtonWithRightMargin" TargetType="Button"
+                               BasedOn="{StaticResource ConstantsTabButton}">
+                            <Setter Property="Margin" Value="0,0,5,0" />
+                        </Style>
+                        <Style x:Key="LeftDockedTextboxLabel" TargetType="Label"
+                               BasedOn="{StaticResource TextboxLabelBase}">
+                            <Setter Property="DockPanel.Dock" Value="Left" />
+                        </Style>
+                        <Style x:Key="LeftAlignedLeftDockedTextboxLabel" TargetType="Label"
+                               BasedOn="{StaticResource LeftDockedTextboxLabel}">
+                            <Setter Property="HorizontalContentAlignment" Value="Left" />
+                        </Style>
+                        <Style x:Key="SearchNameValueWidth" TargetType="Label"
+                               BasedOn="{StaticResource LeftAlignedLeftDockedTextboxLabel}">
+                            <Setter Property="Width" Value="57"
+                                    />
+                        </Style>
+
+                    </StackPanel.Resources>
+
+                    <DockPanel x:Name="dockPanelConstantsSearch" LastChildFill="True"
+                               Style="{StaticResource BottomMarginInsideGroup}">
+                        <Label x:Name="lblConstantSearch" Content="Search:"
+                               Style="{StaticResource SearchNameValueWidth}" />
+                        <TextBox TabIndex="50" x:Name="txtConstantsSearch"
+                                 TextChanged="TxtConstantsSearch_TextChanged"
+                                 Style="{StaticResource TextboxWithLeftMarginStyle}" />
+                    </DockPanel>
+                    <DockPanel x:Name="dockPanelConstantsName" LastChildFill="True"
+                               Style="{StaticResource BottomMarginInsideGroup}">
+                        <Label x:Name="lblConstantName" Content="Name:" Width="56"
+                               Style="{StaticResource SearchNameValueWidth}" />
+                        <ComboBox TabIndex="51" x:Name="cboConstants" VerticalAlignment="Top" FontSize="13"
+                                  IsEditable="True"
+                                  Margin="5,0,0,0"
+                                  Style="{StaticResource BottomMarginBetweenGroups}"
+                                  GotFocus="SetDefaultButton" SelectionChanged="CboConstants_SelectionChanged"
+                                  TextBoxBase.TextChanged="CboConstantsTextChanged" />
+                    </DockPanel>
+                    <DockPanel x:Name="dockPanelConstantsValueUnit" LastChildFill="True"
+                               Style="{StaticResource BottomMarginInsideGroup}">
+                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                            <Label x:Name="lblConstantUnit" Content="Unit:"
+                                   Width="40" Style="{StaticResource LeftDockedTextboxLabel}" HorizontalContentAlignment="Right" />
+                            <TextBox TabIndex="54" DockPanel.Dock="Right" x:Name="txtConstantUnit"
+                                     Width="70" Style="{StaticResource TextboxWithLeftMarginStyle}" />
+
+                        </StackPanel>
+                        <DockPanel LastChildFill="True">
+                            <Label x:Name="lblConstantValue" Content="Value:"
+                                   Style="{StaticResource SearchNameValueWidth}" Width="56" />
+                            <TextBox TabIndex="53" x:Name="txtConstantValue" TextChanged="TxtConstantsValueTextChanged"
+                                     Style="{StaticResource TextboxWithLeftMarginStyle}" />
+                        </DockPanel>
+                    </DockPanel>
+
+                    <DockPanel x:Name="dockPanelConstantsDescription" LastChildFill="True"
+                               Style="{StaticResource BottomMarginBetweenGroups}">
+                        <Label x:Name="lblConstantDescription" Content="Description:"
+                               Style="{StaticResource LeftAlignedLeftDockedTextboxLabel}" VerticalAlignment="Top" />
+                        <TextBox TabIndex="55" x:Name="txtConstantDescription"
+                                 Style="{StaticResource TextboxWithLeftMarginStyle}"
+                                 TextWrapping="Wrap"
+                                 AcceptsReturn="False"
+                                 AcceptsTab="False"
+                                 VerticalScrollBarVisibility="Auto" Height="50"
+                                 VerticalContentAlignment="Top" />
+                    </DockPanel>
+
+                    <DockPanel x:Name="dockPanelConstantsButtons">
+                        <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+                            <Button TabIndex="56" x:Name="btnImportConstants" Content="Import"
+                                    Style="{StaticResource ConstantsTabButtonWithRightMargin}"
+                                    HorizontalAlignment="Left"
+                                    Click="BtnImportConstants_Click" />
+                            <Button TabIndex="57" x:Name="btnExportConstants" Content="Export"
+                                    Style="{StaticResource ConstantsTabButton}"
+                                    HorizontalAlignment="Left"
+                                    Click="BtnExportConstants_Click"
+                                    IsEnabled="False" />
+                        </StackPanel>
+                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                            <Button TabIndex="59" x:Name="btnDeleteConstant" Content="Delete"
+                                    Style="{StaticResource ConstantsTabButtonWithRightMargin}"
+                                    Click="BtnDeleteConstant_Click" IsEnabled="False" />
+                            <Button TabIndex="60" x:Name="btnSaveConstant" Content="Save"
+                                    Style="{StaticResource ConstantsTabButton}"
+                                    Click="BtnSaveConstant_Click" IsEnabled="False" />
+                        </StackPanel>
+                        <StackPanel>
+                            <Button TabIndex="58" x:Name="btnInsertConstant" Content="Insert"
+                                    Style="{StaticResource ConstantsTabButton}"
+                                    HorizontalAlignment="Center" Click="BtnInsertConstant_Click" IsEnabled="False" />
+                        </StackPanel>
+                    </DockPanel>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem x:Name="tabSettings" Header="Settings" MouseUp="TabSettings_MouseUp">
+                <StackPanel x:Name="stackPanelSettingsTab" Style="{StaticResource MainTabStackPanel}">
+                    <DockPanel x:Name="dockPanelSetttingsShowAnswerAs" LastChildFill="True" Margin="0,0,0,10">
+                        <Label x:Name="lblSettingsShowAnswer" Content="Show answer as a:"
+                               Style="{StaticResource LeftAlignedTextboxLabelStyle}" />
+                        <ComboBox x:Name="cboAnswerFormat" HorizontalAlignment="Left"
+                                  VerticalAlignment="Center" MinWidth="165" FontSize="13" Margin="5,0,0,0">
+                            <ComboBoxItem Content="Decimal Number" />
+                            <ComboBoxItem Content="Decimal Number (2 dp)" />
+                            <ComboBoxItem Content="Top-Heavy Fraction" />
+                            <ComboBoxItem Content="Mixed-Fraction" />
+                        </ComboBox>
+                    </DockPanel>
+
+                    <StackPanel x:Name="stackPanelSettingsCheckboxes" Margin="0,0,0,20">
+                        <StackPanel.Resources>
+                            <Style x:Key="SettingsCheckBoxStyle" TargetType="CheckBox"
+                                   BasedOn="{StaticResource NormalCheckboxFontSize}" />
+                        </StackPanel.Resources>
+                        <CheckBox x:Name="chkRememberHistoryForNextTime" Content="Remember history for next time."
+                                  Margin="0,0,0,10" Style="{StaticResource SettingsCheckBoxStyle}" />
+                        <CheckBox x:Name="chkHistoryItemsOnlyAllowedOnce"
+                                  Content="History items can only appear once."
+                                  Margin="0,0,0,5" Style="{StaticResource SettingsCheckBoxStyle}" />
+                        <CheckBox x:Name="chkHistoryMoveToTop"
+                                  Content="History items are moved to top if recalculated."
+                                  Margin="20,0,0,0"
+                                  Style="{StaticResource SettingsCheckBoxStyle}" />
+                    </StackPanel>
+
+                    <DockPanel x:Name="dockPanelSettingsFontAndVersion">
+                        <Button x:Name="btnFontSettings" Content="Font Settings" Height="25" Width="105"
+                                Style="{StaticResource NormalButtonFontSize}" Click="BtnFontSettings_Click"
+                                VerticalAlignment="Center" />
+                        <Label x:Name="lblAbout" Content="Version 2.0"
+                               MouseDown="LblAbout_MouseDown"
+                               Style="{StaticResource NormalLabelFontSize}" VerticalAlignment="Center"
+                               HorizontalAlignment="Right" />
+                    </DockPanel>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+        <Grid DockPanel.Dock="Bottom" x:Name="gridCalculateButtonAnswerTextboxAndCopyButton" Height="35"
+              Margin="0,0,0,10">
+            <DockPanel LastChildFill="True">
+                <Button TabIndex="4" DockPanel.Dock="Right" x:Name="btnCopy" Content="Copy" Width="50"
+                        Click="BtnCopy_Click" Height="30" FontSize="14" />
+                <Grid Height="35">
+                    <Button TabIndex="2" x:Name="btnCalculate" Content="Calculate"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="17"
+                            Click="BtnCalculate_Click" Margin="0,0,5,0" />
+                    <TextBox TabIndex="3" x:Name="readOnlyTextboxAnswer" HorizontalContentAlignment="Center"
+                             VerticalContentAlignment="Center" FontSize="17" IsReadOnly="True"
+                             Visibility="Hidden" Margin="0,0,5,0" />
+                </Grid>
+            </DockPanel>
+        </Grid>
+
+        <TextBox TabIndex="1" DockPanel.Dock="Top" x:Name="txtMainCalculation" TextWrapping="Wrap" FontSize="15"
+                 GotFocus="SetDefaultButton" />
+    </DockPanel>
+</Window>

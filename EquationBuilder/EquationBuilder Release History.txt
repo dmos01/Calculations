@@ -1,0 +1,31 @@
+﻿EquationBuilder Release History:
+
+Known bugs:
+"root", "mod" or "e", next to a digit may cause error or wrong answer. 
+"23mode24" with Constants 3mod = 6 and e24 = 4 is built as 23%4 not 6*4.
+
+
+Version 1.0.0, 31 May 2021:
+*Seperated out from EquationResolver.
+*New UnrecognizedElement as a holding "don't know what this element is right now." If it isn't known during validation, cast it as a Variable or throw an exception (depending on castUnrecognizedElementsAsVariables).
+*Splitter, Validator and ElementBuilder more publicly accessible for independent use.
+*SplitAndValidate and EquationIsValid moved to their own (static) classes.
+*EquationIsValid.Run() no longer outputs anything - it only returns true/false.
+*Root as a word operator now supported. ! as a factorial symbol now supported.
+
+Splitter:
+*Created my own String.Split() which keeps separators in the output.
+*Completely rewritten. Many more equations with strings/elements 'mod' and 'e' are recognized.
+*Takes ElementBuilder or Constants in constructor to allow mutiple equations to be run using those same "parameters".
+*Uses TextElementEnumerator and StringBuilder where possible.
+
+Validator:
+*Can now handle Constants.
+*Improvements.
+
+ElementBuilder:
+*Moved here.
+*Constants now uses an IDictionary<string, string> and made private.
+*Public APIs take ElementBuilder or Constants to expose the functionality of ElementBuilder while still keeping it optional.
+*Removed ExpectedVariables to seperate out areas of responsibility. They should be handled when actually calculating.
+ -Side effects: Digit and Letter Elements are no longer returned (and have actually been removed from EquationElements).

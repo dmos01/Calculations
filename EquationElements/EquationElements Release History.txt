@@ -1,0 +1,46 @@
+﻿EquationElements Release History:
+
+Version 1.0.0, 31 May 2021:
+*Removed to seperate out areas of responsibility:
+ -Number's GetAs methods and fraction util methods. (Now NumberFormats project.)
+ -ElementBuilder. (Now in EquationBuilder project.)
+
+*Resource files to assist with localization. Elements' ToString()'s now come directly from those files.
+*Increased use of State pattern (brackets, factorial, mod, root, Variable/Constant as Word).
+
+*Number:
+ -Implements IComparable and IFormattable.
+ -Implements GetHashCode (on AsDouble) and Equals.
+ -Overloads ++ and --.
+ -Removed GetAs methods and fraction util methods.
+ -Removed byte operator overloads.
+
+*Word:
+ -Enables ToString(IFormatProvider).
+ -Implements IComparable and overloads Equality (based on Name).
+ -Name validation prevents the same name as operators (mod and root). No longer checks if the name contains 'mod', 'root' or 'e'.
+
+
+*Constants use IFormatProvider.
+*Improved file and folder arrangement. Brackets moved to within Operators.
+*Moved IsFunction() to its own class.
+*New IsOperator.
+*Number.IsNumber() renamed to TryParse().
+*Pi implements IFormattable.
+*Removed Digit and Letter Elements, and PartialElement interface.
+*Removed Inequality Comparers.
+*Root now available as a word operator. ! now available as a factorial symbol.
+*String equality now primarily uses CurrentCultureIgnoreCase.
+*ToLowerAndRemoveSpaces replaced with RemoveSpaces due to IgnoreCase being used for most string comparisons. All Lower variables replaced with WithoutSpaces variables.
+
+
+Relevant Beta History:
+
+Beta 0.8.0, 14 February 2020:
+*Added support for 'Variables' - words that have unknown values when building the equation, but will be known when performing the calculation.
+
+Beta 0.7.0, 6 October 2019:
+*Negative mixed-fractions now show as -(a+b/c) instead of -a-b/c.
+
+Beta 0.6.0, 26 September 2019:
+*"Legal order" fields replaced with interfaces. They are: IInvalidWhenFirst, IInvalidWhenLast, IInvalidAfterOperator, IMayPrecedeNegativeNumber, and IInvalidBeforeMinus.

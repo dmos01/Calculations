@@ -1,0 +1,51 @@
+﻿<Window x:Name="winFont1" x:Class="Calculations.WinFont"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculations"
+        mc:Ignorable="d"
+        Title="Font Settings" Height="206" Width="251.2" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        Closing="WinFont_Closing">
+    <DockPanel x:Name="dockPanelMain" LastChildFill="False" Margin="10,10,10,10">
+        <DockPanel x:Name="stackPanelFamilies" DockPanel.Dock="Left" LastChildFill="True">
+            <CheckBox x:Name="chkAlsoForKeypad" FontSize="13"
+                      Checked="ChkFontAlsoForKeypad_Checked" Unchecked="ChkFontAlsoForKeypad_Unchecked" VerticalAlignment="Top" DockPanel.Dock="Bottom" TabIndex="3" >
+                <TextBlock Text="Also for number, operator and function buttons." MaxWidth="120" TextWrapping="Wrap"/>
+            </CheckBox>
+            <UniformGrid Columns="1" DockPanel.Dock="Top">
+                <UniformGrid.Resources>
+                    <Style x:Key="FontRadioButtonStyle" TargetType="RadioButton">
+                        <Setter Property="GroupName" Value="FontFamily" />
+                        <Setter Property="FontSize" Value="13" />
+                    </Style>
+                </UniformGrid.Resources>
+                <RadioButton x:Name="rbtSegoeUI" Content="Segoe UI [0O 1li]" Checked="RbtSegoeUI_Checked" TabIndex="0"
+                             Style="{StaticResource FontRadioButtonStyle}" />
+                <RadioButton x:Name="rbtConsolas" Content="Consolas [0O 1li]" Checked="RbtConsolas_Checked" TabIndex="1"
+                             Style="{StaticResource FontRadioButtonStyle}"/>
+                <RadioButton x:Name="rbtHack" Content="Hack [0O 1li]" Checked="RbtHack_Checked" TabIndex="2"
+                             Style="{StaticResource FontRadioButtonStyle}" />
+            </UniformGrid>
+        </DockPanel>
+        <DockPanel x:Name="dockPanelButtons" DockPanel.Dock="Right" LastChildFill="True">
+            <Button x:Name="btnReset" Content="Reset"
+                    Width="50" Height="22" FontSize="13" Click="BtnReset_Click" VerticalContentAlignment="Top" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" TabIndex="6" />
+            <UniformGrid Columns="1">
+                <UniformGrid.Resources>
+                    <Style x:Key="LargerSmallerButtonStyle" TargetType="Button">
+                        <Setter Property="Width" Value="35" />
+                        <Setter Property="Height" Value="35" />
+                        <Setter Property="HorizontalAlignment" Value="Right" />
+                        <Setter Property="VerticalAlignment" Value="Top" />
+                    </Style>
+                </UniformGrid.Resources>
+                <Button x:Name="btnLargerFont" Content="A+" FontSize="17" 
+                        Click="BtnLarger_Click" TabIndex="4" Style="{StaticResource LargerSmallerButtonStyle}" />
+                <Button x:Name="btnSmallerFont" Content="A-" FontSize="14"
+                        Click="BtnSmaller_Click" TabIndex="5"
+                        Style="{StaticResource LargerSmallerButtonStyle}"/>
+            </UniformGrid>
+        </DockPanel>
+    </DockPanel>
+</Window>
