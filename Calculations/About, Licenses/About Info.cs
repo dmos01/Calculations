@@ -9,7 +9,7 @@ namespace Calculations
         public static string CalculationsAndDllVersionInformation() =>
             string.Join(Environment.NewLine,
                 CalculationsResources.ProjectTitle + " " + CalculationsResources.VersionNumber +
-                CalculationsResources.ReleaseDate + ElementsResources.Period, AssemblyInfo.VersionAndReleaseDate,
+                CalculationsResources.ReleaseDate, AssemblyInfo.VersionAndReleaseDate,
                 EquationCalculator.AssemblyInfo.VersionAndReleaseDate,
                 EquationElements.AssemblyInfo.VersionAndReleaseDate,
                 NumberFormats.AssemblyInfo.VersionAndReleaseDate,
@@ -37,14 +37,20 @@ namespace Calculations
         /// <returns></returns>
         public static string ChangesInThisVersion() =>
             string.Join(Environment.NewLine,
+                "Featured changes in 4.1:",
+                "*History's 'Use Selected...' menu appears when right-clicking an item; delete option added.",
+                "*Insert calculation tooltip mentions brackets.",
+                "*HistoryController no longer controls the listbox and export buttons.",
+                "",
+                "",
                 "Featured changes in 4.0:",
                 "*Constants support mod, root and e surrounded by digits.",
                 "*Constants dropdown and Name textbox merged; Multi-line Description textbox; Search, Name and Value textboxes now line up.",
                 "*Digit and symbol buttons are now 1 font point larger than function buttons.",
-                    "*Expanded use of error messages containing the applicable parameter.",
+                "*Expanded use of error messages containing the applicable parameter.",
                 "*Fractions now approximate thirds and sixths.",
                 "*Intersections removed.",
-                "*Root now available as a word operator. ! now available as a factorial symbol.",
+                "*Root now available as a word operator; ! now available as a factorial symbol.",
                 "",
                 "*New and rewritten class libraries, with increased separation of responsibilities.",
                 "*All projects and class libraries moved to the same solution.",

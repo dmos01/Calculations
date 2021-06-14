@@ -4,7 +4,7 @@ namespace Calculations
 {
     partial class Controller
     {
-        public partial class Constant
+        public partial class Constant : IComparable
         {
             /// <summary>
             ///     <para>Compares the Constants' Names.</para>

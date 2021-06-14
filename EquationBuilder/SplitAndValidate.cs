@@ -15,7 +15,7 @@ namespace EquationBuilder
         /// <param name="equation"></param>
         /// <param name="elements">Returns a strongly-ordered list of elements that represents the expanded equation.</param>
         /// <returns>True if the equation is valid.</returns>
-        public static bool TryRun(string equation, out ICollection<BaseElement> elements) =>
+        public static bool TryRun(string equation, out LinkedList<BaseElement> elements) =>
             TryRun(equation, new ElementBuilder(), false, out elements);
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace EquationBuilder
         /// <param name="elements">Returns a strongly-ordered list of elements that represents the expanded equation.</param>
         /// <returns>True if the equation is valid.</returns>
         public static bool TryRun(string equation, IDictionary<string, string> constants,
-            out ICollection<BaseElement> elements) =>
+            out LinkedList<BaseElement> elements) =>
             TryRun(equation, new ElementBuilder(constants), false, out elements);
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace EquationBuilder
         /// <param name="elements">Returns a strongly-ordered list of elements that represents the expanded equation.</param>
         /// <returns>True if the equation is valid.</returns>
         public static bool TryRun(string equation, ElementBuilder elementBuilder,
-            out ICollection<BaseElement> elements) =>
+            out LinkedList<BaseElement> elements) =>
             TryRun(equation, elementBuilder, false, out elements);
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace EquationBuilder
         /// <param name="elements">Returns a strongly-ordered list of elements that represents the expanded equation.</param>
         /// <returns>True if the equation is valid.</returns>
         public static bool TryRun(string equation, IDictionary<string, string> constants,
-            bool castUnrecognizedElementsAsVariables, out ICollection<BaseElement> elements) =>
+            bool castUnrecognizedElementsAsVariables, out LinkedList<BaseElement> elements) =>
             TryRun(equation, new ElementBuilder(constants), castUnrecognizedElementsAsVariables, out elements);
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace EquationBuilder
         /// <param name="elements">Returns a strongly-ordered list of elements that represents the expanded equation.</param>
         /// <returns>True if the equation is valid.</returns>
         public static bool TryRun(string equation, ElementBuilder elementBuilder,
-            bool castUnrecognizedElementsAsVariables, out ICollection<BaseElement> elements)
+            bool castUnrecognizedElementsAsVariables, out LinkedList<BaseElement> elements)
         {
             try
             {
@@ -88,7 +88,7 @@ namespace EquationBuilder
         /// </summary>
         /// <param name="equation"></param>
         /// <returns>Returns a strongly-ordered list of elements that represents the expanded equation.</returns>
-        public static ICollection<BaseElement> Run(string equation) => Run(equation, new ElementBuilder(), false);
+        public static LinkedList<BaseElement> Run(string equation) => Run(equation, new ElementBuilder(), false);
 
         /// <summary>
         ///     Splits and validates the equation. Returns a strongly-ordered list of elements that represents
@@ -97,7 +97,7 @@ namespace EquationBuilder
         /// <param name="equation"></param>
         /// <param name="constants">An example of a Constant is Pi, 3.14.</param>
         /// <returns>Returns a strongly-ordered list of elements that represents the expanded equation.</returns>
-        public static ICollection<BaseElement>
+        public static LinkedList<BaseElement>
             Run(string equation, IDictionary<string, string> constants) =>
             Run(equation, new ElementBuilder(constants), false);
 
@@ -108,7 +108,7 @@ namespace EquationBuilder
         /// <param name="equation"></param>
         /// <param name="elementBuilder"></param>
         /// <returns>Returns a strongly-ordered list of elements that represents the expanded equation.</returns>
-        public static ICollection<BaseElement> Run(string equation, ElementBuilder elementBuilder) =>
+        public static LinkedList<BaseElement> Run(string equation, ElementBuilder elementBuilder) =>
             Run(equation, elementBuilder, false);
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace EquationBuilder
         ///     Variables and unrecognized elements will throw an exception.
         /// </param>
         /// <returns>Returns a strongly-ordered list of elements that represents the expanded equation.</returns>
-        public static ICollection<BaseElement> Run(string equation, IDictionary<string, string> constants,
+        public static LinkedList<BaseElement> Run(string equation, IDictionary<string, string> constants,
             bool castUnrecognizedElementsAsVariables) =>
             Run(equation, new ElementBuilder(constants), castUnrecognizedElementsAsVariables);
 
@@ -138,7 +138,7 @@ namespace EquationBuilder
         ///     Variables and unrecognized elements will throw an exception.
         /// </param>
         /// <returns>Returns a strongly-ordered list of elements that represents the expanded equation.</returns>
-        public static ICollection<BaseElement> Run(string equation, ElementBuilder elementBuilder,
+        public static LinkedList<BaseElement> Run(string equation, ElementBuilder elementBuilder,
             bool castUnrecognizedElementsAsVariables)
         {
             if (elementBuilder is null)

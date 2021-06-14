@@ -10,6 +10,7 @@ namespace Calculations
         public class CalculatorAndAnswer
         {
             Number currentAnswer;
+
             Calculator calculator { get; }
 
             /// <summary>
@@ -18,13 +19,14 @@ namespace Calculations
             public string OriginalEquation { get; }
 
             /// <summary>
-            ///     After Constants expanded, implied multiplication operators added and E as Euler's Number replaced with a Number.
+            ///     The equation after Constants expanded, implied multiplication operators added and E as Euler's Number replaced with
+            ///     a Number.
             ///     Before Variable elements have been replaced, if applicable.
             /// </summary>
             public string ExpandedEquation => calculator.ExpandedEquation;
 
             /// <summary>
-            ///     In the current Controller.CurrentAnswerFormat.
+            ///     The answer of the equation, given the current Radians/Degrees and CurrentAnswerFormat settings.
             /// </summary>
             public string CurrentAnswer { get; private set; }
 

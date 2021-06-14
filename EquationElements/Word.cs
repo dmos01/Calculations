@@ -9,36 +9,49 @@ namespace EquationElements
     ///     Abstract class that is a parent of any non-Operator, non-Function Element using a word as its identifier (such as
     ///     Constants and Variables).
     /// </summary>
-    public abstract partial class Word : BaseElement, IComparable
+    public abstract partial class Word : BaseElement
     {
         public string Name { get; }
 
-        protected Word(string name, bool throwExceptionIfNameIsInvalid = true)
+        /// <summary>
+        ///     Throws exception if name is null, empty or only spaces. Does not test if name is an Operator or Function.
+        /// </summary>
+        /// <param name="name"></param>
+        protected Word(string name)
         {
-            if (name is null)
-                throw new ArgumentException(ElementsExceptionMessages.NameOfWordIsNullOrEmpty);
-
-            if (throwExceptionIfNameIsInvalid)
-                ThrowExceptionIfNameIsInvalid(name);
-
+            ThrowExceptionIfNullEmptyOrOnlySpaces(name, nameof(name));
             Name = name;
         }
 
         /// <summary>
-        ///     Throw exception if null, empty, only spaces or same name as an Operator or Function.
+        ///     Throw exception if name is null, empty, only spaces or the same as an Operator or Function.
         /// </summary>
-        /// <param name="toCheck"></param>
+        /// <param name="name"></param>
         /// <returns></returns>
-        public static void ThrowExceptionIfNameIsInvalid(string toCheck)
+        public static void ThrowExceptionIfNameIsInvalid(string name)
         {
-            if (IsNullEmptyOrOnlySpaces(toCheck))
+            if (IsNullEmptyOrOnlySpaces(name))
                 throw new ArgumentException(ElementsExceptionMessages.NameOfWordIsNullOrEmpty);
 
-            if (IsOperator.Run(RemoveSpaces(toCheck), out _))
+            if (IsOperator.Run(RemoveSpaces(name), out _) || IsFunction.Run(RemoveSpaces(name), out _))
                 throw new ArgumentException(ElementsExceptionMessages.NameWasSameAsOperatorOrFunction);
+        }
 
-            if (IsFunction.Run(RemoveSpaces(toCheck), out _))
-                throw new ArgumentException(ElementsExceptionMessages.NameWasSameAsOperatorOrFunction);
+        /// <summary>
+        ///     False if name is null, empty, only spaces or the same as an Operator or Function. Otherwise, true.
+        /// </summary>
+        /// <returns></returns>
+        public static bool NameIsValid(string name)
+        {
+            try
+            {
+                ThrowExceptionIfNameIsInvalid(name);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>

@@ -3,7 +3,8 @@
     public partial class Number
     {
         /// <summary>
-        ///     Using + 1 so AsDecimal and AsDouble can be kept get only.
+        ///     Uses + 1 so AsDecimal and AsDouble can be kept get only. Also, because objects are stored by reference, changing
+        ///     them would change the original.
         /// </summary>
         /// <param name="a"></param>
         /// <returns></returns>
@@ -11,7 +12,8 @@
             a.IsDecimal ? new Number(a.AsDecimal + 1) : new Number(a.AsDouble + 1);
 
         /// <summary>
-        ///     Using -1 so AsDecimal and AsDouble can be kept get only.
+        ///     Uses -1 so AsDecimal and AsDouble can be kept get only. Also, because objects are stored by reference, changing
+        ///     them would change the original.
         /// </summary>
         /// <param name="a"></param>
         /// <returns></returns>

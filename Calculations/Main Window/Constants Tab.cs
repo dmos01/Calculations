@@ -73,7 +73,7 @@ namespace Calculations
 
             string nameWithoutSpaces = RemoveSpaces(cboConstants.Text);
 
-            if (!ConstantsController.ConstantNameIsValid(nameWithoutSpaces, out string error))
+            if (!Constants.ConstantNameIsValid(nameWithoutSpaces, out string error))
             {
                 MessageBox.Show(error, DialogResources.CannotAddConstantTitle,
                     MessageBoxButton.OK,

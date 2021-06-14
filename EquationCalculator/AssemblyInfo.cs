@@ -15,14 +15,13 @@ namespace EquationCalculator
             get
             {
                 Version v = Assembly.GetExecutingAssembly().GetName().Version;
-                return v.Major + ElementsResources.DecimalSymbol + v.Minor + ElementsResources.DecimalSymbol + v.Build +
-                       ElementsResources.DecimalSymbol + v.Revision;
+                return v.Major + ElementsResources.DecimalSymbol + v.Minor + ElementsResources.DecimalSymbol + v.Build;
             }
         }
 
         public static string ReleaseDate => "";
 
         public static string VersionAndReleaseDate =>
-            CalculatorResources.ProjectTitle + " " + AssemblyVersion + CalculatorResources.ReleaseDate + ElementsResources.Period;
+            CalculatorResources.ProjectTitle + " " + AssemblyVersion + CalculatorResources.ReleaseDate;
     }
 }

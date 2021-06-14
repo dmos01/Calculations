@@ -3,7 +3,9 @@ using EquationElements;
 
 namespace EquationCalculator
 {
-    //Must be made of references to the objects in the equation linked list.
+    /// <summary>
+    ///     Must be made of references to the objects in the equation linked list.
+    /// </summary>
     internal class EquationSegment
     {
         public LinkedListNode<BaseElement> Start { get; }

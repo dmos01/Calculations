@@ -11,7 +11,7 @@ namespace EquationElements
         /// <param name="asString"></param>
         public Number(string asString)
         {
-            ThrowExceptionIfNullOrEmpty(asString, nameof(asString));
+            ThrowExceptionIfNullEmptyOrOnlySpaces(asString, nameof(asString));
 
             if (decimal.TryParse(asString, out decimal dec))
             {

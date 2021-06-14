@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Controls;
 using System.Windows.Media;
-using EquationElements;
 
 namespace Calculations
 {

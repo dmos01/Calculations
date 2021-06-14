@@ -14,12 +14,11 @@ namespace EquationElements
             get
             {
                 Version v = Assembly.GetExecutingAssembly().GetName().Version;
-                return v.Major + ElementsResources.DecimalSymbol + v.Minor + ElementsResources.DecimalSymbol + v.Build +
-                       ElementsResources.DecimalSymbol + v.Revision;
+                return v.Major + ElementsResources.DecimalSymbol + v.Minor + ElementsResources.DecimalSymbol + v.Build;
             }
         }
 
         public static string VersionAndReleaseDate =>
-            ElementsResources.ProjectTitle + " " + AssemblyVersion + ElementsResources.ReleaseDate + ElementsResources.Period;
+            ElementsResources.ProjectTitle + " " + AssemblyVersion + ElementsResources.ReleaseDate;
     }
 }

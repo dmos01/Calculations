@@ -14,11 +14,8 @@ namespace EquationBuilder
     /// </summary>
     public class ElementBuilder
     {
-        IDictionary<string, string> constants { get; }
-
-        public ElementBuilder() : this(null)
-        {
-        }
+        private IDictionary<string, string> constants { get; }
+        public ElementBuilder() => constants = null;
 
         /// <summary>
         /// </summary>
@@ -70,7 +67,7 @@ namespace EquationBuilder
             if (Number.TryParse(name, out Number number))
                 return number;
 
-            return new UnrecognizedElement(name, false);
+            return new UnrecognizedElement(name);
         }
 
         /// <summary>
@@ -82,27 +79,24 @@ namespace EquationBuilder
         /// <returns></returns>
         public bool IsConstant(string name, out Constant constant)
         {
-            if (constants is null || name is null)
+            if (constants is null)
             {
                 constant = null;
                 return false;
             }
 
             name = RemoveSpaces(name);
-            if (name == "")
-            {
-                constant = null;
-                return false;
-            }
 
-            if (constants.TryGetValue(name, out string value))
+            if (Word.NameIsValid(name) && constants.TryGetValue(name, out string value))
             {
                 constant = new Constant(name, value);
                 return true;
             }
-
-            constant = null;
-            return false;
+            else
+            {
+                constant = null;
+                return false;
+            }
         }
     }
 }

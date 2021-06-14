@@ -126,6 +126,24 @@
   <data name="EulersDescription" xml:space="preserve">
     <value>The base of the natural logarithm. Its natural logarithm is equal to one.</value>
   </data>
+  <data name="HistoryCopyAnswer" xml:space="preserve">
+    <value>Copy answer</value>
+  </data>
+  <data name="HistoryCopyCalculation" xml:space="preserve">
+    <value>Copy calculation</value>
+  </data>
+  <data name="HistoryCopyCalculationAndAnswer" xml:space="preserve">
+    <value>Copy calculation and answer</value>
+  </data>
+  <data name="HistoryDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="HistoryInsertAnswer" xml:space="preserve">
+    <value>Insert answer at cursor</value>
+  </data>
+  <data name="HistoryInsertCalculation" xml:space="preserve">
+    <value>Insert calculation at cursor</value>
+  </data>
   <data name="PiDescription" xml:space="preserve">
     <value>The ratio of a circle's circumference to its diameter.</value>
   </data>
@@ -133,7 +151,7 @@
     <value>Calculations</value>
   </data>
   <data name="ReleaseDate" xml:space="preserve">
-    <value>, released 31 May 2021</value>
+    <value>, released 14 June 2021.</value>
   </data>
   <data name="TextFile" xml:space="preserve">
     <value>Text file</value>
@@ -142,7 +160,7 @@
     <value>Version</value>
   </data>
   <data name="VersionNumber" xml:space="preserve">
-    <value>4.0.0</value>
+    <value>4.1.0</value>
   </data>
   <data name="XMLFile" xml:space="preserve">
     <value>XML file</value>

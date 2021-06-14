@@ -9,12 +9,15 @@
         /// <summary>
         ///     Uses "x" as the Variable's name.
         /// </summary>
-        public Variable() : base("x", false)
+        public Variable() : base("x")
         {
         }
 
-        public Variable(string name, bool throwExceptionIfNameIsInvalid = true) : base(name,
-            throwExceptionIfNameIsInvalid)
+        /// <summary>
+        ///     Throws exception if name is null, empty or only spaces. Does not test if name is an Operator or Function.
+        /// </summary>
+        /// <param name="name"></param>
+        public Variable(string name) : base(name)
         {
         }
     }

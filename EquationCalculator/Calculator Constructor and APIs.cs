@@ -35,6 +35,7 @@ namespace EquationCalculator
             readOnlyElements = (IReadOnlyCollection<BaseElement>) elements;
             ExpandedEquation = string.Join(null, readOnlyElements);
             ContainsRandom = false;
+            mostRecentAnswer = null;
         }
 
         /// <summary>

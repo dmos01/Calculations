@@ -35,6 +35,14 @@ namespace EquationElements.Operators
             };
 
         /// <summary>
+        ///     Returns true if the strings for EulersSymbol and ExponentSymbol are different, as defined in ElementsResources.
+        ///     Otherwise, false.
+        /// </summary>
+        public static bool EulersAndExponentSymbolsAreDifferent =>
+            !ElementsResources.EulersSymbolUpperCase.Equals(
+                ElementsResources.ExponentSymbolUpperCase);
+
+        /// <summary>
         ///     Returns false if name is null or not an operator. Otherwise, true.
         /// </summary>
         /// <param name="name"></param>
@@ -49,14 +57,6 @@ namespace EquationElements.Operators
 
             return !(operatorElement is null);
         }
-
-        /// <summary>
-        ///     Returns true if the strings for EulersSymbol and ExponentSymbol are different, as defined in ElementsResources.
-        ///     Otherwise, false.
-        /// </summary>
-        public static bool EulersAndExponentSymbolsAreDifferent =>
-            !ElementsResources.EulersSymbolUpperCase.Equals(
-                ElementsResources.ExponentSymbolUpperCase);
 
         /// <summary>
         ///     Returns true if str matches PiSymbol, PiWord or EulersSymbol, as defined in ElementsResources. Otherwise, false.

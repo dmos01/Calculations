@@ -36,7 +36,7 @@ namespace EquationBuilder
         /// <param name="elementsList"></param>
         /// <param name="validatedElementsList">The validated and updated list of elements.</param>
         /// <returns>True if the order of elements is valid.</returns>
-        public bool TryRun(LinkedList<BaseElement> elementsList, out ICollection<BaseElement> validatedElementsList) =>
+        public bool TryRun(LinkedList<BaseElement> elementsList, out LinkedList<BaseElement> validatedElementsList) =>
             TryRun(elementsList, false, out validatedElementsList);
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace EquationBuilder
         /// <param name="validatedElementsList">The validated and updated list of elements.</param>
         /// <returns>True if the order of elements is valid.</returns>
         public bool TryRun(LinkedList<BaseElement> elementsList,
-            bool castUnrecognizedElementsAsVariables, out ICollection<BaseElement> validatedElementsList)
+            bool castUnrecognizedElementsAsVariables, out LinkedList<BaseElement> validatedElementsList)
         {
             try
             {
@@ -73,6 +73,6 @@ namespace EquationBuilder
         /// </summary>
         /// <param name="elementsList"></param>
         /// <returns>The validated and updated list of elements.</returns>
-        public ICollection<BaseElement> Run(LinkedList<BaseElement> elementsList) => Run(elementsList, false);
+        public LinkedList<BaseElement> Run(LinkedList<BaseElement> elementsList) => Run(elementsList, false);
     }
 }

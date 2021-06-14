@@ -51,14 +51,13 @@ namespace Calculations
                     Size.DefaultUIButtons, Size.DefaultUILabels);
 
                 Default.FontWindow?.SetSizeForControls(Size.DefaultUILabels);
-
                 Default.AboutWindow?.SetFontSize(Size.DefaultUILabels);
 
                 if (Default.HistoryWindow is null)
                     return;
 
-                History.SetHistoryItemsFontSize(Size.DefaultMainCalc);
-                History.SetHistoryItemsFontFamily(Family.MainFamily);
+                Default.HistoryWindow.SetListboxFontSize(Size.DefaultMainCalc);
+                Default.HistoryWindow.SetListboxFontFamily(Family.MainFamily);
                 Default.HistoryWindow.SetButtonFontSizes(Size.DefaultUIButtons);
             }
 
@@ -84,11 +83,9 @@ namespace Calculations
                         DefaultTextboxes + change, DefaultTabs + change, DefaultDigitAndSymbolButtons + change,
                         DefaultFunctionAndEButtons + change, DefaultUIButtons + change, DefaultUILabels + change);
 
-                    if (Default.HistoryWindow is null)
-                        return;
-
-                    History.SetHistoryItemsFontSize(DefaultMainCalc + change);
-                    Default.HistoryWindow.SetButtonFontSizes(DefaultUIButtons + change);
+                    Default.HistoryWindow?.SetListboxFontSize(DefaultMainCalc + change);
+                    Default.HistoryWindow?.SetListboxFontFamily(Family.MainFamily);
+                    Default.HistoryWindow?.SetButtonFontSizes(DefaultUIButtons + change);
                 }
 
                 /// <summary>
@@ -106,7 +103,8 @@ namespace Calculations
 
                     if (Default.HistoryWindow != null)
                     {
-                        History.SetHistoryItemsFontSize(DefaultMainCalc + Settings.Default.FontSizeRelativeToDefault);
+                        Default.HistoryWindow.SetListboxFontSize(DefaultMainCalc +
+                                                                 Settings.Default.FontSizeRelativeToDefault);
                         Default.HistoryWindow.ChangeButtonFontSizes(1);
                     }
 
@@ -128,7 +126,8 @@ namespace Calculations
 
                     if (Default.HistoryWindow != null)
                     {
-                        History.SetHistoryItemsFontSize(DefaultMainCalc + Settings.Default.FontSizeRelativeToDefault);
+                        Default.HistoryWindow.SetListboxFontSize(DefaultMainCalc +
+                                                                 Settings.Default.FontSizeRelativeToDefault);
                         Default.HistoryWindow.ChangeButtonFontSizes(-1);
                     }
 
@@ -148,7 +147,7 @@ namespace Calculations
                 /// </summary>
                 public static FontFamily MainFamily =>
                     Settings.Default.FontFamily == "Hack"
-                        ? (FontFamily)Application.Current.Resources["Hack"]
+                        ? (FontFamily) Application.Current.Resources["Hack"]
                         : new FontFamily(Settings.Default.FontFamily);
 
                 /// <summary>
@@ -177,14 +176,14 @@ namespace Calculations
                 /// </summary>
                 public static void Startup()
                 {
-                    if ((FontFamily)Application.Current.Resources["Hack"] is null &&
+                    if ((FontFamily) Application.Current.Resources["Hack"] is null &&
                         Settings.Default.FontFamily == "Hack")
                     {
                         Settings.Default.FontFamily = "SegoeUI";
                         Settings.Default.Save();
                     }
 
-                    History.SetHistoryItemsFontFamily(MainFamily);
+                    Default.HistoryWindow?.SetListboxFontFamily(MainFamily);
                     Default.CalculatorWindow.SetFontFamily(MainFamily, GetFamilyOfNumberOperatorAndFunctionButtons());
                 }
 
@@ -197,7 +196,7 @@ namespace Calculations
                     Settings.Default.FontFamily = familyKey;
                     Settings.Default.Save();
                     Default.CalculatorWindow.SetFontFamily(MainFamily, GetFamilyOfNumberOperatorAndFunctionButtons());
-                    History.SetHistoryItemsFontFamily(MainFamily);
+                    Default.HistoryWindow?.SetListboxFontFamily(MainFamily);
                 }
             }
         }

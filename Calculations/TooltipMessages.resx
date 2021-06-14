@@ -181,16 +181,16 @@
     <value>Format: Floor(Number)</value>
   </data>
   <data name="InsertHistoryAnswerTooltip" xml:space="preserve">
-    <value>Inserts the selected answer into</value>
+    <value>Insert the selected answer into</value>
   </data>
   <data name="InsertHistoryAnswerTooltipLine2" xml:space="preserve">
     <value>the main calculation at the cursor.</value>
   </data>
   <data name="InsertHistoryCalculationTooltip" xml:space="preserve">
-    <value>Inserts the selected calculation into</value>
+    <value>Insert the selected calculation into the main</value>
   </data>
   <data name="InsertHistoryCalculationTooltipLine2" xml:space="preserve">
-    <value>the main calculation at the cursor.</value>
+    <value>calculation at the cursor (surrounded by brackets).</value>
   </data>
   <data name="LnDescription" xml:space="preserve">
     <value>Natural Log (Base E).</value>

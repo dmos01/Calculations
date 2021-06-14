@@ -13,10 +13,8 @@ namespace Calculations
     {
         public class ConstantsController
         {
-            //SortedSet requires an object of the same type when using .Contains().
+            //SortedDictionary instead of SortedSet because the latter requires an object of the same type when using .Contains().
             private SortedDictionary<string, Constant> sortedConstants { get; }
-
-            //Is sent to EquationBuilder. Prevents a new object being created every time a new EquationBuilder is needed.
 
             private string ConstantsPath { get; }
 
@@ -27,6 +25,10 @@ namespace Calculations
                 ConstantsPath = constantsPath;
             }
 
+            /// <summary>
+            ///     Get copy.
+            /// </summary>
+            /// <returns></returns>
             public IDictionary<string, string> GetNameValuePairs() => sortedConstants.ToDictionary(pair => pair.Key,
                 pair => pair.Value.ValueWithoutSpaces, StringComparer.CurrentCultureIgnoreCase);
 
@@ -75,9 +77,9 @@ namespace Calculations
                     SaveConstants();
             }
 
-            public ICollection<string> GetAllNames() => SearchAllFieldsAndReturnNames();
+            public List<string> GetAllNames() => SearchAllFieldsAndReturnNames();
 
-            public ICollection<string> SearchAllFieldsAndReturnNames(string searchText = "")
+            public List<string> SearchAllFieldsAndReturnNames(string searchText = "")
             {
                 searchText = RemoveSpaces(searchText);
 
@@ -117,7 +119,7 @@ namespace Calculations
 
                             //Not checking value for validity for performance reasons.
                             if (ConstantNameIsValid(nameWithoutSpaces, out _) &&
-                                !Exists(nameWithoutSpaces))
+                                !sortedConstants.ContainsKey(nameWithoutSpaces))
                             {
                                 sortedConstants.Add(nameWithoutSpaces, new Constant(name, value, unit, description));
                             }
@@ -195,7 +197,7 @@ namespace Calculations
                 writer.Close();
             }
 
-            public static bool ConstantNameIsValid(string nameWithoutSpaces, out string errorMessage)
+            public bool ConstantNameIsValid(string nameWithoutSpaces, out string errorMessage)
             {
                 //Word Name is valid.
                 try

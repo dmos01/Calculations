@@ -11,8 +11,12 @@ namespace EquationElements
     {
         public string Value { get; }
 
-        public Constant(string name, string value, bool throwExceptionIfNameIsInvalid = true) : base(name,
-            throwExceptionIfNameIsInvalid)
+        /// <summary>
+        ///     Throws exception if name or value is null, empty or only spaces. Does not test if name is an Operator or Function.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
+        public Constant(string name, string value) : base(name)
         {
             ThrowExceptionIfNullEmptyOrOnlySpaces(value, nameof(value));
             Value = value;

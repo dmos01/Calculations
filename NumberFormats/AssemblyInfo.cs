@@ -15,13 +15,13 @@ namespace NumberFormats
             get
             {
                 Version v = Assembly.GetExecutingAssembly().GetName().Version;
-                return v.Major + "." + v.Minor + "." + v.Build + "." + v.Revision;
+                return v.Major + ElementsResources.DecimalSymbol + v.Minor + ElementsResources.DecimalSymbol + v.Build;
             }
         }
 
         public static string ReleaseDate => "";
 
         public static string VersionAndReleaseDate =>
-            NumberFormatsResources.ProjectTitle + " " + AssemblyVersion + NumberFormatsResources.ReleaseDate + ElementsResources.Period;
+            NumberFormatsResources.ProjectTitle + " " + AssemblyVersion + NumberFormatsResources.ReleaseDate;
     }
 }

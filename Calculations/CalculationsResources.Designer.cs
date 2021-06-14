@@ -88,6 +88,60 @@ namespace Calculations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy answer.
+        /// </summary>
+        internal static string HistoryCopyAnswer {
+            get {
+                return ResourceManager.GetString("HistoryCopyAnswer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy calculation.
+        /// </summary>
+        internal static string HistoryCopyCalculation {
+            get {
+                return ResourceManager.GetString("HistoryCopyCalculation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy calculation and answer.
+        /// </summary>
+        internal static string HistoryCopyCalculationAndAnswer {
+            get {
+                return ResourceManager.GetString("HistoryCopyCalculationAndAnswer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string HistoryDelete {
+            get {
+                return ResourceManager.GetString("HistoryDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert answer at cursor.
+        /// </summary>
+        internal static string HistoryInsertAnswer {
+            get {
+                return ResourceManager.GetString("HistoryInsertAnswer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert calculation at cursor.
+        /// </summary>
+        internal static string HistoryInsertCalculation {
+            get {
+                return ResourceManager.GetString("HistoryInsertCalculation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The ratio of a circle&apos;s circumference to its diameter..
         /// </summary>
         internal static string PiDescription {
@@ -106,7 +160,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to , released 31 May 2021.
+        ///   Looks up a localized string similar to , released 14 June 2021..
         /// </summary>
         internal static string ReleaseDate {
             get {
@@ -133,7 +187,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 4.0.0.
+        ///   Looks up a localized string similar to 4.1.0.
         /// </summary>
         internal static string VersionNumber {
             get {

@@ -2,7 +2,7 @@
 
 namespace EquationElements
 {
-    public abstract partial class Word
+    public abstract partial class Word : IComparable
     {
         /// <summary>
         ///     <para>Compares the Words' Names.</para>

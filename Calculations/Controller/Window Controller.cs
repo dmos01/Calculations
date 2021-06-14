@@ -23,6 +23,12 @@
                 };
                 Default.HistoryWindow.SetButtonFontSizes(FontController.Size.DefaultUIButtons +
                                                          Settings.Default.FontSizeRelativeToDefault);
+                Default.HistoryWindow.SetListboxFontSize(FontController.Size.DefaultMainCalc +
+                                                         Settings.Default.FontSizeRelativeToDefault);
+                Default.HistoryWindow.SetListboxFontFamily(FontController.Family.MainFamily);
+
+                History.DisplayItems();
+
                 Default.HistoryWindow.Show();
                 Settings.Default.HistoryWindowIsOpen = true;
                 Settings.Default.Save();
@@ -45,9 +51,7 @@
             if (programIsQuitting == false)
                 Settings.Default.HistoryWindowIsOpen = false;
             Settings.Default.Save();
-
             Default.HistoryWindow = null;
-            History.HistoryWindowClosed();
         }
 
         /// <summary>

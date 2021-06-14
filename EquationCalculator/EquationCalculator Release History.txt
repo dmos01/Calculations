@@ -1,5 +1,11 @@
 ﻿EquationCalculator Release History:
 
+Version 1.0.1, 14 June 2021:
+*Current run variables set to null after use.
+*FindBracketsRandomAndVariables sets up nodesWithBrackets directly instead of returning an output queue.
+*Changes to properties vs. fields.
+
+
 Version 1.0.0, 31 May 2021:
 *Seperated out from EquationResolver.
 *Introduced readOnlyElements vs. currentRunElements, allowing the same equation to be calculated in multiple ways.

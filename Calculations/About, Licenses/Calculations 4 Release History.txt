@@ -4,6 +4,12 @@ Known bugs:
 "root", "mod" or "e", next to a digit may cause error or wrong answer. 
 "23mode24" with Constants 3mod = 6 and e24 = 4 calculates as 23%4 not 6*4.
 
+Version 4.1, 14 June 2021:
+*HistoryController no longer controls the listbox and export buttons.
+*History's "Use Selected..." menu appears when right-clicking an item; delete option added.
+*Insert calculation tooltip mentions brackets.
+*Uses EquationBuilder and EquationCalculator 1.0.1, and EquationElements 1.1.0.
+
 
 Version 4.0, 31 May 2021:
 *All projects and class libraries moved to the same solution.
@@ -30,7 +36,7 @@ Featured changes in class libraries:
 *Expanded use of error messages containing the applicable parameter.
 *Increased use of design patterns.
 *Resource files to assist with localization.
-*Root now available as a word operator. ! now available as a factorial symbol.
+*Root now available as a word operator; ! now available as a factorial symbol.
 *String equality now primarily uses CurrentCultureIgnoreCase.
 *ToLowerAndRemoveSpaces replaced with RemoveSpaces due to IgnoreCase being used for most string comparisons. All Lower variables replaced with WithoutSpaces variables.
 *Top-Heavy Fractions uses IsApproximatelyThirdsOrSixths.

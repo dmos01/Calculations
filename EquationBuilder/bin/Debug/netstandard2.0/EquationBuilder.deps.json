@@ -7,9 +7,9 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "EquationBuilder/1.0.0": {
+      "EquationBuilder/1.0.1": {
         "dependencies": {
-          "EquationElements": "1.0.0",
+          "EquationElements": "1.1.0",
           "NETStandard.Library": "2.0.3"
         },
         "runtime": {
@@ -22,7 +22,7 @@
           "Microsoft.NETCore.Platforms": "1.1.0"
         }
       },
-      "EquationElements/1.0.0": {
+      "EquationElements/1.1.0": {
         "runtime": {
           "EquationElements.dll": {}
         }
@@ -30,7 +30,7 @@
     }
   },
   "libraries": {
-    "EquationBuilder/1.0.0": {
+    "EquationBuilder/1.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -49,7 +49,7 @@
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
-    "EquationElements/1.0.0": {
+    "EquationElements/1.1.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

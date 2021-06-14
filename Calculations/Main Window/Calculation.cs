@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Windows;
+using static Calculations.Controller;
 
 namespace Calculations
 {
     public partial class MainWindow
     {
-        Controller.CalculatorAndAnswer currentCalculatorAndAnswer;
+        CalculatorAndAnswer currentCalculatorAndAnswer;
 
         private void BtnCalculate_Click(object sender, RoutedEventArgs e)
         {
@@ -14,8 +15,8 @@ namespace Calculations
             try
             {
                 //So that the CalculatorAndAnswer added to history is a new object.
-                currentCalculatorAndAnswer = new Controller.CalculatorAndAnswer(txtMainCalculation.Text);
-                Controller.History.AddIfNeedToAdd(currentCalculatorAndAnswer);
+                currentCalculatorAndAnswer = new CalculatorAndAnswer(txtMainCalculation.Text);
+                History.Add(currentCalculatorAndAnswer);
                 ShowAnswer();
             }
             catch (Exception ex)

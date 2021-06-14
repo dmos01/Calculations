@@ -11,9 +11,9 @@ namespace EquationBuilder
 {
     public partial class Validator
     {
-        //Internally, this is to ensure that UnrecognizedElement does not exist outside this project.
         bool castUnrecognizedElementsAsVariables;
         BaseElement current, previous, next;
+
         LinkedListNode<BaseElement> currentNode, previousNode, nextNode;
         LinkedList<BaseElement> elements;
         bool insideTwoArgFunction;
@@ -31,7 +31,7 @@ namespace EquationBuilder
         ///     Variables and unrecognized elements will throw an exception.
         /// </param>
         /// <returns>The validated and updated list of elements.</returns>
-        public ICollection<BaseElement> Run(LinkedList<BaseElement> elementsList,
+        public LinkedList<BaseElement> Run(LinkedList<BaseElement> elementsList,
             bool castUnrecognizedElementsAsVariables)
         {
             ThrowExceptionIfNullOrEmpty(elementsList, nameof(elementsList));
@@ -57,6 +57,13 @@ namespace EquationBuilder
             if (openingBracketsStack.Any())
                 throw new Exception(BuilderExceptionMessages.NotAllOpeningBracketsClosedDefault);
 
+            currentNode = null;
+            previousNode = null;
+            nextNode = null;
+            current = null;
+            previous = null;
+            next = null;
+            openingBracketsStack = null;
             return elements;
         }
 
@@ -134,18 +141,17 @@ namespace EquationBuilder
                     case UnrecognizedElement unrecognized:
                         if (castUnrecognizedElementsAsVariables)
                         {
-                            currentNode.Value = new Variable(current.ToString(), false);
+                            currentNode.Value = new Variable(current.ToString());
                             current = currentNode.Value;
                         }
                         else
                         {
                             if (IsNullEmptyOrOnlySpaces(unrecognized.OuterNumbersAndWordsElement))
                                 throw new Exception(BuilderExceptionMessages.UnidentifiableElementDefault);
-                            else
-                                throw new Exception(
-                                    BuilderExceptionMessages.UnidentifiableElementBeforeParameter +
-                                    unrecognized.OuterNumbersAndWordsElement +
-                                    BuilderExceptionMessages.UnidentifiableElementAfterParameter);
+                            throw new Exception(
+                                BuilderExceptionMessages.UnidentifiableElementBeforeParameter +
+                                unrecognized.OuterNumbersAndWordsElement +
+                                BuilderExceptionMessages.UnidentifiableElementAfterParameter);
                         }
 
                         break;

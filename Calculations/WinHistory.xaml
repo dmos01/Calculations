@@ -9,15 +9,17 @@
 
     <DockPanel LastChildFill="True">
         <DockPanel Height="25" DockPanel.Dock="Top" LastChildFill="True">
-            <Button x:Name="btnUse" Content="Use Selected..." Width="125" IsEnabled="False" Click="BtnUse_Click" FontSize="13" HorizontalAlignment="Right" DockPanel.Dock="Right" TabIndex="4">
+            <Button x:Name="btnUseSelected" Content="Use Selected..." Width="125" IsEnabled="False" Click="BtnUseSelected_Click" FontSize="13" HorizontalAlignment="Right" DockPanel.Dock="Right" TabIndex="4">
                 <Button.ContextMenu>
-                    <ContextMenu x:Name="cntxtUseHistory">
-                        <MenuItem Header="Copy Calculation" x:Name="miCopyHistoryCalculation" Click="MiCopyCalculation_Click"/>
-                        <MenuItem Header="Copy Answer" x:Name="miCopyHistoryAnswer" Click="MiCopyAnswer_Click"/>
-                        <MenuItem Header="Copy Calculation and Answer" x:Name="miCopyHistory" Click="MiCopy_Click"/>
+                    <ContextMenu x:Name="contextUseItem">
+                        <MenuItem Header="Copy Calculation" x:Name="miCopyCalculation" Click="MiCopyCalculation_Click"/>
+                        <MenuItem Header="Copy Answer" x:Name="miCopyAnswer" Click="MiCopyAnswer_Click"/>
+                        <MenuItem Header="Copy Calculation and Answer" x:Name="miCopyBoth" Click="MiCopyBoth_Click"/>
                         <Separator/>
-                        <MenuItem Header="Insert Calculation at Cursor" x:Name="miInsertHistoryCalculation" Click="MiInsertCalculation_Click"/>
-                        <MenuItem Header="Insert Answer at Cursor" x:Name="miInsertHistoryAnswer" Click="MiInsertAnswer_Click"/>
+                        <MenuItem Header="Insert Calculation at Cursor" x:Name="miInsertCalculation" Click="MiInsertCalculation_Click"/>
+                        <MenuItem Header="Insert Answer at Cursor" x:Name="miInsertAnswer" Click="MiInsertAnswer_Click"/>
+                        <Separator/>
+                        <MenuItem Header="Remove" x:Name="miRemove" Click="BtnDelete_Click"/>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
@@ -45,16 +47,17 @@
                 </Style>
             </Grid.Resources>
             <Button TabIndex="6" x:Name="btnMoveUp" VerticalAlignment="Top" Click="BtnMoveUp_Click" Style="{StaticResource RightButtonStyle}">
-                <Image x:Name="imgMoveUp" Source="Resources/ArrowUpDisabled.png" ToolTip="Move item up."/>
+                <Image x:Name="imgMoveUp" Source="Resources/ArrowUpDisabled.png"/>
             </Button>
-            <Button TabIndex="7" x:Name="btnRemove" VerticalAlignment="Center" Click="BtnRemove_Click" Style="{StaticResource RightButtonStyle}">
-                <Image x:Name="imgRemove" Source="Resources/RecycleBinGrey.png" ToolTip="Delete selected item." />
+            <Button TabIndex="7" x:Name="btnDelete" VerticalAlignment="Center" Click="BtnDelete_Click" Style="{StaticResource RightButtonStyle}">
+                <Image x:Name="imgRemove" Source="Resources/RecycleBinGrey.png" />
             </Button>
             <Button TabIndex="8" x:Name="btnMoveDown" VerticalAlignment="Bottom" Click="BtnMoveDown_Click" Style="{StaticResource RightButtonStyle}" >
-                <Image x:Name="imgMoveDown" Source="Resources/ArrowDownDisabled.png" ToolTip="Move item down." />
+                <Image x:Name="imgMoveDown" Source="Resources/ArrowDownDisabled.png" />
             </Button>
         </Grid>
 
-        <ListBox TabIndex="5" x:Name="lstHistory"  SelectionChanged="LstHistory_SelectionChanged" MouseDoubleClick="LstHistory_DoubleClick" FontSize="15"/>
+        <ListBox TabIndex="5" x:Name="lstHistory"  SelectionChanged="LstHistory_SelectionChanged" FontSize="15">
+        </ListBox>
     </DockPanel>
 </Window>

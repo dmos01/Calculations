@@ -1,5 +1,10 @@
 ﻿EquationElements Release History:
 
+Version 1.1.0, 14 June 2021:
+*Number's string constructor tests for only spaces.
+*Word constructor no longer tests if name is an Operator or Function.
+
+
 Version 1.0.0, 31 May 2021:
 *Removed to seperate out areas of responsibility:
  -Number's GetAs methods and fraction util methods. (Now NumberFormats project.)
@@ -29,7 +34,7 @@ Version 1.0.0, 31 May 2021:
 *Pi implements IFormattable.
 *Removed Digit and Letter Elements, and PartialElement interface.
 *Removed Inequality Comparers.
-*Root now available as a word operator. ! now available as a factorial symbol.
+*Root now available as a word operator; ! now available as a factorial symbol.
 *String equality now primarily uses CurrentCultureIgnoreCase.
 *ToLowerAndRemoveSpaces replaced with RemoveSpaces due to IgnoreCase being used for most string comparisons. All Lower variables replaced with WithoutSpaces variables.
 

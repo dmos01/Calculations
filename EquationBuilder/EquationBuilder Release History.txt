@@ -4,6 +4,11 @@ Known bugs:
 "root", "mod" or "e", next to a digit may cause error or wrong answer. 
 "23mode24" with Constants 3mod = 6 and e24 = 4 is built as 23%4 not 6*4.
 
+Version 1.0.1, 14 June 2021:
+*Roll back on methods 'out'-ing and returning ICollections.
+*Validator's Current, Previous, Next and openingBracketsStack set to null before return.
+*Changes to properties vs. fields.
+
 
 Version 1.0.0, 31 May 2021:
 *Seperated out from EquationResolver.
@@ -11,7 +16,7 @@ Version 1.0.0, 31 May 2021:
 *Splitter, Validator and ElementBuilder more publicly accessible for independent use.
 *SplitAndValidate and EquationIsValid moved to their own (static) classes.
 *EquationIsValid.Run() no longer outputs anything - it only returns true/false.
-*Root as a word operator now supported. ! as a factorial symbol now supported.
+*Root now available as a word operator; ! now available as a factorial symbol.
 
 Splitter:
 *Created my own String.Split() which keeps separators in the output.

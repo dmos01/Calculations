@@ -51,15 +51,6 @@ namespace EquationElements
                 throw new ArgumentOutOfRangeException();
         }
 
-        public static void ThrowExceptionIfNullOrEmpty(string toCheck, string nameofToCheck)
-        {
-            if (toCheck is null)
-                throw new ArgumentNullException(nameofToCheck);
-            if (toCheck.Length == 0)
-                throw new ArgumentOutOfRangeException();
-        }
-
-
         /// <summary>
         ///     Throws ArgumentNullException if toCheck is null. Throws ArgumentException if toCheck is empty or contains only
         ///     spaces.
@@ -71,7 +62,8 @@ namespace EquationElements
             if (toCheck is null)
                 throw new ArgumentNullException(nameofToCheck);
             if (toCheck.ToCharArray().Any(x => x != ' ') == false)
-                throw new ArgumentException(nameofToCheck + " is empty or contains only spaces.");
+                throw new ArgumentException(nameofToCheck +
+                                            ElementsExceptionMessages.StringIsNullEmptyOrOnlySpacesAfterParameter);
         }
 
         public static bool IsNullEmptyOrOnlySpaces(string toCheck)

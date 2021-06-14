@@ -9,15 +9,25 @@ namespace EquationCalculator
 {
     public partial class Calculator
     {
-        //Readonly here only prevents the collection from being changed. It does not prevent elements inside them from being added, changed or removed.
-        readonly IReadOnlyCollection<BaseElement> readOnlyElements;
-
         LinkedListNode<BaseElement> currentNode;
+
         LinkedList<BaseElement> currentRunElements;
         EquationSegment currentSection;
+
+        /// <summary>
+        ///     Null if Run() or TryRun() have never been called.
+        /// </summary>
+        private Number mostRecentAnswer;
+
         Queue<EquationSegment> nodesWithBrackets;
-        bool Radians;
-        IDictionary<string, Number> ValuesOfVariables;
+        bool radians;
+        IDictionary<string, Number> valuesOfVariables;
+
+        /// <summary>
+        ///     Because objects are stored by reference, being ReadOnly does not prevent other code casting back to an ICollection
+        ///     and changing the contents.
+        /// </summary>
+        private IReadOnlyCollection<BaseElement> readOnlyElements { get; }
 
         /// <summary>
         ///     Calculates the answer of the equation provided to the constructor. Replaces Variable Elements as per
@@ -28,11 +38,11 @@ namespace EquationCalculator
         /// <returns>The answer of the equation.</returns>
         public Number Run(IDictionary<string, Number> valuesOfVariables, bool radians = true)
         {
-            ValuesOfVariables = valuesOfVariables;
-            Radians = radians;
+            this.radians = radians;
+            this.valuesOfVariables = valuesOfVariables;
 
-            DuplicateElementsList();
-            nodesWithBrackets = FindBracketsRandomAndVariables();
+            DuplicateReadOnlyElements();
+            FindBracketsRandomAndVariables();
 
             while (nodesWithBrackets.Any())
             {
@@ -41,27 +51,33 @@ namespace EquationCalculator
                 RemoveBracketsAndMergeMultipleNegatives();
             }
 
+            nodesWithBrackets = null;
             currentSection = new EquationSegment(currentRunElements.First, currentRunElements.Last);
             CalculateCurrentSection();
+            currentSection = null;
+            currentNode = null;
 
-            if (!(currentRunElements.First() is Number answerNumber) ||
-                currentRunElements.First.Next != null)
-                throw new Exception(CalculatorExceptionMessages.UnknownErrorDefault);
+            if (currentRunElements.First() is Number answerNumber && currentRunElements.First.Next is null)
+            {
+                currentRunElements = null;
+                mostRecentAnswer = answerNumber;
+                return mostRecentAnswer;
+            }
 
-            return answerNumber;
+            throw new Exception(CalculatorExceptionMessages.UnknownErrorDefault);
         }
 
 
-        private void DuplicateElementsList()
+        private void DuplicateReadOnlyElements()
         {
             currentRunElements = new LinkedList<BaseElement>();
             foreach (BaseElement element in readOnlyElements)
                 currentRunElements.AddLast(element);
         }
 
-        private Queue<EquationSegment> FindBracketsRandomAndVariables()
+        private void FindBracketsRandomAndVariables()
         {
-            Queue<EquationSegment> _output = new Queue<EquationSegment>();
+            nodesWithBrackets = new Queue<EquationSegment>();
             currentNode = currentRunElements.First;
             Stack<LinkedListNode<BaseElement>> openingBracketsNodes = new Stack<LinkedListNode<BaseElement>>();
 
@@ -75,7 +91,7 @@ namespace EquationCalculator
                     case ClosingBracket _ when openingBracketsNodes.Any() == false:
                         throw new Exception(CalculatorExceptionMessages.UnknownErrorDefault);
                     case ClosingBracket _:
-                        _output.Enqueue(new EquationSegment(openingBracketsNodes.Pop(), currentNode));
+                        nodesWithBrackets.Enqueue(new EquationSegment(openingBracketsNodes.Pop(), currentNode));
                         break;
 
                     case RandomFunction _:
@@ -83,13 +99,13 @@ namespace EquationCalculator
                         break;
 
                     case Variable _:
-                        if (ValuesOfVariables is null)
+                        if (valuesOfVariables is null)
                             throw new Exception(
                                 CalculatorExceptionMessages.ValueOfVariableNotProvidedBeforeParameter +
                                 currentNode.Value +
                                 CalculatorExceptionMessages.ValueOfVariableNotProvidedAfterParameter);
 
-                        if (ValuesOfVariables.TryGetValue(currentNode.Value.ToString(), out Number value))
+                        if (valuesOfVariables.TryGetValue(currentNode.Value.ToString(), out Number value))
                             currentNode.Value = value;
                         else
                             throw new Exception(
@@ -101,8 +117,6 @@ namespace EquationCalculator
 
                 currentNode = currentNode.Next;
             }
-
-            return _output;
         }
 
         private void RemoveBracketsAndMergeMultipleNegatives()
@@ -265,7 +279,7 @@ namespace EquationCalculator
                         break;
 
                     case TrigonometricFunction trig when currentNode.Next.Value is Number number:
-                        currentNode.Value = trig.PerformOn(number, Radians);
+                        currentNode.Value = trig.PerformOn(number, radians);
                         currentRunElements.Remove(currentNode.Next);
                         break;
 

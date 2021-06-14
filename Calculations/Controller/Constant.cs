@@ -6,7 +6,7 @@ namespace Calculations
 {
     partial class Controller
     {
-        public partial class Constant : IComparable
+        public partial class Constant
         {
             public string Name { get; }
             public string Value { get; private set; }

@@ -73,7 +73,6 @@ namespace UnitTests
             new[] {"-(1+1/3)", "-1.33", null, "-(1+1/3)", "-4/3"},
             new[] {"-(1+2/3)", "-1.67", null, "-(1+2/3)", "-5/3"},
             new[] {"-(1+1/6)", "-1.17", null, "-(1+1/6)", "-7/6"}
-
         };
 
         [Test]
@@ -82,7 +81,7 @@ namespace UnitTests
         {
             FractionConversionTest(currentCase);
         }
-        
+
         [Test]
         [TestCaseSource(nameof(DP1TestCases))]
         public void DP1(string[] currentCase)

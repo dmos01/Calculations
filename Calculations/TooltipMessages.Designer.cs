@@ -250,7 +250,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inserts the selected answer into.
+        ///   Looks up a localized string similar to Insert the selected answer into.
         /// </summary>
         internal static string InsertHistoryAnswerTooltip {
             get {
@@ -268,7 +268,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inserts the selected calculation into.
+        ///   Looks up a localized string similar to Insert the selected calculation into the main.
         /// </summary>
         internal static string InsertHistoryCalculationTooltip {
             get {
@@ -277,7 +277,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to the main calculation at the cursor..
+        ///   Looks up a localized string similar to calculation at the cursor (surrounded by brackets)..
         /// </summary>
         internal static string InsertHistoryCalculationTooltipLine2 {
             get {

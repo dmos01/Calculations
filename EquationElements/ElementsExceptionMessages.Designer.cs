@@ -151,6 +151,15 @@ namespace EquationElements {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  is empty or contains only spaces..
+        /// </summary>
+        public static string StringIsNullEmptyOrOnlySpacesAfterParameter {
+            get {
+                return ResourceManager.GetString("StringIsNullEmptyOrOnlySpacesAfterParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  could not be turned into a number..
         /// </summary>
         public static string StringWasNotANumberAfterParameter {

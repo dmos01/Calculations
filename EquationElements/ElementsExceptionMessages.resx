@@ -147,6 +147,9 @@
   <data name="RandomWasNotAnIntegerDefault" xml:space="preserve">
     <value>Numbers used in Random must be integers.</value>
   </data>
+  <data name="StringIsNullEmptyOrOnlySpacesAfterParameter" xml:space="preserve">
+    <value> is empty or contains only spaces.</value>
+  </data>
   <data name="StringWasNotANumberAfterParameter" xml:space="preserve">
     <value> could not be turned into a number.</value>
   </data>
