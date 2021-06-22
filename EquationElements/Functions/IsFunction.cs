@@ -45,7 +45,7 @@ namespace EquationElements.Functions
             };
 
         /// <summary>
-        ///     Returns false if name is null or not a function. Otherwise, true.
+        ///     Returns false if name is null or not a function; otherwise true.
         /// </summary>
         /// <param name="name"></param>
         /// <param name="function">Null if method returns false.</param>

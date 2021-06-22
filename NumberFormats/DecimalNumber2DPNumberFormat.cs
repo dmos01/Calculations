@@ -13,7 +13,7 @@ namespace NumberFormats
 
         /// <summary>
         ///     Returns the number, rounded to 2 decimal places. Returns the full number without rounding
-        ///     if it rounds to 0 but is not exactly 0. Uses AsDecimal, if possible. Otherwise, uses AsDouble.
+        ///     if it rounds to 0 but is not exactly 0. Uses AsDecimal, if possible; otherwise uses AsDouble.
         /// </summary>
         /// <returns></returns>
         public override string Display(Number toDisplay)

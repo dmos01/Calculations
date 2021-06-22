@@ -187,7 +187,7 @@ namespace EquationElements {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attempted to compare a Word to a non-Word.
+        ///   Looks up a localized string similar to Attempted to compare a Word to a non-Word..
         /// </summary>
         public static string WordCompareFail {
             get {

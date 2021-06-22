@@ -43,7 +43,7 @@ namespace EquationElements.Operators
                 ElementsResources.ExponentSymbolUpperCase);
 
         /// <summary>
-        ///     Returns false if name is null or not an operator. Otherwise, true.
+        ///     Returns false if name is null or not an operator; otherwise true.
         /// </summary>
         /// <param name="name"></param>
         /// <param name="operatorElement">Null if method returns false.</param>
@@ -59,7 +59,7 @@ namespace EquationElements.Operators
         }
 
         /// <summary>
-        ///     Returns true if str matches PiSymbol, PiWord or EulersSymbol, as defined in ElementsResources. Otherwise, false.
+        ///     Returns true if str matches PiSymbol, PiWord or EulersSymbol, as defined in ElementsResources; otherwise false.
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>

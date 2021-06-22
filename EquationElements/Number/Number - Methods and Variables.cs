@@ -37,7 +37,7 @@ namespace EquationElements
             : AsDouble.ToString(format, formatProvider);
 
         /// <summary>
-        ///     Returns the CurrentCulture string representation of AsDecimal, if possible. Otherwise, AsDouble.
+        ///     Returns the CurrentCulture string representation of AsDecimal, if possible; otherwise AsDouble.
         /// </summary>
         /// <returns></returns>
         public override string ToString() => IsDecimal
@@ -45,7 +45,7 @@ namespace EquationElements
             : AsDouble.ToString(CultureInfo.CurrentCulture);
 
         /// <summary>
-        ///     Returns the string representation of AsDecimal, if possible. Otherwise, AsDouble.
+        ///     Returns the string representation of AsDecimal, if possible; otherwise AsDouble.
         /// </summary>
         /// <param name="format"></param>
         /// <returns></returns>
@@ -54,7 +54,7 @@ namespace EquationElements
             : AsDouble.ToString(format);
 
         /// <summary>
-        ///     Returns the string representation of AsDecimal, if possible. Otherwise, AsDouble.
+        ///     Returns the string representation of AsDecimal, if possible; otherwise AsDouble.
         /// </summary>
         /// <param name="formatProvider"></param>
         /// <returns></returns>

@@ -21,15 +21,14 @@ namespace Calculations
             string.Join(Environment.NewLine,
                 "Licenses:",
                 "",
-                "*Crystal Project Icons created by Everaldo Coelho, ©2007, licensed under the GNU Lesser General Public License.",
-                "*Disabled arrow images from icons8.com, licensed under Creative Commons Attribution - NoDerivs 3.0 Unported.",
-                "*Other images from all-free-download.com and graphicsfuel.com.",
-                "*'Hack' font Copyright 2018 Source Foundry Authors and licensed under the MIT License.",
-                "  -DejaVu font project was committed to the public domain.",
-                "  -Bitstream Vera Sans Mono Copyright 2003 Bitstream Inc. and licensed under the Bitstream Vera License with Reserved Font Names 'Bitstream' and 'Vera.')",
+                "*Images from iconmonstr.com (Arrow 12, Trash Can 1).",
+                "https://iconmonstr.com/license/",
                 "*Fraction class by Syed Mehroz Alam, licensed under the Code Project Open License (CPOL).",
-                "Changes by Marc C. Brooks and Jeffery Sax."
-            );
+                "Changes by Marc C. Brooks and Jeffery Sax.",
+                "*'Hack' font Copyright 2018 Source Foundry Authors and licensed under the MIT License.",
+                " -DejaVu font project was committed to the public domain.",
+                " -Bitstream Vera Sans Mono Copyright 2003 Bitstream Inc. and licensed under the Bitstream Vera License with Reserved Font Names 'Bitstream' and 'Vera.')"
+                );
 
         /// <summary>
         ///     For version x.y.z. If a .z release, includes changes in the previous version (recursively).
@@ -37,6 +36,9 @@ namespace Calculations
         /// <returns></returns>
         public static string ChangesInThisVersion() =>
             string.Join(Environment.NewLine,
+                "Featured changes in 4.2:",
+                "*New icons.",
+                "",
                 "Featured changes in 4.1:",
                 "*History's 'Use Selected...' menu appears when right-clicking an item; delete option added.",
                 "*Insert calculation tooltip mentions brackets.",

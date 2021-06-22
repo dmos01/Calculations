@@ -5,7 +5,7 @@ namespace EquationElements
     partial class Number : IComparable
     {
         /// <summary>
-        ///     <para>Compares the Numbers' AsDecimals, if possible. Otherwise, AsDoubles.</para>
+        ///     <para>Compares the Numbers' AsDecimals, if possible; otherwise AsDoubles.</para>
         ///     <para>Less Than Zero - This precedes obj.</para>
         ///     <para>Zero - This occurs in the same position as obj.</para>
         ///     <para>Greater than Zero - This follows obj.</para>
@@ -26,7 +26,7 @@ namespace EquationElements
         }
 
         /// <summary>
-        ///     <para>Compares the Numbers' AsDecimals, if possible. Otherwise, AsDoubles.</para>
+        ///     <para>Compares the Numbers' AsDecimals, if possible; otherwise AsDoubles.</para>
         ///     <para>Less Than Zero - This precedes b.</para>
         ///     <para>Zero - This occurs in the same position as b.</para>
         ///     <para>Greater than Zero - This follows b.</para>
@@ -44,7 +44,7 @@ namespace EquationElements
         }
 
         /// <summary>
-        ///     <para>Compares AsDecimal to b, if possible. Otherwise, AsDouble to b.</para>
+        ///     <para>Compares AsDecimal to b, if possible; otherwise AsDouble to b.</para>
         ///     <para>Less Than Zero - This precedes b.</para>
         ///     <para>Zero - This occurs in the same position as b.</para>
         ///     <para>Greater than Zero - This follows b.</para>
@@ -54,7 +54,7 @@ namespace EquationElements
         public int CompareTo(int b) => IsDecimal ? AsDecimal.CompareTo(b) : AsDouble.CompareTo(b);
 
         /// <summary>
-        ///     <para>Compares AsDecimal to b, if possible. Otherwise, AsDouble to decimal.ToDouble(b).</para>
+        ///     <para>Compares AsDecimal to b, if possible; otherwise AsDouble to decimal.ToDouble(b).</para>
         ///     <para>Less Than Zero - This precedes b.</para>
         ///     <para>Zero - This occurs in the same position as b.</para>
         ///     <para>Greater than Zero - This follows b.</para>

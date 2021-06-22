@@ -225,7 +225,7 @@
   <data name="NoArgumentSeparatorDefault" xml:space="preserve">
     <value>There must be an argument separator to separate the numbers in Log and Random.</value>
   </data>
-  <data name="NoEquationDefault" xml:space="preserve">
+  <data name="NoEquation" xml:space="preserve">
     <value>Enter an equation.</value>
   </data>
   <data name="NotAllOpeningBracketsClosedDefault" xml:space="preserve">

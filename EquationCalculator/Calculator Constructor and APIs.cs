@@ -13,7 +13,7 @@ namespace EquationCalculator
         public string ExpandedEquation { get; }
 
         /// <summary>
-        ///     <para>True if the RandomFunction was found when running. Otherwise, false.</para>
+        ///     <para>True if the RandomFunction was found when running; otherwise false.</para>
         ///     False if Run() or TryRun() have never been called.
         /// </summary>
         public bool ContainsRandom { get; private set; }

@@ -4,16 +4,16 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>Calculator.ico</ApplicationIcon>
-    <Version>4.1.0</Version>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <Version>4.2.0</Version>
     <Authors>Daniel Spencer</Authors>
     <Product>Calculations</Product>
     <StartupObject>Calculations.App</StartupObject>
     <Nullable>annotations</Nullable>
     <AssemblyName>Calculations</AssemblyName>
     <RootNamespace>Calculations</RootNamespace>
-    <AssemblyVersion>4.1.0.2</AssemblyVersion>
-    <FileVersion>4.1.0.2</FileVersion>
+    <AssemblyVersion>4.2.0.3</AssemblyVersion>
+    <FileVersion>4.2.0.3</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,13 +25,37 @@
     <None Remove="About, Licenses\Hack Font.txt" />
     <None Remove="About, Licenses\Licenses.txt" />
     <None Remove="Calculator.ico" />
+    <None Remove="Icon.ico" />
+    <None Remove="my_calc_3x3_lbE_icon.ico" />
+    <None Remove="my_calc_Rdk_icon.ico" />
     <None Remove="Resources\ArrowDown.png" />
+    <None Remove="Resources\ArrowDownBlue.png" />
+    <None Remove="Resources\ArrowDownCrystalProject.png" />
     <None Remove="Resources\ArrowDownDisabled.png" />
     <None Remove="Resources\ArrowUp.png" />
+    <None Remove="Resources\ArrowUpBlue.png" />
+    <None Remove="Resources\ArrowUpBlueCrystalProject.png" />
+    <None Remove="Resources\ArrowUpCrystalProject.png" />
     <None Remove="Resources\ArrowUpDisabled.png" />
+    <None Remove="Resources\ArrowUpGrayCrystalProject.png" />
+    <None Remove="Resources\Bin.png" />
+    <None Remove="Resources\BinDisabled.png" />
+    <None Remove="Resources\filled.png" />
     <None Remove="Resources\Hack-Regular.ttf" />
+    <None Remove="Resources\iconmonstr-down-256-scaled.png" />
+    <None Remove="Resources\iconmonstr-down-256.png" />
+    <None Remove="Resources\iconmonstr-down.png" />
+    <None Remove="Resources\iconmonstr-up-256-scaled.png" />
+    <None Remove="Resources\NewBlueArrowDown.png" />
+    <None Remove="Resources\OpenBin.png" />
+    <None Remove="Resources\OpenBinDisabled.png" />
+    <None Remove="Resources\outline.png" />
     <None Remove="Resources\RecycleBinBlue.png" />
     <None Remove="Resources\RecycleBinGrey.png" />
+    <None Remove="Resources\RedBin.png" />
+    <None Remove="Resources\SecondArrowUp.png" />
+    <None Remove="Resources\without.png" />
+    <None Remove="Resources\withsymbol.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,19 +70,34 @@
     <Resource Include="About, Licenses\Calculations 3 Release History.txt" />
     <Resource Include="About, Licenses\Calculations 4 Release History.txt" />
     <Resource Include="About, Licenses\Crystal Project.txt" />
-    <Resource Include="About, Licenses\Disabled Recycle Bin.txt" />
     <Resource Include="About, Licenses\Hack Font.txt" />
     <Resource Include="About, Licenses\Licenses.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Calculator.ico" />
-    <Resource Include="Resources\ArrowDown.png" />
-    <Resource Include="Resources\ArrowDownDisabled.png" />
-    <Resource Include="Resources\ArrowUp.png" />
-    <Resource Include="Resources\ArrowUpDisabled.png" />
-    <Resource Include="Resources\Hack-Regular.ttf" />
-    <Resource Include="Resources\RecycleBinBlue.png" />
-    <Resource Include="Resources\RecycleBinGrey.png" />
+    <Resource Include="Icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ArrowDown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ArrowDownDisabled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ArrowUp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ArrowUpDisabled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\BinDisabled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Bin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Hack-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

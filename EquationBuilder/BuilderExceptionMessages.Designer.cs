@@ -387,9 +387,9 @@ namespace EquationBuilder {
         /// <summary>
         ///   Looks up a localized string similar to Enter an equation..
         /// </summary>
-        public static string NoEquationDefault {
+        public static string NoEquation {
             get {
-                return ResourceManager.GetString("NoEquationDefault", resourceCulture);
+                return ResourceManager.GetString("NoEquation", resourceCulture);
             }
         }
         

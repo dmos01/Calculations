@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculations"
         mc:Ignorable="d"
-        Title="History" Height="300" Width="439" MinHeight="220" MinWidth="439" Closing="WinHistory_Closing" Icon="Calculator.ico" WindowStartupLocation="CenterOwner">
+        Title="History" Height="300" Width="439" MinHeight="220" MinWidth="439" Closing="WinHistory_Closing" WindowStartupLocation="CenterOwner">
 
     <DockPanel LastChildFill="True">
         <DockPanel Height="25" DockPanel.Dock="Top" LastChildFill="True">
@@ -19,7 +19,7 @@
                         <MenuItem Header="Insert Calculation at Cursor" x:Name="miInsertCalculation" Click="MiInsertCalculation_Click"/>
                         <MenuItem Header="Insert Answer at Cursor" x:Name="miInsertAnswer" Click="MiInsertAnswer_Click"/>
                         <Separator/>
-                        <MenuItem Header="Remove" x:Name="miRemove" Click="BtnDelete_Click"/>
+                        <MenuItem Header="Remove" x:Name="miRemove" Click="LblDelete_MouseUp"/>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
@@ -39,22 +39,36 @@
 
         <Grid Width="50" DockPanel.Dock="Right">
             <Grid.Resources>
-                <Style x:Key="RightButtonStyle" TargetType="Button">
-                    <Setter Property="Height" Value="50" />
-                    <Setter Property="Width" Value="50" />
+                <Style x:Key="RightImageLabelStyle" TargetType="Label">
+                    <Setter Property="Background" Value="#DDDDDD"></Setter>
+                    <Setter Property="BorderBrush" Value="#707070"></Setter>
+                    <Setter Property="BorderThickness" Value="1"></Setter>
                     <Setter Property="HorizontalAlignment" Value="Center" />
-                    <Setter Property="IsEnabled" Value="False" />
+                    <Setter Property="Padding" Value="3"></Setter>
+                    <Style.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsEnabled" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Background" Value="#BEE6FD" />
+                                <Setter Property="BorderBrush" Value="#3C7FB1"></Setter>
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                    </Style.Triggers>
                 </Style>
             </Grid.Resources>
-            <Button TabIndex="6" x:Name="btnMoveUp" VerticalAlignment="Top" Click="BtnMoveUp_Click" Style="{StaticResource RightButtonStyle}">
+            <Label TabIndex="6" x:Name="lblMoveUp" VerticalAlignment="Top" MouseUp="LblMoveUp_MouseUp"
+                   Style="{StaticResource RightImageLabelStyle}" >
                 <Image x:Name="imgMoveUp" Source="Resources/ArrowUpDisabled.png"/>
-            </Button>
-            <Button TabIndex="7" x:Name="btnDelete" VerticalAlignment="Center" Click="BtnDelete_Click" Style="{StaticResource RightButtonStyle}">
-                <Image x:Name="imgRemove" Source="Resources/RecycleBinGrey.png" />
-            </Button>
-            <Button TabIndex="8" x:Name="btnMoveDown" VerticalAlignment="Bottom" Click="BtnMoveDown_Click" Style="{StaticResource RightButtonStyle}" >
+            </Label>
+            <Label TabIndex="7" x:Name="lblDelete" VerticalAlignment="Center" MouseUp="LblDelete_MouseUp" Style="{StaticResource RightImageLabelStyle}">
+                <Image x:Name="imgRemove" Source="Resources/BinDisabled.png" />
+            </Label>
+            <Label TabIndex="8" x:Name="lblMoveDown" VerticalAlignment="Bottom" MouseUp="LblMoveDown_MouseUp" Style="{StaticResource RightImageLabelStyle}" >
                 <Image x:Name="imgMoveDown" Source="Resources/ArrowDownDisabled.png" />
-            </Button>
+            </Label>
         </Grid>
 
         <ListBox TabIndex="5" x:Name="lstHistory"  SelectionChanged="LstHistory_SelectionChanged" FontSize="15">

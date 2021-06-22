@@ -11,7 +11,8 @@ namespace EquationElements
         /// <param name="asString"></param>
         public Number(string asString)
         {
-            ThrowExceptionIfNullEmptyOrOnlySpaces(asString, nameof(asString));
+            if (IsNullEmptyOrOnlySpaces(asString))
+                throw new ArgumentException(ElementsExceptionMessages.StringWasNotANumberDefault);
 
             if (decimal.TryParse(asString, out decimal dec))
             {
@@ -27,10 +28,8 @@ namespace EquationElements
                 AsDouble = dou;
             }
             else
-            {
                 throw new ArgumentException(ElementsExceptionMessages.StringWasNotANumberBeforeParameter + asString +
                                             ElementsExceptionMessages.StringWasNotANumberAfterParameter);
-            }
         }
 
 

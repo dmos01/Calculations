@@ -754,7 +754,7 @@ namespace Mehroz
         /// </summary>
         /// <param name="obj">A  Fraction,</param>
         /// <returns>
-        ///     True if the value equals the current fraction, false otherwise (including for
+        ///     True if the value equals the current fraction; otherwise false (including for
         ///     non-Fraction types or null object.
         /// </returns>
         public override bool Equals(object obj)
@@ -990,7 +990,7 @@ namespace Mehroz
         /// <param name="notEqualCheck">If true, we're looking for not-equal</param>
         /// <returns>
         ///     True if the <paramref name="right"></paramref> equals the current
-        ///     fraction, false otherwise. If comparing two NaNs, they are always equal AND
+        ///     fraction; otherwise false. If comparing two NaNs, they are always equal AND
         ///     not-equal.
         /// </returns>
         private bool CompareEquality(Fraction right, bool notEqualCheck)

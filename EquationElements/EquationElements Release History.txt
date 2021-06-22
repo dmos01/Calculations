@@ -1,5 +1,8 @@
 ﻿EquationElements Release History:
 
+Version 1.1.1, 22 June 2021:
+*Minor improvements.
+
 Version 1.1.0, 14 June 2021:
 *Number's string constructor tests for only spaces.
 *Word constructor no longer tests if name is an Operator or Function.

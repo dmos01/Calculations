@@ -8,7 +8,7 @@
         private WinHistory HistoryWindow;
 
         /// <summary>
-        ///     If the window is already open, focuses on that instance. Otherwise, creates one and loads settings. Sets the
+        ///     If the window is already open, focuses on that instance; otherwise creates one and loads settings. Set the
         ///     history window to open on startup next time.
         /// </summary>
         public static void ShowHistoryWindow()
@@ -34,9 +34,7 @@
                 Settings.Default.Save();
             }
             else
-            {
                 Default.HistoryWindow.Focus();
-            }
         }
 
         /// <summary>
@@ -55,7 +53,7 @@
         }
 
         /// <summary>
-        ///     If the window is already open, focuses on that instance. Otherwise, creates one.
+        ///     If the window is already open, focuses on that instance; otherwise creates one.
         /// </summary>
         public static void ShowFontWindow()
         {
@@ -67,18 +65,13 @@
                 Default.FontWindow.Show();
             }
             else
-            {
                 Default.FontWindow.Focus();
-            }
         }
 
-        public static void CloseFontWindow()
-        {
-            Default.FontWindow = null;
-        }
+        public static void CloseFontWindow() => Default.FontWindow = null;
 
         /// <summary>
-        ///     If the window is already open, focuses on that instance. Otherwise, creates one.
+        ///     If the window is already open, focuses on that instance; otherwise creates one.
         /// </summary>
         public static void ShowAboutWindow()
         {
@@ -90,14 +83,9 @@
                 Default.AboutWindow.Show();
             }
             else
-            {
                 Default.AboutWindow.Focus();
-            }
         }
 
-        public static void CloseAboutWindow()
-        {
-            Default.AboutWindow = null;
-        }
+        public static void CloseAboutWindow() => Default.AboutWindow = null;
     }
 }

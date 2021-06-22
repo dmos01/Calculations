@@ -141,6 +141,7 @@ namespace EquationBuilder
                     case UnrecognizedElement unrecognized:
                         if (castUnrecognizedElementsAsVariables)
                         {
+                            //Name validation should have happened when creating the UnrecognizedElement.
                             currentNode.Value = new Variable(current.ToString());
                             current = currentNode.Value;
                         }

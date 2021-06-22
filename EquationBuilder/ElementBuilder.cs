@@ -45,7 +45,7 @@ namespace EquationBuilder
                 return new DecimalPoint();
 
             if (name.Equals(ElementsResources.EulersSymbolUpperCase, StringComparison.CurrentCultureIgnoreCase))
-                return IsOperator.EulersAndExponentSymbolsAreDifferent ? (BaseElement) new Number(Math.E) : new E();
+                return IsOperator.EulersAndExponentSymbolsAreDifferent ? (BaseElement)new Number(Math.E) : new E();
 
             if (IsOperator.EulersAndExponentSymbolsAreDifferent && name.Equals(
                 ElementsResources.ExponentSymbolUpperCase,
@@ -67,6 +67,7 @@ namespace EquationBuilder
             if (Number.TryParse(name, out Number number))
                 return number;
 
+            //Spaces already removed, already checked for null or empty.
             return new UnrecognizedElement(name);
         }
 
@@ -87,7 +88,8 @@ namespace EquationBuilder
 
             name = RemoveSpaces(name);
 
-            if (Word.NameIsValid(name) && constants.TryGetValue(name, out string value))
+            //Not ElementBuilder's responsibility if one of the Constants had an invalid name.
+            if (!(name is null) && constants.TryGetValue(name, out string value))
             {
                 constant = new Constant(name, value);
                 return true;

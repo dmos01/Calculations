@@ -41,26 +41,34 @@ namespace Calculations
 
         private void LstHistory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            btnDelete.IsEnabled = lstHistory.SelectedIndex != -1;
-            btnUseSelected.IsEnabled = lstHistory.SelectedIndex != -1;
-            btnMoveUp.IsEnabled = lstHistory.SelectedIndex > 0;
-            btnMoveDown.IsEnabled = lstHistory.SelectedIndex != -1 &&
-                                    lstHistory.SelectedIndex != (lstHistory.Items.Count - 1);
-
-            if (btnMoveUp.IsEnabled)
+            lblMoveUp.IsEnabled = lstHistory.SelectedIndex > 0;
+            if (lstHistory.SelectedIndex == -1)
+            {
+                lblDelete.IsEnabled = false;
+                btnUseSelected.IsEnabled = false;
+                lblMoveDown.IsEnabled = false;
+            }
+            else
+            {
+                lblDelete.IsEnabled = true;
+                btnUseSelected.IsEnabled = true;
+                lblMoveDown.IsEnabled = lstHistory.SelectedIndex != (lstHistory.Items.Count - 1);
+            }
+            
+            if (lblMoveUp.IsEnabled)
                 imgMoveUp.Source = new BitmapImage(new Uri("Resources/ArrowUp.png", UriKind.Relative));
             else
                 imgMoveUp.Source = new BitmapImage(new Uri("Resources/ArrowUpDisabled.png", UriKind.Relative));
 
-            if (btnMoveDown.IsEnabled)
+            if (lblMoveDown.IsEnabled)
                 imgMoveDown.Source = new BitmapImage(new Uri("Resources/ArrowDown.png", UriKind.Relative));
             else
                 imgMoveDown.Source = new BitmapImage(new Uri("Resources/ArrowDownDisabled.png", UriKind.Relative));
 
-            if (btnDelete.IsEnabled)
-                imgRemove.Source = new BitmapImage(new Uri("Resources/RecycleBinBlue.png", UriKind.Relative));
+            if (lblDelete.IsEnabled)
+                imgRemove.Source = new BitmapImage(new Uri("Resources/Bin.png", UriKind.Relative));
             else
-                imgRemove.Source = new BitmapImage(new Uri("Resources/RecycleBinGrey.png", UriKind.Relative));
+                imgRemove.Source = new BitmapImage(new Uri("Resources/BinDisabled.png", UriKind.Relative));
         }
 
         private void BtnClear_Click(object sender, RoutedEventArgs e)
@@ -86,9 +94,9 @@ namespace Calculations
                 History.ExportHistory(file);
         }
 
-        private void BtnMoveUp_Click(object sender, RoutedEventArgs e) => MoveSelectedItem(-1);
+        private void LblMoveUp_MouseUp(object sender, RoutedEventArgs e) => MoveSelectedItem(-1);
 
-        private void BtnMoveDown_Click(object sender, RoutedEventArgs e) => MoveSelectedItem(1);
+        private void LblMoveDown_MouseUp(object sender, RoutedEventArgs e) => MoveSelectedItem(1);
 
         private void MoveSelectedItem(int moveBy)
         {
@@ -98,13 +106,13 @@ namespace Calculations
             //-moveBy because the items are being displayed in lstHistory in reverse-order, so the item in the HistoryController will need to be moved in the reverse direction to lstHistory.
             History.MoveItem(GetReverseOfSelectedIndex(), -moveBy);
 
-            ListBoxItem toMove = (ListBoxItem) lstHistory.Items[index];
+            ListBoxItem toMove = (ListBoxItem)lstHistory.Items[index];
             lstHistory.Items.RemoveAt(index);
             lstHistory.Items.Insert(index + moveBy, toMove);
             lstHistory.SelectedIndex = index + moveBy;
         }
 
-        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        private void LblDelete_MouseUp(object sender, RoutedEventArgs e)
         {
             //Delete item in HistoryController first because changing lstHistory.Items will change the SelectedIndex.
             History.RemoveAt(GetReverseOfSelectedIndex());

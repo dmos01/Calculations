@@ -31,7 +31,7 @@ namespace Calculations
             public string CurrentAnswer { get; private set; }
 
             /// <summary>
-            ///     True if the RandomFunction was found when calculating. Otherwise, false.
+            ///     True if the RandomFunction was found when calculating; otherwise false.
             /// </summary>
             public bool ContainsRandom => calculator.ContainsRandom;
 

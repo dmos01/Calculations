@@ -14,12 +14,14 @@ namespace EquationElements
         public string Name { get; }
 
         /// <summary>
-        ///     Throws exception if name is null, empty or only spaces. Does not test if name is an Operator or Function.
+        ///     Throws exception if name is null, empty or only spaces. Does not test if name is the same as an Operator or Function.
         /// </summary>
         /// <param name="name"></param>
         protected Word(string name)
         {
-            ThrowExceptionIfNullEmptyOrOnlySpaces(name, nameof(name));
+            if (IsNullEmptyOrOnlySpaces(name))
+                throw new ArgumentException(ElementsExceptionMessages.NameOfWordIsNullOrEmpty);
+
             Name = name;
         }
 
@@ -38,7 +40,7 @@ namespace EquationElements
         }
 
         /// <summary>
-        ///     False if name is null, empty, only spaces or the same as an Operator or Function. Otherwise, true.
+        ///     False if name is null, empty, only spaces or the same as an Operator or Function; otherwise true.
         /// </summary>
         /// <returns></returns>
         public static bool NameIsValid(string name)

@@ -48,7 +48,7 @@ namespace EquationElements
             if (toCheck is null)
                 throw new ArgumentNullException(nameofToCheck);
             if (toCheck.Count == 0)
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException(nameofToCheck);
         }
 
         /// <summary>

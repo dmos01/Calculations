@@ -5,6 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculations"
         mc:Ignorable="d"
-        Title="About" Height="490" Width="395" Icon="Calculator.ico" WindowStartupLocation="CenterOwner" MinWidth="300" MinHeight="150" Closing="WinAbout_Closing">
+        Title="About" Height="490" Width="395" WindowStartupLocation="CenterOwner" MinWidth="300" MinHeight="150" Closing="WinAbout_Closing">
         <TextBox x:Name="txtAbout" FontSize="13" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" Text="TextBox"/>
     </Window>

@@ -22,7 +22,7 @@ namespace EquationBuilder
         {
             equation = Utils.RemoveSpaces(equation);
             if (equation is null || equation == "")
-                throw new ArgumentException(BuilderExceptionMessages.NoEquationDefault);
+                throw new ArgumentException(BuilderExceptionMessages.NoEquation);
 
             splitterOutput = new LinkedList<BaseElement>();
             ICollection<BaseElement> operatorsAndOther = SplitIntoOperatorsAndOther(equation);

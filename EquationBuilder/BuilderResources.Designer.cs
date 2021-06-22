@@ -70,7 +70,7 @@ namespace EquationBuilder {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to , released 14 June 2021..
+        ///   Looks up a localized string similar to , released 22 June 2021..
         /// </summary>
         internal static string ReleaseDate {
             get {

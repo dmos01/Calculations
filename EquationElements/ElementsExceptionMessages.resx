@@ -160,6 +160,6 @@
     <value>Tried to turn something unidentifiable into a number.</value>
   </data>
   <data name="WordCompareFail" xml:space="preserve">
-    <value>Attempted to compare a Word to a non-Word</value>
+    <value>Attempted to compare a Word to a non-Word.</value>
   </data>
 </root>

@@ -53,7 +53,7 @@ namespace Calculations
             /// <summary>
             ///     Tests if any of this Constant's fields contains the search text.
             /// </summary>
-            /// <returns>True if the Constant matches the search text. Otherwise, false.</returns>
+            /// <returns>True if the Constant matches the search text; otherwise false.</returns>
             public bool Matches(string searchTextWithoutSpaces)
             {
                 if (ValueWithoutSpaces.Contains(searchTextWithoutSpaces, StringComparison.CurrentCultureIgnoreCase))

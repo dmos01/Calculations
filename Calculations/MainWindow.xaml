@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Calculations"
         mc:Ignorable="d"
         Title="Calculations" WindowStartupLocation="CenterScreen" MinWidth="407" Width="407"
-        MinHeight="390" Height="450" Closing="WinMain_Closing" Icon="Calculator.ico"
+        MinHeight="390" Height="450" Closing="WinMain_Closing"
         Loaded="MainWindow_OnLoaded">
 
     <Window.Resources>

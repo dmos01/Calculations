@@ -7,7 +7,7 @@ namespace EquationElements
     public partial class Number
     {
         /// <summary>
-        ///     <para>Compares for equality the Numbers' AsDecimals, if possible. Otherwise, AsDoubles.</para>
+        ///     <para>Compares for equality the Numbers' AsDecimals, if possible; otherwise AsDoubles.</para>
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
@@ -15,7 +15,7 @@ namespace EquationElements
             IsDecimal && b.IsDecimal ? AsDecimal == b.AsDecimal : HasMinimalDifference(AsDouble, b.AsDouble);
 
         /// <summary>
-        ///     <para>Compares for equality AsDecimal and b, if possible. Otherwise, AsDouble and b.</para>
+        ///     <para>Compares for equality AsDecimal and b, if possible; otherwise AsDouble and b.</para>
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
@@ -25,7 +25,7 @@ namespace EquationElements
                 : HasMinimalDifference(AsDouble, b);
 
         /// <summary>
-        ///     <para>Compares for equality AsDecimal to b, if possible. Otherwise, AsDouble to decimal.ToDouble(b).</para>
+        ///     <para>Compares for equality AsDecimal to b, if possible; otherwise AsDouble to decimal.ToDouble(b).</para>
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
@@ -42,7 +42,7 @@ namespace EquationElements
         protected bool Equals(double b) => HasMinimalDifference(AsDouble, b);
 
         /// <summary>
-        ///     <para>Compares for equality the Numbers' AsDecimals, if possible. Otherwise, AsDoubles.</para>
+        ///     <para>Compares for equality the Numbers' AsDecimals, if possible; otherwise AsDoubles.</para>
         /// </summary>
         /// <param name="obj">A Number.</param>
         /// <returns></returns>
