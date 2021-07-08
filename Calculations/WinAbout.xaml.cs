@@ -17,9 +17,9 @@ namespace Calculations
 
             Title = CalculationsResources.AboutWindowTitle;
 
-            txtAbout.Text = AboutInfo.CalculationsAndDllVersionInformation() + Environment.NewLine +
-                            Environment.NewLine + AboutInfo.LicenseInfo() + Environment.NewLine + Environment.NewLine +
-                            Environment.NewLine + AboutInfo.ChangesInThisVersion();
+            txtAbout.Text = CalculationsAboutInfo.CalculationsAndDllVersionInformation() + Environment.NewLine +
+                            Environment.NewLine + CalculationsAboutInfo.LicenseInfo() + Environment.NewLine + Environment.NewLine +
+                            Environment.NewLine + CalculationsAboutInfo.ChangesInThisVersion();
         }
 
         private void WinAbout_Closing(object sender, CancelEventArgs e)

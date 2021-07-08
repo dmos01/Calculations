@@ -40,9 +40,6 @@ namespace Calculations
                 tabKeypad.SelectedIndex = 0;
         }
 
-        private void TxtMainCalculation_TextChanged(object sender, RoutedEventArgs e)
-        {
-            StopShowingAnswer();
-        }
+        private void TxtMainCalculation_TextChanged(object sender, RoutedEventArgs e) => StopShowingAnswer();
     }
 }

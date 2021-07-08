@@ -4,10 +4,9 @@ using EquationElements.Operators;
 using static EquationElements.Utils;
 
 namespace EquationElements
-{
+{ 
     /// <summary>
-    ///     Abstract class that is a parent of any non-Operator, non-Function Element using a word as its identifier (such as
-    ///     Constants and Variables).
+    ///     Abstract class that uses an alpha-numeric string as its identifier but will resolve to a single number on its own.
     /// </summary>
     public abstract partial class Word : BaseElement
     {

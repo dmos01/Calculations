@@ -2,7 +2,7 @@
 
 namespace EquationElements.Functions
 {
-    public class FloorFunction : OneArgumentElement, IFunction
+    public class FloorFunction : OneArgumentFunction
     {
         public override string ToString() => FunctionRepresentations.FloorWord;
 
@@ -12,7 +12,7 @@ namespace EquationElements.Functions
                 : new Number(Math.Floor(number.AsDouble));
     }
 
-    public class CeilingFunction : OneArgumentElement, IFunction
+    public class CeilingFunction : OneArgumentFunction
     {
         public override string ToString() => FunctionRepresentations.CeilingWord;
 
@@ -22,7 +22,7 @@ namespace EquationElements.Functions
                 : new Number(Math.Ceiling(number.AsDouble));
     }
 
-    public class TruncateFunction : OneArgumentElement, IFunction
+    public class TruncateFunction : OneArgumentFunction
     {
         public override string ToString() => FunctionRepresentations.TruncateWord;
 

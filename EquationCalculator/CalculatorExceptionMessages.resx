@@ -126,6 +126,9 @@
   <data name="LogToNegativeOrZeroDefault" xml:space="preserve">
     <value>Logs cannot use negative numbers or 0.</value>
   </data>
+  <data name="NoEquationDefault" xml:space="preserve">
+    <value>No equation to calculate.</value>
+  </data>
   <data name="UndeterminedUseOfEDefault" xml:space="preserve">
     <value>Cannot determine whether an 'E' is *10^ or Euler's Number (2.718 to 3dp).</value>
   </data>
@@ -133,10 +136,10 @@
     <value>An unknown problem happened while calculating.</value>
   </data>
   <data name="ValueOfVariableNotProvidedAfterParameter" xml:space="preserve">
-    <value>' was found but no value for it was provided.</value>
+    <value>" was found but no value for it was provided.</value>
   </data>
   <data name="ValueOfVariableNotProvidedBeforeParameter" xml:space="preserve">
-    <value>Variable '</value>
+    <value>Variable "</value>
   </data>
   <data name="ValueOfVariableNotProvidedDefault" xml:space="preserve">
     <value>A Variable was found but no value for it was provided.</value>

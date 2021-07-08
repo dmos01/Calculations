@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using EquationBuilder;
 using EquationElements;
+using EquationElements.Functions;
+using EquationElements.Operators;
 using NUnit.Framework;
 using static UnitTests.BaseMethods;
 
@@ -13,47 +16,40 @@ namespace UnitTests
         {
             new object[]
             {
-                "5EE", BuilderExceptionMessages.ExponentIsNotIntegerDefault,
-                BuilderExceptionMessages.ExponentIsNotIntegerBeforeParameter
+                "5E308", ElementsExceptionMessages.ExponentTooLargeOrSmallDefault,
+                ElementsExceptionMessages.ExponentTooLargeOrSmallBeforeParameter
             },
             new object[]
             {
-                "5E308", BuilderExceptionMessages.ExponentTooLargeOrSmallDefault,
-                BuilderExceptionMessages.ExponentTooLargeOrSmallBeforeParameter
+                "5E-308", ElementsExceptionMessages.ExponentTooLargeOrSmallDefault,
+                ElementsExceptionMessages.ExponentTooLargeOrSmallBeforeParameter
             },
             new object[]
             {
-                "5E-308", BuilderExceptionMessages.ExponentTooLargeOrSmallDefault,
-                BuilderExceptionMessages.ExponentTooLargeOrSmallBeforeParameter
+                "5E+308", ElementsExceptionMessages.ExponentTooLargeOrSmallDefault,
+                ElementsExceptionMessages.ExponentTooLargeOrSmallBeforeParameter
             },
             new object[]
             {
-                "5E+308", BuilderExceptionMessages.ExponentTooLargeOrSmallDefault,
-                BuilderExceptionMessages.ExponentTooLargeOrSmallBeforeParameter
+                "5E-E", ElementsExceptionMessages.ExponentIsNotIntegerDefault,
+                ElementsExceptionMessages.ExponentIsNotIntegerBeforeParameter
             },
             new object[]
             {
-                "EEE", BuilderExceptionMessages.ExponentIsNotIntegerDefault,
-                BuilderExceptionMessages.ExponentIsNotIntegerBeforeParameter
+                "23E23E23", BuilderExceptionMessages.UndeterminedUseOfEDefault,
+                ElementsExceptionMessages.ExponentIsNotIntegerDefault,
+                ElementsExceptionMessages.ExponentIsNotIntegerBeforeParameter
             },
             new object[]
             {
-                "5E-E", BuilderExceptionMessages.ExponentIsNotIntegerDefault,
-                BuilderExceptionMessages.ExponentIsNotIntegerBeforeParameter
-            },
-            new object[]
-            {
-                "5E+E", BuilderExceptionMessages.ExponentIsNotIntegerDefault,
-                BuilderExceptionMessages.ExponentIsNotIntegerBeforeParameter
+                "5E+E", ElementsExceptionMessages.ExponentIsNotIntegerDefault,
+                ElementsExceptionMessages.ExponentIsNotIntegerBeforeParameter
             }
         };
 
         [Test]
         [TestCaseSource(nameof(ShouldFailTestCases))]
-        public void ShouldFail(object[] currentCase)
-        {
-            ShouldThrowException(currentCase);
-        }
+        public void ShouldFail(object[] currentCase) => ShouldThrowException(currentCase);
 
 
         static readonly object[] ShouldPassTestCases =
@@ -88,14 +84,13 @@ namespace UnitTests
             new object[] {"E*E-5", new Number(Math.E * Math.E - 5)},
             new object[] {"E*E+5", new Number(Math.E * Math.E + 5)},
             new object[] {"EE5", new Number(Math.E * Math.Pow(10, 5))},
-            new object[] {"E*E5", new Number(Math.E * Math.E * 5)}
+            new object[] {"E*E5", new Number(Math.E * Math.E * 5)},
+            new object[] {"5EE", new Number(5 * Math.E * Math.E)},
+            new object[] {"EEE", new Number(Math.E * Math.E * Math.E)}
         };
 
         [Test]
         [TestCaseSource(nameof(ShouldPassTestCases))]
-        public void ShouldPass(object[] currentCase)
-        {
-            TestBuilderAndCalculator(currentCase);
-        }
+        public void ShouldPass(object[] currentCase) => TestBuilderAndCalculator(currentCase);
     }
 }

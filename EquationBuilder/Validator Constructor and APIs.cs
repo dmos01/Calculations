@@ -5,7 +5,7 @@ using EquationElements;
 namespace EquationBuilder
 {
     /// <summary>
-    ///     Validates order of elements.
+    ///     Validates and expands the order of elements.
     /// </summary>
     public partial class Validator
     {
@@ -29,27 +29,23 @@ namespace EquationBuilder
             elementBuilder = new ElementBuilder(constants);
 
         /// <summary>
-        ///     Validates the order of elements, adds implied multiplication operators and replaces E as Euler's Number with a
-        ///     Number. Returns
-        ///     true if the order of elements is valid.
+        ///     Validates the order of elements, expands Constants, adds implied multiplication operators and replaces E as Euler's Number with a Number. Returns true if the order of elements is valid.
         /// </summary>
         /// <param name="elementsList"></param>
-        /// <param name="validatedElementsList">The validated and updated list of elements.</param>
+        /// <param name="validatedElementsList">The validated and expanded list of elements.</param>
         /// <returns>True if the order of elements is valid.</returns>
         public bool TryRun(LinkedList<BaseElement> elementsList, out LinkedList<BaseElement> validatedElementsList) =>
             TryRun(elementsList, false, out validatedElementsList);
 
         /// <summary>
-        ///     Validates the order of elements, adds implied multiplication operators and replaces E as Euler's Number with a
-        ///     Number. Returns
-        ///     true if the order of elements is valid.
+        ///     Validates the order of elements, expands Constants, adds implied multiplication operators and replaces E as Euler's Number with a Number. Returns true if the order of elements is valid.
         /// </summary>
         /// <param name="elementsList"></param>
         /// <param name="castUnrecognizedElementsAsVariables">
         ///     If true, casts any unrecognized elements as Variables. If false,
         ///     Variables and unrecognized elements will throw an exception.
         /// </param>
-        /// <param name="validatedElementsList">The validated and updated list of elements.</param>
+        /// <param name="validatedElementsList">The validated and expanded list of elements.</param>
         /// <returns>True if the order of elements is valid.</returns>
         public bool TryRun(LinkedList<BaseElement> elementsList,
             bool castUnrecognizedElementsAsVariables, out LinkedList<BaseElement> validatedElementsList)
@@ -67,12 +63,10 @@ namespace EquationBuilder
         }
 
         /// <summary>
-        ///     Validates the order of elements, adds implied multiplication operators and replaces E as Euler's Number with a
-        ///     Number. Returns
-        ///     the updated list. Will throw exceptions if the order of elements is valid.
+        ///     Validates the order of elements, expands Constants, adds implied multiplication operators and replaces E as Euler's Number with a Number. Returns the expanded list. Will throw exceptions if the order of elements is valid.
         /// </summary>
         /// <param name="elementsList"></param>
-        /// <returns>The validated and updated list of elements.</returns>
+        /// <returns>The validated and expanded list of elements.</returns>
         public LinkedList<BaseElement> Run(LinkedList<BaseElement> elementsList) => Run(elementsList, false);
     }
 }

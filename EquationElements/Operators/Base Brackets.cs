@@ -2,6 +2,9 @@
 
 namespace EquationElements.Operators
 {
+    /// <summary>
+    /// Abstract class.
+    /// </summary>
     public abstract class Bracket : BaseElement, IOperator
     {
         /// <summary>
@@ -57,10 +60,16 @@ namespace EquationElements.Operators
         }
     }
 
+    /// <summary>
+    /// Abstract class.
+    /// </summary>
     public abstract class OpeningBracket : Bracket, IOperatorOrOpeningBracket, IMayPrecedeNegativeNumber
     {
     }
 
+    /// <summary>
+    /// Abstract class.
+    /// </summary>
     public abstract class ClosingBracket : Bracket, IOperatorOrClosingBracket, IInvalidWhenFirst
     {
     }

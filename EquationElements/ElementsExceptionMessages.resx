@@ -117,14 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ExponentIsNotIntegerAfterParameter" xml:space="preserve">
+    <value> is not an integer.</value>
+  </data>
+  <data name="ExponentIsNotIntegerBeforeParameter" xml:space="preserve">
+    <value>The exponent </value>
+  </data>
+  <data name="ExponentIsNotIntegerDefault" xml:space="preserve">
+    <value>An exponent is not an integer.</value>
+  </data>
+  <data name="ExponentTooLargeOrSmallAfterParameter" xml:space="preserve">
+    <value> is too large or small. Maximum/minimum size is ±307.</value>
+  </data>
+  <data name="ExponentTooLargeOrSmallBeforeParameter" xml:space="preserve">
+    <value>The exponent </value>
+  </data>
+  <data name="ExponentTooLargeOrSmallDefault" xml:space="preserve">
+    <value>An exponent is too large or small. Maximum/minimum size is ±307.</value>
+  </data>
   <data name="FactorialWasNotAnIntegerAfterParameter" xml:space="preserve">
     <value> is not valid.</value>
   </data>
   <data name="FactorialWasNotAnIntegerBeforeParameter" xml:space="preserve">
-    <value>Factorials must be integers of 1 or more. </value>
+    <value>Factorial can only be performed on integers, 1 or more. </value>
   </data>
   <data name="FactorialWasNotAnIntegerDefault" xml:space="preserve">
-    <value>Factorials must be integers of 1 or more.</value>
+    <value>Factorial can only be performed on integers, 1 or more.</value>
   </data>
   <data name="NameOfWordIsNullOrEmpty" xml:space="preserve">
     <value>Enter a name.</value>

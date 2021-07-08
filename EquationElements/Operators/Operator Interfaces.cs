@@ -11,7 +11,7 @@
     {
     }
 
-    public interface IOperatorOrClosingBracket : IOperator
+    public interface IOperatorOrClosingBracket : IOperator //Not IInvalidWhenFirst because of SubtractionOperator.
     {
     }
 

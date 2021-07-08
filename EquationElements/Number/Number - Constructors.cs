@@ -28,7 +28,7 @@ namespace EquationElements
                 AsDouble = dou;
             }
             else
-                throw new ArgumentException(ElementsExceptionMessages.StringWasNotANumberBeforeParameter + asString +
+                throw new OverflowException(ElementsExceptionMessages.StringWasNotANumberBeforeParameter + asString +
                                             ElementsExceptionMessages.StringWasNotANumberAfterParameter);
         }
 

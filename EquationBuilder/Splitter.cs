@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using EquationElements;
 using EquationElements.Operators;
@@ -13,8 +14,7 @@ namespace EquationBuilder
         private ElementBuilder elementBuilder { get; }
 
         /// <summary>
-        ///     Splits the string into a LinkedList of Elements and expands constants. Validates use of decimal points. Can throw
-        ///     exceptions.
+        ///     Splits the string into a LinkedList of Elements and expands Constants. Validates use of decimal points. Can throw exceptions.
         /// </summary>
         /// <param name="equation"></param>
         /// <returns>The split list of elements.</returns>
@@ -22,7 +22,7 @@ namespace EquationBuilder
         {
             equation = Utils.RemoveSpaces(equation);
             if (equation is null || equation == "")
-                throw new ArgumentException(BuilderExceptionMessages.NoEquation);
+                throw new ArgumentException(BuilderExceptionMessages.NoEquationDefault);
 
             splitterOutput = new LinkedList<BaseElement>();
             ICollection<BaseElement> operatorsAndOther = SplitIntoOperatorsAndOther(equation);
@@ -37,7 +37,7 @@ namespace EquationBuilder
 
                     case UnrecognizedElement _:
                     {
-                        if (AttemptToRecognizeOuter(numbersAndWordsElement.ToString()))
+                        if (AttemptToRecognize(numbersAndWordsElement.ToString()))
                             continue;
 
                         ICollection<BaseElement> numbersAndOther =
@@ -51,12 +51,11 @@ namespace EquationBuilder
                                     continue;
 
                                 case UnrecognizedElement unrecognized:
-                                    if (!AttemptToRecognizeOuter(wordOnlyElement.ToString()))
+                                    if (!AttemptToRecognize(wordOnlyElement.ToString()))
                                     {
                                         unrecognized.OuterNumbersAndWordsElement = numbersAndWordsElement.ToString();
                                         splitterOutput.AddLast(unrecognized);
                                     }
-
                                     continue;
 
                                 default:
@@ -203,21 +202,8 @@ namespace EquationBuilder
                 numbersAndOther.Add(elementBuilder.CreateElement(elementBeingBuilt.ToString()));
             return numbersAndOther;
         }
-
-
-        private void ExpandAndAddConstant(Constant constant)
-        {
-            ICollection<BaseElement> expandedConstant =
-                SplitAndValidate.Run(constant.Value, elementBuilder);
-
-            splitterOutput.AddLast(new ParenthesisOpeningBracket());
-            foreach (BaseElement baseElement in expandedConstant)
-                splitterOutput.AddLast(baseElement);
-            splitterOutput.AddLast(new ParenthesisClosingBracket());
-        }
-
-
-        private bool AttemptToRecognizeOuter(string elementAsString)
+        
+        private bool AttemptToRecognize(string elementAsString)
         {
             //Split by root
             if (AttemptToRecognizeInner(elementAsString, OperatorRepresentations.RootWord))
@@ -325,6 +311,22 @@ namespace EquationBuilder
             }
 
             return true;
+        }
+
+        private void ExpandAndAddConstant(Constant constant)
+        {
+            ICollection<BaseElement> expandedConstant =
+                SplitAndValidate.Run(constant.Value, elementBuilder);
+
+            if (expandedConstant.Count == 1)
+                splitterOutput.AddLast(expandedConstant.First());
+            else
+            {
+                splitterOutput.AddLast(new ParenthesisOpeningBracket());
+                foreach (BaseElement baseElement in expandedConstant)
+                    splitterOutput.AddLast(baseElement);
+                splitterOutput.AddLast(new ParenthesisClosingBracket());
+            }
         }
     }
 }

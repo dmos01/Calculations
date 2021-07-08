@@ -1,9 +1,16 @@
 ﻿EquationCalculator Release History:
 
+Version 1.1.0, 8 July 2021:
+*Added CalculatorExceptionMessages.NoEquationDefault for when elements is null or empty.
+*Can use E.TestPower(). Fixes bug that 23E23E23 will fail.
+*ExpandedEquation renamed to Equation because it is not EquationCalculator's responsibility to expand and validate the equation.
+*Functions are calculated before EDMAS.
+
+
 Version 1.0.1, 14 June 2021:
+*Changes to properties vs. fields.
 *Current run variables set to null after use.
 *FindBracketsRandomAndVariables sets up nodesWithBrackets directly instead of returning an output queue.
-*Changes to properties vs. fields.
 
 
 Version 1.0.0, 31 May 2021:
@@ -11,5 +18,6 @@ Version 1.0.0, 31 May 2021:
 *Introduced readOnlyElements vs. currentRunElements, allowing the same equation to be calculated in multiple ways.
 
 Moved here to seperate out areas of responsibility:
- -Finding brackets and Random.
- -Replacing Variables (using valuesOfVariables).
+ -Determining if the equation contains Random.
+ -Finding nodes with brackets.
+ -Replacing Variables with Numbers (using valuesOfVariables).

@@ -90,7 +90,9 @@ namespace UnitTests
             }
         };
 
-
+        /// <summary>
+        /// Single-Element Constants on both sides are valid.
+        /// </summary>
         static readonly object[] UndeterminedUsesOfECases =
         {
             new object[]
@@ -98,10 +100,10 @@ namespace UnitTests
                 "fez",
                 new Dictionary<string, string>
                 {
-                    {"f", "2"}, {"z", "3"}
+                    {"f", "1"}, {"z", "3+4"}
                 }
             },
-            new object[] {"15mode16", new Dictionary<string, string> {{"15mod", "5"}}}
+            new object[] {"15mode16", new Dictionary<string, string> {{"15mod", "1+2"}}}
         };
 
         [SetUp]
@@ -111,25 +113,16 @@ namespace UnitTests
 
         [Test]
         [TestCaseSource(nameof(FirstLoopUnrecognizedElementPossibilityCases))]
-        public void FirstLoopUnrecognizedElementPossibilities(object[] args)
-        {
-            BaseMethods.TestBuilderAndCalculator(args);
-        }
+        public void FirstLoopUnrecognizedElementPossibilities(object[] args) => BaseMethods.TestBuilderAndCalculator(args);
 
 
         [Test]
         [TestCaseSource(nameof(SecondLoopUnrecognizedElementPossibilityCases))]
-        public void SecondLoopUnrecognizedElementPossibilities(object[] args)
-        {
-            BaseMethods.TestBuilderAndCalculator(args);
-        }
+        public void SecondLoopUnrecognizedElementPossibilities(object[] args) => BaseMethods.TestBuilderAndCalculator(args);
 
         [Test]
         [TestCaseSource(nameof(KnownBugCases))]
-        public void KnownBugs(object[] args)
-        {
-            BaseMethods.TestBuilderAndCalculator(args);
-        }
+        public void KnownBugs(object[] args) => BaseMethods.TestBuilderAndCalculator(args);
 
 
         [Test]

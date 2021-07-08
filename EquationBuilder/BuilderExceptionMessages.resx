@@ -123,41 +123,35 @@
   <data name="DecimalPointDefault" xml:space="preserve">
     <value>An element ends with, or contains multiple, decimal points.</value>
   </data>
-  <data name="EIsNotAloneAsLogBaseDefault" xml:space="preserve">
-    <value>When 'E' is used as log base, it must be alone.</value>
+  <data name="FactorialWasNotAnIntegerAfterParameter" xml:space="preserve">
+    <value> is not valid.</value>
   </data>
-  <data name="ExponentIsNotIntegerAfterParameter" xml:space="preserve">
-    <value> is not an integer.</value>
+  <data name="FactorialWasNotAnIntegerBeforeParameter" xml:space="preserve">
+    <value>Factorial can only be performed on integers, 1 or more. </value>
   </data>
-  <data name="ExponentIsNotIntegerBeforeParameter" xml:space="preserve">
-    <value>The exponent </value>
-  </data>
-  <data name="ExponentIsNotIntegerDefault" xml:space="preserve">
-    <value>An exponent is not an integer.</value>
-  </data>
-  <data name="ExponentTooLargeOrSmallAfterParameter" xml:space="preserve">
-    <value> is too large or small. Maximum size is  ±307.</value>
-  </data>
-  <data name="ExponentTooLargeOrSmallBeforeParameter" xml:space="preserve">
-    <value>The exponent </value>
-  </data>
-  <data name="ExponentTooLargeOrSmallDefault" xml:space="preserve">
-    <value>An exponent is too large or small. Maximum size is ±307.</value>
+  <data name="FactorialWasNotAnIntegerDefault" xml:space="preserve">
+    <value>Factorial can only be performed on integers, 1 or more.</value>
   </data>
   <data name="FirstElementInvalidAfterParameter" xml:space="preserve">
-    <value>, is invalid.</value>
+    <value> cannot be first.</value>
   </data>
   <data name="FirstElementInvalidBeforeParameter" xml:space="preserve">
-    <value>The first element, </value>
+    <value />
   </data>
   <data name="FirstElementInvalidDefault" xml:space="preserve">
     <value>The first element is invalid.</value>
   </data>
-  <data name="FoundClosingBracketWithoutOpeningBracket" xml:space="preserve">
-    <value>A closing bracket was found without an equivalent opening bracket.</value>
+  <data name="InvalidBracketUseDefault" xml:space="preserve">
+    <value>Could not validate bracket use.</value>
   </data>
-  <data name="FunctionNotFollowedByOpeningBracket" xml:space="preserve">
-    <value>Functions must be followed by an opening bracket.</value>
+  <data name="InvalidCharacterAfterArgumentSeparatorAfterParameter" xml:space="preserve">
+    <value> is invalid after the argument separator.</value>
+  </data>
+  <data name="InvalidCharacterAfterArgumentSeparatorBeforeParameter" xml:space="preserve">
+    <value />
+  </data>
+  <data name="InvalidCharacterAfterArgumentSeparatorDefault" xml:space="preserve">
+    <value>An element after the argument separator is invalid. (Seperating the numbers in Log and Random.)</value>
   </data>
   <data name="InvalidCharacterAfterFactorialAfterParameter" xml:space="preserve">
     <value> is invalid when used after factorial.</value>
@@ -175,7 +169,16 @@
     <value />
   </data>
   <data name="InvalidCharacterBeforeArgumentSeparatorDefault" xml:space="preserve">
-    <value>Only numbers and closing brackets can appear before the argument separator. (Seperating the numbers in Log and Random.)</value>
+    <value>An element before the argument separator is invalid. (Seperating the numbers in Log and Random.)</value>
+  </data>
+  <data name="InvalidCharacterBeforeClosingBracketAfterParameter" xml:space="preserve">
+    <value> is invalid before a closing bracket.</value>
+  </data>
+  <data name="InvalidCharacterBeforeClosingBracketBeforeParameter" xml:space="preserve">
+    <value />
+  </data>
+  <data name="InvalidCharacterBeforeClosingBracketDefault" xml:space="preserve">
+    <value>An element before a closing bracket is invalid.</value>
   </data>
   <data name="InvalidCharacterBeforeFactorialAfterParameter" xml:space="preserve">
     <value> is invalid when used before factorial.</value>
@@ -208,15 +211,24 @@
     <value>There are two operators in a row which cannot go together.</value>
   </data>
   <data name="LastElementInvalidAfterParameter" xml:space="preserve">
-    <value>, is invalid.</value>
+    <value> cannot be last.</value>
   </data>
   <data name="LastElementInvalidBeforeParameter" xml:space="preserve">
-    <value>The last element,</value>
+    <value />
   </data>
   <data name="LastElementInvalidDefault" xml:space="preserve">
     <value>The last element is invalid.</value>
   </data>
-  <data name="NoArgumentSeparatorAftetrParameter" xml:space="preserve">
+  <data name="LogToNegativeOrZeroAfterParameter" xml:space="preserve">
+    <value> is invalid.</value>
+  </data>
+  <data name="LogToNegativeOrZeroBeforeParameter" xml:space="preserve">
+    <value>Logs cannot use negative numbers or 0. </value>
+  </data>
+  <data name="LogToNegativeOrZeroDefault" xml:space="preserve">
+    <value>Logs cannot use negative numbers or 0.</value>
+  </data>
+  <data name="NoArgumentSeparatorAfterParameter" xml:space="preserve">
     <value> into two numbers.</value>
   </data>
   <data name="NoArgumentSeparatorBeforeParameter" xml:space="preserve">
@@ -225,14 +237,32 @@
   <data name="NoArgumentSeparatorDefault" xml:space="preserve">
     <value>There must be an argument separator to separate the numbers in Log and Random.</value>
   </data>
-  <data name="NoEquation" xml:space="preserve">
+  <data name="NoEquationDefault" xml:space="preserve">
     <value>Enter an equation.</value>
   </data>
-  <data name="NotAllOpeningBracketsClosedDefault" xml:space="preserve">
-    <value>Not all opening brackets have been closed.</value>
+  <data name="OneArgFunctionNotFollowedByValidElementAfterParameters" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="OneArgFunctionNotFollowedByValidElementBeforeParameters" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OneArgFunctionNotFollowedByValidElementBetweenParameters" xml:space="preserve">
+    <value> cannot be followed by </value>
+  </data>
+  <data name="OneArgFunctionNotFollowedByValidElementDefault" xml:space="preserve">
+    <value>A Function is not followed by a valid Element.</value>
   </data>
   <data name="SeparationFailedDefault" xml:space="preserve">
     <value>Failed to correctly separate the equation into elements.</value>
+  </data>
+  <data name="TwoArgFunctionNotFollowedByOpeningBracketAfterParameter" xml:space="preserve">
+    <value> must be followed by an opening bracket.</value>
+  </data>
+  <data name="TwoArgFunctionNotFollowedByOpeningBracketBeforeParameter" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TwoArgFunctionNotFollowedByOpeningBracketDefault" xml:space="preserve">
+    <value>Functions must be followed by an opening bracket.</value>
   </data>
   <data name="UndeterminedUseOfEDefault" xml:space="preserve">
     <value>Cannot determine whether an 'E' is *10^ or Euler's Number (2.718 to 3dp).</value>

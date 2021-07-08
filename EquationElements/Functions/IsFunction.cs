@@ -40,8 +40,8 @@ namespace EquationElements.Functions
                 {FunctionRepresentations.RandomWord, typeof(RandomFunction)},
                 {FunctionRepresentations.RandomShortWord, typeof(RandomFunction)},
 
-                {FunctionRepresentations.FactorialSymbol, typeof(FactorialSymbolFunction)},
-                {FunctionRepresentations.FactorialWord, typeof(FactorialWordFunction)}
+                {FunctionRepresentations.FactorialSymbol, typeof(FactorialSymbol)},
+                {FunctionRepresentations.FactorialWord, typeof(FactorialWord)}
             };
 
         /// <summary>

@@ -1,5 +1,15 @@
 ﻿EquationElements Release History:
 
+Version 1.2.0, 8 July 2021:
+*E's tests for integer and ±MaxAbsoluteExponent moved here.
+*Factorial is no longer an IFunction.
+*Factorial throws an exception if run on a non-integer.
+*IFunction is IInvalidWhenLast.
+*Introduced OneArgumentFunction and TwoArgumentFunction.
+*Removed Pi.
+*Removed Utils.ThrowExceptionIfNullOrEmpty().
+
+
 Version 1.1.1, 22 June 2021:
 *Minor improvements.
 
@@ -29,7 +39,7 @@ Version 1.0.0, 31 May 2021:
  -Name validation prevents the same name as operators (mod and root). No longer checks if the name contains 'mod', 'root' or 'e'.
 
 
-*Constants use IFormatProvider.
+*Constants enable IFormatProvider.
 *Improved file and folder arrangement. Brackets moved to within Operators.
 *Moved IsFunction() to its own class.
 *New IsOperator.
@@ -51,4 +61,8 @@ Beta 0.7.0, 6 October 2019:
 *Negative mixed-fractions now show as -(a+b/c) instead of -a-b/c.
 
 Beta 0.6.0, 26 September 2019:
-*"Legal order" fields replaced with interfaces. They are: IInvalidWhenFirst, IInvalidWhenLast, IInvalidAfterOperator, IMayPrecedeNegativeNumber, and IInvalidBeforeMinus.
+*"Legal order" fields replaced with interfaces. They are: IInvalidWhenFirst, IInvalidWhenLast, IInvalidAfterOperator, IMayPrecedeNegativeNumber and IInvalidBeforeMinus.
+
+Beta 0.5.0, 5 September 2019:
+*Element types split into their own classes and interfaces (as of 0.6.0) so the code can use 'is' and 'switch'.
+*New "Number" Element improves decimal-or-double use: if created using a double, decimal cannot be used. It also allows scientific-notation numbers to use a single NumberElement.

@@ -79,70 +79,34 @@ namespace EquationBuilder {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When &apos;E&apos; is used as log base, it must be alone..
+        ///   Looks up a localized string similar to  is not valid..
         /// </summary>
-        public static string EIsNotAloneAsLogBaseDefault {
+        public static string FactorialWasNotAnIntegerAfterParameter {
             get {
-                return ResourceManager.GetString("EIsNotAloneAsLogBaseDefault", resourceCulture);
+                return ResourceManager.GetString("FactorialWasNotAnIntegerAfterParameter", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  is not an integer..
+        ///   Looks up a localized string similar to Factorial can only be performed on integers, 1 or more. .
         /// </summary>
-        public static string ExponentIsNotIntegerAfterParameter {
+        public static string FactorialWasNotAnIntegerBeforeParameter {
             get {
-                return ResourceManager.GetString("ExponentIsNotIntegerAfterParameter", resourceCulture);
+                return ResourceManager.GetString("FactorialWasNotAnIntegerBeforeParameter", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The exponent .
+        ///   Looks up a localized string similar to Factorial can only be performed on integers, 1 or more..
         /// </summary>
-        public static string ExponentIsNotIntegerBeforeParameter {
+        public static string FactorialWasNotAnIntegerDefault {
             get {
-                return ResourceManager.GetString("ExponentIsNotIntegerBeforeParameter", resourceCulture);
+                return ResourceManager.GetString("FactorialWasNotAnIntegerDefault", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An exponent is not an integer..
-        /// </summary>
-        public static string ExponentIsNotIntegerDefault {
-            get {
-                return ResourceManager.GetString("ExponentIsNotIntegerDefault", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  is too large or small. Maximum size is  ±307..
-        /// </summary>
-        public static string ExponentTooLargeOrSmallAfterParameter {
-            get {
-                return ResourceManager.GetString("ExponentTooLargeOrSmallAfterParameter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The exponent .
-        /// </summary>
-        public static string ExponentTooLargeOrSmallBeforeParameter {
-            get {
-                return ResourceManager.GetString("ExponentTooLargeOrSmallBeforeParameter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to An exponent is too large or small. Maximum size is ±307..
-        /// </summary>
-        public static string ExponentTooLargeOrSmallDefault {
-            get {
-                return ResourceManager.GetString("ExponentTooLargeOrSmallDefault", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to , is invalid..
+        ///   Looks up a localized string similar to  cannot be first..
         /// </summary>
         public static string FirstElementInvalidAfterParameter {
             get {
@@ -151,7 +115,7 @@ namespace EquationBuilder {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The first element, .
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string FirstElementInvalidBeforeParameter {
             get {
@@ -169,20 +133,38 @@ namespace EquationBuilder {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A closing bracket was found without an equivalent opening bracket..
+        ///   Looks up a localized string similar to Could not validate bracket use..
         /// </summary>
-        public static string FoundClosingBracketWithoutOpeningBracket {
+        public static string InvalidBracketUseDefault {
             get {
-                return ResourceManager.GetString("FoundClosingBracketWithoutOpeningBracket", resourceCulture);
+                return ResourceManager.GetString("InvalidBracketUseDefault", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Functions must be followed by an opening bracket..
+        ///   Looks up a localized string similar to  is invalid after the argument separator..
         /// </summary>
-        public static string FunctionNotFollowedByOpeningBracket {
+        public static string InvalidCharacterAfterArgumentSeparatorAfterParameter {
             get {
-                return ResourceManager.GetString("FunctionNotFollowedByOpeningBracket", resourceCulture);
+                return ResourceManager.GetString("InvalidCharacterAfterArgumentSeparatorAfterParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string InvalidCharacterAfterArgumentSeparatorBeforeParameter {
+            get {
+                return ResourceManager.GetString("InvalidCharacterAfterArgumentSeparatorBeforeParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An element after the argument separator is invalid. (Seperating the numbers in Log and Random.).
+        /// </summary>
+        public static string InvalidCharacterAfterArgumentSeparatorDefault {
+            get {
+                return ResourceManager.GetString("InvalidCharacterAfterArgumentSeparatorDefault", resourceCulture);
             }
         }
         
@@ -232,11 +214,38 @@ namespace EquationBuilder {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Only numbers and closing brackets can appear before the argument separator. (Seperating the numbers in Log and Random.).
+        ///   Looks up a localized string similar to An element before the argument separator is invalid. (Seperating the numbers in Log and Random.).
         /// </summary>
         public static string InvalidCharacterBeforeArgumentSeparatorDefault {
             get {
                 return ResourceManager.GetString("InvalidCharacterBeforeArgumentSeparatorDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  is invalid before a closing bracket..
+        /// </summary>
+        public static string InvalidCharacterBeforeClosingBracketAfterParameter {
+            get {
+                return ResourceManager.GetString("InvalidCharacterBeforeClosingBracketAfterParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string InvalidCharacterBeforeClosingBracketBeforeParameter {
+            get {
+                return ResourceManager.GetString("InvalidCharacterBeforeClosingBracketBeforeParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An element before a closing bracket is invalid..
+        /// </summary>
+        public static string InvalidCharacterBeforeClosingBracketDefault {
+            get {
+                return ResourceManager.GetString("InvalidCharacterBeforeClosingBracketDefault", resourceCulture);
             }
         }
         
@@ -331,7 +340,7 @@ namespace EquationBuilder {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to , is invalid..
+        ///   Looks up a localized string similar to  cannot be last..
         /// </summary>
         public static string LastElementInvalidAfterParameter {
             get {
@@ -340,7 +349,7 @@ namespace EquationBuilder {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The last element,.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string LastElementInvalidBeforeParameter {
             get {
@@ -358,11 +367,38 @@ namespace EquationBuilder {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  is invalid..
+        /// </summary>
+        public static string LogToNegativeOrZeroAfterParameter {
+            get {
+                return ResourceManager.GetString("LogToNegativeOrZeroAfterParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logs cannot use negative numbers or 0. .
+        /// </summary>
+        public static string LogToNegativeOrZeroBeforeParameter {
+            get {
+                return ResourceManager.GetString("LogToNegativeOrZeroBeforeParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logs cannot use negative numbers or 0..
+        /// </summary>
+        public static string LogToNegativeOrZeroDefault {
+            get {
+                return ResourceManager.GetString("LogToNegativeOrZeroDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  into two numbers..
         /// </summary>
-        public static string NoArgumentSeparatorAftetrParameter {
+        public static string NoArgumentSeparatorAfterParameter {
             get {
-                return ResourceManager.GetString("NoArgumentSeparatorAftetrParameter", resourceCulture);
+                return ResourceManager.GetString("NoArgumentSeparatorAfterParameter", resourceCulture);
             }
         }
         
@@ -387,18 +423,45 @@ namespace EquationBuilder {
         /// <summary>
         ///   Looks up a localized string similar to Enter an equation..
         /// </summary>
-        public static string NoEquation {
+        public static string NoEquationDefault {
             get {
-                return ResourceManager.GetString("NoEquation", resourceCulture);
+                return ResourceManager.GetString("NoEquationDefault", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not all opening brackets have been closed..
+        ///   Looks up a localized string similar to ..
         /// </summary>
-        public static string NotAllOpeningBracketsClosedDefault {
+        public static string OneArgFunctionNotFollowedByValidElementAfterParameters {
             get {
-                return ResourceManager.GetString("NotAllOpeningBracketsClosedDefault", resourceCulture);
+                return ResourceManager.GetString("OneArgFunctionNotFollowedByValidElementAfterParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string OneArgFunctionNotFollowedByValidElementBeforeParameters {
+            get {
+                return ResourceManager.GetString("OneArgFunctionNotFollowedByValidElementBeforeParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  cannot be followed by .
+        /// </summary>
+        public static string OneArgFunctionNotFollowedByValidElementBetweenParameters {
+            get {
+                return ResourceManager.GetString("OneArgFunctionNotFollowedByValidElementBetweenParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A Function is not followed by a valid Element..
+        /// </summary>
+        public static string OneArgFunctionNotFollowedByValidElementDefault {
+            get {
+                return ResourceManager.GetString("OneArgFunctionNotFollowedByValidElementDefault", resourceCulture);
             }
         }
         
@@ -408,6 +471,33 @@ namespace EquationBuilder {
         public static string SeparationFailedDefault {
             get {
                 return ResourceManager.GetString("SeparationFailedDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  must be followed by an opening bracket..
+        /// </summary>
+        public static string TwoArgFunctionNotFollowedByOpeningBracketAfterParameter {
+            get {
+                return ResourceManager.GetString("TwoArgFunctionNotFollowedByOpeningBracketAfterParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string TwoArgFunctionNotFollowedByOpeningBracketBeforeParameter {
+            get {
+                return ResourceManager.GetString("TwoArgFunctionNotFollowedByOpeningBracketBeforeParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Functions must be followed by an opening bracket..
+        /// </summary>
+        public static string TwoArgFunctionNotFollowedByOpeningBracketDefault {
+            get {
+                return ResourceManager.GetString("TwoArgFunctionNotFollowedByOpeningBracketDefault", resourceCulture);
             }
         }
         

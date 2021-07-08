@@ -5,7 +5,7 @@ using EquationElements;
 namespace EquationBuilder
 {
     /// <summary>
-    ///     <para>Splits strings into a LinkedList of Elements and expands Constants.</para>
+    ///     <para>Splits a string into a LinkedList of Elements and expands Constants. Validates use of decimal points.</para>
     ///     <para>
     ///         Limitation: Constants with a digit followed by (mod|root|E) or (mod|root|E) followed by a digit may not split
     ///         correctly.
@@ -33,9 +33,8 @@ namespace EquationBuilder
             elementBuilder = new ElementBuilder(constants);
 
         /// <summary>
-        ///     Splits the string into a LinkedList of Elements and expands constants. Validates use of decimal points. Returns
-        ///     true if there were no
-        ///     problems splitting.
+        ///     Splits the string into a LinkedList of Elements and expands Constants. Validates use of decimal points. Returns
+        ///     true if there were no problems splitting.
         /// </summary>
         /// <param name="equation"></param>
         /// <param name="splitElementsList">The split list of elements.</param>

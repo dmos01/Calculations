@@ -77,45 +77,27 @@ namespace UnitTests
 
         [Test]
         [TestCaseSource(nameof(FirstPassTestCases))]
-        public void FirstPass(string[] currentCase)
-        {
-            FractionConversionTest(currentCase);
-        }
+        public void FirstPass(string[] currentCase) => FractionConversionTest(currentCase);
 
         [Test]
         [TestCaseSource(nameof(DP1TestCases))]
-        public void DP1(string[] currentCase)
-        {
-            FractionConversionTest(currentCase);
-        }
+        public void DP1(string[] currentCase) => FractionConversionTest(currentCase);
 
         [Test]
         [TestCaseSource(nameof(DP2TestCases))]
-        public void DP2(string[] currentCase)
-        {
-            FractionConversionTest(currentCase);
-        }
+        public void DP2(string[] currentCase) => FractionConversionTest(currentCase);
 
         [Test]
         [TestCaseSource(nameof(DP3TestCases))]
-        public void DP3(string[] currentCase)
-        {
-            FractionConversionTest(currentCase);
-        }
+        public void DP3(string[] currentCase) => FractionConversionTest(currentCase);
 
         [Test]
         [TestCaseSource(nameof(DP5TestCases))]
-        public void DP5(string[] currentCase)
-        {
-            FractionConversionTest(currentCase);
-        }
+        public void DP5(string[] currentCase) => FractionConversionTest(currentCase);
 
         [Test]
         [TestCaseSource(nameof(DP6TestCases))]
-        public void DP6(string[] currentCase)
-        {
-            FractionConversionTest(currentCase);
-        }
+        public void DP6(string[] currentCase) => FractionConversionTest(currentCase);
 
         [Test]
         [TestCaseSource(nameof(IsApproximatelyExactMatchCases))]

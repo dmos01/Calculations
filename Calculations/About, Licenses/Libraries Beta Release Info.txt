@@ -1,5 +1,6 @@
 EquationElements and Other Libraries Beta 1 Info:
 
+Beta 0.5.0, 5 September 2019:
 (Work started 17 July 2019.)
 
 *Now several class library projects. These compile into dlls so they are truly independent of the UI.
@@ -7,9 +8,6 @@ EquationElements and Other Libraries Beta 1 Info:
 
 *Element types split into their own classes and interfaces so the code can use 'is' and 'switch'.
 *New ElementBuilder for turning strings into Elements.
-*New "Number" Element improves decimal-or-double use: if created using a double, decimal cannot be used.
-  -It also allows scientific-notation numbers to use a single NumberElement. (The three elements are combined during Calculate.Run().)
-*IsApproximatelyThirds for mixed-fraction equations.
+*New "Number" Element improves decimal-or-double use: if created using a double, decimal cannot be used. It also allows scientific-notation numbers to use a single NumberElement.
 
 *Many new unit tests.
-*Improvements suggested by Resharper.

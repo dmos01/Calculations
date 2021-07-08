@@ -27,10 +27,7 @@ namespace UnitTests
 
         [Test]
         [TestCaseSource(nameof(StackedConstantsTestCases))]
-        public void StackedConstants(object[] currentCase)
-        {
-            TestBuilderAndCalculator(currentCase);
-        }
+        public void StackedConstants(object[] currentCase) => TestBuilderAndCalculator(currentCase);
 
 
         static readonly object[] HasIdenticalConstantTestCases =
@@ -75,10 +72,7 @@ namespace UnitTests
 
         [Test]
         [TestCaseSource(nameof(NoMatchingConstantTestCases))]
-        public void ShouldFailWhenNotAConstant(object[] currentCase)
-        {
-            ShouldThrowException(currentCase);
-        }
+        public void ShouldFailWhenNotAConstant(object[] currentCase) => ShouldThrowException(currentCase);
 
 
         static readonly object[] LookLikeModShouldPassTestCases =
@@ -107,10 +101,7 @@ namespace UnitTests
 
         [Test]
         [TestCaseSource(nameof(LookLikeModShouldPassTestCases))]
-        public void LookLikeModShouldPass(object[] currentCase)
-        {
-            TestBuilderAndCalculator(currentCase);
-        }
+        public void LookLikeModShouldPass(object[] currentCase) => TestBuilderAndCalculator(currentCase);
 
         [Test]
         public void ConstantInValidator()

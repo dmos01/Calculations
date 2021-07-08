@@ -19,10 +19,8 @@ namespace Calculations
         {
             InitializeComponent();
             miInsertCalculation.ToolTip =
-                TooltipMessages.InsertHistoryCalculationTooltip + Environment.NewLine +
-                TooltipMessages.InsertHistoryCalculationTooltipLine2;
-            miInsertAnswer.ToolTip = TooltipMessages.InsertHistoryAnswerTooltip + Environment.NewLine +
-                                     TooltipMessages.InsertHistoryAnswerTooltipLine2;
+                TooltipMessages.InsertHistoryCalculation;
+            miInsertAnswer.ToolTip = TooltipMessages.InsertHistoryAnswer;
 
             miCopyCalculation.Header = CalculationsResources.HistoryCopyCalculation;
             miCopyAnswer.Header = CalculationsResources.HistoryCopyAnswer;

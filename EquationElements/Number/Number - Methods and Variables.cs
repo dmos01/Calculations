@@ -7,7 +7,7 @@ namespace EquationElements
     ///     Stores a double, or a decimal and its double representation.
     ///     Simulates handling of decimals primarily and being able to "switch" from decimal to double if necessary.
     /// </summary>
-    partial class Number : BaseElement, IFormattable
+    partial class Number : IFormattable
     {
         /// <summary>
         ///     True if instantiated with a decimal or integer (or applicable string representation).

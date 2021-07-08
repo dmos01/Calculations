@@ -5,7 +5,7 @@ namespace EquationElements.Functions
     /// <summary>
     ///     All Trig Elements implement IFunction, and therefore are considered Functions. Works with doubles only.
     /// </summary>
-    public abstract class TrigonometricFunction : OneArgumentElement, IFunction
+    public abstract class TrigonometricFunction : OneArgumentFunction
     {
         /// <summary>
         ///     Uses radians. Throws ArgumentNullException if number is null.

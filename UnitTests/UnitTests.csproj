@@ -4,6 +4,16 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <Version>1.1.0</Version>
+
+    <AssemblyVersion>1.1.0.2</AssemblyVersion>
+
+    <FileVersion>1.1.0.2</FileVersion>
+
+    <Description>For EquationBuilder 1.2, EquationCalculator 1.1 and EquationElements 1.2.</Description>
+
+    <Copyright>Daniel Spencer</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

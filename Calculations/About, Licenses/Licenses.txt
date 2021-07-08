@@ -9,3 +9,7 @@ Changes by Marc C. Brooks and Jeffery Sax.
  
 Images from iconmonstr.com (Arrow 12, Trash Can 1).
 https://iconmonstr.com/license/
+
+Icon created by Daniel Spencer using Affinity Designer.
+
+Thanks to Resharper for code suggestions.

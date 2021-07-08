@@ -88,6 +88,15 @@ namespace EquationCalculator {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No equation to calculate..
+        /// </summary>
+        public static string NoEquationDefault {
+            get {
+                return ResourceManager.GetString("NoEquationDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot determine whether an &apos;E&apos; is *10^ or Euler&apos;s Number (2.718 to 3dp)..
         /// </summary>
         public static string UndeterminedUseOfEDefault {
@@ -106,7 +115,7 @@ namespace EquationCalculator {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos; was found but no value for it was provided..
+        ///   Looks up a localized string similar to &quot; was found but no value for it was provided..
         /// </summary>
         public static string ValueOfVariableNotProvidedAfterParameter {
             get {
@@ -115,7 +124,7 @@ namespace EquationCalculator {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Variable &apos;.
+        ///   Looks up a localized string similar to Variable &quot;.
         /// </summary>
         public static string ValueOfVariableNotProvidedBeforeParameter {
             get {

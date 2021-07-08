@@ -5,7 +5,7 @@ namespace EquationElements.Functions
     /// <summary>
     ///     Rounds up on 5.
     /// </summary>
-    public class RoundFunction : OneArgumentElement, IFunction
+    public class RoundFunction : OneArgumentFunction
     {
         public override string ToString() => FunctionRepresentations.RoundWord;
 
@@ -18,7 +18,7 @@ namespace EquationElements.Functions
     /// <summary>
     ///     Rounds to the even number on 5.
     /// </summary>
-    public class EvenRoundFunction : OneArgumentElement, IFunction
+    public class EvenRoundFunction : OneArgumentFunction
     {
         public override string ToString() => FunctionRepresentations.EvenRoundWord;
 

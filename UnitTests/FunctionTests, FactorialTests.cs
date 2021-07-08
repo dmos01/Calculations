@@ -25,6 +25,13 @@ namespace UnitTests
                 "factorial5", BuilderExceptionMessages.FirstElementInvalidDefault,
                 BuilderExceptionMessages.FirstElementInvalidBeforeParameter
             },
+            new object[]
+            {
+                "log(0,1)", BuilderExceptionMessages.LogToNegativeOrZeroBeforeParameter,
+                CalculatorExceptionMessages.LogToNegativeOrZeroBeforeParameter
+            },
+            new object[] {"1.5!", BuilderExceptionMessages.FactorialWasNotAnIntegerBeforeParameter},
+            new object[] {"1.5factorial", BuilderExceptionMessages.FactorialWasNotAnIntegerBeforeParameter},
             new object[] {"log(e,0)", CalculatorExceptionMessages.LogToNegativeOrZeroDefault},
             new object[] {"ln(0)", CalculatorExceptionMessages.LogToNegativeOrZeroDefault},
             new object[] {"log(0,1)", CalculatorExceptionMessages.LogToNegativeOrZeroDefault}
@@ -34,54 +41,41 @@ namespace UnitTests
         static readonly object[] ShouldPassTestCases =
         {
             new object[] {"5factorial", new Number(120)},
+            new object[] {"5!", new Number(120)},
             new object[] {"(5)factorial", new Number(120)},
+
+            new object[] {"log(e,sin(-4))", new Number(Math.Log(Math.Sin(-4)))},
+            new object[] {"Log(10   ,5)", new Number(Math.Log10(5))},
+            new object[] {"Log(E,  5)", new Number(Math.Log(5))},
+            new object[] {"log(1e, 2)", new Number(Math.Log(2))},
+            new object[] {"log(e, 2)", new Number(Math.Log(2))},
+            new object[] {"log(e1, 2)", new Number(Math.Log(2))},
+
             new object[] {"sin(4)-sin(4)", new Number(0)},
-            new object[] {"5factorial5", new Number(120 * 5)}
-        };
-
-
-        static readonly object[] ShouldPassWithTruncationTestCases =
-        {
-            new object[] {"sin(sin(4))", new Number(-0.686600), 6},
-            new object[] {"log(e,sin(-4))", new Number(-0.27865), 5},
-            new object[] {"Log(10   ,5)", new Number(0.698970), 6},
-            new object[] {"Log(E,  5)", new Number(1.6094379), 7},
-            new object[] {"sin(   4)", new Number(-0.756802), 6},
-            new object[] {"sin(   4)", new Number(0.069756), 6, false},
-            new object[] {"sin(   -4)", new Number(0.756802), 6},
-            new object[] {"sin(   -4)", new Number(-0.069756), 6, false},
-            new object[] {"sin(e)", new Number(0.410781), 6},
-            new object[] {"sin(e)", new Number(0.047425), 6, false},
-            new object[] {"sin(-e)", new Number(-0.410781), 6},
-            new object[] {"sin(-e)", new Number(-0.047425), 6, false},
-            new object[] {"-sin(e)", new Number(-0.410781), 6},
-            new object[] {"sin(50000)", new Number(-0.99984), 5},
-            new object[] {"sin(50000)", new Number(-0.64278), 5, false},
-            new object[] {"sin(0.0005)", new Number(0.0004999999), 10},
-            new object[] {"sin(1/2)", new Number(0.4794255), 7}
+            new object[] {"sin(sin(4))", new Number(Math.Sin(Math.Sin(4)))},
+            new object[] {"5factorial5", new Number(120 * 5)},
+            new object[] {"sin(   4)", new Number(Math.Sin(4))},
+            new object[] {"sin(   4)", new Number(Math.Sin(4))},
+            new object[] {"sin(   -4)", new Number(Math.Sin(-4))},
+            new object[] {"sin(   -4)", new Number(Math.Sin(-4))},
+            new object[] {"sin(e)", new Number(Math.Sin(Math.E))},
+            new object[] {"sin(e)", new Number(Math.Sin(Math.E))},
+            new object[] {"sin(-e)", new Number(-Math.Sin(Math.E))},
+            new object[] {"sin(-e)", new Number(-Math.Sin(Math.E))},
+            new object[] {"-sin(e)", new Number(-Math.Sin(Math.E))},
+            new object[] {"sin(50000)", new Number(Math.Sin(50000))},
+            new object[] {"sin(50000)", new Number(Math.Sin(50000))},
+            new object[] {"sin(0.0005)", new Number(Math.Sin(0.0005))},
+            new object[] {"sin(1/2)", new Number(Math.Sin(0.5))},
         };
 
         [Test]
         [TestCaseSource(nameof(ShouldFailTestCases))]
-        public void ShouldFail(object[] currentCase)
-        {
-            ShouldThrowException(currentCase);
-        }
+        public void ShouldFail(object[] currentCase) => ShouldThrowException(currentCase);
 
         [Test]
         [TestCaseSource(nameof(ShouldPassTestCases))]
-        public void ShouldPass(object[] currentCase)
-        {
-            TestBuilderAndCalculator(currentCase);
-        }
-
-        [Test]
-        [TestCaseSource(nameof(ShouldPassWithTruncationTestCases))]
-        public void ShouldPassWithTruncation(object[] currentCase)
-        {
-            TestWithTruncation(currentCase);
-        }
-
+        public void ShouldPass(object[] currentCase) => TestBuilderAndCalculator(currentCase);
 
         [Test]
         public void RadiansThenDegrees()
@@ -135,7 +129,6 @@ namespace UnitTests
             Assert.Pass();
         }
 
-
         [Test]
         public void Random()
         {
@@ -164,7 +157,6 @@ namespace UnitTests
                 Assert.Fail("Failed Calculator. " + ex.Message);
             }
         }
-
 
         [Test]
         public void RandomCanBeMax()

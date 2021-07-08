@@ -18,10 +18,7 @@ namespace UnitTests
 
         [Test]
         [TestCaseSource(nameof(AsSymbolTestCases))]
-        public void AsSymbol(object[] currentCase)
-        {
-            TestBuilderAndCalculator(currentCase);
-        }
+        public void AsSymbol(object[] currentCase) => TestBuilderAndCalculator(currentCase);
 
 
         static readonly object[] AsWordTestCases =
@@ -36,9 +33,6 @@ namespace UnitTests
 
         [Test]
         [TestCaseSource(nameof(AsWordTestCases))]
-        public void AsWord(object[] currentCase)
-        {
-            TestBuilderAndCalculator(currentCase);
-        }
+        public void AsWord(object[] currentCase) => TestBuilderAndCalculator(currentCase);
     }
 }

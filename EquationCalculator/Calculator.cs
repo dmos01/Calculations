@@ -67,7 +67,6 @@ namespace EquationCalculator
             throw new Exception(CalculatorExceptionMessages.UnknownErrorDefault);
         }
 
-
         private void DuplicateReadOnlyElements()
         {
             currentRunElements = new LinkedList<BaseElement>();
@@ -105,8 +104,8 @@ namespace EquationCalculator
                                 currentNode.Value +
                                 CalculatorExceptionMessages.ValueOfVariableNotProvidedAfterParameter);
 
-                        if (valuesOfVariables.TryGetValue(currentNode.Value.ToString(), out Number value))
-                            currentNode.Value = value;
+                        if (valuesOfVariables.TryGetValue(currentNode.Value.ToString(), out Number number))
+                            currentNode.Value = number;
                         else
                             throw new Exception(
                                 CalculatorExceptionMessages.ValueOfVariableNotProvidedBeforeParameter +
@@ -141,12 +140,59 @@ namespace EquationCalculator
             }
         }
 
+
         private void CalculateCurrentSection()
         {
-            LoopPowerRootAndE();
             LoopWhileFunctions();
+            LoopPowerRootAndE();
             LoopWhileMultiplicationDivisionModulusAndFactorials();
             LoopWhileAdditionAndSubtraction();
+        }
+
+        private void LoopWhileFunctions()
+        {
+            currentNode = currentSection.Start;
+            while (currentNode != currentSection.End.Next && currentNode != null)
+            {
+                switch (currentNode.Value)
+                {
+                    case LnFunction ln when currentNode.Next.Value is Number number:
+                        if (number <= 0)
+                            throw new ArgumentException(
+                                CalculatorExceptionMessages.LogToNegativeOrZeroBeforeParameter + number +
+                                CalculatorExceptionMessages.LogToNegativeOrZeroAfterParameter);
+                        currentNode.Value = ln.PerformOn(number);
+                        currentRunElements.Remove(currentNode.Next);
+                        break;
+
+                    case LogFunction _:
+                        DoLog();
+                        break;
+
+                    case TrigonometricFunction trigFunction when currentNode.Next.Value is Number number:
+                        currentNode.Value = trigFunction.PerformOn(number, radians);
+                        currentRunElements.Remove(currentNode.Next);
+                        break;
+
+                    case Factorial _:
+                        break;
+
+                    case OneArgumentFunction oneArgumentFunction when currentNode.Next.Value is Number number:
+                        currentNode.Value = oneArgumentFunction.PerformOn(number);
+                        currentRunElements.Remove(currentNode.Next);
+                        break;
+
+                    case TwoArgumentFunction twoArgumentFunction when currentNode.Next.Value is Number number:
+                        Number secondNumberElement = (Number)currentNode.Next.Next.Next.Value;
+                        currentNode.Value = twoArgumentFunction.PerformOn(number, secondNumberElement);
+                        currentRunElements.Remove(currentNode.Next);
+                        currentRunElements.Remove(currentNode.Next);
+                        currentRunElements.Remove(currentNode.Next);
+                        break;
+                }
+
+                currentNode = currentNode.Next;
+            }
         }
 
         private void LoopPowerRootAndE()
@@ -178,20 +224,22 @@ namespace EquationCalculator
             if (!(currentNode.Previous?.Value is Number num))
                 return;
 
-
             switch (currentNode.Next?.Value)
             {
                 case Number pow:
+                    E.TestPower(pow);
                     currentNode.Previous.Value = new Number(num + ElementsResources.ExponentSymbolUpperCase + pow);
                     currentNode = currentNode.Previous;
                     break;
                 case SubtractionOperator _ when currentNode.Next.Next?.Value is Number pow:
+                    E.TestPower(pow);
                     currentNode.Previous.Value = new Number(num + ElementsResources.ExponentSymbolUpperCase +
                                                             OperatorRepresentations.SubtractionSymbol + pow);
                     currentNode = currentNode.Previous;
                     currentRunElements.Remove(currentNode.Next);
                     break;
                 case AdditionOperator _ when currentNode.Next.Next?.Value is Number pow:
+                    E.TestPower(pow);
                     currentNode.Previous.Value = new Number(num + ElementsResources.ExponentSymbolUpperCase + pow);
                     currentNode = currentNode.Previous;
                     currentRunElements.Remove(currentNode.Next);
@@ -205,6 +253,44 @@ namespace EquationCalculator
             currentRunElements.Remove(currentNode.Next);
         }
 
+        private void DoLog()
+        {
+            switch (currentNode.Next.Value)
+            {
+                case Number logBase:
+                    if (logBase <= 0)
+                        throw new ArgumentException(CalculatorExceptionMessages.LogToNegativeOrZeroBeforeParameter +
+                                                    logBase +
+                                                    CalculatorExceptionMessages.LogToNegativeOrZeroAfterParameter);
+
+                    Number logNumber = (Number)currentNode.Next.Next.Next.Value;
+                    if (logNumber <= 0)
+                        throw new ArgumentException(
+                            CalculatorExceptionMessages.LogToNegativeOrZeroBeforeParameter + logNumber +
+                            CalculatorExceptionMessages.LogToNegativeOrZeroAfterParameter);
+
+                    currentNode.Value = new LogFunction().PerformOn(logBase, logNumber);
+                    currentRunElements.Remove(currentNode.Next);
+                    currentRunElements.Remove(currentNode.Next);
+                    currentRunElements.Remove(currentNode.Next);
+                    break;
+
+                case E _:
+                    logNumber = (Number)currentNode.Next.Next.Next.Value;
+                    if (logNumber <= 0)
+                        throw new ArgumentException(
+                            CalculatorExceptionMessages.LogToNegativeOrZeroBeforeParameter + logNumber +
+                            CalculatorExceptionMessages.LogToNegativeOrZeroAfterParameter);
+
+                    currentNode.Value = new LnFunction().PerformOn(logNumber);
+                    currentRunElements.Remove(currentNode.Next);
+                    currentRunElements.Remove(currentNode.Next);
+                    currentRunElements.Remove(currentNode.Next);
+                    break;
+                default:
+                    throw new Exception(CalculatorExceptionMessages.UnknownErrorDefault);
+            }
+        }
 
         private void LoopWhileMultiplicationDivisionModulusAndFactorials()
         {
@@ -225,8 +311,8 @@ namespace EquationCalculator
                         Do(modulusOperator);
                         break;
 
-                    case FactorialFunction factorial:
-                        currentNode.Previous.Value = factorial.PerformOn((Number) currentNode.Previous.Value);
+                    case Factorial factorial:
+                        currentNode.Previous.Value = factorial.PerformOn((Number)currentNode.Previous.Value);
                         currentNode = currentNode.Previous;
                         currentRunElements.Remove(currentNode.Next);
                         break;
@@ -235,7 +321,6 @@ namespace EquationCalculator
                 currentNode = currentNode.Next;
             }
         }
-
 
         private void LoopWhileAdditionAndSubtraction()
         {
@@ -257,101 +342,10 @@ namespace EquationCalculator
             }
         }
 
-
-        private void LoopWhileFunctions()
-        {
-            currentNode = currentSection.Start;
-            while (currentNode != currentSection.End.Next && currentNode != null)
-            {
-                switch (currentNode.Value)
-                {
-                    case LnFunction ln when currentNode.Next.Value is Number number:
-                        if (number <= 0)
-                            throw new ArgumentException(
-                                CalculatorExceptionMessages.LogToNegativeOrZeroBeforeParameter + number +
-                                CalculatorExceptionMessages.LogToNegativeOrZeroAfterParameter);
-                        currentNode.Value = ln.PerformOn(number);
-                        currentRunElements.Remove(currentNode.Next);
-                        break;
-
-                    case LogFunction _:
-                        DoLog();
-                        break;
-
-                    case TrigonometricFunction trig when currentNode.Next.Value is Number number:
-                        currentNode.Value = trig.PerformOn(number, radians);
-                        currentRunElements.Remove(currentNode.Next);
-                        break;
-
-                    case FactorialFunction _:
-                        break;
-
-                    case IFunction _ when currentNode.Next.Value is Number number:
-                        switch (currentNode.Value)
-                        {
-                            case OneArgumentElement oneArgumentElement:
-                                currentNode.Value = oneArgumentElement.PerformOn(number);
-                                break;
-                            case TwoArgumentElement twoArgumentElement:
-                                Number secondNumberElement = (Number) currentNode.Next.Next.Next.Value;
-                                currentNode.Value = twoArgumentElement.PerformOn(number, secondNumberElement);
-                                currentRunElements.Remove(currentNode.Next);
-                                currentRunElements.Remove(currentNode.Next);
-                                break;
-                        }
-
-                        currentRunElements.Remove(currentNode.Next);
-                        break;
-                }
-
-                currentNode = currentNode.Next;
-            }
-        }
-
-        private void DoLog()
-        {
-            switch (currentNode.Next.Value)
-            {
-                case Number logBase:
-                    if (logBase <= 0)
-                        throw new ArgumentException(CalculatorExceptionMessages.LogToNegativeOrZeroBeforeParameter +
-                                                    logBase +
-                                                    CalculatorExceptionMessages.LogToNegativeOrZeroAfterParameter);
-
-                    Number logNumber = (Number) currentNode.Next.Next.Next.Value;
-                    if (logNumber <= 0)
-                        throw new ArgumentException(
-                            CalculatorExceptionMessages.LogToNegativeOrZeroBeforeParameter + logNumber +
-                            CalculatorExceptionMessages.LogToNegativeOrZeroAfterParameter);
-
-                    currentNode.Value = new LogFunction().PerformOn(logBase, logNumber);
-                    currentRunElements.Remove(currentNode.Next);
-                    currentRunElements.Remove(currentNode.Next);
-                    currentRunElements.Remove(currentNode.Next);
-                    break;
-
-                case E _:
-                    logNumber = (Number) currentNode.Next.Next.Next.Value;
-                    if (logNumber <= 0)
-                        throw new ArgumentException(
-                            CalculatorExceptionMessages.LogToNegativeOrZeroBeforeParameter + logNumber +
-                            CalculatorExceptionMessages.LogToNegativeOrZeroAfterParameter);
-
-                    currentNode.Value = new LnFunction().PerformOn(logNumber);
-                    currentRunElements.Remove(currentNode.Next);
-                    currentRunElements.Remove(currentNode.Next);
-                    currentRunElements.Remove(currentNode.Next);
-                    break;
-                default:
-                    throw new Exception(CalculatorExceptionMessages.UnknownErrorDefault);
-            }
-        }
-
-
         private void Do(TwoArgumentElement basicOperator)
         {
-            currentNode.Previous.Value = basicOperator.PerformOn((Number) currentNode.Previous.Value,
-                (Number) currentNode.Next.Value);
+            currentNode.Previous.Value = basicOperator.PerformOn((Number)currentNode.Previous.Value,
+                (Number)currentNode.Next.Value);
             currentNode = currentNode.Previous;
             currentRunElements.Remove(currentNode.Next);
             currentRunElements.Remove(currentNode.Next);

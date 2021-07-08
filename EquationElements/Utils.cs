@@ -43,14 +43,6 @@ namespace EquationElements
                 throw new ArgumentNullException(nameofToCheck);
         }
 
-        public static void ThrowExceptionIfNullOrEmpty<T>(ICollection<T> toCheck, string nameofToCheck)
-        {
-            if (toCheck is null)
-                throw new ArgumentNullException(nameofToCheck);
-            if (toCheck.Count == 0)
-                throw new ArgumentOutOfRangeException(nameofToCheck);
-        }
-
         /// <summary>
         ///     Throws ArgumentNullException if toCheck is null. Throws ArgumentException if toCheck is empty or contains only
         ///     spaces.

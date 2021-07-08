@@ -68,52 +68,45 @@ namespace Calculations
         {
             string line = Environment.NewLine;
 
-            btnE.ToolTip = TooltipMessages.ETooltip;
-            btnPlus.ToolTip = TooltipMessages.PlusTooltip;
-            btnMinus.ToolTip = TooltipMessages.MinusTooltip;
-            btnTimes.ToolTip = TooltipMessages.TimesTooltip;
-            btnDivide.ToolTip = TooltipMessages.DivideTooltip;
-            btnPower.ToolTip = TooltipMessages.PowerTooltip;
-            btnRoot.ToolTip = string.Join(line, TooltipMessages.RootDescription, TooltipMessages.RootFormat,
-                TooltipMessages.RootFormatLine2,
+            btnE.ToolTip = TooltipMessages.E;
+            btnPlus.ToolTip = TooltipMessages.Plus;
+            btnMinus.ToolTip = TooltipMessages.Minus;
+            btnTimes.ToolTip = TooltipMessages.Times;
+            btnDivide.ToolTip = TooltipMessages.Divide;
+            btnPower.ToolTip = TooltipMessages.Power;
+            btnRoot.ToolTip = string.Join(line, TooltipMessages.RootMain,
                 TooltipMessages.AlsoAllowedBeforeParameter + OperatorRepresentations.RootWord +
                 TooltipMessages.AlsoAllowedAfterParameter);
 
-            btnSin.ToolTip = TooltipMessages.SinFormat;
-            btnCos.ToolTip = TooltipMessages.CosFormat;
-            btnTan.ToolTip = TooltipMessages.TanFormat;
-            btnASin.ToolTip = TooltipMessages.ASinFormat;
-            btnACos.ToolTip = TooltipMessages.ACosFormat;
-            btnATan.ToolTip = TooltipMessages.ATanFormat;
-            btnSinh.ToolTip = TooltipMessages.SinhFormat;
-            btnCosh.ToolTip = TooltipMessages.CoshFormat;
-            btnTanh.ToolTip = TooltipMessages.TanhFormat;
-            btnLn.ToolTip = string.Join(line, TooltipMessages.LnDescription, TooltipMessages.LnFormat);
-            btnLog.ToolTip = string.Join(line, TooltipMessages.LogFormat, TooltipMessages.LogFormatLine2);
+            btnSin.ToolTip = TooltipMessages.Sin;
+            btnCos.ToolTip = TooltipMessages.Cos;
+            btnTan.ToolTip = TooltipMessages.Tan;
+            btnASin.ToolTip = TooltipMessages.ASin;
+            btnACos.ToolTip = TooltipMessages.ACos;
+            btnATan.ToolTip = TooltipMessages.ATan;
+            btnSinh.ToolTip = TooltipMessages.Sinh;
+            btnCosh.ToolTip = TooltipMessages.Cosh;
+            btnTanh.ToolTip = TooltipMessages.Tanh;
+            btnLn.ToolTip = TooltipMessages.Ln;
+            btnLog.ToolTip = TooltipMessages.Log;
 
-            btnFloor.ToolTip = string.Join(TooltipMessages.FloorDescription, TooltipMessages.FloorFormat);
+            btnFloor.ToolTip = TooltipMessages.Floor;
             btnRandom.ToolTip =
-                string.Join(line, TooltipMessages.RandomDescription, TooltipMessages.RandomDescriptionLine2,
-                    TooltipMessages.RandomFormat,
+                string.Join(line, TooltipMessages.RandomMain,
                     TooltipMessages.AlsoAllowedBeforeParameter + FunctionRepresentations.RandomShortWord +
                     TooltipMessages.AlsoAllowedAfterParameter);
-            btnCeiling.ToolTip = string.Join(line, TooltipMessages.CeilingDescription, TooltipMessages.CeilingFormat);
-            btnRound.ToolTip = string.Join(line, TooltipMessages.RoundDescription, TooltipMessages.RoundOnMidpoint,
-                TooltipMessages.RoundOnMidpointLine2, TooltipMessages.RoundFormat);
-            btnTruncate.ToolTip =
-                string.Join(line, TooltipMessages.TruncateDescription, TooltipMessages.TruncateFormat);
-            btnEvenRound.ToolTip = string.Join(line, TooltipMessages.EvenRoundDescription,
-                TooltipMessages.EvenRoundOnMidpoint,
-                TooltipMessages.EvenRoundFormat);
-            btnMod.ToolTip = string.Join(line, TooltipMessages.ModDescription, TooltipMessages.ModFormat,
+            btnCeiling.ToolTip = TooltipMessages.Ceiling;
+            btnRound.ToolTip = TooltipMessages.Round;
+            btnTruncate.ToolTip = TooltipMessages.Truncate;
+            btnEvenRound.ToolTip = TooltipMessages.EvenRound;
+            btnMod.ToolTip = string.Join(line, TooltipMessages.ModMain,
                 TooltipMessages.AlsoAllowedBeforeParameter + OperatorRepresentations.ModulusSymbol +
                 TooltipMessages.AlsoAllowedAfterParameter);
-            btnFactorial.ToolTip = string.Join(line, TooltipMessages.FactorialDescription,
-                TooltipMessages.FactorialDescriptionLine2, TooltipMessages.FactorialFormat,
+            btnFactorial.ToolTip = string.Join(line, TooltipMessages.FactorialMain,
                 TooltipMessages.AlsoAllowedBeforeParameter + FunctionRepresentations.FactorialSymbol +
                 TooltipMessages.AlsoAllowedAfterParameter);
             btnAbsolute.ToolTip =
-                string.Join(line, TooltipMessages.AbsoluteDescription, TooltipMessages.AbsoluteFormat,
+                string.Join(line, TooltipMessages.AbsoluteMain,
                     TooltipMessages.AlsoAllowedBeforeParameter + FunctionRepresentations.AbsoluteShortWord +
                     TooltipMessages.AlsoAllowedAfterParameter);
         }

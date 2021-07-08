@@ -2,7 +2,7 @@
 
 namespace EquationElements.Functions
 {
-    public class AbsoluteFunction : OneArgumentElement, IFunction
+    public class AbsoluteFunction : OneArgumentFunction
     {
         public override string ToString() => FunctionRepresentations.AbsoluteShortWord;
 

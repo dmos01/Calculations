@@ -37,17 +37,17 @@ namespace UnitTests
             switch (args.Length)
             {
                 case 2:
-                    if (EquationIsValid.Run((string) args[0]) == false)
+                    if (EquationIsValid.Run((string)args[0]) == false)
                     {
-                        Assert.Fail("EquationIsValid failed " + (string) args[0] + ".");
+                        Assert.Fail("EquationIsValid failed " + (string)args[0] + ".");
                         return false;
                     }
 
                     break;
                 case 3:
-                    if (EquationIsValid.Run((string) args[0], (Dictionary<string, string>) args[2]) == false)
+                    if (EquationIsValid.Run((string)args[0], (Dictionary<string, string>)args[2]) == false)
                     {
-                        Assert.Fail("EquationIsValid failed " + (string) args[0] + ".");
+                        Assert.Fail("EquationIsValid failed " + (string)args[0] + ".");
                         return false;
                     }
 
@@ -66,10 +66,10 @@ namespace UnitTests
                 switch (args.Length)
                 {
                     case 2:
-                        elements = SplitAndValidate.Run((string) args[0]);
+                        elements = SplitAndValidate.Run((string)args[0]);
                         break;
                     case 3:
-                        elements = SplitAndValidate.Run((string) args[0], (Dictionary<string, string>) args[2]);
+                        elements = SplitAndValidate.Run((string)args[0], (Dictionary<string, string>)args[2]);
                         break;
                     default:
                         throw new ArgumentException("Wrong number of arguments.");
@@ -79,7 +79,7 @@ namespace UnitTests
             }
             catch (Exception ex1)
             {
-                Assert.Fail("SplitAndValidate().Run() failed " + (string) args[0] + ". " + ex1.Message);
+                Assert.Fail("SplitAndValidate().Run() failed " + (string)args[0] + ". " + ex1.Message);
                 return false;
             }
         }
@@ -93,14 +93,14 @@ namespace UnitTests
             }
             catch (Exception ex2)
             {
-                Assert.Fail("Calculator failed " + (string) args[0] + ". " + ex2.Message);
+                Assert.Fail("Calculator failed " + (string)args[0] + ". " + ex2.Message);
                 return false;
             }
 
-            if (actualAnswer != (Number) args[1])
+            if (actualAnswer != (Number)args[1])
             {
-                Assert.Fail("Calculator for " + (string) args[0] + " returned wrong answer. It returned " +
-                            actualAnswer + ". Expected " + (Number) args[1] + ".");
+                Assert.Fail("Calculator for " + (string)args[0] + " returned wrong answer. It returned " +
+                            actualAnswer + ". Expected " + (Number)args[1] + ".");
                 return false;
             }
 
@@ -120,7 +120,7 @@ namespace UnitTests
 
             try
             {
-                elements = SplitAndValidate.Run((string) args[0]);
+                elements = SplitAndValidate.Run((string)args[0]);
                 answer = new Calculator(elements).Run();
             }
             catch (Exception ex)
@@ -130,7 +130,7 @@ namespace UnitTests
 
             if (thrownException is null)
             {
-                Assert.Fail("No exception was thrown for " + (string) args[0] + ". Returned " + answer + ".");
+                Assert.Fail("No exception was thrown for " + (string)args[0] + ". Returned " + answer + ".");
                 return;
             }
 
@@ -148,61 +148,13 @@ namespace UnitTests
                 {
                     if (thrownException.Message.StartsWith(expectedMessage))
                     {
-                        Assert.Pass();
+                        Assert.Pass("Correctly threw " + expectedMessage);
                         return;
                     }
                 }
             }
 
             Assert.Fail("Actual exception message was " + thrownException.Message);
-        }
-
-        /// <summary>
-        ///     <para>0 = Equation (string).</para>
-        ///     <para>1 = Expected answer (EquationElements.Number).</para>
-        ///     <para>2 = Decimal places to truncate at (byte). To not truncate, use 0.</para>
-        ///     <para>3 (optional) = Radians (bool). Calculate in radians (assumed true). If false, will use degrees.</para>
-        /// </summary>
-        /// <param name="args"></param>
-        public static void TestWithTruncation(object[] args)
-        {
-            Number actualAnswer;
-
-            try
-            {
-                elements = SplitAndValidate.Run((string) args[0]);
-            }
-            catch (Exception ex1)
-            {
-                Assert.Fail("SplitAndValidate().Run() failed " + (string) args[0] + ". " + ex1.Message);
-                return;
-            }
-
-            try
-            {
-                actualAnswer = new Calculator(elements).Run(args.Length != 4 || (bool) args[3]);
-            }
-            catch (Exception ex2)
-            {
-                Assert.Fail("Calculator failed " + (string) args[0] + ". " + ex2.Message);
-                return;
-            }
-
-            if ((int) args[2] != 0)
-            {
-                actualAnswer *= Math.Pow(10, (int) args[2]);
-                actualAnswer = new Number(Math.Truncate(actualAnswer.AsDouble));
-                actualAnswer /= Math.Pow(10, (int) args[2]);
-            }
-
-            if (actualAnswer != (Number) args[1])
-            {
-                Assert.Fail("Calcuator for " + (string) args[0] + " returned wrong answer. It returned " +
-                            actualAnswer + ". Expected " + (Number) args[1] + ".");
-                return;
-            }
-
-            Assert.Pass();
         }
 
 

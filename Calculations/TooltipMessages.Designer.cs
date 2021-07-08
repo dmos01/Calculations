@@ -61,29 +61,21 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If the number is negative, remove the negative sign..
+        ///   Looks up a localized string similar to If the number is negative, remove the negative sign.
+        ///Format: Absolute(Number).
         /// </summary>
-        internal static string AbsoluteDescription {
+        internal static string AbsoluteMain {
             get {
-                return ResourceManager.GetString("AbsoluteDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Format: Absolute(Number).
-        /// </summary>
-        internal static string AbsoluteFormat {
-            get {
-                return ResourceManager.GetString("AbsoluteFormat", resourceCulture);
+                return ResourceManager.GetString("AbsoluteMain", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Format: ACos(Number).
         /// </summary>
-        internal static string ACosFormat {
+        internal static string ACos {
             get {
-                return ResourceManager.GetString("ACosFormat", resourceCulture);
+                return ResourceManager.GetString("ACos", resourceCulture);
             }
         }
         
@@ -108,414 +100,260 @@ namespace Calculations {
         /// <summary>
         ///   Looks up a localized string similar to Format: ASin(Number).
         /// </summary>
-        internal static string ASinFormat {
+        internal static string ASin {
             get {
-                return ResourceManager.GetString("ASinFormat", resourceCulture);
+                return ResourceManager.GetString("ASin", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Format: ATan(Number).
         /// </summary>
-        internal static string ATanFormat {
+        internal static string ATan {
             get {
-                return ResourceManager.GetString("ATanFormat", resourceCulture);
+                return ResourceManager.GetString("ATan", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rounds up to the nearest integer..
+        ///   Looks up a localized string similar to Rounds up to the nearest integer.
+        ///Format: Ceiling(Number).
         /// </summary>
-        internal static string CeilingDescription {
+        internal static string Ceiling {
             get {
-                return ResourceManager.GetString("CeilingDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Format: Ceiling(Number).
-        /// </summary>
-        internal static string CeilingFormat {
-            get {
-                return ResourceManager.GetString("CeilingFormat", resourceCulture);
+                return ResourceManager.GetString("Ceiling", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Format: Cos(Number).
         /// </summary>
-        internal static string CosFormat {
+        internal static string Cos {
             get {
-                return ResourceManager.GetString("CosFormat", resourceCulture);
+                return ResourceManager.GetString("Cos", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Format: Cosh(Number).
         /// </summary>
-        internal static string CoshFormat {
+        internal static string Cosh {
             get {
-                return ResourceManager.GetString("CoshFormat", resourceCulture);
+                return ResourceManager.GetString("Cosh", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Divided by.
         /// </summary>
-        internal static string DivideTooltip {
+        internal static string Divide {
             get {
-                return ResourceManager.GetString("DivideTooltip", resourceCulture);
+                return ResourceManager.GetString("Divide", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to *10^ or Euler&apos;s number (2.718 to 3dp)..
         /// </summary>
-        internal static string ETooltip {
+        internal static string E {
             get {
-                return ResourceManager.GetString("ETooltip", resourceCulture);
+                return ResourceManager.GetString("E", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rounds to the nearest integer..
+        ///   Looks up a localized string similar to Rounds to the nearest integer.
+        ///(When .5, whichever is even.)
+        ///Format: Even Round(Number).
         /// </summary>
-        internal static string EvenRoundDescription {
+        internal static string EvenRound {
             get {
-                return ResourceManager.GetString("EvenRoundDescription", resourceCulture);
+                return ResourceManager.GetString("EvenRound", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Format: Even Round(Number).
+        ///   Looks up a localized string similar to Multiplies all the integers between
+        ///1 and this integer together.
+        ///Format: Integer Factorial.
         /// </summary>
-        internal static string EvenRoundFormat {
+        internal static string FactorialMain {
             get {
-                return ResourceManager.GetString("EvenRoundFormat", resourceCulture);
+                return ResourceManager.GetString("FactorialMain", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When .5, whichever is even..
+        ///   Looks up a localized string similar to Rounds down to the nearest integer.
+        ///Format: Floor(Number).
         /// </summary>
-        internal static string EvenRoundOnMidpoint {
+        internal static string Floor {
             get {
-                return ResourceManager.GetString("EvenRoundOnMidpoint", resourceCulture);
+                return ResourceManager.GetString("Floor", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Multiplies all the integers between.
+        ///   Looks up a localized string similar to Insert the selected answer into
+        ///the main calculation at the cursor..
         /// </summary>
-        internal static string FactorialDescription {
+        internal static string InsertHistoryAnswer {
             get {
-                return ResourceManager.GetString("FactorialDescription", resourceCulture);
+                return ResourceManager.GetString("InsertHistoryAnswer", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1 and this integer together..
+        ///   Looks up a localized string similar to Insert the selected calculation into the main
+        ///calculation at the cursor (surrounded by brackets)..
         /// </summary>
-        internal static string FactorialDescriptionLine2 {
+        internal static string InsertHistoryCalculation {
             get {
-                return ResourceManager.GetString("FactorialDescriptionLine2", resourceCulture);
+                return ResourceManager.GetString("InsertHistoryCalculation", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Format: Integer Factorial.
+        ///   Looks up a localized string similar to Natural Log (Base E).
+        ///Format: Ln(Number).
         /// </summary>
-        internal static string FactorialFormat {
+        internal static string Ln {
             get {
-                return ResourceManager.GetString("FactorialFormat", resourceCulture);
+                return ResourceManager.GetString("Ln", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rounds down to the nearest integer..
+        ///   Looks up a localized string similar to Format: Log(Base , Number)
+        ///E.g. Log(E, 5).
         /// </summary>
-        internal static string FloorDescription {
+        internal static string Log {
             get {
-                return ResourceManager.GetString("FloorDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Format: Floor(Number).
-        /// </summary>
-        internal static string FloorFormat {
-            get {
-                return ResourceManager.GetString("FloorFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Insert the selected answer into.
-        /// </summary>
-        internal static string InsertHistoryAnswerTooltip {
-            get {
-                return ResourceManager.GetString("InsertHistoryAnswerTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to the main calculation at the cursor..
-        /// </summary>
-        internal static string InsertHistoryAnswerTooltipLine2 {
-            get {
-                return ResourceManager.GetString("InsertHistoryAnswerTooltipLine2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Insert the selected calculation into the main.
-        /// </summary>
-        internal static string InsertHistoryCalculationTooltip {
-            get {
-                return ResourceManager.GetString("InsertHistoryCalculationTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to calculation at the cursor (surrounded by brackets)..
-        /// </summary>
-        internal static string InsertHistoryCalculationTooltipLine2 {
-            get {
-                return ResourceManager.GetString("InsertHistoryCalculationTooltipLine2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Natural Log (Base E)..
-        /// </summary>
-        internal static string LnDescription {
-            get {
-                return ResourceManager.GetString("LnDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Format: Ln(Number).
-        /// </summary>
-        internal static string LnFormat {
-            get {
-                return ResourceManager.GetString("LnFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Format: Log(Base , Number).
-        /// </summary>
-        internal static string LogFormat {
-            get {
-                return ResourceManager.GetString("LogFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to E.g. Log(E, 10).
-        /// </summary>
-        internal static string LogFormatLine2 {
-            get {
-                return ResourceManager.GetString("LogFormatLine2", resourceCulture);
+                return ResourceManager.GetString("Log", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Minus.
         /// </summary>
-        internal static string MinusTooltip {
+        internal static string Minus {
             get {
-                return ResourceManager.GetString("MinusTooltip", resourceCulture);
+                return ResourceManager.GetString("Minus", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gives the remainder after a division operation..
+        ///   Looks up a localized string similar to Gives the remainder after a division operation.
+        ///Format: Number mod Number.
         /// </summary>
-        internal static string ModDescription {
+        internal static string ModMain {
             get {
-                return ResourceManager.GetString("ModDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Format: Number mod Number.
-        /// </summary>
-        internal static string ModFormat {
-            get {
-                return ResourceManager.GetString("ModFormat", resourceCulture);
+                return ResourceManager.GetString("ModMain", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Plus.
         /// </summary>
-        internal static string PlusTooltip {
+        internal static string Plus {
             get {
-                return ResourceManager.GetString("PlusTooltip", resourceCulture);
+                return ResourceManager.GetString("Plus", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to To the power of.
         /// </summary>
-        internal static string PowerTooltip {
+        internal static string Power {
             get {
-                return ResourceManager.GetString("PowerTooltip", resourceCulture);
+                return ResourceManager.GetString("Power", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Generates a random integer between.
+        ///   Looks up a localized string similar to Generates a random integer between
+        ///two other, inclusive, integers.
+        ///Format: Random(min , max).
         /// </summary>
-        internal static string RandomDescription {
+        internal static string RandomMain {
             get {
-                return ResourceManager.GetString("RandomDescription", resourceCulture);
+                return ResourceManager.GetString("RandomMain", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to two other, inclusive, integers..
+        ///   Looks up a localized string similar to Root
+        ///Format: Base √ Number
+        ///E.g. 3√8 = 2.
         /// </summary>
-        internal static string RandomDescriptionLine2 {
+        internal static string RootMain {
             get {
-                return ResourceManager.GetString("RandomDescriptionLine2", resourceCulture);
+                return ResourceManager.GetString("RootMain", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Format: Random(min , max).
+        ///   Looks up a localized string similar to Rounds to the nearest integer.
+        ///Format: Round(Number).
         /// </summary>
-        internal static string RandomFormat {
+        internal static string Round {
             get {
-                return ResourceManager.GetString("RandomFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Root.
-        /// </summary>
-        internal static string RootDescription {
-            get {
-                return ResourceManager.GetString("RootDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Format: Base √ Number.
-        /// </summary>
-        internal static string RootFormat {
-            get {
-                return ResourceManager.GetString("RootFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to E.g. 3√8 = 2.
-        /// </summary>
-        internal static string RootFormatLine2 {
-            get {
-                return ResourceManager.GetString("RootFormatLine2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rounds to the nearest integer..
-        /// </summary>
-        internal static string RoundDescription {
-            get {
-                return ResourceManager.GetString("RoundDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Format: Round(Number).
-        /// </summary>
-        internal static string RoundFormat {
-            get {
-                return ResourceManager.GetString("RoundFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to When .5, up for positive numbers.
-        /// </summary>
-        internal static string RoundOnMidpoint {
-            get {
-                return ResourceManager.GetString("RoundOnMidpoint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to and down for negative numbers..
-        /// </summary>
-        internal static string RoundOnMidpointLine2 {
-            get {
-                return ResourceManager.GetString("RoundOnMidpointLine2", resourceCulture);
+                return ResourceManager.GetString("Round", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Format: Sin(Number).
         /// </summary>
-        internal static string SinFormat {
+        internal static string Sin {
             get {
-                return ResourceManager.GetString("SinFormat", resourceCulture);
+                return ResourceManager.GetString("Sin", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Format: Sinh(Number).
         /// </summary>
-        internal static string SinhFormat {
+        internal static string Sinh {
             get {
-                return ResourceManager.GetString("SinhFormat", resourceCulture);
+                return ResourceManager.GetString("Sinh", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Format: Tan(Number).
         /// </summary>
-        internal static string TanFormat {
+        internal static string Tan {
             get {
-                return ResourceManager.GetString("TanFormat", resourceCulture);
+                return ResourceManager.GetString("Tan", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Format: Tanh(Number).
         /// </summary>
-        internal static string TanhFormat {
+        internal static string Tanh {
             get {
-                return ResourceManager.GetString("TanhFormat", resourceCulture);
+                return ResourceManager.GetString("Tanh", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Multiplied by.
         /// </summary>
-        internal static string TimesTooltip {
+        internal static string Times {
             get {
-                return ResourceManager.GetString("TimesTooltip", resourceCulture);
+                return ResourceManager.GetString("Times", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removes the decimal part of the number..
+        ///   Looks up a localized string similar to Removes the decimal part of the number.
+        ///Format: Truncate(Number).
         /// </summary>
-        internal static string TruncateDescription {
+        internal static string Truncate {
             get {
-                return ResourceManager.GetString("TruncateDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Format: Truncate(Number).
-        /// </summary>
-        internal static string TruncateFormat {
-            get {
-                return ResourceManager.GetString("TruncateFormat", resourceCulture);
+                return ResourceManager.GetString("Truncate", resourceCulture);
             }
         }
     }

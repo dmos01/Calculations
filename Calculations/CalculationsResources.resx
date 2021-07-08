@@ -151,7 +151,7 @@
     <value>Calculations</value>
   </data>
   <data name="ReleaseDate" xml:space="preserve">
-    <value>, released 22 June 2021.</value>
+    <value>, released 8 July 2021.</value>
   </data>
   <data name="TextFile" xml:space="preserve">
     <value>Text file</value>
@@ -160,7 +160,7 @@
     <value>Version</value>
   </data>
   <data name="VersionNumber" xml:space="preserve">
-    <value>4.2.0</value>
+    <value>4.3.0</value>
   </data>
   <data name="XMLFile" xml:space="preserve">
     <value>XML file</value>

@@ -4,37 +4,71 @@ Known bugs:
 "root", "mod" or "e", next to a digit may cause error or wrong answer. 
 "23mode24" with Constants 3mod = 6 and e24 = 4 is built as 23%4 not 6*4.
 
-Version 1.0.2, 22 June 2021:
-*BuilderExceptionMessages.NoEquationDefault renamed to BuilderExceptionMessages.NoEquation.
+Version 1.2.0, 8 July 2021:
+
+Changes to determining E (*10^ or Eulers):
+ *AbsoluteFunction to the right is *10^ if performed on a single Element (not followed by an opening bracket); otherwise Eulers.
+ *Closing bracket to the left or opening bracket to the right is invalid.* Brackets other way round begin/end a section, therefore Eulers.
+ *Constants on either side are *10^ if made up of a single Element; otherwise invalid.* Increased use of E.TestPower().
+ *Functions to the left are Eulers.
+ *Other Functions to the right are invalid.*
+   *because missed the point of *10^. If Euler's, be explicit.
+
+Validator:
+*ArgumentSeparator tests if next is IInvalidWhenFirst
+*Attempts to give unclosed brackets equivalent closing brackets at the end of the equation.
+*E.TestPower() moved to EquationElements.
+*Factorial throws an exception if run on a non-integer.
+*General InvalidBracketUseDefault exception message. Previously, (1[2) would trigger closing bracket without opening bracket, which is incorrect.
+*In log(e,x), e no longer needs to be alone.
+*Logs test if single-Number base is <= 0.
+*OneArgumentFunctions no longer need to be followed by an opening bracket.
+*OpeningBracketsStack is Stack<OpeningBracket> instead of Stack<LinkedListNode<BaseElement>>.
+*Methods rearranged, including turning some into local functions.
+*SetCurrentToPrevious() renamed to Retract().
+*Uses case Word instead of cases for Constant, Variable and UnrecognizedElement at the same time.
+*Uses BuilderExceptionMessages.NoEquationDefault when elementsList is null or empty.
+*XML comments mention expanding Constants, and talk about returning the "expanded list" instead of the "updated list."
+
+Splitter and Validator:
+*When expanding Constants made of a single Element, do not add surrounding brackets.
+
+
+Version 1.1.1, 22 June 2021:
 *Minor improvements.
 
-Version 1.0.1, 14 June 2021:
-*Roll back on methods 'out'-ing and returning ICollections.
-*Validator's Current, Previous, Next and openingBracketsStack set to null before return.
+Version 1.1.0, 14 June 2021:
 *Changes to properties vs. fields.
+*Current run variables set to null after use.
+*Roll back on methods 'out'-ing and returning ICollections.
 
 
 Version 1.0.0, 31 May 2021:
 *Seperated out from EquationResolver.
-*New UnrecognizedElement as a holding "don't know what this element is right now." If it isn't known during validation, cast it as a Variable or throw an exception (depending on castUnrecognizedElementsAsVariables).
+
+*EquationIsValid.Run() methods no longer outputs anything - they only return true/false.
+*Expanding Constants adds surrounding brackets separately, instead of including them in the Constant's own SplitAndValidate.Run().
+*Root now available as a word operator; ! now available as a factorial symbol.
 *Splitter, Validator and ElementBuilder more publicly accessible for independent use.
 *SplitAndValidate and EquationIsValid moved to their own (static) classes.
-*EquationIsValid.Run() no longer outputs anything - it only returns true/false.
-*Root now available as a word operator; ! now available as a factorial symbol.
+*UnrecognizedElement as a holding "don't know what this element is right now." If it isn't known during validation, cast it as a Variable or throw an exception (depending on castUnrecognizedElementsAsVariables).
+
+Removed to seperate out areas of responsibility:
+ -Determining if the equation contains Random.
+ -Finding nodes with brackets.
+ -Replacing Variables with Numbers. (Side effect: ElementBuilder.CreateElement() no longer returns Digit and Letter Elements (and they have actually been removed from EquationElements).)
 
 Splitter:
 *Created my own String.Split() which keeps separators in the output.
-*Completely rewritten. Many more equations with strings/elements 'mod' and 'e' are recognized.
+*Completely rewritten. Many more equations with strings containing "mod" and "e" are recognized.
 *Takes ElementBuilder or Constants in constructor to allow mutiple equations to be run using those same "parameters".
 *Uses TextElementEnumerator and StringBuilder where possible.
 
 Validator:
-*Can now handle Constants.
+*Expands Constants.
 *Improvements.
 
 ElementBuilder:
 *Moved here.
 *Constants now uses an IDictionary<string, string> and made private.
-*Public APIs take ElementBuilder or Constants to expose the functionality of ElementBuilder while still keeping it optional.
-*Removed ExpectedVariables to seperate out areas of responsibility. They should be handled when actually calculating.
- -Side effects: Digit and Letter Elements are no longer returned (and have actually been removed from EquationElements).
+*Public APIs may take ElementBuilder or Constants to expose the functionality of ElementBuilder while still keeping it optional.

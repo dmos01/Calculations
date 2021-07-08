@@ -1,18 +1,26 @@
 ﻿Calculations 4 Release History:
 
 Known bugs:
-"root", "mod" or "e", next to a digit may cause error or wrong answer. 
-"23mode24" with Constants 3mod = 6 and e24 = 4 calculates as 23%4 not 6*4.
+*"root", "mod" or "e", next to a digit may cause error or wrong answer. 
+*"23mode24" with Constants 3mod = 6 and e24 = 4 calculates as 23%4 not 6*4.
+
+
+Version 4.3, 8 July 2021:
+*Tooltip resources now span multiple lines rather than being spread across multiple strings.
+*EquationBuilder 1.2.0, EquationCalculator 1.1.0, EquationElements 1.2.0 and UnitTests 1.1.0.
+
 
 Version 4.2, 22 June 2021:
 *New icons.
 *XML comments use "; otherwise" instead of ". Otherwise,".
+*EquationBuilder 1.1.1 and EquationElements 1.1.1.
 
 
 Version 4.1, 14 June 2021:
 *HistoryController no longer controls the listbox and export buttons.
 *History's "Use Selected..." menu appears when right-clicking an item; delete option added.
 *Insert calculation tooltip mentions brackets.
+*EquationBuilder 1.1.0, EquationCalculator 1.0.1 and EquationElements 1.1.0.
 
 
 Version 4.0, 31 May 2021:

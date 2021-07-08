@@ -117,13 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AbsoluteDescription" xml:space="preserve">
-    <value>If the number is negative, remove the negative sign.</value>
+  <data name="AbsoluteMain" xml:space="preserve">
+    <value>If the number is negative, remove the negative sign.
+Format: Absolute(Number)</value>
   </data>
-  <data name="AbsoluteFormat" xml:space="preserve">
-    <value>Format: Absolute(Number)</value>
-  </data>
-  <data name="ACosFormat" xml:space="preserve">
+  <data name="ACos" xml:space="preserve">
     <value>Format: ACos(Number)</value>
   </data>
   <data name="AlsoAllowedAfterParameter" xml:space="preserve">
@@ -132,142 +130,102 @@
   <data name="AlsoAllowedBeforeParameter" xml:space="preserve">
     <value>("</value>
   </data>
-  <data name="ASinFormat" xml:space="preserve">
+  <data name="ASin" xml:space="preserve">
     <value>Format: ASin(Number)</value>
   </data>
-  <data name="ATanFormat" xml:space="preserve">
+  <data name="ATan" xml:space="preserve">
     <value>Format: ATan(Number)</value>
   </data>
-  <data name="CeilingDescription" xml:space="preserve">
-    <value>Rounds up to the nearest integer.</value>
+  <data name="Ceiling" xml:space="preserve">
+    <value>Rounds up to the nearest integer.
+Format: Ceiling(Number)</value>
   </data>
-  <data name="CeilingFormat" xml:space="preserve">
-    <value>Format: Ceiling(Number)</value>
-  </data>
-  <data name="CosFormat" xml:space="preserve">
+  <data name="Cos" xml:space="preserve">
     <value>Format: Cos(Number)</value>
   </data>
-  <data name="CoshFormat" xml:space="preserve">
+  <data name="Cosh" xml:space="preserve">
     <value>Format: Cosh(Number)</value>
   </data>
-  <data name="DivideTooltip" xml:space="preserve">
+  <data name="Divide" xml:space="preserve">
     <value>Divided by</value>
   </data>
-  <data name="ETooltip" xml:space="preserve">
+  <data name="E" xml:space="preserve">
     <value>*10^ or Euler's number (2.718 to 3dp).</value>
   </data>
-  <data name="EvenRoundDescription" xml:space="preserve">
-    <value>Rounds to the nearest integer.</value>
+  <data name="EvenRound" xml:space="preserve">
+    <value>Rounds to the nearest integer.
+(When .5, whichever is even.)
+Format: Even Round(Number)</value>
   </data>
-  <data name="EvenRoundFormat" xml:space="preserve">
-    <value>Format: Even Round(Number)</value>
+  <data name="FactorialMain" xml:space="preserve">
+    <value>Multiplies all the integers between
+1 and this integer together.
+Format: Integer Factorial</value>
   </data>
-  <data name="EvenRoundOnMidpoint" xml:space="preserve">
-    <value>When .5, whichever is even.</value>
+  <data name="Floor" xml:space="preserve">
+    <value>Rounds down to the nearest integer.
+Format: Floor(Number)</value>
   </data>
-  <data name="FactorialDescription" xml:space="preserve">
-    <value>Multiplies all the integers between</value>
+  <data name="InsertHistoryAnswer" xml:space="preserve">
+    <value>Insert the selected answer into
+the main calculation at the cursor.</value>
   </data>
-  <data name="FactorialDescriptionLine2" xml:space="preserve">
-    <value>1 and this integer together.</value>
+  <data name="InsertHistoryCalculation" xml:space="preserve">
+    <value>Insert the selected calculation into the main
+calculation at the cursor (surrounded by brackets).</value>
   </data>
-  <data name="FactorialFormat" xml:space="preserve">
-    <value>Format: Integer Factorial</value>
+  <data name="Ln" xml:space="preserve">
+    <value>Natural Log (Base E).
+Format: Ln(Number)</value>
   </data>
-  <data name="FloorDescription" xml:space="preserve">
-    <value>Rounds down to the nearest integer.</value>
+  <data name="Log" xml:space="preserve">
+    <value>Format: Log(Base , Number)
+E.g. Log(E, 5)</value>
   </data>
-  <data name="FloorFormat" xml:space="preserve">
-    <value>Format: Floor(Number)</value>
-  </data>
-  <data name="InsertHistoryAnswerTooltip" xml:space="preserve">
-    <value>Insert the selected answer into</value>
-  </data>
-  <data name="InsertHistoryAnswerTooltipLine2" xml:space="preserve">
-    <value>the main calculation at the cursor.</value>
-  </data>
-  <data name="InsertHistoryCalculationTooltip" xml:space="preserve">
-    <value>Insert the selected calculation into the main</value>
-  </data>
-  <data name="InsertHistoryCalculationTooltipLine2" xml:space="preserve">
-    <value>calculation at the cursor (surrounded by brackets).</value>
-  </data>
-  <data name="LnDescription" xml:space="preserve">
-    <value>Natural Log (Base E).</value>
-  </data>
-  <data name="LnFormat" xml:space="preserve">
-    <value>Format: Ln(Number)</value>
-  </data>
-  <data name="LogFormat" xml:space="preserve">
-    <value>Format: Log(Base , Number)</value>
-  </data>
-  <data name="LogFormatLine2" xml:space="preserve">
-    <value>E.g. Log(E, 10)</value>
-  </data>
-  <data name="MinusTooltip" xml:space="preserve">
+  <data name="Minus" xml:space="preserve">
     <value>Minus</value>
   </data>
-  <data name="ModDescription" xml:space="preserve">
-    <value>Gives the remainder after a division operation.</value>
+  <data name="ModMain" xml:space="preserve">
+    <value>Gives the remainder after a division operation.
+Format: Number mod Number</value>
   </data>
-  <data name="ModFormat" xml:space="preserve">
-    <value>Format: Number mod Number</value>
-  </data>
-  <data name="PlusTooltip" xml:space="preserve">
+  <data name="Plus" xml:space="preserve">
     <value>Plus</value>
   </data>
-  <data name="PowerTooltip" xml:space="preserve">
+  <data name="Power" xml:space="preserve">
     <value>To the power of</value>
   </data>
-  <data name="RandomDescription" xml:space="preserve">
-    <value>Generates a random integer between</value>
+  <data name="RandomMain" xml:space="preserve">
+    <value>Generates a random integer between
+two other, inclusive, integers.
+Format: Random(min , max)</value>
   </data>
-  <data name="RandomDescriptionLine2" xml:space="preserve">
-    <value>two other, inclusive, integers.</value>
+  <data name="RootMain" xml:space="preserve">
+    <value>Root
+Format: Base √ Number
+E.g. 3√8 = 2</value>
   </data>
-  <data name="RandomFormat" xml:space="preserve">
-    <value>Format: Random(min , max)</value>
+  <data name="Round" xml:space="preserve">
+    <value>Rounds to the nearest integer.
+Format: Round(Number)</value>
   </data>
-  <data name="RootDescription" xml:space="preserve">
-    <value>Root</value>
-  </data>
-  <data name="RootFormat" xml:space="preserve">
-    <value>Format: Base √ Number</value>
-  </data>
-  <data name="RootFormatLine2" xml:space="preserve">
-    <value>E.g. 3√8 = 2</value>
-  </data>
-  <data name="RoundDescription" xml:space="preserve">
-    <value>Rounds to the nearest integer.</value>
-  </data>
-  <data name="RoundFormat" xml:space="preserve">
-    <value>Format: Round(Number)</value>
-  </data>
-  <data name="RoundOnMidpoint" xml:space="preserve">
-    <value>When .5, up for positive numbers</value>
-  </data>
-  <data name="RoundOnMidpointLine2" xml:space="preserve">
-    <value>and down for negative numbers.</value>
-  </data>
-  <data name="SinFormat" xml:space="preserve">
+  <data name="Sin" xml:space="preserve">
     <value>Format: Sin(Number)</value>
   </data>
-  <data name="SinhFormat" xml:space="preserve">
+  <data name="Sinh" xml:space="preserve">
     <value>Format: Sinh(Number)</value>
   </data>
-  <data name="TanFormat" xml:space="preserve">
+  <data name="Tan" xml:space="preserve">
     <value>Format: Tan(Number)</value>
   </data>
-  <data name="TanhFormat" xml:space="preserve">
+  <data name="Tanh" xml:space="preserve">
     <value>Format: Tanh(Number)</value>
   </data>
-  <data name="TimesTooltip" xml:space="preserve">
+  <data name="Times" xml:space="preserve">
     <value>Multiplied by</value>
   </data>
-  <data name="TruncateDescription" xml:space="preserve">
-    <value>Removes the decimal part of the number.</value>
-  </data>
-  <data name="TruncateFormat" xml:space="preserve">
-    <value>Format: Truncate(Number)</value>
+  <data name="Truncate" xml:space="preserve">
+    <value>Removes the decimal part of the number.
+Format: Truncate(Number)</value>
   </data>
 </root>

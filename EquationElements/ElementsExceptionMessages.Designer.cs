@@ -61,6 +61,60 @@ namespace EquationElements {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  is not an integer..
+        /// </summary>
+        public static string ExponentIsNotIntegerAfterParameter {
+            get {
+                return ResourceManager.GetString("ExponentIsNotIntegerAfterParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The exponent .
+        /// </summary>
+        public static string ExponentIsNotIntegerBeforeParameter {
+            get {
+                return ResourceManager.GetString("ExponentIsNotIntegerBeforeParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An exponent is not an integer..
+        /// </summary>
+        public static string ExponentIsNotIntegerDefault {
+            get {
+                return ResourceManager.GetString("ExponentIsNotIntegerDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  is too large or small. Maximum/minimum size is ±307..
+        /// </summary>
+        public static string ExponentTooLargeOrSmallAfterParameter {
+            get {
+                return ResourceManager.GetString("ExponentTooLargeOrSmallAfterParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The exponent .
+        /// </summary>
+        public static string ExponentTooLargeOrSmallBeforeParameter {
+            get {
+                return ResourceManager.GetString("ExponentTooLargeOrSmallBeforeParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An exponent is too large or small. Maximum/minimum size is ±307..
+        /// </summary>
+        public static string ExponentTooLargeOrSmallDefault {
+            get {
+                return ResourceManager.GetString("ExponentTooLargeOrSmallDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  is not valid..
         /// </summary>
         public static string FactorialWasNotAnIntegerAfterParameter {
@@ -70,7 +124,7 @@ namespace EquationElements {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Factorials must be integers of 1 or more. .
+        ///   Looks up a localized string similar to Factorial can only be performed on integers, 1 or more. .
         /// </summary>
         public static string FactorialWasNotAnIntegerBeforeParameter {
             get {
@@ -79,7 +133,7 @@ namespace EquationElements {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Factorials must be integers of 1 or more..
+        ///   Looks up a localized string similar to Factorial can only be performed on integers, 1 or more..
         /// </summary>
         public static string FactorialWasNotAnIntegerDefault {
             get {

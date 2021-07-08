@@ -15,7 +15,7 @@ namespace UnitTests
                 {
                     null,
                     null,
-                    BuilderExceptionMessages.NoEquation
+                    BuilderExceptionMessages.NoEquationDefault
                 });
         }
 
@@ -27,7 +27,7 @@ namespace UnitTests
                 {
                     "",
                     null,
-                    BuilderExceptionMessages.NoEquation
+                    BuilderExceptionMessages.NoEquationDefault
                 });
         }
     }

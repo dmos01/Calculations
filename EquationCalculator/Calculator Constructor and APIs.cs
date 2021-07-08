@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using EquationElements;
 using static EquationElements.Utils;
 
@@ -8,9 +9,9 @@ namespace EquationCalculator
     public partial class Calculator
     {
         /// <summary>
-        ///     String.Join of the elements passed in when instantiated.
+        ///     String.Join() of the elements passed in when instantiated.
         /// </summary>
-        public string ExpandedEquation { get; }
+        public string Equation { get; }
 
         /// <summary>
         ///     <para>True if the RandomFunction was found when running; otherwise false.</para>
@@ -29,11 +30,11 @@ namespace EquationCalculator
         /// </param>
         public Calculator(ICollection<BaseElement> elements)
         {
-            ThrowExceptionIfNullOrEmpty(elements, nameof(elements));
-            if (elements.Count == 0)
-                throw new ArgumentOutOfRangeException();
+            if (elements?.First() is null)
+                throw new ArgumentException(CalculatorExceptionMessages.NoEquationDefault);
+
             readOnlyElements = (IReadOnlyCollection<BaseElement>) elements;
-            ExpandedEquation = string.Join(null, readOnlyElements);
+            Equation = string.Join(null, readOnlyElements);
             ContainsRandom = false;
             mostRecentAnswer = null;
         }

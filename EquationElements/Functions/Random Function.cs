@@ -5,7 +5,7 @@ namespace EquationElements.Functions
     /// <summary>
     ///     Works with integers only.
     /// </summary>
-    public class RandomFunction : TwoArgumentElement, IFunction
+    public class RandomFunction : TwoArgumentFunction
     {
         readonly Random rand;
 
