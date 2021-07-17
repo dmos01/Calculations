@@ -88,7 +88,7 @@ namespace EquationElements {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  is too large or small. Maximum/minimum size is ±307..
+        ///   Looks up a localized string similar to  is too large or small. (Max size is ±307.).
         /// </summary>
         public static string ExponentTooLargeOrSmallAfterParameter {
             get {
@@ -106,7 +106,7 @@ namespace EquationElements {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An exponent is too large or small. Maximum/minimum size is ±307..
+        ///   Looks up a localized string similar to An exponent is too large or small. (Max size is ±307.).
         /// </summary>
         public static string ExponentTooLargeOrSmallDefault {
             get {

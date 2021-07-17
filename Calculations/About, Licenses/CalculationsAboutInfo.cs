@@ -38,7 +38,7 @@ namespace Calculations
         /// <returns></returns>
         public static string ChangesInThisVersion() =>
             string.Join(Environment.NewLine,
-                "Featured changes in 4.3:",
+                "Featured changes in 4.3 and 4.3.1:",
                 "*Big changes to determining E (*10^ or Eulers), particularly relating to brackets, Constants and Functions.",
                 "*Big changes to validation (tightening some rules and loosening others).",
                 " -Attempts are made to close unclosed brackets.",

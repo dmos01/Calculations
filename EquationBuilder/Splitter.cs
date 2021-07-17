@@ -36,36 +36,37 @@ namespace EquationBuilder
                         continue;
 
                     case UnrecognizedElement _:
-                    {
-                        if (AttemptToRecognize(numbersAndWordsElement.ToString()))
-                            continue;
-
-                        ICollection<BaseElement> numbersAndOther =
-                            SplitIntoNumbersAndOther(numbersAndWordsElement.ToString());
-                        foreach (BaseElement wordOnlyElement in numbersAndOther)
                         {
-                            switch (wordOnlyElement)
+                            if (AttemptToRecognize(numbersAndWordsElement.ToString()))
+                                continue;
+
+                            ICollection<BaseElement> numbersAndOther =
+                                SplitIntoNumbersAndOther(numbersAndWordsElement.ToString());
+                            foreach (BaseElement wordOnlyElement in numbersAndOther)
                             {
-                                case Constant constant:
-                                    ExpandAndAddConstant(constant);
-                                    continue;
+                                switch (wordOnlyElement)
+                                {
+                                    case Constant constant:
+                                        ExpandAndAddConstant(constant);
+                                        continue;
 
-                                case UnrecognizedElement unrecognized:
-                                    if (!AttemptToRecognize(wordOnlyElement.ToString()))
-                                    {
-                                        unrecognized.OuterNumbersAndWordsElement = numbersAndWordsElement.ToString();
-                                        splitterOutput.AddLast(unrecognized);
-                                    }
-                                    continue;
+                                    case UnrecognizedElement unrecognized:
+                                        if (!AttemptToRecognize(wordOnlyElement.ToString()))
+                                        {
+                                            unrecognized.OuterNumbersAndWordsElement = numbersAndWordsElement.ToString();
+                                            splitterOutput.AddLast(unrecognized);
+                                        }
 
-                                default:
-                                    splitterOutput.AddLast(wordOnlyElement);
-                                    continue;
+                                        continue;
+
+                                    default:
+                                        splitterOutput.AddLast(wordOnlyElement);
+                                        continue;
+                                }
                             }
-                        }
 
-                        continue;
-                    }
+                            continue;
+                        }
 
                     default:
                         splitterOutput.AddLast(numbersAndWordsElement);
@@ -126,29 +127,29 @@ namespace EquationBuilder
                     case DecimalPoint _ when containsDecimalPoint:
                         throw new Exception(BuilderExceptionMessages.DecimalPointDefault);
                     case DecimalPoint _:
-                    {
-                        containsDecimalPoint = true;
+                        {
+                            containsDecimalPoint = true;
 
-                        if (elementBeingBuilt.Length == 0)
-                        {
-                            elementBeingBuilt.Append(NumberRepresentations.ZeroSymbol);
-                            elementBeingBuilt.Append(character);
-                            buildingNumber = true;
-                        }
-                        else if (buildingNumber)
-                        {
-                            elementBeingBuilt.Append(character);
-                        }
-                        else
-                        {
-                            numbersAndOther.Add(elementBuilder.CreateElement(elementBeingBuilt.ToString()));
-                            elementBeingBuilt.Clear();
-                            elementBeingBuilt.Append(character);
-                            buildingNumber = true;
-                        }
+                            if (elementBeingBuilt.Length == 0)
+                            {
+                                elementBeingBuilt.Append(NumberRepresentations.ZeroSymbol);
+                                elementBeingBuilt.Append(character);
+                                buildingNumber = true;
+                            }
+                            else if (buildingNumber)
+                            {
+                                elementBeingBuilt.Append(character);
+                            }
+                            else
+                            {
+                                numbersAndOther.Add(elementBuilder.CreateElement(elementBeingBuilt.ToString()));
+                                elementBeingBuilt.Clear();
+                                elementBeingBuilt.Append(character);
+                                buildingNumber = true;
+                            }
 
-                        break;
-                    }
+                            break;
+                        }
                     case Number _ when elementBeingBuilt.Length == 0:
                         elementBeingBuilt.Append(character);
                         buildingNumber = true;
@@ -163,38 +164,38 @@ namespace EquationBuilder
                         buildingNumber = true;
                         break;
                     case IOperator _:
-                    {
-                        if (elementBeingBuilt.Length != 0)
                         {
-                            numbersAndOther.Add(elementBuilder.CreateElement(elementBeingBuilt.ToString()));
-                            elementBeingBuilt.Clear();
-                            buildingNumber = false;
-                            containsDecimalPoint = false;
-                        }
+                            if (elementBeingBuilt.Length != 0)
+                            {
+                                numbersAndOther.Add(elementBuilder.CreateElement(elementBeingBuilt.ToString()));
+                                elementBeingBuilt.Clear();
+                                buildingNumber = false;
+                                containsDecimalPoint = false;
+                            }
 
-                        numbersAndOther.Add(current);
-                        break;
-                    }
+                            numbersAndOther.Add(current);
+                            break;
+                        }
                     default:
-                    {
-                        if (elementBeingBuilt.Length == 0)
                         {
-                            elementBeingBuilt.Append(character);
-                            buildingNumber = false;
-                        }
-                        else if (buildingNumber)
-                        {
-                            numbersAndOther.Add(elementBuilder.CreateElement(elementBeingBuilt.ToString()));
-                            elementBeingBuilt.Clear();
-                            elementBeingBuilt.Append(character);
-                            buildingNumber = false;
-                            containsDecimalPoint = false;
-                        }
-                        else
-                            elementBeingBuilt.Append(character);
+                            if (elementBeingBuilt.Length == 0)
+                            {
+                                elementBeingBuilt.Append(character);
+                                buildingNumber = false;
+                            }
+                            else if (buildingNumber)
+                            {
+                                numbersAndOther.Add(elementBuilder.CreateElement(elementBeingBuilt.ToString()));
+                                elementBeingBuilt.Clear();
+                                elementBeingBuilt.Append(character);
+                                buildingNumber = false;
+                                containsDecimalPoint = false;
+                            }
+                            else
+                                elementBeingBuilt.Append(character);
 
-                        break;
-                    }
+                            break;
+                        }
                 }
             }
 
@@ -202,7 +203,7 @@ namespace EquationBuilder
                 numbersAndOther.Add(elementBuilder.CreateElement(elementBeingBuilt.ToString()));
             return numbersAndOther;
         }
-        
+
         private bool AttemptToRecognize(string elementAsString)
         {
             //Split by root
@@ -318,9 +319,38 @@ namespace EquationBuilder
             ICollection<BaseElement> expandedConstant =
                 SplitAndValidate.Run(constant.Value, elementBuilder);
 
-            if (expandedConstant.Count == 1)
-                splitterOutput.AddLast(expandedConstant.First());
-            else
+            switch (expandedConstant.Count)
+            {
+                case 0:
+                    return;
+                case 1:
+                    splitterOutput.AddLast(expandedConstant.First());
+                    return;
+            }
+
+            //- Number or 0 - Number on their own.
+            using (IEnumerator<BaseElement> iterator = expandedConstant.GetEnumerator())
+            {
+                iterator.MoveNext();
+                if (iterator.Current is Number first)
+                {
+                    if (first == 0)
+                        iterator.MoveNext();
+                    else
+                    {
+                        AddBetweenBrackets();
+                        return;
+                    }
+                }
+
+                if (iterator.Current is SubtractionOperator && iterator.MoveNext() &&
+                    iterator.Current is Number num && !iterator.MoveNext())
+                    splitterOutput.AddLast(num * -1);
+                else
+                    AddBetweenBrackets();
+            }
+
+            void AddBetweenBrackets()
             {
                 splitterOutput.AddLast(new ParenthesisOpeningBracket());
                 foreach (BaseElement baseElement in expandedConstant)

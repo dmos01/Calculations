@@ -15,7 +15,7 @@ namespace UnitTests
         /// <summary>
         ///     <para>0 = Equation as string.</para>
         ///     <para>1 = Expected answer as Number.</para>
-        ///     <para>2 (optional) = User-defined constants as Dictionary<string, string>.</para>
+        ///     <para>2 (optional) = User-defined constants as Dictionary(string, string).</para>
         /// </summary>
         /// <param name="args"></param>
         public static bool TestBuilderAndCalculator(object[] args)
@@ -136,21 +136,14 @@ namespace UnitTests
 
             for (int i = 1; i < args.Length; i++)
             {
-                if (args[i] == null)
+                switch (args[i])
                 {
-                    if (thrownException is ArgumentNullException)
-                    {
+                    case null when thrownException is ArgumentNullException:
                         Assert.Pass();
                         return;
-                    }
-                }
-                else if (args[i] is string expectedMessage)
-                {
-                    if (thrownException.Message.StartsWith(expectedMessage))
-                    {
+                    case string expectedMessage when thrownException.Message.StartsWith(expectedMessage):
                         Assert.Pass("Correctly threw " + expectedMessage);
                         return;
-                    }
                 }
             }
 

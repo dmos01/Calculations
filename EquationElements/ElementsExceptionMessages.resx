@@ -127,13 +127,13 @@
     <value>An exponent is not an integer.</value>
   </data>
   <data name="ExponentTooLargeOrSmallAfterParameter" xml:space="preserve">
-    <value> is too large or small. Maximum/minimum size is ±307.</value>
+    <value> is too large or small. (Max size is ±307.)</value>
   </data>
   <data name="ExponentTooLargeOrSmallBeforeParameter" xml:space="preserve">
     <value>The exponent </value>
   </data>
   <data name="ExponentTooLargeOrSmallDefault" xml:space="preserve">
-    <value>An exponent is too large or small. Maximum/minimum size is ±307.</value>
+    <value>An exponent is too large or small. (Max size is ±307.)</value>
   </data>
   <data name="FactorialWasNotAnIntegerAfterParameter" xml:space="preserve">
     <value> is not valid.</value>

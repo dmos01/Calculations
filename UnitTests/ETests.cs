@@ -36,7 +36,7 @@ namespace UnitTests
             },
             new object[]
             {
-                "23E23E23", BuilderExceptionMessages.UndeterminedUseOfEDefault,
+                "23E23E23", BuilderExceptionMessages.InvalidUseOfExponentEDefault,
                 ElementsExceptionMessages.ExponentIsNotIntegerDefault,
                 ElementsExceptionMessages.ExponentIsNotIntegerBeforeParameter
             },
@@ -44,6 +44,10 @@ namespace UnitTests
             {
                 "5E+E", ElementsExceptionMessages.ExponentIsNotIntegerDefault,
                 ElementsExceptionMessages.ExponentIsNotIntegerBeforeParameter
+            },
+            new object[]
+            {
+                "5EAbs(5)", BuilderExceptionMessages.InvalidUseOfExponentEDefault
             }
         };
 
@@ -86,7 +90,7 @@ namespace UnitTests
             new object[] {"EE5", new Number(Math.E * Math.Pow(10, 5))},
             new object[] {"E*E5", new Number(Math.E * Math.E * 5)},
             new object[] {"5EE", new Number(5 * Math.E * Math.E)},
-            new object[] {"EEE", new Number(Math.E * Math.E * Math.E)}
+            new object[] {"EEE", new Number(Math.E * Math.E * Math.E)},
         };
 
         [Test]

@@ -151,7 +151,6 @@ namespace Calculations
         ///     Items are being displayed in lstHistory in reverse-order so, when referencing items in the HistoryController, find
         ///     the "proper-order" index.
         /// </summary>
-        /// <param name="index"></param>
         /// <returns></returns>
         public int GetReverseOfSelectedIndex() => Math.Abs(lstHistory.SelectedIndex - lstHistory.Items.Count + 1);
 

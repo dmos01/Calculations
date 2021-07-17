@@ -64,7 +64,11 @@ namespace UnitTests
             new object[] {"1--2", new Number(1+2)},
             new object[] {"(-sin1)", new Number(0-Math.Sin(1))},
             new object[] {"(--sin1)", new Number(Math.Sin(1))},
-            new object[] {"(-+sin1)", new Number(0-Math.Sin(1))}
+            new object[] {"(-+sin1)", new Number(0-Math.Sin(1))},
+            new object[] {"--sin1", new Number(Math.Sin(1))},
+            new object[] {"-+sin1", new Number(0-Math.Sin(1))},
+            new object[] {"--sin-1", new Number(Math.Sin(-1))},
+            new object[] {"-+sin-1", new Number(0-Math.Sin(-1))}
         };
 
 

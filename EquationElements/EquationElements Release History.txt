@@ -12,6 +12,7 @@ Version 1.2.0, 8 July 2021:
 
 Version 1.1.1, 22 June 2021:
 *Minor improvements.
+*XML comments use "; otherwise" instead of ". Otherwise,".
 
 Version 1.1.0, 14 June 2021:
 *Number's string constructor tests for only spaces.

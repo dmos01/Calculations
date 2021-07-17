@@ -27,7 +27,6 @@ namespace EquationElements
         /// <summary>
         ///     Throws ArgumentNullException if toCheck is null.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="toCheck"></param>
         /// <param name="nameofToCheck">nameof(toCheck) because this method won't know the original variable name.</param>
         // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Global

@@ -5,15 +5,15 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
-    <Version>4.3.0</Version>
+    <Version>4.3.1</Version>
     <Authors>Daniel Spencer</Authors>
     <Product>Calculations</Product>
     <StartupObject>Calculations.App</StartupObject>
     <Nullable>annotations</Nullable>
     <AssemblyName>Calculations</AssemblyName>
     <RootNamespace>Calculations</RootNamespace>
-    <AssemblyVersion>4.3.0.4</AssemblyVersion>
-    <FileVersion>4.3.0.4</FileVersion>
+    <AssemblyVersion>4.3.1.5</AssemblyVersion>
+    <FileVersion>4.3.1.5</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

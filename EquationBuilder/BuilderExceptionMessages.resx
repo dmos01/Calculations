@@ -210,6 +210,9 @@
   <data name="InvalidOperatorOrderDefault" xml:space="preserve">
     <value>There are two operators in a row which cannot go together.</value>
   </data>
+  <data name="InvalidUseOfExponentEDefault" xml:space="preserve">
+    <value>Cannot determine whether an 'E' is *10^ or 2.718.</value>
+  </data>
   <data name="LastElementInvalidAfterParameter" xml:space="preserve">
     <value> cannot be last.</value>
   </data>
@@ -265,7 +268,7 @@
     <value>Functions must be followed by an opening bracket.</value>
   </data>
   <data name="UndeterminedUseOfEDefault" xml:space="preserve">
-    <value>Cannot determine whether an 'E' is *10^ or Euler's Number (2.718 to 3dp).</value>
+    <value>Cannot determine whether an 'E' is *10^ or 2.718.</value>
   </data>
   <data name="UnidentifiableElementAfterParameter" xml:space="preserve">
     <value>". An operator may be missing between two words or a word and number.</value>

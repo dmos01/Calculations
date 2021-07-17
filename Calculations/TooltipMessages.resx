@@ -119,10 +119,10 @@
   </resheader>
   <data name="AbsoluteMain" xml:space="preserve">
     <value>If the number is negative, remove the negative sign.
-Format: Absolute(Number)</value>
+Format: Absolute Number</value>
   </data>
   <data name="ACos" xml:space="preserve">
-    <value>Format: ACos(Number)</value>
+    <value>Format: ACos Number</value>
   </data>
   <data name="AlsoAllowedAfterParameter" xml:space="preserve">
     <value>" is also allowed.)</value>
@@ -131,20 +131,20 @@ Format: Absolute(Number)</value>
     <value>("</value>
   </data>
   <data name="ASin" xml:space="preserve">
-    <value>Format: ASin(Number)</value>
+    <value>Format: ASin Number</value>
   </data>
   <data name="ATan" xml:space="preserve">
-    <value>Format: ATan(Number)</value>
+    <value>Format: ATan Number</value>
   </data>
   <data name="Ceiling" xml:space="preserve">
     <value>Rounds up to the nearest integer.
-Format: Ceiling(Number)</value>
+Format: Ceiling Number</value>
   </data>
   <data name="Cos" xml:space="preserve">
-    <value>Format: Cos(Number)</value>
+    <value>Format: Cos Number</value>
   </data>
   <data name="Cosh" xml:space="preserve">
-    <value>Format: Cosh(Number)</value>
+    <value>Format: Cosh Number</value>
   </data>
   <data name="Divide" xml:space="preserve">
     <value>Divided by</value>
@@ -155,16 +155,16 @@ Format: Ceiling(Number)</value>
   <data name="EvenRound" xml:space="preserve">
     <value>Rounds to the nearest integer.
 (When .5, whichever is even.)
-Format: Even Round(Number)</value>
+Format: EvenRound Number</value>
   </data>
   <data name="FactorialMain" xml:space="preserve">
     <value>Multiplies all the integers between
 1 and this integer together.
-Format: Integer Factorial</value>
+Format: Number Factorial</value>
   </data>
   <data name="Floor" xml:space="preserve">
     <value>Rounds down to the nearest integer.
-Format: Floor(Number)</value>
+Format: Floor Number</value>
   </data>
   <data name="InsertHistoryAnswer" xml:space="preserve">
     <value>Insert the selected answer into
@@ -176,7 +176,7 @@ calculation at the cursor (surrounded by brackets).</value>
   </data>
   <data name="Ln" xml:space="preserve">
     <value>Natural Log (Base E).
-Format: Ln(Number)</value>
+Format: Ln Number</value>
   </data>
   <data name="Log" xml:space="preserve">
     <value>Format: Log(Base , Number)
@@ -207,25 +207,25 @@ E.g. 3√8 = 2</value>
   </data>
   <data name="Round" xml:space="preserve">
     <value>Rounds to the nearest integer.
-Format: Round(Number)</value>
+Format: Round Number</value>
   </data>
   <data name="Sin" xml:space="preserve">
-    <value>Format: Sin(Number)</value>
+    <value>Format: Sin Number</value>
   </data>
   <data name="Sinh" xml:space="preserve">
-    <value>Format: Sinh(Number)</value>
+    <value>Format: Sinh Number</value>
   </data>
   <data name="Tan" xml:space="preserve">
-    <value>Format: Tan(Number)</value>
+    <value>Format: Tan Number</value>
   </data>
   <data name="Tanh" xml:space="preserve">
-    <value>Format: Tanh(Number)</value>
+    <value>Format: Tanh Number</value>
   </data>
   <data name="Times" xml:space="preserve">
     <value>Multiplied by</value>
   </data>
   <data name="Truncate" xml:space="preserve">
     <value>Removes the decimal part of the number.
-Format: Truncate(Number)</value>
+Format: Truncate Number</value>
   </data>
 </root>

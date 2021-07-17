@@ -62,7 +62,7 @@ namespace Calculations {
         
         /// <summary>
         ///   Looks up a localized string similar to If the number is negative, remove the negative sign.
-        ///Format: Absolute(Number).
+        ///Format: Absolute Number.
         /// </summary>
         internal static string AbsoluteMain {
             get {
@@ -71,7 +71,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Format: ACos(Number).
+        ///   Looks up a localized string similar to Format: ACos Number.
         /// </summary>
         internal static string ACos {
             get {
@@ -98,7 +98,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Format: ASin(Number).
+        ///   Looks up a localized string similar to Format: ASin Number.
         /// </summary>
         internal static string ASin {
             get {
@@ -107,7 +107,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Format: ATan(Number).
+        ///   Looks up a localized string similar to Format: ATan Number.
         /// </summary>
         internal static string ATan {
             get {
@@ -117,7 +117,7 @@ namespace Calculations {
         
         /// <summary>
         ///   Looks up a localized string similar to Rounds up to the nearest integer.
-        ///Format: Ceiling(Number).
+        ///Format: Ceiling Number.
         /// </summary>
         internal static string Ceiling {
             get {
@@ -126,7 +126,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Format: Cos(Number).
+        ///   Looks up a localized string similar to Format: Cos Number.
         /// </summary>
         internal static string Cos {
             get {
@@ -135,7 +135,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Format: Cosh(Number).
+        ///   Looks up a localized string similar to Format: Cosh Number.
         /// </summary>
         internal static string Cosh {
             get {
@@ -164,7 +164,7 @@ namespace Calculations {
         /// <summary>
         ///   Looks up a localized string similar to Rounds to the nearest integer.
         ///(When .5, whichever is even.)
-        ///Format: Even Round(Number).
+        ///Format: EvenRound Number.
         /// </summary>
         internal static string EvenRound {
             get {
@@ -175,7 +175,7 @@ namespace Calculations {
         /// <summary>
         ///   Looks up a localized string similar to Multiplies all the integers between
         ///1 and this integer together.
-        ///Format: Integer Factorial.
+        ///Format: Number Factorial.
         /// </summary>
         internal static string FactorialMain {
             get {
@@ -185,7 +185,7 @@ namespace Calculations {
         
         /// <summary>
         ///   Looks up a localized string similar to Rounds down to the nearest integer.
-        ///Format: Floor(Number).
+        ///Format: Floor Number.
         /// </summary>
         internal static string Floor {
             get {
@@ -215,7 +215,7 @@ namespace Calculations {
         
         /// <summary>
         ///   Looks up a localized string similar to Natural Log (Base E).
-        ///Format: Ln(Number).
+        ///Format: Ln Number.
         /// </summary>
         internal static string Ln {
             get {
@@ -294,7 +294,7 @@ namespace Calculations {
         
         /// <summary>
         ///   Looks up a localized string similar to Rounds to the nearest integer.
-        ///Format: Round(Number).
+        ///Format: Round Number.
         /// </summary>
         internal static string Round {
             get {
@@ -303,7 +303,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Format: Sin(Number).
+        ///   Looks up a localized string similar to Format: Sin Number.
         /// </summary>
         internal static string Sin {
             get {
@@ -312,7 +312,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Format: Sinh(Number).
+        ///   Looks up a localized string similar to Format: Sinh Number.
         /// </summary>
         internal static string Sinh {
             get {
@@ -321,7 +321,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Format: Tan(Number).
+        ///   Looks up a localized string similar to Format: Tan Number.
         /// </summary>
         internal static string Tan {
             get {
@@ -330,7 +330,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Format: Tanh(Number).
+        ///   Looks up a localized string similar to Format: Tanh Number.
         /// </summary>
         internal static string Tanh {
             get {
@@ -349,7 +349,7 @@ namespace Calculations {
         
         /// <summary>
         ///   Looks up a localized string similar to Removes the decimal part of the number.
-        ///Format: Truncate(Number).
+        ///Format: Truncate Number.
         /// </summary>
         internal static string Truncate {
             get {

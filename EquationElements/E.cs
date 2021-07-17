@@ -24,7 +24,7 @@ namespace EquationElements
                 throw new ArgumentException(ElementsExceptionMessages.ExponentTooLargeOrSmallBeforeParameter +
                                             power +
                                             ElementsExceptionMessages.ExponentTooLargeOrSmallAfterParameter);
-            
+
             return asInteger;
         }
     }

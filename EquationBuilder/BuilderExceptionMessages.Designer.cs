@@ -340,6 +340,15 @@ namespace EquationBuilder {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot determine whether an &apos;E&apos; is *10^ or 2.718..
+        /// </summary>
+        public static string InvalidUseOfExponentEDefault {
+            get {
+                return ResourceManager.GetString("InvalidUseOfExponentEDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  cannot be last..
         /// </summary>
         public static string LastElementInvalidAfterParameter {
@@ -502,7 +511,7 @@ namespace EquationBuilder {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot determine whether an &apos;E&apos; is *10^ or Euler&apos;s Number (2.718 to 3dp)..
+        ///   Looks up a localized string similar to Cannot determine whether an &apos;E&apos; is *10^ or 2.718..
         /// </summary>
         public static string UndeterminedUseOfEDefault {
             get {

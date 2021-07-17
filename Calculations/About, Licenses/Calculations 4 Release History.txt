@@ -4,10 +4,13 @@ Known bugs:
 *"root", "mod" or "e", next to a digit may cause error or wrong answer. 
 *"23mode24" with Constants 3mod = 6 and e24 = 4 calculates as 23%4 not 6*4.
 
+Version 4.3.1, 17 July 2021:
+*EquationBuilder 1.2.1.
 
 Version 4.3, 8 July 2021:
 *Tooltip resources now span multiple lines rather than being spread across multiple strings.
 *EquationBuilder 1.2.0, EquationCalculator 1.1.0, EquationElements 1.2.0 and UnitTests 1.1.0.
+(Decided to keep brackets on One-Argument Function buttons for clarity of which side the argument goes on.)
 
 
 Version 4.2, 22 June 2021:

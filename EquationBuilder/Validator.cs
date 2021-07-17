@@ -20,8 +20,7 @@ namespace EquationBuilder
         private ElementBuilder elementBuilder { get; }
 
         /// <summary>
-        ///     Validates the order of elements, expands Constants, adds implied multiplication operators and replaces E as Euler's
-        ///     Number with a Number. Returns the expanded list. Will throw exceptions if the order of elements is valid.
+        ///     Validates the order of elements, expands Constants, adds implied multiplication operators and replaces E where possible. Returns the expanded list. Will throw exceptions if the order of elements is valid.
         /// </summary>
         /// <param name="elementsList"></param>
         /// <param name="castUnrecognizedElementsAsVariables">
@@ -205,272 +204,6 @@ namespace EquationBuilder
             insideTwoArgFunction = false;
         }
 
-        private void HandleE(E e)
-        {
-            switch (previous)
-            {
-                //Potentially from one-Element Constant. Multiple-Element Constants will jump to ClosingBracket.
-                case Number _base:
-                    //NumberENumber? or NumberE±Number? or NumberEAbsNumber?.Combine into a single number if ? is not E.
-                    switch (next)
-                    {
-                        case Number _ when nextNode.Next?.Value is E:
-                            throw new Exception(BuilderExceptionMessages.UndeterminedUseOfEDefault);
-                        case Number exp:
-                            Combine(exp, false);
-                            return;
-
-                        case AdditionOperator _ when nextNode.Next?.Value is Number exp:
-                            if (nextNode.Next.Next?.Value is E)
-                                throw new Exception(ElementsExceptionMessages.ExponentIsNotIntegerBeforeParameter + e +
-                                                    ElementsExceptionMessages.ExponentIsNotIntegerAfterParameter);
-                            else
-                                Combine(exp, true);
-                            return;
-
-                        case SubtractionOperator _
-                            when nextNode.Next?.Value is Number exp:
-                            if (nextNode.Next.Next?.Value is E)
-                                throw new Exception(ElementsExceptionMessages.ExponentIsNotIntegerBeforeParameter + e +
-                                                    ElementsExceptionMessages.ExponentIsNotIntegerAfterParameter);
-                            else
-                                Combine(-exp, true);
-                            return;
-
-                        case AbsoluteFunction _
-                            when nextNode.Next?.Value is Number exp:
-                            if (nextNode.Next.Next?.Value is E)
-                                throw new Exception(ElementsExceptionMessages.ExponentIsNotIntegerBeforeParameter + e +
-                                                    ElementsExceptionMessages.ExponentIsNotIntegerAfterParameter);
-                            else
-                            {
-                                int absExp = Math.Abs(E.TestPower(exp));
-                                Combine(new Number(absExp), true);
-                                return;
-                            }
-                    }
-
-                    break; //Else depends on next.
-
-                    void Combine(Number exponent, bool operatorBetween)
-                    {
-                        E.TestPower(exponent);
-                        previousNode.Value = new Number(_base + e.ToString() + exponent);
-                        elements.Remove(previousNode.Next); //Old current, E.
-                        if (operatorBetween)
-                            elements.Remove(previousNode.Next); //Old next, operator.
-                        elements.Remove(previousNode.Next); //Old next (or next next), Number exponent.
-                        currentNode = previousNode;
-                        current = currentNode?.Value;
-                        nextNode = currentNode?.Next;
-                        next = nextNode?.Value;
-                        previousNode = currentNode.Previous;
-                        previous = previousNode?.Value;
-                        ValidateNumber();
-                    }
-
-                //Beginning of section.
-                case null:
-                case ArgumentSeparatorOperator _:
-                case OpeningBracket _:
-                case IFunction _: //sinE or roundE must be Eulers.
-                case IOperatorExcludingBrackets _: //-E must be Eulers.
-                    CurrentNodeIsEulersNumber();
-                    return;
-
-                //EE. Eulers cannot be an exponent because it is not an integer, so previous cannot be *10^.
-                case E _:
-                    Retract();
-                    CurrentNodeIsEulersNumber();
-                    return;
-
-                //Shouldn't be *10^ because missed the point. If Eulers, be explicit.
-                case Factorial _:
-                //Could be a Constant made of multiple Elements, see Factorial.
-                //Constants made of a single Element are valid (caught by case Number because no brackets are added around a Constant made of one Element).
-                case ClosingBracket _:
-                    throw new Exception(BuilderExceptionMessages.UndeterminedUseOfEDefault);
-
-                case Word _: //Depends on next.
-                    break;
-
-                default:
-                    return;
-            }
-
-            switch (next)
-            {
-                case Number number:
-                    E.TestPower(number);
-                    return;
-
-                case AdditionOperator _:
-                case SubtractionOperator _:
-                    {
-                        switch (nextNode.Next?.Value)
-                        {
-                            case Number number:
-                                E.TestPower(number);
-                                return;
-
-                            case AbsoluteFunction _:
-                                switch (nextNode.Next.Next?.Value)
-                                {
-                                    case Number exp1:
-                                        try
-                                        {
-                                            E.TestPower(exp1);
-                                            //Leave as E because Exponent E but previous was not number.
-                                        }
-                                        catch
-                                        {
-                                            CurrentNodeIsEulersNumber();
-                                        }
-
-                                        break;
-                                    case Constant _:
-                                        ExpandConstant(nextNode.Next.Next);
-                                        switch (nextNode.Next.Next.Value)
-                                        {
-                                            case Number n:
-                                                E.TestPower(n);
-                                                break;
-                                            case OpeningBracket _:
-                                                CurrentNodeIsEulersNumber();
-                                                break;
-                                        }
-                                        return;
-
-                                    case Word _:
-                                        break;
-                                    default:
-                                        CurrentNodeIsEulersNumber();
-                                        break;
-                                }
-
-                                return;
-
-                            //+ and - count as Operators.
-                            case OpeningBracket _:
-                            case IFunction _:
-                            case IOperator _:
-                                CurrentNodeIsEulersNumber();
-                                return;
-
-                            case Constant _:
-                                ExpandConstant(nextNode.Next);
-                                switch (nextNode.Next.Value)
-                                {
-                                    case Number n:
-                                        E.TestPower(n);
-                                        break;
-                                    case OpeningBracket _:
-                                        CurrentNodeIsEulersNumber();
-                                        break;
-                                }
-                                return;
-
-                            case Word _:
-                                return;
-
-                            case E _:
-                                throw new ArgumentException(ElementsExceptionMessages.ExponentIsNotIntegerBeforeParameter +
-                                                            nextNode.Next.Value + ElementsExceptionMessages
-                                                                .ExponentIsNotIntegerAfterParameter);
-                        }
-
-                        return;
-                    }
-
-                case Constant _:
-                    ExpandConstant(nextNode);
-                    switch (nextNode.Value)
-                    {
-                        case Number n:
-                            E.TestPower(n);
-                            break;
-                        case OpeningBracket _:
-                            //Shouldn't be *10^ because missed the point. If Eulers, be explicit.
-                            throw new Exception(BuilderExceptionMessages.UndeterminedUseOfEDefault);
-                    }
-
-                    return;
-
-                case Word _:
-                    return;
-
-                case AbsoluteFunction _:
-                    switch (nextNode.Next?.Value)
-                    {
-                        case Number exp2:
-                            try
-                            {
-                                E.TestPower(exp2);
-                                //Leave as E because Exponent E but previous was not number.
-                            }
-                            catch
-                            {
-                                CurrentNodeIsEulersNumber();
-                            }
-
-                            break;
-
-                        case Constant _:
-                            ExpandConstant(nextNode.Next);
-                            switch (nextNode.Next.Value)
-                            {
-                                case Number n:
-                                    E.TestPower(n);
-                                    break;
-                                case OpeningBracket _:
-                                    //Shouldn't be *10^ because missed the point. If Eulers, be explicit.
-                                    throw new Exception(BuilderExceptionMessages.UndeterminedUseOfEDefault);
-                            }
-
-                            return;
-
-                        case Word _:
-                            return;
-                        default:
-                            CurrentNodeIsEulersNumber();
-                            break;
-                    }
-
-                    return;
-
-                //End of section.
-                case null:
-                case ArgumentSeparatorOperator _:
-                case ClosingBracket _:
-                //EE. Eulers cannot be an exponent because it is not an integer, so current cannot be *10^.
-                case E _:
-                //Cannot be exponent E unless Addition or Subtraction (handled above).
-                case IOperatorExcludingBrackets _:
-                    CurrentNodeIsEulersNumber();
-                    return;
-
-                //Shouldn't be *10^ because missed the point. If Eulers, be explicit.
-                case OpeningBracket _:
-                case IFunction _:
-                    throw new Exception(BuilderExceptionMessages.UndeterminedUseOfEDefault);
-
-                case Factorial _: //Factorial must be proceeded by an integer, which Eulers is not.
-                    throw new Exception(BuilderExceptionMessages.FactorialWasNotAnIntegerBeforeParameter + current +
-                                        BuilderExceptionMessages.FactorialWasNotAnIntegerAfterParameter);
-
-                default:
-                    throw new Exception(BuilderExceptionMessages.InvalidElementAfterEBeforeParameter + next +
-                                        BuilderExceptionMessages.InvalidElementAfterEAfterParameter);
-            }
-        }
-
-        private void CurrentNodeIsEulersNumber()
-        {
-            currentNode.Value = new Number(Math.E);
-            current = currentNode.Value;
-            ValidateNumber();
-        }
-
         private void ValidateFactorial()
         {
             switch (previous)
@@ -542,11 +275,33 @@ namespace EquationBuilder
                 case OpeningBracket _:
                 case Word _:
                     break;
+                case SubtractionOperator _:
+                    CombineSubtractionOperatorAndNumber(nextNode);
+                    break;
                 default:
                     throw new Exception(
                         BuilderExceptionMessages.OneArgFunctionNotFollowedByValidElementBeforeParameters + current +
                         BuilderExceptionMessages.OneArgFunctionNotFollowedByValidElementBetweenParameters + next +
                         BuilderExceptionMessages.OneArgFunctionNotFollowedByValidElementAfterParameters);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="subtractionOperatorNode">Must be nextNode or later.</param>
+        private void CombineSubtractionOperatorAndNumber(LinkedListNode<BaseElement> subtractionOperatorNode)
+        {
+            switch (subtractionOperatorNode.Next?.Value)
+            {
+                case Number number:
+                    subtractionOperatorNode.Value = number * -1;
+                    elements.Remove(subtractionOperatorNode.Next);
+                    break;
+                case Word _:
+                    break;
+                default:
+                    throw new Exception();
             }
         }
 
@@ -620,7 +375,6 @@ namespace EquationBuilder
                     else if (next is SubtractionOperator && nextNode.Next?.Value is IFunction)
                         elements.AddBefore(nextNode, new Number(0));
                 }
-
             }
             else if (previous is OpeningBracket && next is IFunction)
             {
@@ -631,37 +385,33 @@ namespace EquationBuilder
 
             bool HandlePlusMinusCombination()
             {
-                if (previous is SubtractionOperator)
+                switch (previous)
                 {
-                    currentNode.Value = new AdditionOperator();
-                    elements.Remove(previousNode);
-                    Retract();
-                    return true;
+                    case SubtractionOperator _:
+                        currentNode.Value = new AdditionOperator();
+                        elements.Remove(previousNode);
+                        Retract();
+                        return true;
+                    case AdditionOperator _:
+                        elements.Remove(previousNode);
+                        Retract();
+                        return true;
                 }
 
-                if (previous is AdditionOperator)
+                switch (next)
                 {
-                    elements.Remove(previousNode);
-                    Retract();
-                    return true;
+                    case SubtractionOperator _:
+                        currentNode.Value = new AdditionOperator();
+                        elements.Remove(nextNode);
+                        Retract();
+                        return true;
+                    case AdditionOperator _:
+                        elements.Remove(nextNode);
+                        Retract();
+                        return true;
+                    default:
+                        return false;
                 }
-
-                if (next is SubtractionOperator)
-                {
-                    currentNode.Value = new AdditionOperator();
-                    elements.Remove(nextNode);
-                    Retract();
-                    return true;
-                }
-
-                if (next is AdditionOperator)
-                {
-                    elements.Remove(nextNode);
-                    Retract();
-                    return true;
-                }
-
-                return false;
             }
         }
 
@@ -688,11 +438,38 @@ namespace EquationBuilder
             string constantValue = ((Constant)nodeWithConstant.Value).Value;
             ICollection<BaseElement> expandedConstant = SplitAndValidate.Run(constantValue, elementBuilder);
 
-            if (expandedConstant.Count == 1)
+            switch (expandedConstant.Count)
             {
-                nodeWithConstant.Value = expandedConstant.First();
+                case 0:
+                    return;
+                case 1:
+                    nodeWithConstant.Value = expandedConstant.First();
+                    return;
             }
-            else
+
+            //- Number or 0 - Number on their own.
+            using (IEnumerator<BaseElement> iterator = expandedConstant.GetEnumerator())
+            {
+                iterator.MoveNext();
+                if (iterator.Current is Number first)
+                {
+                    if (first == 0)
+                        iterator.MoveNext();
+                    else
+                    {
+                        AddBetweenBrackets();
+                        return;
+                    }
+                }
+
+                if (iterator.Current is SubtractionOperator && iterator.MoveNext() &&
+                    iterator.Current is Number num && !iterator.MoveNext())
+                    nodeWithConstant.Value = num * -1;
+                else
+                    AddBetweenBrackets();
+            }
+
+            void AddBetweenBrackets()
             {
                 nodeWithConstant.Value = new ParenthesisOpeningBracket();
                 foreach (BaseElement baseElement in expandedConstant)

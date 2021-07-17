@@ -8,8 +8,6 @@ namespace Calculations
 {
     public partial class MainWindow
     {
-        const int SmallestMinWidth = 407;
-
         private void TabSettings_MouseUp(object sender, MouseButtonEventArgs e)
         {
             txtMainCalculation.Focus();
