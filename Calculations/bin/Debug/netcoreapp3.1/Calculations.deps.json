@@ -6,12 +6,12 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "Calculations/4.3.2": {
+      "Calculations/4.3.2.6": {
         "dependencies": {
           "EquationBuilder": "1.2.2.6",
           "EquationCalculator": "1.1.0.3",
           "EquationElements": "1.3.0.5",
-          "NumberFormats": "1.0.0"
+          "NumberFormats": "1.0.0.1"
         },
         "runtime": {
           "Calculations.dll": {}
@@ -38,7 +38,7 @@
           "EquationElements.dll": {}
         }
       },
-      "NumberFormats/1.0.0": {
+      "NumberFormats/1.0.0.1": {
         "dependencies": {
           "EquationElements": "1.3.0.5"
         },
@@ -49,7 +49,7 @@
     }
   },
   "libraries": {
-    "Calculations/4.3.2": {
+    "Calculations/4.3.2.6": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -69,7 +69,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "NumberFormats/1.0.0": {
+    "NumberFormats/1.0.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
