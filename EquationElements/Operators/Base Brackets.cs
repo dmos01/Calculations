@@ -8,36 +8,43 @@ namespace EquationElements.Operators
     public abstract class Bracket : BaseElement, IOperator
     {
         /// <summary>
-        ///     If this is an OpeningBracket, get the Type of the equivalent ClosingBracket, or vice-versa.
+        ///    Get the Type of the equivalent and opposite bracket.
         /// </summary>
         /// <returns></returns>
         public abstract Type GetReverseType();
 
         /// <summary>
-        ///     If this is an OpeningBracket, get the ToString() of the equivalent ClosingBracket, or vice-versa.
+        ///     Get the ToString() of the equivalent and opposite bracket.
         /// </summary>
         /// <returns></returns>
         public abstract string GetReverseSymbol();
 
         /// <summary>
         ///     <para>
-        ///         Returns true if Bracket b is the equivalent opposite of this object. (ClosingBracket if this is an
-        ///         OpeningBracket, OpeningBracket if this is a ClosingBracket.)
+        ///         Returns true if type is the equivalent and opposite of this bracket.
         ///     </para>
-        ///     <para>Returns false if b is null.</para>
+        ///     <para>Returns false if type is null.</para>
         /// </summary>
         /// <returns></returns>
-        public virtual bool IsReverseOf(Bracket b)
+        public virtual bool IsReverseOf(Type type)
         {
-            if (b is null)
+            if (type is null)
                 return false;
 
-            return GetReverseType() == b.GetType();
+            return GetReverseType() == type;
         }
 
         /// <summary>
-        ///     Returns true if the character is the ToString() equivalent opposite of this object. (ClosingBracket if this is an
-        ///     OpeningBracket, OpeningBracket if this is a ClosingBracket.)
+        ///     <para>
+        ///         Returns true if bracket is the equivalent and opposite of this bracket.
+        ///     </para>
+        ///     <para>Returns false if bracket is null.</para>
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool IsReverseOf(Bracket bracket) => IsReverseOf(bracket.GetType());
+
+        /// <summary>
+        ///     Returns true if character is the ToString() equivalent and opposite of this bracket.
         /// </summary>
         /// <returns></returns>
         public virtual bool IsReverseOf(char character) =>
@@ -45,8 +52,7 @@ namespace EquationElements.Operators
 
         /// <summary>
         ///     <para>
-        ///         Returns true if str is the ToString() equivalent opposite of this object. (ClosingBracket if this is an
-        ///         OpeningBracket, OpeningBracket if this is a ClosingBracket.)
+        ///         Returns true if str is the ToString() equivalent and opposite of this bracket.
         ///     </para>
         ///     <para>Returns false if str is null.</para>
         /// </summary>

@@ -20,7 +20,7 @@ namespace EquationBuilder
         private ElementBuilder elementBuilder { get; }
 
         /// <summary>
-        ///     Validates the order of elements, expands Constants, adds implied multiplication operators and replaces E where possible. Returns the expanded list. Will throw exceptions if the order of elements is valid.
+        ///     Validates the order of elements, expands Constants, adds implied operators and brackets, and replaces E where possible. Returns the expanded list. Will throw exceptions if the order of elements is valid.
         /// </summary>
         /// <param name="elementsList"></param>
         /// <param name="castUnrecognizedElementsAsVariables">
@@ -276,32 +276,57 @@ namespace EquationBuilder
                 case Word _:
                     break;
                 case SubtractionOperator _:
-                    CombineSubtractionOperatorAndNumber(nextNode);
+                    switch (nextNode.Next?.Value)
+                    {
+                        case Number number:
+                            nextNode.Value = number * -1;
+                            elements.Remove(nextNode.Next);
+                            break;
+                        
+                        case OpeningBracket _: //sin-( where current is sin.
+                            
+                            //Start at opening bracket node + 1.
+                            LinkedListNode<BaseElement> _currentNode = nextNode.Next.Next;
+                            elements.AddAfter(currentNode, SplitAndValidate.CreateImpliedOpeningBracket());
+                            nextNode = currentNode.Next;
+                            next = nextNode.Value;
+
+                            //In case further brackets are found, inside the ones to be closed. E.g. sin-((1)+2).
+                            int openingBracketsFound = 0;
+                            while (!(_currentNode is null))
+                            {
+                                switch (_currentNode.Value)
+                                {
+                                    //Add implied closing bracket after the actual closing bracket of the original opening bracket.
+                                    case ClosingBracket _ when openingBracketsFound == 0:
+                                        elements.AddAfter(_currentNode,SplitAndValidate.CreateImpliedClosingBracket());
+                                        return;
+                                    case ClosingBracket _:
+                                        openingBracketsFound--;
+                                        break;
+                                    case OpeningBracket _:
+                                        openingBracketsFound++;
+                                        break;
+                                }
+
+                                _currentNode = _currentNode.Next;
+                            }
+
+                            //Sin-(1 or sin-(6}
+                            throw new Exception(BuilderExceptionMessages.InvalidBracketUseDefault);
+
+                        case Word _:
+                            break;
+                        default:
+                            //Next next cannot be null because - cannot be last.
+                            throw new Exception(BuilderExceptionMessages.OneArgFunctionNotFollowedByValidElementBeforeParameters + current + BuilderExceptionMessages.OneArgFunctionNotFollowedByValidElementBetweenParameters + next + nextNode.Next.Value + BuilderExceptionMessages.OneArgFunctionNotFollowedByValidElementAfterParameters);
+                    }
                     break;
                 default:
                     throw new Exception(
                         BuilderExceptionMessages.OneArgFunctionNotFollowedByValidElementBeforeParameters + current +
                         BuilderExceptionMessages.OneArgFunctionNotFollowedByValidElementBetweenParameters + next +
                         BuilderExceptionMessages.OneArgFunctionNotFollowedByValidElementAfterParameters);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="subtractionOperatorNode">Must be nextNode or later.</param>
-        private void CombineSubtractionOperatorAndNumber(LinkedListNode<BaseElement> subtractionOperatorNode)
-        {
-            switch (subtractionOperatorNode.Next?.Value)
-            {
-                case Number number:
-                    subtractionOperatorNode.Value = number * -1;
-                    elements.Remove(subtractionOperatorNode.Next);
-                    break;
-                case Word _:
-                    break;
-                default:
-                    throw new Exception();
             }
         }
 
@@ -457,7 +482,7 @@ namespace EquationBuilder
                         iterator.MoveNext();
                     else
                     {
-                        AddBetweenBrackets();
+                        AddElementsBetweenBrackets();
                         return;
                     }
                 }
@@ -466,19 +491,19 @@ namespace EquationBuilder
                     iterator.Current is Number num && !iterator.MoveNext())
                     nodeWithConstant.Value = num * -1;
                 else
-                    AddBetweenBrackets();
+                    AddElementsBetweenBrackets();
             }
 
-            void AddBetweenBrackets()
+            void AddElementsBetweenBrackets()
             {
-                nodeWithConstant.Value = new ParenthesisOpeningBracket();
+                nodeWithConstant.Value = SplitAndValidate.CreateImpliedOpeningBracket();
                 foreach (BaseElement baseElement in expandedConstant)
                 {
                     elements.AddAfter(nodeWithConstant, baseElement);
                     nodeWithConstant = nodeWithConstant.Next;
                 }
 
-                elements.AddAfter(nodeWithConstant, new ParenthesisClosingBracket());
+                elements.AddAfter(nodeWithConstant, SplitAndValidate.CreateImpliedClosingBracket());
             }
         }
 

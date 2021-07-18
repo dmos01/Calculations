@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Daniel Spencer</Authors>
-    <Version>1.2.1</Version>
-    <AssemblyVersion>1.2.1.5</AssemblyVersion>
-    <FileVersion>1.2.1.5</FileVersion>
+    <Version>1.2.2.6</Version>
+    <AssemblyVersion>1.2.2.6</AssemblyVersion>
+    <FileVersion>1.2.2.6</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

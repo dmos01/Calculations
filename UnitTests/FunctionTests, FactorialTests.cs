@@ -69,6 +69,7 @@ namespace UnitTests
             new object[] {"sin(50000)", new Number(Math.Sin(50000))},
             new object[] {"sin(0.0005)", new Number(Math.Sin(0.0005))},
             new object[] {"sin(1/2)", new Number(Math.Sin(0.5))},
+            new object[] {"sin-(1+2)", new Number(Math.Sin(-(1 + 2)))},
 
             new object[] {"sin4", new Number(Math.Sin(4))},
             new object[] {"sin-4", new Number(Math.Sin(-4))}

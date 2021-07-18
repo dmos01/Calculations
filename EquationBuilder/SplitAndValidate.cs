@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using EquationElements;
+using EquationElements.Operators;
 
 namespace EquationBuilder
 {
@@ -9,6 +10,12 @@ namespace EquationBuilder
     /// </summary>
     public static class SplitAndValidate
     {
+        //Allows easy changing of the bracket type created.
+        public static OpeningBracket CreateImpliedOpeningBracket() => new SquareOpeningBracket();
+
+        //Allows easy changing of the bracket type created.
+        public static ClosingBracket CreateImpliedClosingBracket() => new SquareClosingBracket();
+        
         /// <summary>
         ///     Splits and validates the equation. Returns true if the equation is valid.
         /// </summary>

@@ -52,7 +52,7 @@ namespace Calculations
                 btnUseSelected.IsEnabled = true;
                 lblMoveDown.IsEnabled = lstHistory.SelectedIndex != (lstHistory.Items.Count - 1);
             }
-            
+
             if (lblMoveUp.IsEnabled)
                 imgMoveUp.Source = new BitmapImage(new Uri("Resources/ArrowUp.png", UriKind.Relative));
             else
@@ -104,7 +104,7 @@ namespace Calculations
             //-moveBy because the items are being displayed in lstHistory in reverse-order, so the item in the HistoryController will need to be moved in the reverse direction to lstHistory.
             History.MoveItem(GetReverseOfSelectedIndex(), -moveBy);
 
-            ListBoxItem toMove = (ListBoxItem)lstHistory.Items[index];
+            ListBoxItem toMove = (ListBoxItem) lstHistory.Items[index];
             lstHistory.Items.RemoveAt(index);
             lstHistory.Items.Insert(index + moveBy, toMove);
             lstHistory.SelectedIndex = index + moveBy;

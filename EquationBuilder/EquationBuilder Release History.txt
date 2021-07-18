@@ -4,10 +4,15 @@ Known bugs:
 "root", "mod" or "e", next to a digit may cause error or wrong answer. 
 "23mode24" with Constants 3mod = 6 and e24 = 4 is built as 23%4 not 6*4.
 
+Version 1.2.2, 18 July 2021:
+*Added SplitAndValidate.CreateImpliedOpeningBracket() and CreateImpliedClosingBracket().
+*Implied brackets are now SquareOpeningBracket and SquareClosingBracket.
+*In Validator's ValidateOneArgFunction(), sin-(1+2) is turned into sin[-(1+2)].
+
 
 Version 1.2.1, 17 July 2021:
 *Improvements and refactoring of HandleE(), particularly around Constants.
-*Bug fix: When expanding Constants made of a single negative Element, do not add surrounding brackets.
+*Bug fix: When expanding Constants made of a single negative Number, do not add surrounding brackets.
 
 
 Version 1.2.0, 8 July 2021:

@@ -8,7 +8,7 @@ namespace EquationElements.Operators
 
         public override Type GetReverseType() => typeof(ParenthesisClosingBracket);
 
-        public override string GetReverseSymbol() => new ParenthesisClosingBracket().ToString();
+        public override string GetReverseSymbol() => OperatorRepresentations.ParenthesisClosingBracketSymbol;
     }
 
     public class CurlyOpeningBracket : OpeningBracket
@@ -17,7 +17,7 @@ namespace EquationElements.Operators
 
         public override Type GetReverseType() => typeof(CurlyClosingBracket);
 
-        public override string GetReverseSymbol() => new CurlyClosingBracket().ToString();
+        public override string GetReverseSymbol() => OperatorRepresentations.CurlyClosingBracketSymbol;
     }
 
     public class SquareOpeningBracket : OpeningBracket
@@ -26,6 +26,6 @@ namespace EquationElements.Operators
 
         public override Type GetReverseType() => typeof(SquareClosingBracket);
 
-        public override string GetReverseSymbol() => new SquareClosingBracket().ToString();
+        public override string GetReverseSymbol() => OperatorRepresentations.SquareClosingBracketSymbol;
     }
 }

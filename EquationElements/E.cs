@@ -12,8 +12,7 @@ namespace EquationElements
         /// Throws an exception if not an integer, or outside the bounds of -MaxAbsoluteExponent and MaxAbsoluteExponent.
         /// </summary>
         /// <param name="power"></param>
-        /// <returns>The power as an integer.</returns>
-        public static int TestPower(Number power)
+        public static void TestPower(Number power)
         {
             if (!int.TryParse(power.ToString(), out int asInteger))
                 throw new ArgumentException(ElementsExceptionMessages.ExponentIsNotIntegerBeforeParameter +
@@ -24,8 +23,6 @@ namespace EquationElements
                 throw new ArgumentException(ElementsExceptionMessages.ExponentTooLargeOrSmallBeforeParameter +
                                             power +
                                             ElementsExceptionMessages.ExponentTooLargeOrSmallAfterParameter);
-
-            return asInteger;
         }
     }
 }

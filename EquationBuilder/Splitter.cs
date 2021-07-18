@@ -338,7 +338,7 @@ namespace EquationBuilder
                         iterator.MoveNext();
                     else
                     {
-                        AddBetweenBrackets();
+                        AddElementsBetweenBrackets();
                         return;
                     }
                 }
@@ -347,15 +347,15 @@ namespace EquationBuilder
                     iterator.Current is Number num && !iterator.MoveNext())
                     splitterOutput.AddLast(num * -1);
                 else
-                    AddBetweenBrackets();
+                    AddElementsBetweenBrackets();
             }
 
-            void AddBetweenBrackets()
+            void AddElementsBetweenBrackets()
             {
-                splitterOutput.AddLast(new ParenthesisOpeningBracket());
+                splitterOutput.AddLast(SplitAndValidate.CreateImpliedOpeningBracket());
                 foreach (BaseElement baseElement in expandedConstant)
                     splitterOutput.AddLast(baseElement);
-                splitterOutput.AddLast(new ParenthesisClosingBracket());
+                splitterOutput.AddLast(SplitAndValidate.CreateImpliedClosingBracket());
             }
         }
     }

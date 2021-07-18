@@ -52,8 +52,8 @@ namespace EquationElements.Functions
         /// <returns></returns>
         public static bool Run(string name, out BaseElement function)
         {
-            if (stringToFunction.TryGetValue(name, out Type value))
-                function = (BaseElement) Activator.CreateInstance(value);
+            if (stringToFunction.TryGetValue(name, out Type type))
+                function = (BaseElement) Activator.CreateInstance(type);
             else
                 function = null;
 

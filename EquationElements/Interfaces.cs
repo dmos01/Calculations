@@ -17,7 +17,7 @@
 
     /// <summary>
     ///     ArgumentSeparatorOperator, DivisionOperator, ModulusOperator, MultiplicationOperator, BaseOpeningBracket,
-    ///     PowerOperator.
+    ///     PowerOperator, IFunction.
     /// </summary>
     public interface IMayPrecedeNegativeNumber { }
 

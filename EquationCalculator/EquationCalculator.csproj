@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Daniel Spencer</Authors>
-    <Version>1.1.0</Version>
+    <Version>1.1.0.3</Version>
     <AssemblyVersion>1.1.0.3</AssemblyVersion>
     <FileVersion>1.1.0.3</FileVersion>
   </PropertyGroup>

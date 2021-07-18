@@ -50,8 +50,8 @@ namespace EquationElements.Operators
         /// <returns></returns>
         public static bool Run(string name, out BaseElement operatorElement)
         {
-            if (stringToOperator.TryGetValue(name, out Type value))
-                operatorElement = (BaseElement) Activator.CreateInstance(value);
+            if (stringToOperator.TryGetValue(name, out Type type))
+                operatorElement = (BaseElement) Activator.CreateInstance(type);
             else
                 operatorElement = null;
 

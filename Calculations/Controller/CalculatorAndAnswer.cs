@@ -19,7 +19,8 @@ namespace Calculations
             public string OriginalEquation { get; }
 
             /// <summary>
-            ///     The equation after Constants expanded, implied multiplication operators added and E as Euler's Number replaced with a Number. Before Variable elements have been replaced, if applicable.
+            ///     The equation after Constants expanded, implied multiplication operators added and E as Euler's Number replaced with
+            ///     a Number. Before Variable elements have been replaced, if applicable.
             /// </summary>
             public string ExpandedEquation => calculator.Equation;
 

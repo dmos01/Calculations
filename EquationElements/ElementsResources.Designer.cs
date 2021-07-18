@@ -133,7 +133,7 @@ namespace EquationElements {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to , released 8 July 2021..
+        ///   Looks up a localized string similar to , released 18 July 2021..
         /// </summary>
         public static string ReleaseDate {
             get {
