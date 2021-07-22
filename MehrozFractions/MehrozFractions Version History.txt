@@ -1,0 +1,46 @@
+﻿By Syed Mehroz Alam
+Changes by Marc C. Brooks, Jeffery Sax and Daniel Spencer
+
+Version 3.0 - Daniel Spencer
+*Seperated into partial files in a .NET Standard 2.0 project
+*Namespace renamed to MehrozFractions
+*New resource file to hold strings
+*m_Numerator and m_Denominator replaced with auto properties
+*Expression bodies used where possible
+*Removed redundant qualifiers, type checks and 'this' keyword
+*Int32 => int and Int64 => long
+*Use of compound assignments (a = a + 1 => a += 1)
+*Switch statements where possible
+
+
+Version 2.3 - Marc C. Brooks
+*Fixed double-to-fraction logic to use continued fraction rules to get best possible precistion [bug fix for Syed Mehroz Alam, idea from  Jeffery Sax]
+*Added static readonly values for NaN, PositiveInfinity, NegativeInfinity [idea from Jeffery Sax]
+*Moved comparisons into an implementation of IComparer [idea from Jeffery Sax]
+*No longer throws for NaN(s) involved in Add, Subtract, Multiply, Divide operations [idea from Jeffery Sax]
+*Added static readonly values for Zero, MinValue, MaxValue, Epsilon to better mirror double
+*Added IsInfinity to better mirror double.
+*Added Modulus and % operators
+
+Version 2.2 - Marc C. Brooks
+*Less overflows by finding the GCD for Add [Jeffery Sax] and Multiply [Marc C. Brooks]
+*Understands and handles NaN, PositiveInfinity, NegativeInfinity just like double [Marc C. Brooks]
+*Fixed several uses of int where long was correct [Marc C. Brooks]
+*Made value-type (struct) [Jeffery Sax]
+*Added ToInt32(), ToInt64() which throw for invalid (NaN, PositiveInfinity, NegativeInfinity) [Marc C. Brooks]
+*Removed redundant Value property [Jeffery Sax]
+*Added explicit conversion to Int32 and Int64 [Marc C. Brooks]
+*Better handling of exceptions [Marc C. Brooks]
+*Reorganize code, add XML doc and regions [Marc C. Brooks]
+*Proper implementations of Equals [Marc C. Brooks, Jeffery Sax]
+*Uses Math.Log(xx,2) and Math.Pow(xx,2) to get the best accuracy possible when converting doubles [Marc C. Brooks, Jeffery Sax]
+
+Version 2.1
+*Overloads user-defined conversions to/from Fractions
+
+Version 2.0:
+*Changed Numerator and Denominator from Int32(integer) to Int64(long) for increased range
+*Renamed ConvertToString() to (overloaded) ToString()
+*Added the capability of detecting/raising overflow exceptions
+*Fixed the bug that very small numbers e.g. 0.00000001 could not be converted to fraction
+*Minor bug fixes
