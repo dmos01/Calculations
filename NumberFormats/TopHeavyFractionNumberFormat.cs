@@ -1,8 +1,6 @@
 ﻿using EquationElements;
 using static NumberFormats.FractionUtils;
 
-#pragma warning disable 162
-
 namespace NumberFormats
 {
     /// <summary>

@@ -21,7 +21,7 @@ namespace EquationElements
                 case Number b:
                     return IsDecimal ? AsDecimal.CompareTo(b.AsDecimal) : AsDouble.CompareTo(b.AsDouble);
                 default:
-                    throw new ArgumentException(ElementsExceptionMessages.NumberCompareFail);
+                    throw new ArgumentOutOfRangeException(null, ElementsExceptionMessages.NumberCompareFail);
             }
         }
 

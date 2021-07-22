@@ -11,8 +11,11 @@ namespace EquationElements
         /// <param name="asString"></param>
         public Number(string asString)
         {
+            if (asString is null)
+                throw new ArgumentNullException(null, ElementsExceptionMessages.StringWasNotANumberDefault);
+
             if (IsNullEmptyOrOnlySpaces(asString))
-                throw new ArgumentException(ElementsExceptionMessages.StringWasNotANumberDefault);
+                throw new ArgumentOutOfRangeException(null, ElementsExceptionMessages.StringWasNotANumberDefault);
 
             if (decimal.TryParse(asString, out decimal dec))
             {
@@ -24,7 +27,7 @@ namespace EquationElements
             {
                 IsDecimal = false;
                 if (double.IsInfinity(dou) || double.IsNaN(dou))
-                    throw new ArgumentException(ElementsExceptionMessages.OverloadedNumberDefault);
+                    throw new ArgumentOutOfRangeException(null, ElementsExceptionMessages.OverloadedNumberDefault);
                 AsDouble = dou;
             }
             else
@@ -64,7 +67,7 @@ namespace EquationElements
         public Number(double asDouble)
         {
             if (double.IsInfinity(asDouble) || double.IsNaN(asDouble))
-                throw new ArgumentException(ElementsExceptionMessages.OverloadedNumberDefault);
+                throw new ArgumentOutOfRangeException(null, ElementsExceptionMessages.OverloadedNumberDefault);
             IsDecimal = false;
             AsDouble = asDouble;
         }

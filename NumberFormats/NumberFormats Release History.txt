@@ -1,6 +1,11 @@
 ﻿Number Formats Release History:
 
-Vesion 1.0.0, 31 May 2021:
+
+Version 1.0.1 - 22 July 2021:
+*Expanded use of exception types.
+
+
+Vesion 1.0.0 - 31 May 2021:
 *Moved here.
 *Broken into several classes as per the Status pattern.
 

@@ -97,15 +97,6 @@ namespace EquationElements {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ..
-        /// </summary>
-        public static string Period {
-            get {
-                return ResourceManager.GetString("Period", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to π.
         /// </summary>
         public static string PiSymbol {
@@ -133,7 +124,7 @@ namespace EquationElements {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to , released 18 July 2021..
+        ///   Looks up a localized string similar to , released 22 July 2021..
         /// </summary>
         public static string ReleaseDate {
             get {

@@ -169,7 +169,7 @@ namespace EquationElements {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tried to create a number is that was too large, small, or not Real..
+        ///   Looks up a localized string similar to Tried to create a number that was too large, too small, or cannot be represented..
         /// </summary>
         public static string OverloadedNumberDefault {
             get {
@@ -210,6 +210,15 @@ namespace EquationElements {
         public static string StringIsNullEmptyOrOnlySpacesAfterParameter {
             get {
                 return ResourceManager.GetString("StringIsNullEmptyOrOnlySpacesAfterParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string StringIsNullEmptyOrOnlySpacesBeforeParameter {
+            get {
+                return ResourceManager.GetString("StringIsNullEmptyOrOnlySpacesBeforeParameter", resourceCulture);
             }
         }
         

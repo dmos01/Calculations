@@ -11,8 +11,9 @@ namespace EquationElements.Functions
         protected override Number PerformOnAfterNullCheck(Number number)
         {
             if (number < 1 || number % 1 != 0)
-                throw new ArgumentException(ElementsExceptionMessages.FactorialWasNotAnIntegerBeforeParameter + number +
-                                            ElementsExceptionMessages.FactorialWasNotAnIntegerAfterParameter);
+                throw new ArgumentOutOfRangeException(null,
+                    ElementsExceptionMessages.FactorialWasNotAnIntegerBeforeParameter + number +
+                    ElementsExceptionMessages.FactorialWasNotAnIntegerAfterParameter);
 
             decimal value = 1;
             for (decimal i = 2; i <= number; i++)

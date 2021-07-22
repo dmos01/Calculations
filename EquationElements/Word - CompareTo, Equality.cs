@@ -23,7 +23,7 @@ namespace EquationElements
                 case Word b:
                     return string.Compare(Name, b.Name, StringComparison.Ordinal);
                 default:
-                    throw new ArgumentException(ElementsExceptionMessages.WordCompareFail);
+                    throw new ArgumentOutOfRangeException(null, ElementsExceptionMessages.WordCompareFail);
             }
         }
 
@@ -66,7 +66,7 @@ namespace EquationElements
                 case Word b:
                     return Name == b.Name;
                 default:
-                    throw new ArgumentException(ElementsExceptionMessages.WordCompareFail);
+                    throw new ArgumentOutOfRangeException(null, ElementsExceptionMessages.WordCompareFail);
             }
         }
 

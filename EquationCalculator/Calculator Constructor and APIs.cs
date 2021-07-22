@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using EquationElements;
-using static EquationElements.Utils;
 
 namespace EquationCalculator
 {
@@ -30,7 +29,10 @@ namespace EquationCalculator
         /// </param>
         public Calculator(ICollection<BaseElement> elements)
         {
-            if (elements?.First() is null)
+            if (elements is null)
+                throw new ArgumentNullException(null, CalculatorExceptionMessages.NoEquationDefault);
+
+            if (elements.First() is null)
                 throw new ArgumentException(CalculatorExceptionMessages.NoEquationDefault);
 
             readOnlyElements = (IReadOnlyCollection<BaseElement>) elements;

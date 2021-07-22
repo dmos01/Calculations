@@ -24,22 +24,10 @@ namespace EquationElements
             return string.Join(null, list);
         }
 
-        /// <summary>
-        ///     Throws ArgumentNullException if toCheck is null.
-        /// </summary>
-        /// <param name="toCheck"></param>
-        /// <param name="nameofToCheck">nameof(toCheck) because this method won't know the original variable name.</param>
-        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Global
-        //public static void NotNull<T>(T toCheck, string nameofToCheck)
-        //    where T : class
-        //{
-        //    if (toCheck is null)
-        //        throw new ArgumentNullException(nameofToCheck);
-        //}
         public static void ThrowExceptionIfNull(Number toCheck, string nameofToCheck)
         {
             if (toCheck is null)
-                throw new ArgumentNullException(nameofToCheck);
+                throw new ArgumentNullException(null, nameofToCheck);
         }
 
         /// <summary>
@@ -51,10 +39,13 @@ namespace EquationElements
         public static void ThrowExceptionIfNullEmptyOrOnlySpaces(string toCheck, string nameofToCheck)
         {
             if (toCheck is null)
-                throw new ArgumentNullException(nameofToCheck);
+                throw new ArgumentNullException(null,
+                    ElementsExceptionMessages.StringIsNullEmptyOrOnlySpacesBeforeParameter + nameofToCheck +
+                    ElementsExceptionMessages.StringIsNullEmptyOrOnlySpacesAfterParameter);
             if (toCheck.ToCharArray().Any(x => x != ' ') == false)
-                throw new ArgumentException(nameofToCheck +
-                                            ElementsExceptionMessages.StringIsNullEmptyOrOnlySpacesAfterParameter);
+                throw new ArgumentOutOfRangeException(null,
+                    ElementsExceptionMessages.StringIsNullEmptyOrOnlySpacesBeforeParameter + nameofToCheck +
+                    ElementsExceptionMessages.StringIsNullEmptyOrOnlySpacesAfterParameter);
         }
 
         public static bool IsNullEmptyOrOnlySpaces(string toCheck)
@@ -75,6 +66,7 @@ namespace EquationElements
 
             // If the signs are different, return false except for +0 and -0.
             if ((lValue1 >> 63) != (lValue2 >> 63))
+
                 // ReSharper disable once CompareOfFloatsByEqualityOperator
                 return a == b;
 

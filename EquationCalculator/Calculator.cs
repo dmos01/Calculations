@@ -158,7 +158,7 @@ namespace EquationCalculator
                 {
                     case LnFunction ln when currentNode.Next.Value is Number number:
                         if (number <= 0)
-                            throw new ArgumentException(
+                            throw new Exception(
                                 CalculatorExceptionMessages.LogToNegativeOrZeroBeforeParameter + number +
                                 CalculatorExceptionMessages.LogToNegativeOrZeroAfterParameter);
                         currentNode.Value = ln.PerformOn(number);
@@ -183,7 +183,7 @@ namespace EquationCalculator
                         break;
 
                     case TwoArgumentFunction twoArgumentFunction when currentNode.Next.Value is Number number:
-                        Number secondNumberElement = (Number)currentNode.Next.Next.Next.Value;
+                        Number secondNumberElement = (Number) currentNode.Next.Next.Next.Value;
                         currentNode.Value = twoArgumentFunction.PerformOn(number, secondNumberElement);
                         currentRunElements.Remove(currentNode.Next);
                         currentRunElements.Remove(currentNode.Next);
@@ -227,14 +227,13 @@ namespace EquationCalculator
             switch (currentNode.Next?.Value)
             {
                 case Number pow:
-                    E.TestPower(pow);
+                    E.TestPower(pow); //Prevents bug 23E23E23
                     currentNode.Previous.Value = new Number(num + ElementsResources.ExponentSymbolUpperCase + pow);
                     currentNode = currentNode.Previous;
                     break;
                 case SubtractionOperator _ when currentNode.Next.Next?.Value is Number pow:
                     E.TestPower(pow);
-                    currentNode.Previous.Value = new Number(num + ElementsResources.ExponentSymbolUpperCase +
-                                                            OperatorRepresentations.SubtractionSymbol + pow);
+                    currentNode.Previous.Value = new Number(num + ElementsResources.ExponentSymbolUpperCase + pow * -1);
                     currentNode = currentNode.Previous;
                     currentRunElements.Remove(currentNode.Next);
                     break;
@@ -259,13 +258,13 @@ namespace EquationCalculator
             {
                 case Number logBase:
                     if (logBase <= 0)
-                        throw new ArgumentException(CalculatorExceptionMessages.LogToNegativeOrZeroBeforeParameter +
-                                                    logBase +
-                                                    CalculatorExceptionMessages.LogToNegativeOrZeroAfterParameter);
+                        throw new Exception(CalculatorExceptionMessages.LogToNegativeOrZeroBeforeParameter +
+                                            logBase +
+                                            CalculatorExceptionMessages.LogToNegativeOrZeroAfterParameter);
 
-                    Number logNumber = (Number)currentNode.Next.Next.Next.Value;
+                    Number logNumber = (Number) currentNode.Next.Next.Next.Value;
                     if (logNumber <= 0)
-                        throw new ArgumentException(
+                        throw new Exception(
                             CalculatorExceptionMessages.LogToNegativeOrZeroBeforeParameter + logNumber +
                             CalculatorExceptionMessages.LogToNegativeOrZeroAfterParameter);
 
@@ -276,9 +275,9 @@ namespace EquationCalculator
                     break;
 
                 case E _:
-                    logNumber = (Number)currentNode.Next.Next.Next.Value;
+                    logNumber = (Number) currentNode.Next.Next.Next.Value;
                     if (logNumber <= 0)
-                        throw new ArgumentException(
+                        throw new Exception(
                             CalculatorExceptionMessages.LogToNegativeOrZeroBeforeParameter + logNumber +
                             CalculatorExceptionMessages.LogToNegativeOrZeroAfterParameter);
 
@@ -312,7 +311,7 @@ namespace EquationCalculator
                         break;
 
                     case Factorial factorial:
-                        currentNode.Previous.Value = factorial.PerformOn((Number)currentNode.Previous.Value);
+                        currentNode.Previous.Value = factorial.PerformOn((Number) currentNode.Previous.Value);
                         currentNode = currentNode.Previous;
                         currentRunElements.Remove(currentNode.Next);
                         break;
@@ -344,8 +343,8 @@ namespace EquationCalculator
 
         private void Do(TwoArgumentElement basicOperator)
         {
-            currentNode.Previous.Value = basicOperator.PerformOn((Number)currentNode.Previous.Value,
-                (Number)currentNode.Next.Value);
+            currentNode.Previous.Value = basicOperator.PerformOn((Number) currentNode.Previous.Value,
+                (Number) currentNode.Next.Value);
             currentNode = currentNode.Previous;
             currentRunElements.Remove(currentNode.Next);
             currentRunElements.Remove(currentNode.Next);

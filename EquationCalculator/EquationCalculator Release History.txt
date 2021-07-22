@@ -1,19 +1,23 @@
 ﻿EquationCalculator Release History:
 
-Version 1.1.0, 8 July 2021:
+Version 1.1.1 - 22 July 2021:
+*Expanded use of exception types.
+*Num E - Num multiplies the second number by -1 instead of concatenating a minus symbol. 
+
+Version 1.1 - 8 July 2021:
 *Added CalculatorExceptionMessages.NoEquationDefault for when elements is null or empty.
 *Can use E.TestPower(). Fixes bug that 23E23E23 will fail.
 *ExpandedEquation renamed to Equation because it is not EquationCalculator's responsibility to expand and validate the equation.
 *Functions are calculated before EDMAS.
 
 
-Version 1.0.1, 14 June 2021:
+Version 1.0.1 - 14 June 2021:
 *Changes to properties vs. fields.
 *Current run variables set to null after use.
 *FindBracketsRandomAndVariables sets up nodesWithBrackets directly instead of returning an output queue.
 
 
-Version 1.0.0, 31 May 2021:
+Version 1.0 - 31 May 2021:
 *Seperated out from EquationResolver.
 *Introduced readOnlyElements vs. currentRunElements, allowing the same equation to be calculated in multiple ways.
 

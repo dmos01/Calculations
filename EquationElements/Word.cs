@@ -4,7 +4,7 @@ using EquationElements.Operators;
 using static EquationElements.Utils;
 
 namespace EquationElements
-{ 
+{
     /// <summary>
     ///     Abstract class that uses an alpha-numeric string as its identifier but will resolve to a single number on its own.
     /// </summary>
@@ -13,13 +13,17 @@ namespace EquationElements
         public string Name { get; }
 
         /// <summary>
-        ///     Throws exception if name is null, empty or only spaces. Does not test if name is the same as an Operator or Function.
+        ///     Throws exception if name is null, empty or only spaces. Does not test if name is the same as an Operator or
+        ///     Function.
         /// </summary>
         /// <param name="name"></param>
         protected Word(string name)
         {
+            if (name is null)
+                throw new ArgumentNullException(null, ElementsExceptionMessages.NameOfWordIsNullOrEmpty);
+
             if (IsNullEmptyOrOnlySpaces(name))
-                throw new ArgumentException(ElementsExceptionMessages.NameOfWordIsNullOrEmpty);
+                throw new ArgumentOutOfRangeException(null, ElementsExceptionMessages.NameOfWordIsNullOrEmpty);
 
             Name = name;
         }
@@ -31,11 +35,14 @@ namespace EquationElements
         /// <returns></returns>
         public static void ThrowExceptionIfNameIsInvalid(string name)
         {
+            if (name is null)
+                throw new ArgumentNullException(null, ElementsExceptionMessages.NameOfWordIsNullOrEmpty);
+
             if (IsNullEmptyOrOnlySpaces(name))
-                throw new ArgumentException(ElementsExceptionMessages.NameOfWordIsNullOrEmpty);
+                throw new ArgumentOutOfRangeException(null, ElementsExceptionMessages.NameOfWordIsNullOrEmpty);
 
             if (IsOperator.Run(RemoveSpaces(name), out _) || IsFunction.Run(RemoveSpaces(name), out _))
-                throw new ArgumentException(ElementsExceptionMessages.NameWasSameAsOperatorOrFunction);
+                throw new ArgumentOutOfRangeException(null, ElementsExceptionMessages.NameWasSameAsOperatorOrFunction);
         }
 
         /// <summary>

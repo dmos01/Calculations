@@ -70,7 +70,7 @@ namespace NumberFormats {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to , released 31 May 2021..
+        ///   Looks up a localized string similar to , released 22 July 2021..
         /// </summary>
         internal static string ReleaseDate {
             get {

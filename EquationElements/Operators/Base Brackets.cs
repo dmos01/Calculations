@@ -3,15 +3,21 @@
 namespace EquationElements.Operators
 {
     /// <summary>
-    /// Abstract class.
+    ///     Abstract class.
     /// </summary>
     public abstract class Bracket : BaseElement, IOperator
     {
         /// <summary>
-        ///    Get the Type of the equivalent and opposite bracket.
+        ///     Get the Type of the equivalent and opposite bracket.
         /// </summary>
         /// <returns></returns>
         public abstract Type GetReverseType();
+
+        /// <summary>
+        ///     Create a new instance of the equivalent and opposite bracket.
+        /// </summary>
+        /// <returns></returns>
+        public virtual Bracket GetNewObjectOfReverseType() => (Bracket) Activator.CreateInstance(GetReverseType());
 
         /// <summary>
         ///     Get the ToString() of the equivalent and opposite bracket.
@@ -67,16 +73,12 @@ namespace EquationElements.Operators
     }
 
     /// <summary>
-    /// Abstract class.
+    ///     Abstract class.
     /// </summary>
-    public abstract class OpeningBracket : Bracket, IOperatorOrOpeningBracket, IMayPrecedeNegativeNumber
-    {
-    }
+    public abstract class OpeningBracket : Bracket, IOperatorOrOpeningBracket, IMayPrecedeNegativeNumber { }
 
     /// <summary>
-    /// Abstract class.
+    ///     Abstract class.
     /// </summary>
-    public abstract class ClosingBracket : Bracket, IOperatorOrClosingBracket, IInvalidWhenFirst
-    {
-    }
+    public abstract class ClosingBracket : Bracket, IOperatorOrClosingBracket, IInvalidWhenFirst { }
 }

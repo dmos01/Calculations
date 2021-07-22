@@ -148,7 +148,7 @@ namespace NumberFormats
                 previousDenominator = scratch;
 
                 if (maxIterations-- < 0)
-                    throw new ArgumentException(ElementsExceptionMessages.OverloadedNumberDefault);
+                    throw new ArgumentOutOfRangeException(null, ElementsExceptionMessages.OverloadedNumberDefault);
             }
 
             return (fractionNumerator * sign, (long) fractionDenominator);
