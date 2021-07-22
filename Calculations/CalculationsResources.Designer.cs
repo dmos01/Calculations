@@ -160,7 +160,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to , released 18 July 2021..
+        ///   Looks up a localized string similar to , released 22 July 2021..
         /// </summary>
         internal static string ReleaseDate {
             get {
@@ -187,7 +187,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 4.3.2.
+        ///   Looks up a localized string similar to 4.4.
         /// </summary>
         internal static string VersionNumber {
             get {

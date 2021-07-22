@@ -244,6 +244,7 @@ namespace Calculations
                 txtConstantUnit.IsReadOnly = piOrEulers;
                 txtConstantDescription.IsReadOnly = piOrEulers;
                 btnDeleteConstant.IsEnabled = !piOrEulers;
+
                 //Overridden by CboConstantsTextChanged(). Not removed in case move back to non-editable dropdown.
                 //btnSaveConstant.IsEnabled = !piOrEulers;
             }
@@ -258,22 +259,21 @@ namespace Calculations
                 txtConstantUnit.IsReadOnly = false;
                 txtConstantDescription.IsReadOnly = false;
                 btnDeleteConstant.IsEnabled = false;
+
                 //Overridden by CboConstantsTextChanged(). Not removed in case move back to non-editable dropdown.
                 //btnSaveConstant.IsEnabled = false;
             }
         }
 
-        private void CboConstantsTextChanged(object sender, TextChangedEventArgs e)
-        {
+        private void CboConstantsTextChanged(object sender, TextChangedEventArgs e) =>
+
             //Called with TextBoxBase.TextChanged="CboConstantsTextChanged". Only applies to editable comboboxes.
             btnSaveConstant.IsEnabled = cboConstants.Text.Any() && txtConstantValue.Text.Any() &&
                                         !IsOperator.StringIsPiOrEulers(cboConstants.Text);
-        }
 
-        private void TxtConstantsValueTextChanged(object sender, TextChangedEventArgs e)
-        {
+        private void TxtConstantsValueTextChanged(object sender, TextChangedEventArgs e) =>
+
             //Assumes value textbox was made not editable when name is Pi or Eulers.
             btnSaveConstant.IsEnabled = cboConstants.Text.Any() && txtConstantValue.Text.Any();
-        }
     }
 }

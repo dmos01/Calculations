@@ -130,7 +130,7 @@ namespace Calculations
 
             for (int i = items.Count - 1; i >= 0; i--)
             {
-                ListBoxItem newItem = new ListBoxItem
+                ListBoxItem newItem = new()
                 {
                     Content = items[i],
                     ContextMenu = contextUseItem

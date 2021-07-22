@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Media;
+using static Calculations.Controller;
 
 namespace Calculations
 {
@@ -15,7 +16,7 @@ namespace Calculations
             rbtConsolas.FontFamily = new FontFamily("Consolas");
             rbtHack.FontFamily = (FontFamily) Application.Current.Resources["Hack"];
 
-            switch (Controller.FontController.Family.MainFamilyAsString)
+            switch (FontController.Family.MainFamilyAsString)
             {
                 case "SegoeUI":
                     rbtSegoeUI.IsChecked = true;
@@ -53,36 +54,36 @@ namespace Calculations
         }
 
         private void WinFont_Closing(object sender, CancelEventArgs e)
-            => Controller.CloseFontWindow();
+            => CloseFontWindow();
 
         private void RbtSegoeUI_Checked(object sender, RoutedEventArgs e)
         {
-            Controller.FontController.Family.ChangeTo("SegoeUI");
+            FontController.Family.ChangeTo("SegoeUI");
             chkAlsoForKeypad.Visibility = Visibility.Hidden;
             chkAlsoForKeypad.IsChecked = false;
         }
 
         private void RbtHack_Checked(object sender, RoutedEventArgs e)
         {
-            Controller.FontController.Family.ChangeTo("Hack");
+            FontController.Family.ChangeTo("Hack");
             chkAlsoForKeypad.Visibility = Visibility.Visible;
         }
 
         private void RbtConsolas_Checked(object sender, RoutedEventArgs e)
         {
-            Controller.FontController.Family.ChangeTo("Consolas");
+            FontController.Family.ChangeTo("Consolas");
             chkAlsoForKeypad.Visibility = Visibility.Visible;
         }
 
         private void ChkFontAlsoForKeypad_Checked(object sender, RoutedEventArgs e)
-            => Controller.FontController.Family.SetMainFamilyIsAlsoForNumberOperatorAndFunctionButtons(true);
+            => FontController.Family.SetMainFamilyIsAlsoForNumberOperatorAndFunctionButtons(true);
 
         private void ChkFontAlsoForKeypad_Unchecked(object sender, RoutedEventArgs e)
-            => Controller.FontController.Family.SetMainFamilyIsAlsoForNumberOperatorAndFunctionButtons(false);
+            => FontController.Family.SetMainFamilyIsAlsoForNumberOperatorAndFunctionButtons(false);
 
         private void BtnLarger_Click(object sender, RoutedEventArgs e)
         {
-            Controller.FontController.Size.Increase();
+            FontController.Size.Increase();
             ChangeSizeForControls(1);
             btnSmallerFont.IsEnabled = true;
             btnLargerFont.IsEnabled = Settings.Default.FontSizeRelativeToDefault != 2;
@@ -90,7 +91,7 @@ namespace Calculations
 
         private void BtnSmaller_Click(object sender, RoutedEventArgs e)
         {
-            Controller.FontController.Size.Decrease();
+            FontController.Size.Decrease();
             ChangeSizeForControls(-1);
             btnLargerFont.IsEnabled = true;
             btnSmallerFont.IsEnabled = Settings.Default.FontSizeRelativeToDefault != -2;
@@ -101,7 +102,7 @@ namespace Calculations
             if (MessageBox.Show("Do you want to reset all fonts?", "Reset Fonts?", MessageBoxButton.OKCancel) ==
                 MessageBoxResult.OK)
             {
-                Controller.FontController.Reset();
+                FontController.Reset();
                 rbtSegoeUI.IsChecked = true;
                 chkAlsoForKeypad.IsChecked = false;
                 btnLargerFont.IsEnabled = true;

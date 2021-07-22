@@ -4,32 +4,39 @@ Known bugs:
 *"root", "mod" or "e", next to a digit may cause error or wrong answer. 
 *"23mode24" with Constants 3mod = 6 and e24 = 4 calculates as 23%4 not 6*4.
 
-Version 4.3.2, 18 July 2021:
+Version 4.4 - 22 July 2021:
+*Expanded use of exception types.
+*Targets .NET 5.0 and C# 9.0 to take advantage of new() when created type is evident from usage. (Same with UnitTests.)
+*EquationBuilder bumped to 2.0.
+*EquationCalculator 1.1.1, EquationElements 1.3.1, MehrozeFractions 3.0, NumberFormats 1.0.1 and UnitTests 1.2.0.
+
+
+Version 4.3.2 - 18 July 2021:
 *EquationBuilder 1.2.2 and EquationElements 1.3.0.
 
-Version 4.3.1, 17 July 2021:
+Version 4.3.1 - 17 July 2021:
 *EquationBuilder 1.2.1.
 
-Version 4.3, 8 July 2021:
+Version 4.3 - 8 July 2021:
 *Tooltip resources now span multiple lines rather than being spread across multiple strings.
 *EquationBuilder 1.2.0, EquationCalculator 1.1.0, EquationElements 1.2.0 and UnitTests 1.1.0.
 (Decided to keep brackets on One-Argument Function buttons for clarity of which side the argument goes on.)
 
 
-Version 4.2, 22 June 2021:
+Version 4.2 - 22 June 2021:
 *New icons.
-*XML comments use "; otherwise" instead of ". Otherwise,".
+*XML comments use "; otherwise " instead of ". Otherwise, ".
 *EquationBuilder 1.1.1 and EquationElements 1.1.1.
 
 
-Version 4.1, 14 June 2021:
+Version 4.1 - 14 June 2021:
 *HistoryController no longer controls the listbox and export buttons.
-*History's "Use Selected..." menu appears when right-clicking an item; delete option added.
+*History's 'Use Selected...' menu appears when right-clicking an item; delete option added.
 *Insert calculation tooltip mentions brackets.
 *EquationBuilder 1.1.0, EquationCalculator 1.0.1 and EquationElements 1.1.0.
 
 
-Version 4.0, 31 May 2021:
+Version 4.0 - 31 May 2021:
 *All projects and class libraries moved to the same solution.
 *Digit and  symbol buttons are now 1 font point larger than function and E buttons.
 *Intersections removed as a result of the EquationResolver changes.
@@ -47,7 +54,7 @@ Version 4.0, 31 May 2021:
  -GetNameValuePairs (replacing GetKeyValuePairs) returns an IDictionary copy of sortedConstants.
  -Implement IComparable and overloads equality (based on Name).
  -NameWithoutSpaces no longer stored inside each Constant.
- -Support for mod, root and e surrounded by digits. However, when found (moved to MainWindow/Constants Tab), a warning question is given to the user. They are now found with regex.IsMatch().
+ -Support for mod, root and E surrounded by digits. However, when found, a warning question is given to the user. They are now found with regex.IsMatch().
 
 
 Featured changes in class libraries:

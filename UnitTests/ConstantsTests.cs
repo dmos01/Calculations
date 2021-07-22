@@ -42,8 +42,7 @@ namespace UnitTests
 
         [Test]
         [TestCaseSource(nameof(HasIdenticalConstantTestCases))]
-        public void EquationIsIdenticalToAConstant(object[] currentCase)
-        {
+        public void EquationIsIdenticalToAConstant(object[] currentCase) =>
             TestBuilderAndCalculator(new[]
             {
                 currentCase[0],
@@ -51,7 +50,6 @@ namespace UnitTests
 
                 new Dictionary<string, string> {{(string) currentCase[0], currentCase[1].ToString()}}
             });
-        }
 
 
         static readonly object[] NoMatchingConstantTestCases =
@@ -107,11 +105,11 @@ namespace UnitTests
         public void ConstantInValidator()
         {
             string actual;
-            const string expected = "1*(1+1)*1";
+            const string expected = "1*[1+1]*1";
 
             try
             {
-                LinkedList<BaseElement> elements = new LinkedList<BaseElement>();
+                LinkedList<BaseElement> elements = new();
                 elements.AddLast(new Number(1));
                 elements.AddLast(new Constant("a", "1+1"));
                 elements.AddLast(new Number(1));

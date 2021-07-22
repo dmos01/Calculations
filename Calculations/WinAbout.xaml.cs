@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.Windows;
+using static Calculations.Controller;
 
 namespace Calculations
 {
@@ -24,7 +25,7 @@ namespace Calculations
         }
 
         private void WinAbout_Closing(object sender, CancelEventArgs e)
-            => Controller.CloseAboutWindow();
+            => CloseAboutWindow();
 
         public void SetFontSize(double size) => txtAbout.FontSize = size;
 

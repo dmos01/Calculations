@@ -1,36 +1,36 @@
 ﻿Calculations 3 Release History:
 
-Calculations 3.4.1, released 4 December 2019:
+Version 3.4.1 - 4 December 2019:
 *If the intersection tab is selected when the calculate button is clicked, the program will assume intersection calculation is required.
 *Fix for performing intersections when the variable (usually x) is also a constant.
 
 
-Calculations 3.4, released 30 November 2019:
+Version 3.4 - 30 November 2019:
 *Much improved use of layout panels, including XAML Styles.
 *A lot of the window setup has been moved from Loaded() event handlers to constructors.
 *Included license information for EquationElements.
 
 
-Calculations 3.3, released 7 October 2019:
+Version 3.3 - 7 October 2019:
 *Rudimentary use of layout panels to replace absolute margins.
 *Checkbox for the font family to affect buttons hides when Segoe UI is selected (because it is not applicable).
 *Fixes for number formats not working.
 *Fixes for deleting a constant.
 
 
-Calculations 3.2.1, released 26 September 2019:
+Version 3.2.1 - 26 September 2019:
 *Minor changes.
 
-Calculations 3.2, released 5 September 2019:
+Version 3.2 - 5 September 2019:
 *Class libraries replace Calculate file.
 *Controller classes and Main Window methods split into partial files. General improvements to both.
 
                    
-Calculations 3.1, released 21 April 2019:
+Version 3.1 - 21 April 2019:
 *Font size changes affect About window and Main Window tab names. Main Window min-width adjusts accordingly.
 
 
-Calculations 3.0, released 4 March 2019:
+Version 3.0 - 4 March 2019:
 *Constants:
  -Uses SortedDictionary to sort alphabetically.
  -Pi and E appear in the list.

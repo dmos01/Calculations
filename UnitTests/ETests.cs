@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using EquationBuilder;
 using EquationElements;
-using EquationElements.Functions;
-using EquationElements.Operators;
 using NUnit.Framework;
 using static UnitTests.BaseMethods;
 
@@ -90,7 +87,7 @@ namespace UnitTests
             new object[] {"EE5", new Number(Math.E * Math.Pow(10, 5))},
             new object[] {"E*E5", new Number(Math.E * Math.E * 5)},
             new object[] {"5EE", new Number(5 * Math.E * Math.E)},
-            new object[] {"EEE", new Number(Math.E * Math.E * Math.E)},
+            new object[] {"EEE", new Number(Math.E * Math.E * Math.E)}
         };
 
         [Test]

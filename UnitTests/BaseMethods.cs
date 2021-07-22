@@ -37,23 +37,24 @@ namespace UnitTests
             switch (args.Length)
             {
                 case 2:
-                    if (EquationIsValid.Run((string)args[0]) == false)
+                    if (EquationIsValid.Run((string) args[0]) == false)
                     {
-                        Assert.Fail("EquationIsValid failed " + (string)args[0] + ".");
+                        Assert.Fail("EquationIsValid failed " + (string) args[0] + ".");
                         return false;
                     }
 
                     break;
+
                 case 3:
-                    if (EquationIsValid.Run((string)args[0], (Dictionary<string, string>)args[2]) == false)
+                    if (EquationIsValid.Run((string) args[0], (Dictionary<string, string>) args[2]) == false)
                     {
-                        Assert.Fail("EquationIsValid failed " + (string)args[0] + ".");
+                        Assert.Fail("EquationIsValid failed " + (string) args[0] + ".");
                         return false;
                     }
 
                     break;
                 default:
-                    throw new ArgumentException("Wrong number of arguments.");
+                    throw new ArgumentOutOfRangeException(null, "Wrong number of arguments.");
             }
 
             return true;
@@ -66,20 +67,20 @@ namespace UnitTests
                 switch (args.Length)
                 {
                     case 2:
-                        elements = SplitAndValidate.Run((string)args[0]);
+                        elements = SplitAndValidate.Run((string) args[0]);
                         break;
                     case 3:
-                        elements = SplitAndValidate.Run((string)args[0], (Dictionary<string, string>)args[2]);
+                        elements = SplitAndValidate.Run((string) args[0], (Dictionary<string, string>) args[2]);
                         break;
                     default:
-                        throw new ArgumentException("Wrong number of arguments.");
+                        throw new ArgumentOutOfRangeException(null, "Wrong number of arguments.");
                 }
 
                 return true;
             }
             catch (Exception ex1)
             {
-                Assert.Fail("SplitAndValidate().Run() failed " + (string)args[0] + ". " + ex1.Message);
+                Assert.Fail("SplitAndValidate().Run() failed " + (string) args[0] + ". " + ex1.Message);
                 return false;
             }
         }
@@ -93,14 +94,14 @@ namespace UnitTests
             }
             catch (Exception ex2)
             {
-                Assert.Fail("Calculator failed " + (string)args[0] + ". " + ex2.Message);
+                Assert.Fail("Calculator failed " + (string) args[0] + ". " + ex2.Message);
                 return false;
             }
 
-            if (actualAnswer != (Number)args[1])
+            if (actualAnswer != (Number) args[1])
             {
-                Assert.Fail("Calculator for " + (string)args[0] + " returned wrong answer. It returned " +
-                            actualAnswer + ". Expected " + (Number)args[1] + ".");
+                Assert.Fail("Calculator for " + (string) args[0] + " returned wrong answer. It returned " +
+                            actualAnswer + ". Expected " + (Number) args[1] + ".");
                 return false;
             }
 
@@ -116,11 +117,11 @@ namespace UnitTests
         public static void ShouldThrowException(object[] args)
         {
             Exception thrownException = null;
-            Number answer = new Number(int.MaxValue);
+            Number answer = new(int.MaxValue);
 
             try
             {
-                elements = SplitAndValidate.Run((string)args[0]);
+                elements = SplitAndValidate.Run((string) args[0]);
                 answer = new Calculator(elements).Run();
             }
             catch (Exception ex)
@@ -130,7 +131,7 @@ namespace UnitTests
 
             if (thrownException is null)
             {
-                Assert.Fail("No exception was thrown for " + (string)args[0] + ". Returned " + answer + ".");
+                Assert.Fail("No exception was thrown for " + (string) args[0] + ". Returned " + answer + ".");
                 return;
             }
 
@@ -161,7 +162,7 @@ namespace UnitTests
         /// <param name="args"></param>
         public static void FractionConversionTest(string[] args)
         {
-            Number number = new Number(args[0]);
+            Number number = new(args[0]);
             string actual;
 
             try

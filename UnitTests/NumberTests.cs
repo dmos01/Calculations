@@ -59,16 +59,16 @@ namespace UnitTests
 
         static readonly object[] PlusMinusComboTestCases =
         {
-            new object[] {"1+-2", new Number(1-2)},
-            new object[] {"1-+2", new Number(1-2)},
-            new object[] {"1--2", new Number(1+2)},
-            new object[] {"(-sin1)", new Number(0-Math.Sin(1))},
+            new object[] {"1+-2", new Number(1 - 2)},
+            new object[] {"1-+2", new Number(1 - 2)},
+            new object[] {"1--2", new Number(1 + 2)},
+            new object[] {"(-sin1)", new Number(0 - Math.Sin(1))},
             new object[] {"(--sin1)", new Number(Math.Sin(1))},
-            new object[] {"(-+sin1)", new Number(0-Math.Sin(1))},
+            new object[] {"(-+sin1)", new Number(0 - Math.Sin(1))},
             new object[] {"--sin1", new Number(Math.Sin(1))},
-            new object[] {"-+sin1", new Number(0-Math.Sin(1))},
+            new object[] {"-+sin1", new Number(0 - Math.Sin(1))},
             new object[] {"--sin-1", new Number(Math.Sin(-1))},
-            new object[] {"-+sin-1", new Number(0-Math.Sin(-1))}
+            new object[] {"-+sin-1", new Number(0 - Math.Sin(-1))}
         };
 
 
@@ -90,7 +90,7 @@ namespace UnitTests
 
 
         [Test]
-        public void NoClosingBracketsTest() => TestBuilderAndCalculator(new object[] { "(2[3", new Number(2 * 3) });
+        public void NoClosingBracketsTest() => TestBuilderAndCalculator(new object[] {"(2[3", new Number(2 * 3)});
 
         [Test]
         public void IncorrectClosingBracketTest() => ShouldThrowException(new object[]

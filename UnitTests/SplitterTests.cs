@@ -91,7 +91,7 @@ namespace UnitTests
         };
 
         /// <summary>
-        /// Single-Element Constants on both sides are valid.
+        ///     Single-Element Constants on both sides are valid.
         /// </summary>
         static readonly object[] UndeterminedUsesOfECases =
         {
@@ -107,18 +107,18 @@ namespace UnitTests
         };
 
         [SetUp]
-        public void Setup()
-        {
-        }
+        public void Setup() { }
 
         [Test]
         [TestCaseSource(nameof(FirstLoopUnrecognizedElementPossibilityCases))]
-        public void FirstLoopUnrecognizedElementPossibilities(object[] args) => BaseMethods.TestBuilderAndCalculator(args);
+        public void FirstLoopUnrecognizedElementPossibilities(object[] args) =>
+            BaseMethods.TestBuilderAndCalculator(args);
 
 
         [Test]
         [TestCaseSource(nameof(SecondLoopUnrecognizedElementPossibilityCases))]
-        public void SecondLoopUnrecognizedElementPossibilities(object[] args) => BaseMethods.TestBuilderAndCalculator(args);
+        public void SecondLoopUnrecognizedElementPossibilities(object[] args) =>
+            BaseMethods.TestBuilderAndCalculator(args);
 
         [Test]
         [TestCaseSource(nameof(KnownBugCases))]

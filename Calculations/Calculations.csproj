@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
-    <Version>4.3.2.6</Version>
+    <Version>4.4.0.7</Version>
     <Authors>Daniel Spencer</Authors>
     <Product>Calculations</Product>
     <StartupObject>Calculations.App</StartupObject>

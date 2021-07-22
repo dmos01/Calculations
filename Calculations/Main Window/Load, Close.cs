@@ -24,7 +24,7 @@ namespace Calculations
             currentCalculatorAndAnswer = null;
 
             //Allows nextToDigitsElementsForRegex to be readonly.
-            List<string> temp = new List<string>(4)
+            List<string> temp = new(4)
             {
                 OperatorRepresentations.ModulusWord,
                 OperatorRepresentations.RootWord,
@@ -182,9 +182,6 @@ namespace Calculations
             rbtRadians.Checked += RbtRadians_Checked;
         }
 
-        private void WinMain_Closing(object sender, CancelEventArgs e)
-        {
-            Quit();
-        }
+        private void WinMain_Closing(object sender, CancelEventArgs e) => Quit();
     }
 }

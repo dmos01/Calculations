@@ -15,7 +15,7 @@ namespace Calculations
         private readonly HistoryController history;
         private HistoryItemsCanAppear historyItemsSetting;
 
-        private static Controller Default { get; } = new Controller();
+        private static Controller Default { get; } = new();
 
 
         public static ConstantsController Constants => Default.constants;

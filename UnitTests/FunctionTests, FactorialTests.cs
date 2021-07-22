@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using EquationBuilder;
 using EquationCalculator;
 using EquationElements;
-using EquationElements.Functions;
-using EquationElements.Operators;
 using NUnit.Framework;
 using static UnitTests.BaseMethods;
 
@@ -182,7 +180,7 @@ namespace UnitTests
                 return;
             }
 
-            Calculator calculator = new Calculator(elements);
+            Calculator calculator = new(elements);
 
             for (int i = 0; i < iterations; i++)
             {

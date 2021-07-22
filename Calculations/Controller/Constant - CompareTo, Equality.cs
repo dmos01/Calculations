@@ -25,7 +25,7 @@ namespace Calculations
                     case Constant b:
                         return string.Compare(Name, b.Name, StringComparison.Ordinal);
                     default:
-                        throw new ArgumentException(CalculationsResources.CompareConstantFail);
+                        throw new ArgumentOutOfRangeException(null, CalculationsResources.CompareConstantFail);
                 }
             }
 
@@ -66,7 +66,7 @@ namespace Calculations
                     case Constant b:
                         return Name == b.Name;
                     default:
-                        throw new ArgumentException(CalculationsResources.CompareConstantFail);
+                        throw new ArgumentOutOfRangeException(null, CalculationsResources.CompareConstantFail);
                 }
             }
 

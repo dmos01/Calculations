@@ -38,26 +38,29 @@ namespace Calculations
         /// <returns></returns>
         public static string ChangesInThisVersion() =>
             string.Join(Environment.NewLine,
+                "Featured change in 4.4:",
+                "*Code improvements.",
+                "",
                 "Featured changes in 4.3:",
                 "*Big changes to determining E (*10^ or Eulers), particularly relating to brackets, Constants and Functions.",
                 "*Big changes to validation (tightening some rules and loosening others).",
                 " -Attempts are made to close unclosed brackets.",
-                " -One-Argument Functions no longer need to be followed by an opening bracket.",
+                " -One-Argument Functions no longer need to be followed by an opening bracket if performed on a single number.",
                 "",
+                "Featured change in 4.2:",
+                "*New icons.",
+                "",
+                "Featured change in 4.1:",
+                "*History's 'Use Selected...' menu appears when right-clicking an item; delete option added.",
                 "",
                 "Featured changes in 4.0:",
-                "*Constants support mod, root and e surrounded by digits.",
-                "*Constants dropdown and Name textbox merged; Multi-line Description textbox; Search, Name and Value textboxes now line up.",
-                "*Digit and symbol buttons are now 1 font point larger than function buttons.",
+                "*Constants support mod, root and E surrounded by digits.",
                 "*Expanded use of error messages containing the applicable parameter.",
-                "*Fractions now approximate sixths.",
                 "*Root now available as a word operator; ! now available as a factorial symbol.",
                 "",
                 "*New and rewritten class libraries, with increased separation of responsibilities.",
-                "*All projects and class libraries moved to the same solution.",
-                "*Constants, Numbers and Words implement IComparable and overload equality.",
                 "*Resource files to assist with localization.",
-                "*String equality now primarily uses CurrentCultureIgnoreCase."
+                "*String comparisons now primarily uses CurrentCultureIgnoreCase."
             );
     }
 }

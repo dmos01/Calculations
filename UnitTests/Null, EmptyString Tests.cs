@@ -8,8 +8,7 @@ namespace UnitTests
     internal class NullOrEmptyEquationTests
     {
         [Test]
-        public void Null()
-        {
+        public void Null() =>
             ShouldThrowException(
                 new object[]
                 {
@@ -17,11 +16,9 @@ namespace UnitTests
                     null,
                     BuilderExceptionMessages.NoEquationDefault
                 });
-        }
 
         [Test]
-        public void Empty()
-        {
+        public void Empty() =>
             ShouldThrowException(
                 new object[]
                 {
@@ -29,6 +26,5 @@ namespace UnitTests
                     null,
                     BuilderExceptionMessages.NoEquationDefault
                 });
-        }
     }
 }

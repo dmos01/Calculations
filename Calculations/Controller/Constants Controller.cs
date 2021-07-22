@@ -21,12 +21,11 @@ namespace Calculations
             public ConstantsController(string constantsPath)
             {
                 sortedConstants = new SortedDictionary<string, Constant>(StringComparer.CurrentCultureIgnoreCase);
-                new Dictionary<string, string>(StringComparer.CurrentCultureIgnoreCase);
                 ConstantsPath = constantsPath;
             }
 
             /// <summary>
-            ///     Get copy.
+            ///     Get copy without spaces.
             /// </summary>
             /// <returns></returns>
             public IDictionary<string, string> GetNameValuePairs() => sortedConstants.ToDictionary(pair => pair.Key,
@@ -104,7 +103,7 @@ namespace Calculations
                     return;
 
 
-                using (StreamReader reader = new StreamReader(path))
+                using (StreamReader reader = new(path))
                 {
                     try
                     {
@@ -170,12 +169,14 @@ namespace Calculations
                 if (IsNullEmptyOrOnlySpaces(path))
                     path = ConstantsPath;
 
-                using StreamWriter writer = new StreamWriter(path);
+                using StreamWriter writer = new(path);
                 ICollection<Constant> toExport;
 
                 if (IsNullEmptyOrOnlySpaces(filter)) //Export all
+                {
                     toExport = sortedConstants.Where(x => !IsOperator.StringIsPiOrEulers(x.Key)).Select(x => x.Value)
                         .ToList();
+                }
                 else
                 {
                     filter = RemoveSpaces(filter);

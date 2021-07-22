@@ -14,7 +14,7 @@ namespace Calculations
         public static string RunImportDialogAndReturnFilePath(string dialogTitle, string filters,
             string defaultExtension)
         {
-            OpenFileDialog open = new OpenFileDialog
+            OpenFileDialog open = new()
             {
                 Title = dialogTitle,
                 FileName = "",
@@ -38,7 +38,7 @@ namespace Calculations
         public static string RunExportDialogAndReturnFilePath(string dialogTitle, string filters,
             string defaultExtension)
         {
-            SaveFileDialog save = new SaveFileDialog
+            SaveFileDialog save = new()
             {
                 Title = dialogTitle,
                 FileName = "",

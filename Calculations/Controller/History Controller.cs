@@ -62,6 +62,7 @@ namespace Calculations
                 CalculatorAndAnswer toMove = historyItems[originalIndex];
                 historyItems.RemoveAt(originalIndex);
                 historyItems.Insert(originalIndex + moveBy, toMove);
+
                 //DisplayItems();
             }
 
@@ -94,7 +95,7 @@ namespace Calculations
                 if (File.Exists(path) == false)
                     return;
 
-                StreamReader reader = new StreamReader(path);
+                StreamReader reader = new(path);
                 while (reader.Peek() != -1)
                 {
                     string equation = reader.ReadLine();
@@ -119,7 +120,7 @@ namespace Calculations
             {
                 if (string.IsNullOrEmpty(path))
                     path = HistoryPath;
-                StreamWriter writer = new StreamWriter(path);
+                StreamWriter writer = new(path);
                 foreach (CalculatorAndAnswer item in historyItems)
                     writer.WriteLine(item.OriginalEquation);
                 writer.Close();
@@ -166,28 +167,22 @@ namespace Calculations
             /// <summary>
             ///     Inserts the calculation into the main calculation textbox of the Main Window, at the cursor.
             /// </summary>
-            public void UseCalculationInMainCalculation(int index)
-            {
+            public void UseCalculationInMainCalculation(int index) =>
                 Default.CalculatorWindow.InsertToCalculationTextboxAtCursor(
                     OperatorRepresentations.ParenthesisOpeningBracketSymbol +
                     historyItems[index].OriginalEquation +
                     OperatorRepresentations.ParenthesisClosingBracketSymbol);
-            }
 
             /// <summary>
             ///     Inserts the answer into the main calculation textbox of the Main Window, at the cursor.
             /// </summary>
-            public void UseAnswerInMainCalculation(int index)
-            {
+            public void UseAnswerInMainCalculation(int index) =>
                 Default.CalculatorWindow.InsertToCalculationTextboxAtCursor(
                     historyItems[index].CurrentAnswer);
-            }
 
-            public void DisplayItems()
-            {
+            public void DisplayItems() =>
                 Default.HistoryWindow?.DisplayItems(historyItems.Select(x =>
                     x.OriginalEquation + " " + OperatorRepresentations.EqualsSymbol + " " + x.CurrentAnswer).ToList());
-            }
         }
     }
 }
