@@ -5,8 +5,6 @@ using EquationElements.Functions;
 using EquationElements.Operators;
 using static EquationElements.Utils;
 
-#pragma warning disable 162
-
 namespace EquationBuilder
 {
     /// <summary>
@@ -45,7 +43,7 @@ namespace EquationBuilder
                 return new DecimalPoint();
 
             if (name.Equals(ElementsResources.EulersSymbolUpperCase, StringComparison.CurrentCultureIgnoreCase))
-                return IsOperator.EulersAndExponentSymbolsAreDifferent ? (BaseElement)new Number(Math.E) : new E();
+                return IsOperator.EulersAndExponentSymbolsAreDifferent ? (BaseElement) new Number(Math.E) : new E();
 
             if (IsOperator.EulersAndExponentSymbolsAreDifferent && name.Equals(
                 ElementsResources.ExponentSymbolUpperCase,

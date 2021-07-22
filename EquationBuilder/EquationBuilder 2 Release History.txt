@@ -1,0 +1,36 @@
+﻿EquationBuilder 2 Release History:
+
+Known bugs:
+"root", "mod" or "e", next to a digit may cause error or wrong answer. 
+"23mode24" with Constants 3mod = 6 and e24 = 4 is built as 23%4 not 6*4.
+
+Version 2.0 - 22 July 2021 (Retroactive, includes 1.2.x):
+
+Handling E:
+*Closing bracket to the left or opening bracket to the right is invalid.* Brackets other way round begin/end a section, therefore Eulers.
+*Constants on either side are *10^ if made up of a single Element; otherwise invalid.* Increased use of E.TestPower().
+*Functions to the left are Eulers.
+*Functions to the right are invalid.*
+  *because missed the point of *10^. If Euler's, be explicit.
+
+Validator:
+*ArgumentSeparator tests if next is IInvalidWhenFirst.
+*Attempts to give unclosed brackets equivalent closing brackets at the end of the equation.
+*E.TestPower() moved to EquationElements.
+*Factorial throws an exception if run on a non-integer.
+*General InvalidBracketUseDefault exception message. Previously, (1[2) would trigger closing bracket without opening bracket, which is incorrect.
+*In log(e,x), e no longer needs to be alone.
+*Logs test if single-Number base is <= 0.
+*OneArgumentFunctions no longer need to be followed by an opening bracket if performed on a single number.
+*OpeningBracketsStack is Stack<OpeningBracket> instead of Stack<LinkedListNode<BaseElement>>.
+*Methods rearranged, including turning some into local functions.
+*SetCurrentToPrevious() renamed to Retract().
+*Sin-(1+2) is turned into sin[-(1+2)].
+*Uses BuilderExceptionMessages.NoEquationDefault when elementsList is null or empty.
+*XML comments mention expanding Constants and talk about returning the "expanded list" instead of the "updated list."
+
+General:
+*Added SplitAndValidate.CreateImpliedOpeningBracket() and CreateImpliedClosingBracket().
+*Expanded use of exception types.
+*Implied brackets are now SquareOpeningBracket and SquareClosingBracket.
+*When expanding Constants made of a single Element, do not add surrounding brackets.

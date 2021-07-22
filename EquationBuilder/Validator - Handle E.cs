@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using EquationElements;
 using EquationElements.Functions;
 using EquationElements.Operators;
@@ -91,7 +90,8 @@ namespace EquationBuilder
         }
 
         /// <summary>
-        /// Number E must be followed by Number, ± (followed by Number...?), single-Element Constant, Absolute or Word. Otherwise missed the point of *10^. If Eulers, be explicit.
+        ///     Number E must be followed by Number, ± (followed by Number...?), single-Element Constant, Absolute or Word.
+        ///     Otherwise missed the point of *10^. If Eulers, be explicit.
         /// </summary>
         /// <param name="e"></param>
         /// <param name="numberBeforeE"></param>
@@ -141,6 +141,7 @@ namespace EquationBuilder
                                         exp2 = -exp2;
                                     Combine(exp2, true);
                                 }
+
                                 return true;
 
                             //Including null, OpeningBracket, ClosingBracket, Function and Word.
@@ -187,6 +188,7 @@ namespace EquationBuilder
                         //± are operators so already being explicit.
                         CurrentNodeIsEulersNumber();
                     }
+
                     return;
 
                 case Constant _: //Word E ± Constant
@@ -210,7 +212,6 @@ namespace EquationBuilder
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="nodeWithConstant"></param>
         /// <param name="alreadyBeingExplicit">If Multi-Element Constant, Eulers; otherwise InvalidUseOfExponentEDefault.</param>
@@ -228,6 +229,7 @@ namespace EquationBuilder
                         else
                             throw new Exception(BuilderExceptionMessages.InvalidUseOfExponentEDefault);
                     }
+
                     break;
                 case OpeningBracket _ when alreadyBeingExplicit: //?E±(
                     CurrentNodeIsEulersNumber();

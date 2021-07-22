@@ -29,7 +29,8 @@ namespace EquationBuilder
             elementBuilder = new ElementBuilder(constants);
 
         /// <summary>
-        ///     Validates the order of elements, expands Constants, adds implied operators and brackets, and replaces E where possible. Returns true if the order of elements is valid.
+        ///     Validates the order of elements, expands Constants, adds implied operators and brackets, and replaces E where
+        ///     possible. Returns true if the order of elements is valid.
         /// </summary>
         /// <param name="elementsList"></param>
         /// <param name="validatedElementsList">The validated and expanded list of elements.</param>
@@ -38,7 +39,8 @@ namespace EquationBuilder
             TryRun(elementsList, false, out validatedElementsList);
 
         /// <summary>
-        ///     Validates the order of elements, expands Constants, adds implied operators and brackets, and replaces E where possible. Returns true if the order of elements is valid.
+        ///     Validates the order of elements, expands Constants, adds implied operators and brackets, and replaces E where
+        ///     possible. Returns true if the order of elements is valid.
         /// </summary>
         /// <param name="elementsList"></param>
         /// <param name="castUnrecognizedElementsAsVariables">
@@ -63,7 +65,8 @@ namespace EquationBuilder
         }
 
         /// <summary>
-        ///     Validates the order of elements, expands Constants, adds implied operators and brackets, and replaces E where possible. Returns the expanded list. Will throw exceptions if the order of elements is valid.
+        ///     Validates the order of elements, expands Constants, adds implied operators and brackets, and replaces E where
+        ///     possible. Returns the expanded list. Will throw exceptions if the order of elements is valid.
         /// </summary>
         /// <param name="elementsList"></param>
         /// <returns>The validated and expanded list of elements.</returns>

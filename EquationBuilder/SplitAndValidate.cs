@@ -15,7 +15,7 @@ namespace EquationBuilder
 
         //Allows easy changing of the bracket type created.
         public static ClosingBracket CreateImpliedClosingBracket() => new SquareClosingBracket();
-        
+
         /// <summary>
         ///     Splits and validates the equation. Returns true if the equation is valid.
         /// </summary>

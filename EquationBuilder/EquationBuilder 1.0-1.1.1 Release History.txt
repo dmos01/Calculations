@@ -1,0 +1,41 @@
+﻿EquationBuilder 1 Release History:
+
+Version 1.1.1 - 22 June 2021:
+*Minor improvements.
+*XML comments use "; otherwise " instead of ". Otherwise, ".
+
+Version 1.1 - 14 June 2021:
+*Changes to properties vs. fields.
+*Current run variables set to null after use.
+*Roll back on methods 'out'-ing and returning ICollections.
+
+
+Version 1.0 - 31 May 2021:
+*Seperated out from EquationResolver.
+
+*EquationIsValid.Run() methods no longer outputs anything - they only return true/false.
+*Expanding Constants adds surrounding brackets separately, instead of including them in the Constant's own SplitAndValidate.Run().
+*Root now available as a word operator; ! now available as a factorial symbol.
+*Splitter, Validator and ElementBuilder more publicly accessible for independent use.
+*SplitAndValidate and EquationIsValid moved to their own (static) classes.
+*UnrecognizedElement as a holding "don't know what this element is right now." If it isn't known during validation, cast it as a Variable or throw an exception (depending on castUnrecognizedElementsAsVariables).
+
+Removed to seperate out areas of responsibility:
+ -Determining if the equation contains Random.
+ -Finding nodes with brackets.
+ -Replacing Variables with Numbers. (Side effect: ElementBuilder.CreateElement() no longer returns Digit and Letter Elements (and they have actually been removed from EquationElements).)
+
+Splitter:
+*Created my own String.Split() which keeps separators in the output.
+*Completely rewritten. Many more equations with strings containing "mod" and "e" are recognized.
+*Takes ElementBuilder or Constants in constructor to allow mutiple equations to be run using those same "parameters".
+*Uses TextElementEnumerator and StringBuilder where possible.
+
+Validator:
+*Expands Constants.
+*Improvements.
+
+ElementBuilder:
+*Moved here.
+*Constants now uses an IDictionary<string, string> and made private.
+*Public APIs may take ElementBuilder or Constants to expose the functionality of ElementBuilder while still keeping it optional.

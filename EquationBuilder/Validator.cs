@@ -20,7 +20,8 @@ namespace EquationBuilder
         private ElementBuilder elementBuilder { get; }
 
         /// <summary>
-        ///     Validates the order of elements, expands Constants, adds implied operators and brackets, and replaces E where possible. Returns the expanded list. Will throw exceptions if the order of elements is valid.
+        ///     Validates the order of elements, expands Constants, adds implied operators and brackets, and replaces E where
+        ///     possible. Returns the expanded list. Will throw exceptions if the order of elements is valid.
         /// </summary>
         /// <param name="elementsList"></param>
         /// <param name="castUnrecognizedElementsAsVariables">
@@ -31,7 +32,10 @@ namespace EquationBuilder
         public LinkedList<BaseElement> Run(LinkedList<BaseElement> elementsList,
             bool castUnrecognizedElementsAsVariables)
         {
-            if (elementsList?.First is null)
+            if (elementsList is null)
+                throw new ArgumentNullException(null, BuilderExceptionMessages.NoEquationDefault);
+
+            if (elementsList.First is null)
                 throw new ArgumentException(BuilderExceptionMessages.NoEquationDefault);
 
             elements = elementsList;
@@ -58,6 +62,7 @@ namespace EquationBuilder
             if (openingBracketsStack.Any())
             {
                 CloseUnclosedBracketsAndValidateOrder();
+
                 //throw new Exception(BuilderExceptionMessages.InvalidBracketUseDefault);
             }
 
@@ -165,12 +170,12 @@ namespace EquationBuilder
         private void ValidateArgumentSeparator()
         {
             if (previous is IInvalidWhenLast)
-                throw new ArgumentException(
+                throw new Exception(
                     BuilderExceptionMessages.InvalidCharacterBeforeArgumentSeparatorBeforeParameter + previous +
                     BuilderExceptionMessages.InvalidCharacterBeforeArgumentSeparatorAfterParameter);
 
             if (next is IInvalidWhenFirst)
-                throw new ArgumentException(
+                throw new Exception(
                     BuilderExceptionMessages.InvalidCharacterAfterArgumentSeparatorBeforeParameter + next +
                     BuilderExceptionMessages.InvalidCharacterAfterArgumentSeparatorAfterParameter);
 
@@ -221,9 +226,10 @@ namespace EquationBuilder
                     break;
 
                 default:
-                    throw new Exception(BuilderExceptionMessages.InvalidCharacterBeforeFactorialBeforeParameter +
-                                        previous +
-                                        BuilderExceptionMessages.InvalidCharacterBeforeFactorialAfterParameter);
+                    throw new ArgumentOutOfRangeException(null,
+                        BuilderExceptionMessages.InvalidCharacterBeforeFactorialBeforeParameter +
+                        previous +
+                        BuilderExceptionMessages.InvalidCharacterBeforeFactorialAfterParameter);
             }
 
             switch (next)
@@ -275,6 +281,7 @@ namespace EquationBuilder
                 case OpeningBracket _:
                 case Word _:
                     break;
+
                 case SubtractionOperator _:
                     switch (nextNode.Next?.Value)
                     {
@@ -282,9 +289,9 @@ namespace EquationBuilder
                             nextNode.Value = number * -1;
                             elements.Remove(nextNode.Next);
                             break;
-                        
+
                         case OpeningBracket _: //sin-( where current is sin.
-                            
+
                             //Start at opening bracket node + 1.
                             LinkedListNode<BaseElement> _currentNode = nextNode.Next.Next;
                             elements.AddAfter(currentNode, SplitAndValidate.CreateImpliedOpeningBracket());
@@ -299,7 +306,7 @@ namespace EquationBuilder
                                 {
                                     //Add implied closing bracket after the actual closing bracket of the original opening bracket.
                                     case ClosingBracket _ when openingBracketsFound == 0:
-                                        elements.AddAfter(_currentNode,SplitAndValidate.CreateImpliedClosingBracket());
+                                        elements.AddAfter(_currentNode, SplitAndValidate.CreateImpliedClosingBracket());
                                         return;
                                     case ClosingBracket _:
                                         openingBracketsFound--;
@@ -319,8 +326,14 @@ namespace EquationBuilder
                             break;
                         default:
                             //Next next cannot be null because - cannot be last.
-                            throw new Exception(BuilderExceptionMessages.OneArgFunctionNotFollowedByValidElementBeforeParameters + current + BuilderExceptionMessages.OneArgFunctionNotFollowedByValidElementBetweenParameters + next + nextNode.Next.Value + BuilderExceptionMessages.OneArgFunctionNotFollowedByValidElementAfterParameters);
+                            throw new Exception(
+                                BuilderExceptionMessages.OneArgFunctionNotFollowedByValidElementBeforeParameters +
+                                current +
+                                BuilderExceptionMessages.OneArgFunctionNotFollowedByValidElementBetweenParameters +
+                                next + nextNode.Next.Value + BuilderExceptionMessages
+                                    .OneArgFunctionNotFollowedByValidElementAfterParameters);
                     }
+
                     break;
                 default:
                     throw new Exception(
@@ -339,7 +352,7 @@ namespace EquationBuilder
                     //!IMayPrecedeNegativeNumber handled in ValidateSubtractionOperator().
                     if (previousNode.Previous.Value is IMayPrecedeNegativeNumber)
                     {
-                        currentNode.Value = (Number)current * -1;
+                        currentNode.Value = (Number) current * -1;
                         elements.Remove(previousNode);
                     }
 
@@ -395,10 +408,15 @@ namespace EquationBuilder
             {
                 if (current is OpeningBracket)
                 {
-                    if (next is AdditionOperator && nextNode.Next?.Value is IFunction)
-                        elements.Remove(nextNode);
-                    else if (next is SubtractionOperator && nextNode.Next?.Value is IFunction)
-                        elements.AddBefore(nextNode, new Number(0));
+                    switch (next)
+                    {
+                        case AdditionOperator _ when nextNode.Next?.Value is IFunction:
+                            elements.Remove(nextNode);
+                            break;
+                        case SubtractionOperator _ when nextNode.Next?.Value is IFunction:
+                            elements.AddBefore(nextNode, new Number(0));
+                            break;
+                    }
                 }
             }
             else if (previous is OpeningBracket && next is IFunction)
@@ -452,15 +470,16 @@ namespace EquationBuilder
             {
                 if (IsNullEmptyOrOnlySpaces(outerNumbersAndWordsElement))
                     throw new Exception(BuilderExceptionMessages.UnidentifiableElementDefault);
-                throw new Exception(
-                    BuilderExceptionMessages.UnidentifiableElementBeforeParameter +
-                    outerNumbersAndWordsElement + BuilderExceptionMessages.UnidentifiableElementAfterParameter);
+                else
+                    throw new Exception(
+                        BuilderExceptionMessages.UnidentifiableElementBeforeParameter +
+                        outerNumbersAndWordsElement + BuilderExceptionMessages.UnidentifiableElementAfterParameter);
             }
         }
 
         private void ExpandConstant(LinkedListNode<BaseElement> nodeWithConstant)
         {
-            string constantValue = ((Constant)nodeWithConstant.Value).Value;
+            string constantValue = ((Constant) nodeWithConstant.Value).Value;
             ICollection<BaseElement> expandedConstant = SplitAndValidate.Run(constantValue, elementBuilder);
 
             switch (expandedConstant.Count)
@@ -540,8 +559,7 @@ namespace EquationBuilder
             //Give all remaining opening brackets equivalent closing brackets at the end of the equation.
             while (openingBracketsStack.Any())
             {
-                Type closingBracketType = openingBracketsStack.Pop().GetReverseType();
-                elements.AddLast((BaseElement)Activator.CreateInstance(closingBracketType));
+                elements.AddLast(openingBracketsStack.Pop().GetNewObjectOfReverseType());
             }
 
             //Validate bracket order.
