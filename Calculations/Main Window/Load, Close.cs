@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Reflection;
 using System.Windows;
 using EquationElements;
 using EquationElements.Operators;
@@ -123,8 +124,10 @@ namespace Calculations
 
         private void SetSettings()
         {
+            Version v = Assembly.GetExecutingAssembly().GetName().Version;
+
             chkRememberHistoryForNextTime.IsChecked = Settings.Default.RememberHistoryForNextTime;
-            lblAbout.Content = CalculationsResources.Version + " " + CalculationsResources.VersionNumber;
+            lblAbout.Content = CalculationsResources.VersionLiteral + " " + v.Major + ElementsResources.DecimalSymbol + v.Minor + ElementsResources.DecimalSymbol + v.Build;
 
             if (Radians)
                 rbtRadians.IsChecked = true;
@@ -137,22 +140,13 @@ namespace Calculations
             cboAnswerFormat.Items[2] = new TopHeavyFractionNumberFormat().TypeAsString;
             cboAnswerFormat.Items[3] = new MixedFractionNumberFormat().TypeAsString;
 
-            switch (CurrentAnswerFormat)
+            cboAnswerFormat.SelectedIndex = CurrentAnswerFormat switch
             {
-                case DecimalNumber2DPNumberFormat _:
-                    cboAnswerFormat.SelectedIndex = 1;
-                    break;
-                case TopHeavyFractionNumberFormat _:
-                    cboAnswerFormat.SelectedIndex = 2;
-                    break;
-                case MixedFractionNumberFormat _:
-                    cboAnswerFormat.SelectedIndex = 3;
-                    break;
-                default:
-                    cboAnswerFormat.SelectedIndex = 0;
-                    break;
-            }
-
+                DecimalNumber2DPNumberFormat => 1,
+                TopHeavyFractionNumberFormat => 2,
+                MixedFractionNumberFormat => 3,
+                _ => 0
+            };
 
             switch (HistoryItemsSetting)
             {

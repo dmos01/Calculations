@@ -1,6 +1,7 @@
 ﻿using System;
 using EquationElements;
 using static EquationElements.Utils;
+// ReSharper disable NotNullMemberIsNotInitialized
 
 namespace Calculations
 {
@@ -9,62 +10,87 @@ namespace Calculations
         public partial class Constant
         {
             public string Name { get; }
-            public string Value { get; private set; }
-            public string? Unit { get; private set; }
-            public string? Description { get; private set; }
-            public string ValueWithoutSpaces { get; private set; }
-            public string? UnitWithoutSpaces { get; private set; }
-            public string? DescriptionWithoutSpaces { get; private set; }
 
-            public Constant(string name, string value, string? unit = null, string? description = null)
+            private string fullValue;
+            public string Value
+            {
+                get => fullValue;
+                set
+                {
+                    ThrowExceptionIfNullEmptyOrOnlySpaces(value, nameof(Value));
+                    fullValue = value;
+                    ValueWithoutSpaces = RemoveSpaces(value);
+                }
+            }
+
+            private string fullUnit;
+            public string Unit
+            {
+                get => fullUnit;
+                set
+                {
+                    fullUnit = value;
+                    UnitWithoutSpaces = RemoveSpaces(value);
+                }
+            }
+
+            private string fullDescription;
+            public string Description
+            {
+                get => fullDescription;
+                set
+                {
+                    fullDescription = value;
+                    DescriptionWithoutSpaces = RemoveSpaces(value);
+                }
+            }
+
+            public string NameWithoutSpaces { get; }
+            public string ValueWithoutSpaces { get; private set; }
+            public string UnitWithoutSpaces { get; private set; }
+            public string DescriptionWithoutSpaces { get; private set; }
+            
+            public Constant(string name, string value)
             {
                 ThrowExceptionIfNullEmptyOrOnlySpaces(name, nameof(name));
-                ThrowExceptionIfNullEmptyOrOnlySpaces(value, nameof(value));
-
                 Name = name;
+                NameWithoutSpaces = RemoveSpaces(name);
+                Value = value;
+                Unit = null;
+                Description = null;
+
+            }
+
+            public Constant(string name, string value, string unit, string description)
+            {
+                ThrowExceptionIfNullEmptyOrOnlySpaces(name, nameof(name));
+                Name = name;
+                NameWithoutSpaces = RemoveSpaces(name);
                 Value = value;
                 Unit = unit;
                 Description = description;
-
-                ValueWithoutSpaces = RemoveSpaces(Value);
-                UnitWithoutSpaces = RemoveSpaces(Unit);
-                DescriptionWithoutSpaces = RemoveSpaces(Description);
             }
 
+         
             /// <summary>
-            ///     Changes the non-key properties.
+            /// 
             /// </summary>
-            /// <param name="newValue"></param>
-            /// <param name="newUnit"></param>
-            /// <param name="newDescription"></param>
-            public void Overwrite(string newValue, string? newUnit = null, string? newDescription = null)
+            /// <param name="textWithoutSpaces">Should be without spaces.</param>
+            /// <returns></returns>
+            public bool Matches(string textWithoutSpaces)
             {
-                ThrowExceptionIfNullEmptyOrOnlySpaces(newValue, nameof(newValue));
-
-                Value = newValue;
-                Unit = newUnit;
-                Description = newDescription;
-
-                ValueWithoutSpaces = RemoveSpaces(Value);
-                UnitWithoutSpaces = RemoveSpaces(Unit);
-                DescriptionWithoutSpaces = RemoveSpaces(Description);
-            }
-
-            /// <summary>
-            ///     Tests if any of this Constant's fields contains the search text.
-            /// </summary>
-            /// <returns>True if the Constant matches the search text; otherwise false.</returns>
-            public bool Matches(string searchTextWithoutSpaces)
-            {
-                if (ValueWithoutSpaces.Contains(searchTextWithoutSpaces, StringComparison.CurrentCultureIgnoreCase))
+                if (NameWithoutSpaces.Contains(textWithoutSpaces, StringComparison.CurrentCultureIgnoreCase))
                     return true;
 
-                if (UnitWithoutSpaces != null &&
-                    UnitWithoutSpaces.Contains(searchTextWithoutSpaces, StringComparison.CurrentCultureIgnoreCase))
+                if (ValueWithoutSpaces.Contains(textWithoutSpaces, StringComparison.CurrentCultureIgnoreCase))
                     return true;
 
-                if (DescriptionWithoutSpaces != null &&
-                    DescriptionWithoutSpaces.Contains(searchTextWithoutSpaces,
+                if (UnitWithoutSpaces is not null &&
+                    UnitWithoutSpaces.Contains(textWithoutSpaces, StringComparison.CurrentCultureIgnoreCase))
+                    return true;
+
+                if (DescriptionWithoutSpaces is not null &&
+                    DescriptionWithoutSpaces.Contains(textWithoutSpaces,
                         StringComparison.CurrentCultureIgnoreCase))
                     return true;
 

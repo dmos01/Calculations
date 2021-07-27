@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EquationBuilder;
 using EquationCalculator;
 using EquationElements;
@@ -8,6 +9,7 @@ using NUnit.Framework;
 
 namespace UnitTests
 {
+    [SuppressMessage("ReSharper", "LocalizableElement")]
     internal class BaseMethods
     {
         static ICollection<BaseElement> elements;
@@ -64,17 +66,12 @@ namespace UnitTests
         {
             try
             {
-                switch (args.Length)
+                elements = args.Length switch
                 {
-                    case 2:
-                        elements = SplitAndValidate.Run((string) args[0]);
-                        break;
-                    case 3:
-                        elements = SplitAndValidate.Run((string) args[0], (Dictionary<string, string>) args[2]);
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException(null, "Wrong number of arguments.");
-                }
+                    2 => SplitAndValidate.Run((string) args[0]),
+                    3 => SplitAndValidate.Run((string) args[0], (Dictionary<string, string>) args[2]),
+                    _ => throw new ArgumentOutOfRangeException(null, "Wrong number of arguments.")
+                };
 
                 return true;
             }

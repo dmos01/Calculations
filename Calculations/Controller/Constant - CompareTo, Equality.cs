@@ -1,4 +1,6 @@
 ﻿using System;
+using static EquationElements.Utils;
+// ReSharper disable ArrangeMethodOrOperatorBody
 
 namespace Calculations
 {
@@ -6,6 +8,11 @@ namespace Calculations
     {
         public partial class Constant : IComparable
         {
+            private int PrivateCompareTo(string otherNameWithoutSpaces) =>
+                string.Compare(NameWithoutSpaces, otherNameWithoutSpaces, StringComparison.Ordinal);
+
+            private bool PrivateEquals(string otherNameWithoutSpaces) => NameWithoutSpaces == otherNameWithoutSpaces;
+
             /// <summary>
             ///     <para>Compares the Constants' Names.</para>
             ///     <para>Less Than Zero - This precedes obj.</para>
@@ -16,17 +23,13 @@ namespace Calculations
             /// <returns></returns>
             public int CompareTo(object obj)
             {
-                switch (obj)
+                return obj switch
                 {
-                    case null:
-                        return 1;
-                    case string str:
-                        return string.Compare(Name, str, StringComparison.Ordinal);
-                    case Constant b:
-                        return string.Compare(Name, b.Name, StringComparison.Ordinal);
-                    default:
-                        throw new ArgumentOutOfRangeException(null, CalculationsResources.CompareConstantFail);
-                }
+                    null => 1,
+                    string otherName => PrivateCompareTo(RemoveSpaces(otherName)),
+                    Constant otherConstant => PrivateCompareTo(otherConstant.NameWithoutSpaces),
+                    _ => throw new ArgumentOutOfRangeException(null, CalculationsResources.CompareConstantFail)
+                };
             }
 
             /// <summary>
@@ -36,20 +39,20 @@ namespace Calculations
             ///     <para>Greater than Zero - This follows otherName.</para>
             /// </summary>
             /// <returns></returns>
-            public int CompareTo(string otherName) => string.Compare(Name, otherName, StringComparison.Ordinal);
+            public int CompareTo(string otherName) => PrivateCompareTo(RemoveSpaces(otherName));
 
             /// <summary>
-            ///     <para>Compares the Constant's Name to b's Name.</para>
-            ///     <para>Less Than Zero - This precedes b.</para>
-            ///     <para>Zero - This occurs in the same position as b.</para>
-            ///     <para>Greater than Zero - This follows b.</para>
+            ///     <para>Compares the Constant's Name to otherConstant's Name.</para>
+            ///     <para>Less Than Zero - This precedes otherConstant.</para>
+            ///     <para>Zero - This occurs in the same position as otherConstant.</para>
+            ///     <para>Greater than Zero - This follows otherConstant.</para>
             /// </summary>
             /// <returns></returns>
-            public int CompareTo(Constant b) => b is null ? 1 : string.Compare(Name, b.Name, StringComparison.Ordinal);
+            public int CompareTo(Constant otherConstant) => otherConstant is null ? 1 : PrivateCompareTo(otherConstant.NameWithoutSpaces);
 
-            public bool Equals(string otherNameWithoutSpaces) => Name == otherNameWithoutSpaces;
+            public bool Equals(string otherName) => PrivateEquals(RemoveSpaces(otherName));
 
-            public bool Equals(Constant b) => !(b is null) && Name == b.Name;
+            public bool Equals(Constant otherConstant) => otherConstant is not null && PrivateEquals(otherConstant.NameWithoutSpaces);
 
             /// <summary>
             /// </summary>
@@ -57,20 +60,16 @@ namespace Calculations
             /// <returns></returns>
             public override bool Equals(object obj)
             {
-                switch (obj)
+                return obj switch
                 {
-                    case null:
-                        return false;
-                    case string str:
-                        return Name == str;
-                    case Constant b:
-                        return Name == b.Name;
-                    default:
-                        throw new ArgumentOutOfRangeException(null, CalculationsResources.CompareConstantFail);
-                }
+                    null => false,
+                    string otherName => PrivateEquals(RemoveSpaces(otherName)),
+                    Constant otherConstant => PrivateEquals(otherConstant.NameWithoutSpaces),
+                    _ => throw new ArgumentOutOfRangeException(null, CalculationsResources.CompareConstantFail)
+                };
             }
 
-            public override int GetHashCode() => Name.GetHashCode();
+            public override int GetHashCode() => NameWithoutSpaces.GetHashCode();
 
             public static bool operator ==(Constant a, string b)
             {
@@ -78,7 +77,7 @@ namespace Calculations
                     return b is null;
                 if (b is null)
                     return false;
-                return a.Equals(b);
+                return a.PrivateEquals(RemoveSpaces(b));
             }
 
             public static bool operator !=(Constant a, string b) => !(a == b);
@@ -89,7 +88,7 @@ namespace Calculations
                     return b is null;
                 if (b is null)
                     return false;
-                return b.Equals(a);
+                return b.PrivateEquals(RemoveSpaces(a));
             }
 
             public static bool operator !=(string a, Constant b) => !(a == b);
@@ -105,7 +104,7 @@ namespace Calculations
                 if (ReferenceEquals(a, b))
                     return true;
 
-                return a.Equals(b);
+                return a.PrivateEquals(b.NameWithoutSpaces);
             }
 
             public static bool operator !=(Constant a, Constant b) => !(a == b);
@@ -119,15 +118,12 @@ namespace Calculations
                 if (ReferenceEquals(a, b))
                     return true;
 
-                switch (b)
+                return b switch
                 {
-                    case string str:
-                        return a.Equals(str);
-                    case Constant Constant:
-                        return a.Equals(Constant);
-                    default:
-                        return false;
-                }
+                    string otherName => a.PrivateEquals(RemoveSpaces(otherName)),
+                    Constant otherConstant => a.PrivateEquals(otherConstant.NameWithoutSpaces),
+                    _ => false
+                };
             }
 
             public static bool operator !=(Constant a, object b) => !(a == b);
@@ -141,15 +137,12 @@ namespace Calculations
                 if (ReferenceEquals(a, b))
                     return true;
 
-                switch (a)
+                return a switch
                 {
-                    case string str:
-                        return b.Equals(str);
-                    case Constant Constant:
-                        return b.Equals(Constant);
-                    default:
-                        return false;
-                }
+                    string otherName => b.PrivateEquals(RemoveSpaces(otherName)),
+                    Constant otherConstant => b.PrivateEquals(RemoveSpaces(otherConstant.NameWithoutSpaces)),
+                    _ => false
+                };
             }
 
             public static bool operator !=(object a, Constant b) => !(a == b);

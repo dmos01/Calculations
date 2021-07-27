@@ -8,10 +8,7 @@ namespace Calculations
 {
     public partial class MainWindow
     {
-        private void TabSettings_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            txtMainCalculation.Focus();
-        }
+        private void TabSettings_MouseUp(object sender, MouseButtonEventArgs e) => txtMainCalculation.Focus();
 
         private void CboAnswerFormat_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -68,14 +65,8 @@ namespace Calculations
             txtMainCalculation.Focus();
         }
 
-        private void BtnFontSettings_Click(object sender, RoutedEventArgs e)
-        {
-            ShowFontWindow();
-        }
+        private void BtnFontSettings_Click(object sender, RoutedEventArgs e) => ShowFontWindow();
 
-        private void LblAbout_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            ShowAboutWindow();
-        }
+        private void LblAbout_MouseDown(object sender, MouseButtonEventArgs e) => ShowAboutWindow();
     }
 }

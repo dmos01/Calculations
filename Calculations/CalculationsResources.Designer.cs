@@ -142,6 +142,22 @@ namespace Calculations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Licenses:
+        ///*Fraction class by Syed Mehroz Alam, licensed under the Code Project Open License (CPOL).
+        ///Changes by Marc C. Brooks and Jeffery Sax.
+        ///*&apos;Hack&apos; font Copyright 2018 Source Foundry Authors and licensed under the MIT License.
+        /// -DejaVu font project was committed to the public domain.
+        /// -Bitstream Vera Sans Mono Copyright 2003 Bitstream Inc. and licensed under the Bitstream Vera License with Reserved Font Names &apos;Bitstream&apos; and &apos;Vera.&apos;)
+        ///*Images from iconmonstr.com (Arrow 12, Trash Can 1).
+        ///https://ico [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string LicenseInfo {
+            get {
+                return ResourceManager.GetString("LicenseInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The ratio of a circle&apos;s circumference to its diameter..
         /// </summary>
         internal static string PiDescription {
@@ -160,11 +176,33 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to , released 22 July 2021..
+        ///   Looks up a localized string similar to , released 27 July 2021..
         /// </summary>
         internal static string ReleaseDate {
             get {
                 return ResourceManager.GetString("ReleaseDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Versions 4.4 and 4.5:
+        ///*Code improvements.
+        ///
+        ///Version 4.3:
+        ///*Big changes to determining E (*10^ or Eulers), particularly relating to brackets, Constants and Functions.
+        ///*Big changes to validation (tightening some rules and loosening others).
+        /// -Attempts are made to close unclosed brackets.
+        /// -One-Argument Functions no longer need to be followed by an opening bracket if performed on a single number.
+        ///
+        ///Version 4.2:
+        ///*New icons.
+        ///
+        ///Version 4.1:
+        ///*History&apos;s &apos;Use Selected...&apos; menu appears when right-clicking an [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ReleaseHistory {
+            get {
+                return ResourceManager.GetString("ReleaseHistory", resourceCulture);
             }
         }
         
@@ -180,18 +218,9 @@ namespace Calculations {
         /// <summary>
         ///   Looks up a localized string similar to Version.
         /// </summary>
-        internal static string Version {
+        internal static string VersionLiteral {
             get {
-                return ResourceManager.GetString("Version", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 4.4.
-        /// </summary>
-        internal static string VersionNumber {
-            get {
-                return ResourceManager.GetString("VersionNumber", resourceCulture);
+                return ResourceManager.GetString("VersionLiteral", resourceCulture);
             }
         }
         

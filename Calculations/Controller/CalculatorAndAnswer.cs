@@ -61,10 +61,7 @@ namespace Calculations
             /// <summary>
             ///     Updates the CurrentAnswer based on the current Controller.CurrentAnswerFormat.
             /// </summary>
-            public void UpdateAnswerFormat()
-            {
-                CurrentAnswer = CurrentAnswerFormat.Display(currentAnswer);
-            }
+            public void UpdateAnswerFormat() => CurrentAnswer = CurrentAnswerFormat.Display(currentAnswer);
         }
     }
 }

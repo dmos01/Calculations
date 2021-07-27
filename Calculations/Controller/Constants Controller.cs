@@ -64,27 +64,25 @@ namespace Calculations
             public void AddOrUpdate(string name, string value, string unit, string description, bool saveAfter = true)
             {
                 string nameWithoutSpaces = RemoveSpaces(name);
-
                 if (sortedConstants.ContainsKey(nameWithoutSpaces))
-                    sortedConstants[nameWithoutSpaces].Overwrite(value, unit, description);
-                else
                 {
-                    sortedConstants.Add(nameWithoutSpaces, new Constant(name, value, unit, description));
+                    sortedConstants[nameWithoutSpaces].Value = value;
+                    sortedConstants[nameWithoutSpaces].Unit = unit;
+                    sortedConstants[nameWithoutSpaces].Description = description;
                 }
+                else
+                    sortedConstants.Add(nameWithoutSpaces, new Constant(name, value, unit, description));
 
                 if (saveAfter)
                     SaveConstants();
             }
-
-            public List<string> GetAllNames() => SearchAllFieldsAndReturnNames();
-
+            
             public List<string> SearchAllFieldsAndReturnNames(string searchText = "")
             {
                 searchText = RemoveSpaces(searchText);
 
-                return sortedConstants
-                    .Where(x => x.Key.Contains(searchText, StringComparison.CurrentCultureIgnoreCase) ||
-                                x.Value.Matches(searchText)).Select(x => x.Value.Name).ToList();
+                return sortedConstants.Where(x =>
+                    x.Value.Matches(searchText)).Select(x => x.Value.Name).ToList();
             }
 
             /// <summary>
@@ -107,7 +105,7 @@ namespace Calculations
                 {
                     try
                     {
-                        while (reader.ReadLine() != null) //<constant>
+                        while (reader.ReadLine() is not null) //<constant>
                         {
                             string name = ReadXmlField("name");
                             string value = ReadXmlField("value");

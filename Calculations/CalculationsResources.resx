@@ -144,6 +144,18 @@
   <data name="HistoryInsertCalculation" xml:space="preserve">
     <value>Insert calculation at cursor</value>
   </data>
+  <data name="LicenseInfo" xml:space="preserve">
+    <value>Licenses:
+*Fraction class by Syed Mehroz Alam, licensed under the Code Project Open License (CPOL).
+Changes by Marc C. Brooks and Jeffery Sax.
+*'Hack' font Copyright 2018 Source Foundry Authors and licensed under the MIT License.
+ -DejaVu font project was committed to the public domain.
+ -Bitstream Vera Sans Mono Copyright 2003 Bitstream Inc. and licensed under the Bitstream Vera License with Reserved Font Names 'Bitstream' and 'Vera.')
+*Images from iconmonstr.com (Arrow 12, Trash Can 1).
+https://iconmonstr.com/license/
+*Icon created using Affinity Designer.
+*Thanks to Resharper for code suggestions.</value>
+  </data>
   <data name="PiDescription" xml:space="preserve">
     <value>The ratio of a circle's circumference to its diameter.</value>
   </data>
@@ -151,16 +163,38 @@
     <value>Calculations</value>
   </data>
   <data name="ReleaseDate" xml:space="preserve">
-    <value>, released 22 July 2021.</value>
+    <value>, released 27 July 2021.</value>
+  </data>
+  <data name="ReleaseHistory" xml:space="preserve">
+    <value>Versions 4.4 and 4.5:
+*Code improvements.
+
+Version 4.3:
+*Big changes to determining E (*10^ or Eulers), particularly relating to brackets, Constants and Functions.
+*Big changes to validation (tightening some rules and loosening others).
+ -Attempts are made to close unclosed brackets.
+ -One-Argument Functions no longer need to be followed by an opening bracket if performed on a single number.
+
+Version 4.2:
+*New icons.
+
+Version 4.1:
+*History's 'Use Selected...' menu appears when right-clicking an item; delete option added.
+
+Version 4.0:
+*Constants support mod, root and E surrounded by digits.
+*Expanded use of error messages containing the applicable parameter.
+*Root now available as a word operator; ! now available as a factorial symbol.
+
+*New and rewritten class libraries, with increased separation of responsibilities.
+*Resource files to assist with localization.
+*String comparisons now primarily uses CurrentCultureIgnoreCase."</value>
   </data>
   <data name="TextFile" xml:space="preserve">
     <value>Text file</value>
   </data>
-  <data name="Version" xml:space="preserve">
+  <data name="VersionLiteral" xml:space="preserve">
     <value>Version</value>
-  </data>
-  <data name="VersionNumber" xml:space="preserve">
-    <value>4.4</value>
   </data>
   <data name="XMLFile" xml:space="preserve">
     <value>XML file</value>

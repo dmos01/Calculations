@@ -101,7 +101,7 @@ namespace Calculations
                     Default.CalculatorWindow.ChangeFontSizesOfMainControls(1);
                     Default.CalculatorWindow.ChangeFontSizesOfUIElements(1);
 
-                    if (Default.HistoryWindow != null)
+                    if (Default.HistoryWindow is not null)
                     {
                         Default.HistoryWindow.SetListboxFontSize(DefaultMainCalc +
                                                                  Settings.Default.FontSizeRelativeToDefault);
@@ -124,7 +124,7 @@ namespace Calculations
                     Default.CalculatorWindow.ChangeFontSizesOfMainControls(-1);
                     Default.CalculatorWindow.ChangeFontSizesOfUIElements(-1);
 
-                    if (Default.HistoryWindow != null)
+                    if (Default.HistoryWindow is not null)
                     {
                         Default.HistoryWindow.SetListboxFontSize(DefaultMainCalc +
                                                                  Settings.Default.FontSizeRelativeToDefault);

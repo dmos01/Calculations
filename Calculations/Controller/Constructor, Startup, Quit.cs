@@ -88,7 +88,7 @@ namespace Calculations
 
             Settings.Default.MainWindowWidth = Default.CalculatorWindow.Width;
             Settings.Default.MainWindowHeight = Default.CalculatorWindow.Height;
-            if (Default.HistoryWindow != null)
+            if (Default.HistoryWindow is not null)
             {
                 Settings.Default.HistoryWindowWidth = Default.HistoryWindow.Width;
                 Settings.Default.HistoryWindowHeight = Default.HistoryWindow.Height;
