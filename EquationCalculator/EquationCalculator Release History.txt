@@ -1,5 +1,8 @@
 ﻿EquationCalculator Release History:
 
+Version 1.1.2:
+*Renamed files.
+
 Version 1.1.1 - 22 July 2021:
 *Expanded use of exception types.
 *Num E - Num multiplies the second number by -1 instead of concatenating a minus symbol. 

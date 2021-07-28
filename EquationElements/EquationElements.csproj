@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Mehroz Fraction Class\**" />
+    <EmbeddedResource Remove="Mehroz Fraction Class\**" />
+    <None Remove="Mehroz Fraction Class\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="ElementsExceptionMessages.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -55,10 +61,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OperatorRepresentations.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Mehroz Fraction Class\" />
   </ItemGroup>
 
 </Project>

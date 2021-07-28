@@ -4,6 +4,11 @@ Known bugs:
 *"root", "mod" or "e", next to a digit may cause error or wrong answer. 
 *"23mode24" with Constants 3mod = 6 and e24 = 4 calculates as 23%4 not 6*4.
 
+Version 4.5.1:
+*Moved and renamed files.
+*Removed Crystal Project license file.
+
+
 Version 4.5 - 27 July 2021:
 Constant:
 *Added NameWithoutSpaces, used in comparisons and equality.
