@@ -4,9 +4,12 @@ Known bugs:
 *"root", "mod" or "e", next to a digit may cause error or wrong answer. 
 *"23mode24" with Constants 3mod = 6 and e24 = 4 calculates as 23%4 not 6*4.
 
-Version 4.5.1:
+Version 4.5.1 - 31 July 2021:
+*If Constant unit or description is set to null, set to empty string instead.
 *Moved and renamed files.
+*Moved "Reset Fonts?" question strings to resource file.
 *Removed Crystal Project license file.
+*string.Join() used to concatenate version numbers.
 
 
 Version 4.5 - 27 July 2021:
@@ -14,9 +17,9 @@ Constant:
 *Added NameWithoutSpaces, used in comparisons and equality.
 *Value, Unit and Description setters made public and set their WithoutSpaces versions; overwrite method removed.
 
-*CalculationsAboutInfo strings moved to resources file.
+*About strings moved to resources file.
 *"!= null" changed to "is not null".
-*Version number is taken fromAssembly.GetExecutingAssembly() instead of resource file.
+*Version number is taken from Assembly.GetExecutingAssembly() instead of resource file.
 
 
 Version 4.4 - 22 July 2021:

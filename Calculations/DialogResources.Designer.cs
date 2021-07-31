@@ -248,5 +248,23 @@ namespace Calculations {
                 return ResourceManager.GetString("PiAndECannotBeModifiedMessage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to reset all fonts?.
+        /// </summary>
+        internal static string ResetFontsQuestion {
+            get {
+                return ResourceManager.GetString("ResetFontsQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Fonts?.
+        /// </summary>
+        internal static string ResetFontsQuestionTitle {
+            get {
+                return ResourceManager.GetString("ResetFontsQuestionTitle", resourceCulture);
+            }
+        }
     }
 }

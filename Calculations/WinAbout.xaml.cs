@@ -1,10 +1,10 @@
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Windows;
 using EquationElements;
 using static Calculations.Controller;
-using AssemblyInfo = EquationBuilder.AssemblyInfo;
 
 namespace Calculations
 {
@@ -34,18 +34,19 @@ namespace Calculations
 
         public void ChangeFontSize(double change) => txtAbout.FontSize += change;
 
+        [SuppressMessage("ReSharper", "RedundantNameQualifier")]
         public static string CalculationsAndDllVersionInformation()
         {
             Version v = Assembly.GetExecutingAssembly().GetName().Version;
-            string version = v.Major + ElementsResources.DecimalSymbol + v.Minor + ElementsResources.DecimalSymbol + v.Build;
+            string version = string.Join(ElementsResources.DecimalSymbol, v.Major, v.Minor, v.Build);
 
             return string.Join(Environment.NewLine,
                 CalculationsResources.ProjectTitle + " " + version +
-                CalculationsResources.ReleaseDate, 
-                AssemblyInfo.VersionAndReleaseDate,
-                EquationCalculator.AssemblyInfo.VersionAndReleaseDate,
-                EquationElements.AssemblyInfo.VersionAndReleaseDate,
-                NumberFormats.AssemblyInfo.VersionAndReleaseDate,
+                CalculationsResources.ReleaseDate,
+                EquationBuilder.AssemblyInfo.VersionInfo,
+                EquationCalculator.AssemblyInfo.VersionInfo,
+                EquationElements.AssemblyInfo.VersionInfo,
+                NumberFormats.AssemblyInfo.VersionInfo,
                 ElementsResources.CreatedBy
             );
         }

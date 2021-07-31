@@ -99,7 +99,7 @@ namespace Calculations
 
         private void BtnReset_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Do you want to reset all fonts?", "Reset Fonts?", MessageBoxButton.OKCancel) ==
+            if (MessageBox.Show(DialogResources.ResetFontsQuestion, DialogResources.ResetFontsQuestionTitle, MessageBoxButton.OKCancel) ==
                 MessageBoxResult.OK)
             {
                 FontController.Reset();

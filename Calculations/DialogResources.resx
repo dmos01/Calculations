@@ -180,4 +180,10 @@
   <data name="PiAndECannotBeModifiedMessage" xml:space="preserve">
     <value>Pi and E cannot be modified.</value>
   </data>
+  <data name="ResetFontsQuestion" xml:space="preserve">
+    <value>Do you want to reset all fonts?</value>
+  </data>
+  <data name="ResetFontsQuestionTitle" xml:space="preserve">
+    <value>Reset Fonts?</value>
+  </data>
 </root>

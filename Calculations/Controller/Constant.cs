@@ -29,8 +29,16 @@ namespace Calculations
                 get => fullUnit;
                 set
                 {
-                    fullUnit = value;
-                    UnitWithoutSpaces = RemoveSpaces(value);
+                    if (value is null)
+                    {
+                        fullUnit = "";
+                        UnitWithoutSpaces = "";
+                    }
+                    else
+                    {
+                        fullUnit = value;
+                        UnitWithoutSpaces = RemoveSpaces(value);
+                    }
                 }
             }
 
@@ -40,8 +48,16 @@ namespace Calculations
                 get => fullDescription;
                 set
                 {
-                    fullDescription = value;
-                    DescriptionWithoutSpaces = RemoveSpaces(value);
+                    if (value is null)
+                    {
+                        fullDescription = "";
+                        DescriptionWithoutSpaces = "";
+                    }
+                    else
+                    {
+                        fullDescription = value;
+                        DescriptionWithoutSpaces = RemoveSpaces(value);
+                    }
                 }
             }
 
@@ -49,15 +65,15 @@ namespace Calculations
             public string ValueWithoutSpaces { get; private set; }
             public string UnitWithoutSpaces { get; private set; }
             public string DescriptionWithoutSpaces { get; private set; }
-            
+
             public Constant(string name, string value)
             {
                 ThrowExceptionIfNullEmptyOrOnlySpaces(name, nameof(name));
                 Name = name;
                 NameWithoutSpaces = RemoveSpaces(name);
                 Value = value;
-                Unit = null;
-                Description = null;
+                Unit = "";
+                Description = "";
 
             }
 
@@ -71,7 +87,7 @@ namespace Calculations
                 Description = description;
             }
 
-         
+
             /// <summary>
             /// 
             /// </summary>
