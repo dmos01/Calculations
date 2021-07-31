@@ -2,6 +2,8 @@
 
 Version 1.1.2:
 *Renamed files.
+*string.Join() used to concatenate version numbers.
+
 
 Version 1.1.1 - 22 July 2021:
 *Expanded use of exception types.

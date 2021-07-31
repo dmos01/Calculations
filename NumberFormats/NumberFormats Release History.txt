@@ -1,9 +1,10 @@
 ﻿Number Formats Release History:
 
+Version 1.0.2:
+*string.Join() used to concatenate version numbers.
 
 Version 1.0.1 - 22 July 2021:
 *Expanded use of exception types.
-
 
 Vesion 1.0.0 - 31 May 2021:
 *Moved here.

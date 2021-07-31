@@ -15,11 +15,11 @@ namespace EquationBuilder
             get
             {
                 Version v = Assembly.GetExecutingAssembly().GetName().Version;
-                return v.Major + ElementsResources.DecimalSymbol + v.Minor + ElementsResources.DecimalSymbol + v.Build;
+                return string.Join(ElementsResources.DecimalSymbol, v.Major, v.Minor, v.Build);
             }
         }
 
-        public static string VersionAndReleaseDate =>
+        public static string VersionInfo =>
             BuilderResources.ProjectTitle + " " + AssemblyVersion + BuilderResources.ReleaseDate;
     }
 }
