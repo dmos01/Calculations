@@ -183,6 +183,7 @@ namespace Calculations
                 RunImportDialogAndReturnFilePath(DialogResources.ImportConstantsTitle,
                     CalculationsResources.XMLFile + "|*.xml|" + CalculationsResources.TextFile + "|*.txt",
                     "xml");
+         
             if (file.Any())
                 Constants.ImportConstants(file);
 

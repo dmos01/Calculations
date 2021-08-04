@@ -9,9 +9,11 @@
     <Authors>Daniel Spencer</Authors>
     <Product>Calculations</Product>
     <StartupObject>Calculations.App</StartupObject>
-    <Nullable>annotations</Nullable>
+    <Nullable>disable</Nullable>
     <AssemblyName>Calculations</AssemblyName>
     <RootNamespace>Calculations</RootNamespace>
+    <RepositoryType>https://github.com/dmos01/Calculations</RepositoryType>
+    <PackageProjectUrl>https://github.com/dmos01/Calculations</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

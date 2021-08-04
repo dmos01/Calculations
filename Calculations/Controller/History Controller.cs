@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using EquationElements;
+using static EquationElements.Utils;
 
 namespace Calculations
 {
@@ -90,7 +91,7 @@ namespace Calculations
             /// <param name="path">The full path and file name to import from.</param>
             public void ImportHistory(string path = null)
             {
-                if (string.IsNullOrEmpty(path))
+                if (IsNullEmptyOrOnlySpaces(path))
                     path = HistoryPath;
                 if (File.Exists(path) == false)
                     return;
@@ -118,7 +119,7 @@ namespace Calculations
 
             public void ExportHistory(string path = null)
             {
-                if (string.IsNullOrEmpty(path))
+                if (IsNullEmptyOrOnlySpaces(path))
                     path = HistoryPath;
                 StreamWriter writer = new(path);
                 foreach (CalculatorAndAnswer item in historyItems)

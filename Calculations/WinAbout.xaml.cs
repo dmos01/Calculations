@@ -21,10 +21,7 @@ namespace Calculations
 
             Title = CalculationsResources.AboutWindowTitle;
 
-            txtAbout.Text = CalculationsAndDllVersionInformation() + Environment.NewLine +
-                            Environment.NewLine + CalculationsResources.LicenseInfo + Environment.NewLine +
-                            Environment.NewLine +
-                            Environment.NewLine + CalculationsResources.ReleaseHistory;
+            txtAbout.Text = string.Join(Environment.NewLine, CalculationsAndDllVersionInformation(), "", CalculationsResources.LicenseInfo, "", "", CalculationsResources.ReleaseHistory);
         }
 
         private void WinAbout_Closing(object sender, CancelEventArgs e)
