@@ -1,7 +1,12 @@
 ﻿By Syed Mehroz Alam
 Changes by Marc C. Brooks, Jeffery Sax and Daniel Spencer
 
-Version 3.0 - Daniel Spencer
+Version 3.0.1 (Unreleased) - Daniel Spencer:
+*ToFraction uses switch statement to check null or empty.
+*Variable swapping uses Deconstruction.
+
+
+Version 3.0 - Daniel Spencer (2021):
 *Seperated into partial files in a .NET Standard 2.0 project
 *Namespace renamed to MehrozFractions
 *New resource file to hold strings
@@ -10,10 +15,10 @@ Version 3.0 - Daniel Spencer
 *Removed redundant qualifiers, type checks and 'this' keyword
 *Int32 => int and Int64 => long
 *Use of compound assignments (a = a + 1 => a += 1)
-*Switch statements where possible
+*Switch statements used where possible
 
 
-Version 2.3 - Marc C. Brooks
+Version 2.3 - Marc C. Brooks:
 *Fixed double-to-fraction logic to use continued fraction rules to get best possible precistion [bug fix for Syed Mehroz Alam, idea from  Jeffery Sax]
 *Added static readonly values for NaN, PositiveInfinity, NegativeInfinity [idea from Jeffery Sax]
 *Moved comparisons into an implementation of IComparer [idea from Jeffery Sax]
@@ -22,7 +27,7 @@ Version 2.3 - Marc C. Brooks
 *Added IsInfinity to better mirror double.
 *Added Modulus and % operators
 
-Version 2.2 - Marc C. Brooks
+Version 2.2 - Marc C. Brooks:
 *Less overflows by finding the GCD for Add [Jeffery Sax] and Multiply [Marc C. Brooks]
 *Understands and handles NaN, PositiveInfinity, NegativeInfinity just like double [Marc C. Brooks]
 *Fixed several uses of int where long was correct [Marc C. Brooks]
@@ -35,7 +40,7 @@ Version 2.2 - Marc C. Brooks
 *Proper implementations of Equals [Marc C. Brooks, Jeffery Sax]
 *Uses Math.Log(xx,2) and Math.Pow(xx,2) to get the best accuracy possible when converting doubles [Marc C. Brooks, Jeffery Sax]
 
-Version 2.1
+Version 2.1:
 *Overloads user-defined conversions to/from Fractions
 
 Version 2.0:

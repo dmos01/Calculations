@@ -179,11 +179,13 @@ namespace MehrozFractions
         /// </example>
         public static Fraction ToFraction(string inValue)
         {
-            if (inValue is null)
-                throw new ArgumentNullException(null, nameof(inValue));
-
-            if (inValue == "")
-                throw new ArgumentOutOfRangeException(null, nameof(inValue));
+            switch (inValue)
+            {
+                case null:
+                    throw new ArgumentNullException(null, nameof(inValue));
+                case "":
+                    throw new ArgumentOutOfRangeException(null, nameof(inValue));
+            }
 
             // could also be NumberFormatInfo.InvariantInfo
             NumberFormatInfo info = NumberFormatInfo.CurrentInfo;

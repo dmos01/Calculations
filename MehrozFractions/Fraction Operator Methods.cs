@@ -138,12 +138,8 @@ namespace MehrozFractions
 
             do
             {
-                if (left < right)
-                {
-                    long temp = left; // swap the two operands
-                    left = right;
-                    right = temp;
-                }
+                if (left < right) 
+                    (left, right) = (right, left); //Swap left and right.
 
                 left %= right;
             } while (left != 0);
