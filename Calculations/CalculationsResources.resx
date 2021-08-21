@@ -188,7 +188,7 @@ Version 4.0:
 
 *New and rewritten class libraries, with increased separation of responsibilities.
 *Resource files to assist with localization.
-*String comparisons now primarily uses CurrentCultureIgnoreCase."</value>
+*String comparisons now primarily uses CurrentCultureIgnoreCase.</value>
   </data>
   <data name="TextFile" xml:space="preserve">
     <value>Text file</value>

@@ -1,7 +1,6 @@
 ﻿using System;
 using EquationElements;
 using static EquationElements.Utils;
-// ReSharper disable NotNullMemberIsNotInitialized
 
 namespace Calculations
 {

@@ -1,6 +1,4 @@
-﻿// ReSharper disable PossibleNullReferenceException
-
-using static EquationElements.Utils;
+﻿using static EquationElements.Utils;
 
 namespace EquationElements
 {
