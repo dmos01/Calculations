@@ -1,23 +1,33 @@
 ﻿using static EquationElements.Utils;
+// ReSharper disable ConvertIfStatementToReturnStatement
 
 namespace EquationElements
 {
     public partial class Number
-    {
+    {  
+        public override int GetHashCode() => AsDouble.GetHashCode();
+
         /// <summary>
         ///     <para>Compares for equality the Numbers' AsDecimals, if possible; otherwise AsDoubles.</para>
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
-        protected bool Equals(Number b) =>
-            IsDecimal && b.IsDecimal ? AsDecimal == b.AsDecimal : HasMinimalDifference(AsDouble, b.AsDouble);
+        public bool Equals(Number b)
+        {
+            if (b is null)
+                return false;
+            if (ReferenceEquals(this, b))
+                return true;
+
+            return IsDecimal && b.IsDecimal ? AsDecimal == b.AsDecimal : HasMinimalDifference(AsDouble, b.AsDouble);
+        }
 
         /// <summary>
         ///     <para>Compares for equality AsDecimal and b, if possible; otherwise AsDouble and b.</para>
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
-        protected bool Equals(int b) =>
+        public bool Equals(long b) =>
             IsDecimal
                 ? AsDecimal == b
                 : HasMinimalDifference(AsDouble, b);
@@ -27,7 +37,7 @@ namespace EquationElements
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
-        protected bool Equals(decimal b) =>
+        public bool Equals(decimal b) =>
             IsDecimal
                 ? AsDecimal == b
                 : HasMinimalDifference(AsDouble, decimal.ToDouble(b));
@@ -37,7 +47,7 @@ namespace EquationElements
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
-        protected bool Equals(double b) => HasMinimalDifference(AsDouble, b);
+        public bool Equals(double b) => HasMinimalDifference(AsDouble, b);
 
         /// <summary>
         ///     <para>Compares for equality the Numbers' AsDecimals, if possible; otherwise AsDoubles.</para>
@@ -50,13 +60,22 @@ namespace EquationElements
                 return false;
             if (ReferenceEquals(this, obj))
                 return true;
-            if (!(obj is Number b))
-                return false;
 
-            return Equals(b);
+            switch (obj)
+            {
+                case Number b:
+                    return Equals(b);
+                case long b:
+                    return Equals(b);
+                case decimal b:
+                    return Equals(b);
+                case double b:
+                    return Equals(b);
+                default:
+                    return false;
+            }
         }
 
-        public override int GetHashCode() => AsDouble.GetHashCode();
 
         /// <summary>
         /// </summary>
@@ -67,15 +86,8 @@ namespace EquationElements
         {
             if (a is null)
                 return b is null;
-            if (b is null)
-                return false;
-            if (ReferenceEquals(a, b))
-                return true;
 
-            if (!(b is Number other))
-                return false;
-
-            return a.Equals(other);
+            return a.Equals(b);
         }
 
         /// <summary>
@@ -92,17 +104,10 @@ namespace EquationElements
         /// <returns></returns>
         public static bool operator ==(object a, Number b)
         {
-            if (a is null)
-                return b is null;
             if (b is null)
-                return false;
-            if (ReferenceEquals(a, b))
-                return true;
+                return a is null;
 
-            if (!(a is Number other))
-                return false;
-
-            return b.Equals(other);
+            return b.Equals(a);
         }
 
         /// <summary>
@@ -117,48 +122,71 @@ namespace EquationElements
         {
             if (a is null)
                 return b is null;
-            if (b is null)
-                return false;
 
             return a.Equals(b);
         }
 
         public static bool operator !=(Number a, Number b) => !(a == b);
 
-        public static bool operator ==(Number a, int b) =>
-            a.IsDecimal
-                ? a.AsDecimal == b
-                : HasMinimalDifference(a.AsDouble, b);
+        public static bool operator ==(Number a, long b)
+        {
+            if (a is null)
+                return false;
 
-        public static bool operator !=(Number a, int b) => !(a == b);
+            return a.Equals(b);
+        }
 
-        public static bool operator ==(Number a, decimal b) =>
-            a.IsDecimal
-                ? a.AsDecimal == b
-                : HasMinimalDifference(a.AsDouble, decimal.ToDouble(b));
+        public static bool operator !=(Number a, long b) => !(a == b);
+
+        public static bool operator ==(Number a, decimal b)
+        {
+            if (a is null)
+                return false;
+
+            return a.Equals(b);
+        }
 
         public static bool operator !=(Number a, decimal b) => !(a == b);
 
-        public static bool operator ==(Number a, double b) => HasMinimalDifference(a.AsDouble, b);
+        public static bool operator ==(Number a, double b)
+        {
+            if (a is null)
+                return false;
+
+            return a.Equals(b);
+        }
 
         public static bool operator !=(Number a, double b) => !(a == b);
 
-        public static bool operator ==(int a, Number b) =>
-            b.IsDecimal
-                ? a == b.AsDecimal
-                : HasMinimalDifference(a, b.AsDouble);
 
-        public static bool operator !=(int a, Number b) => !(a == b);
+        public static bool operator ==(long a, Number b)
+        {
+            if (b is null)
+                return false;
 
-        public static bool operator ==(decimal a, Number b) =>
-            b.IsDecimal
-                ? a == b.AsDecimal
-                : HasMinimalDifference(decimal.ToDouble(a), b.AsDouble);
+            return b.Equals(a);
+        }
+        
+        public static bool operator !=(long a, Number b) => !(a == b);
 
+        public static bool operator ==(decimal a, Number b)
+        {
+            if (b is null)
+                return false;
+
+            return b.Equals(a);
+        }
+        
         public static bool operator !=(decimal a, Number b) => !(a == b);
 
-        public static bool operator ==(double a, Number b) => HasMinimalDifference(a, b.AsDouble);
+        public static bool operator ==(double a, Number b)
+        {
+            if (b is null)
+                return false;
 
+            return b.Equals(a);
+        }
+        
         public static bool operator !=(double a, Number b) => !(a == b);
     }
 }

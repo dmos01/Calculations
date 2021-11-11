@@ -17,9 +17,15 @@ namespace EquationElements
             switch (obj)
             {
                 case null:
-                    return 1;
-                case Number b:
-                    return IsDecimal ? AsDecimal.CompareTo(b.AsDecimal) : AsDouble.CompareTo(b.AsDouble);
+                    return 1; //Anything is greater than null.
+                case Number other:
+                    return CompareTo(other);
+                case long other:
+                    return CompareTo(other);
+                case decimal other:
+                    return CompareTo(other);
+                case double other:
+                    return CompareTo(other);
                 default:
                     throw new ArgumentOutOfRangeException(null, ElementsExceptionMessages.NumberCompareFail);
             }
@@ -51,7 +57,7 @@ namespace EquationElements
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
-        public int CompareTo(int b) => IsDecimal ? AsDecimal.CompareTo(b) : AsDouble.CompareTo(b);
+        public int CompareTo(long b) => IsDecimal ? AsDecimal.CompareTo(b) : AsDouble.CompareTo(b);
 
         /// <summary>
         ///     <para>Compares AsDecimal to b, if possible; otherwise AsDouble to decimal.ToDouble(b).</para>

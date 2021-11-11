@@ -9,7 +9,7 @@
                 ? new Number(a.AsDecimal + b.AsDecimal)
                 : new Number(a.AsDouble + b.AsDouble);
 
-        public static Number operator +(Number a, int b) =>
+        public static Number operator +(Number a, long b) =>
             a.IsDecimal
                 ? new Number(a.AsDecimal + b)
                 : new Number(a.AsDouble + b);
@@ -21,7 +21,7 @@
 
         public static Number operator +(Number a, double b) => new Number(a.AsDouble + b);
 
-        public static Number operator +(int a, Number b) =>
+        public static Number operator +(long a, Number b) =>
             b.IsDecimal
                 ? new Number(a + b.AsDecimal)
                 : new Number(a + b.AsDouble);

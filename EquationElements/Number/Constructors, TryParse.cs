@@ -6,7 +6,7 @@ namespace EquationElements
     partial class Number : BaseElement
     {
         /// <summary>
-        ///     Uses decimal.Parse() and double.Parse() to determine type. Throws ArgumentNullException if asString is null.
+        ///     Uses decimal.Parse() and double.Parse() to determine type. Can throw ArgumentNullException, ArgumentOutOfRangeException and OverflowException.
         /// </summary>
         /// <param name="asString"></param>
         public Number(string asString)
@@ -28,6 +28,7 @@ namespace EquationElements
                 IsDecimal = false;
                 if (double.IsInfinity(dou) || double.IsNaN(dou))
                     throw new ArgumentOutOfRangeException(null, ElementsExceptionMessages.OverloadedNumberDefault);
+                AsDecimal = decimal.Zero;
                 AsDouble = dou;
             }
             else
@@ -39,12 +40,12 @@ namespace EquationElements
         /// <summary>
         ///     Stores both the integer (as a decimal) and its double representation. Both can be used.
         /// </summary>
-        /// <param name="asInteger"></param>
-        public Number(int asInteger)
+        /// <param name="asInt64"></param>
+        public Number(long asInt64)
         {
             IsDecimal = true;
-            AsDecimal = asInteger;
-            AsDouble = asInteger;
+            AsDecimal = asInt64;
+            AsDouble = asInt64;
         }
 
 
@@ -61,7 +62,7 @@ namespace EquationElements
 
 
         /// <summary>
-        ///     Stores the double. IsDecimal is set to false and AsDecimal will be the decimal default value.
+        ///     Stores the double. IsDecimal is set to false and AsDecimal will be Zero. Can throw ArgumentOutOfRangeException.
         /// </summary>
         /// <param name="asDouble"></param>
         public Number(double asDouble)
@@ -69,7 +70,29 @@ namespace EquationElements
             if (double.IsInfinity(asDouble) || double.IsNaN(asDouble))
                 throw new ArgumentOutOfRangeException(null, ElementsExceptionMessages.OverloadedNumberDefault);
             IsDecimal = false;
+            AsDecimal = decimal.Zero;
             AsDouble = asDouble;
+        }
+
+
+        /// <summary>
+        ///     Returns true if a number can be instantiated from the value.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="number">Null if method returns false.</param>
+        /// <returns></returns>
+        public static bool TryParse(string value, out Number number)
+        {
+            try
+            {
+                number = new Number(value);
+                return true;
+            }
+            catch
+            {
+                number = null;
+                return false;
+            }
         }
     }
 }

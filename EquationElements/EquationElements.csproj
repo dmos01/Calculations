@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Daniel Spencer</Authors>
-    <Version>1.3.1.6</Version>
+    <Version>1.5.0.7</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,11 +28,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ElementsResources.resx</DependentUpon>
     </Compile>
-    <Compile Update="NumberRepresentations.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>NumberRepresentations.resx</DependentUpon>
-    </Compile>
     <Compile Update="OperatorRepresentations.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -52,10 +47,6 @@
     <EmbeddedResource Update="ElementsResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ElementsResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="NumberRepresentations.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NumberRepresentations.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="OperatorRepresentations.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

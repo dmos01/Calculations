@@ -7,7 +7,7 @@
                 ? a.AsDecimal < b.AsDecimal
                 : a.AsDouble < b.AsDouble;
 
-        public static bool operator <(Number a, int b) =>
+        public static bool operator <(Number a, long b) =>
             a.IsDecimal
                 ? a.AsDecimal < b
                 : a.AsDouble < b;
@@ -19,7 +19,7 @@
 
         public static bool operator <(Number a, double b) => a.AsDouble < b;
 
-        public static bool operator <(int a, Number b) =>
+        public static bool operator <(long a, Number b) =>
             b.IsDecimal
                 ? a < b.AsDecimal
                 : a < b.AsDouble;

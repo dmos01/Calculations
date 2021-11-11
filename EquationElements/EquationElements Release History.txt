@@ -1,21 +1,33 @@
 ﻿EquationElements Release History:
 
-Version 1.3.2:
+Version 1.5.0:
+*NumberRepresentations removed and replaced with literal.ToString().
 *string.Join() used to concatenate version numbers.
 
-Version 1.3.1 - 22 July 2021:
-*Added Brackets' GetNewObjectOfReverseType().
+Number:
+*Added implicit casts for long => Number and decimal => Number.
+*Equals methods made public.
+*Equals(Number) checks ReferenceEquals first.
+*Equals(object) and CompareTo(object) attempt to convert to Number, long, decimal and double before giving up.
+* == methods check if number is null, then call their Equals().
+*Rearranged files.
+*Uses long (int64) instead of int because even long has a smaller range than decimal.
+
+
+Version 1.4.0 - 22 July 2021:
+*Added Brackets' GetNewObjectOfReverseType(), which uses GetReverseType().
 *E.TestPower() tests for null.
 *Expanded use of exception types.
 
-Version 1.3.0 - 18 July 2021:
-Brackets:
-*Added IsReverseOf(Type type).
-*Implementations of GetReverseSymbol() get the OperatorRepresentations symbol directly.
-*Rewriten XML comments.
 
+Version 1.3.0 - 18 July 2021:
 *E.TestPower() returns void.
 *Functions are IMayPrecedeNegativeNumber.
+
+Brackets:
+*Added IsReverseOf(Type).
+*Implementations of GetReverseSymbol() get the OperatorRepresentations symbol directly.
+*Rewriten XML comments.
 
 
 Version 1.2.0 - 8 July 2021:
@@ -30,11 +42,11 @@ Version 1.2.0 - 8 July 2021:
 
 Version 1.1.1 - 22 June 2021:
 *Minor improvements.
-*XML comments use "; otherwise " instead of ". Otherwise, ".
+*XML comments use "; otherwise" instead of ". Otherwise,".
 
 Version 1.1.0 - 14 June 2021:
-*Number's string constructor tests for only spaces.
-*Word constructor no longer tests if name is an Operator or Function.
+*new Number(string) uses IsNullEmptyOrOnlySpaces() instead of ThrowExceptionIfNullOrEmpty().
+*new Word(string) no longer tests if name is an Operator or Function.
 
 
 Version 1.0.0 - 31 May 2021:
