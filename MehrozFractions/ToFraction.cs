@@ -101,6 +101,7 @@ namespace MehrozFractions
                 {
                     // the string is not in the form of a fraction
                     // hopefully it is double or integer, do we see a decimal point?
+                    // ReSharper disable once StringIndexOfIsCultureSpecific.1
                     int decimalPos = inValue.IndexOf(info.CurrencyDecimalSeparator);
 
                     if (decimalPos > -1)
@@ -121,6 +122,7 @@ namespace MehrozFractions
             double remainingDigits = inValue;
             int maxIterations = 594; // found at http://www.ozgrid.com/forum/archive/index.php/t-22530.html
 
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
             while (remainingDigits != Math.Floor(remainingDigits)
                    && Math.Abs(inValue - (fractionNumerator / fractionDenominator)) > double.Epsilon)
             {

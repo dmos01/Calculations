@@ -116,10 +116,10 @@ namespace Calculations
                 if (Constants.Exists(nameWithoutSpaces))
                 {
                     if (MessageBox.Show(
-                        DialogResources.OverwriteConstantQuestionBeforeParameter + cboConstants.Text +
-                        DialogResources.OverwriteConstantQuestionAfterParameter,
-                        DialogResources.OverwriteConstantQuestionTitle,
-                        MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.Cancel)
+                            DialogResources.OverwriteConstantQuestionBeforeParameter + cboConstants.Text +
+                            DialogResources.OverwriteConstantQuestionAfterParameter,
+                            DialogResources.OverwriteConstantQuestionTitle,
+                            MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.Cancel)
                     {
                         cboConstants.Focus();
                         return true;
@@ -133,8 +133,8 @@ namespace Calculations
                             RegexOptions.IgnoreCase))
                     {
                         if (MessageBox.Show(DialogResources.ConstantNameNextToDigitsQuestion,
-                            DialogResources.ConstantNameSurroundedByDigitsQuestionTitle, MessageBoxButton.OKCancel,
-                            MessageBoxImage.Warning) == MessageBoxResult.Cancel)
+                                DialogResources.ConstantNameSurroundedByDigitsQuestionTitle, MessageBoxButton.OKCancel,
+                                MessageBoxImage.Warning) == MessageBoxResult.Cancel)
                         {
                             cboConstants.Focus();
                             return true;
@@ -161,10 +161,10 @@ namespace Calculations
             }
 
             if (MessageBox.Show(
-                DialogResources.DeleteConstantQuestionDialogMessageBeforeParameter + cboConstants.Text.Trim() +
-                DialogResources.DeleteConstantQuestionDialogMessageAfterParameter,
-                DialogResources.DeleteConstantQuestionTitle,
-                MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                    DialogResources.DeleteConstantQuestionDialogMessageBeforeParameter + cboConstants.Text.Trim() +
+                    DialogResources.DeleteConstantQuestionDialogMessageAfterParameter,
+                    DialogResources.DeleteConstantQuestionTitle,
+                    MessageBoxButton.OKCancel) == MessageBoxResult.OK)
             {
                 Constants.Delete(nameWithoutSpaces);
                 PopulateConstantsCombobox();
@@ -183,7 +183,7 @@ namespace Calculations
                 RunImportDialogAndReturnFilePath(DialogResources.ImportConstantsTitle,
                     CalculationsResources.XMLFile + "|*.xml|" + CalculationsResources.TextFile + "|*.txt",
                     "xml");
-         
+
             if (file.Any())
                 Constants.ImportConstants(file);
 
@@ -233,7 +233,7 @@ namespace Calculations
               until the end of this method. CboConstantsTextChanged() will then be called. This code is
               here rather than there because TextChanged() only applies to editable comboboxes.*/
             if (cboConstants.SelectedIndex != -1 && Constants.TryGetProperties(cboConstants.SelectedItem.ToString(),
-                out string value, out string unit, out string description))
+                    out string value, out string unit, out string description))
             {
                 txtConstantValue.Text = value;
                 txtConstantUnit.Text = unit;

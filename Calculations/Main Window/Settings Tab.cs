@@ -39,20 +39,20 @@ namespace Calculations
 
         private void ChkRememberHistoryForNextTime_CheckedStateChanged(object sender, RoutedEventArgs e)
         {
-            ChangeRememberHistory((bool) chkRememberHistoryForNextTime.IsChecked);
+            ChangeRememberHistory((bool)chkRememberHistoryForNextTime.IsChecked);
             txtMainCalculation.Focus();
         }
 
         private void ChkHistoryItemsOnlyAppearOnce_Checked(object sender, RoutedEventArgs e)
         {
-            ChangeHistoryItemsCanAppear(true, (bool) chkHistoryMoveToTop.IsChecked);
+            ChangeHistoryItemsCanAppear(true, (bool)chkHistoryMoveToTop.IsChecked);
             chkHistoryMoveToTop.Visibility = Visibility.Visible;
             txtMainCalculation.Focus();
         }
 
         private void ChkHistoryItemsOnlyAppearOnce_Unchecked(object sender, RoutedEventArgs e)
         {
-            ChangeHistoryItemsCanAppear(false, (bool) chkHistoryMoveToTop.IsChecked);
+            ChangeHistoryItemsCanAppear(false, (bool)chkHistoryMoveToTop.IsChecked);
             chkHistoryMoveToTop.Visibility = Visibility.Hidden;
             chkHistoryMoveToTop.IsChecked = false;
             txtMainCalculation.Focus();
@@ -60,8 +60,8 @@ namespace Calculations
 
         private void ChkHistoryMoveToTop_CheckedStateChanged(object sender, RoutedEventArgs e)
         {
-            ChangeHistoryItemsCanAppear((bool) chkHistoryItemsOnlyAllowedOnce.IsChecked,
-                (bool) chkHistoryMoveToTop.IsChecked);
+            ChangeHistoryItemsCanAppear((bool)chkHistoryItemsOnlyAllowedOnce.IsChecked,
+                (bool)chkHistoryMoveToTop.IsChecked);
             txtMainCalculation.Focus();
         }
 

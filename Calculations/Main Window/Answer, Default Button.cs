@@ -53,7 +53,7 @@ namespace Calculations
 
         private void SetDefaultButton(object sender, RoutedEventArgs e)
         {
-            UIElement sent = (UIElement) sender;
+            UIElement sent = (UIElement)sender;
 
             if (sent == txtMainCalculation)
             {

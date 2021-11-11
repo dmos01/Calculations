@@ -19,7 +19,7 @@ namespace Calculations {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class CalculationsResources {
@@ -176,7 +176,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to , released 8 August 2021..
+        ///   Looks up a localized string similar to , released 12 November 2021..
         /// </summary>
         internal static string ReleaseDate {
             get {
@@ -185,7 +185,7 @@ namespace Calculations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Versions 4.4 and 4.5:
+        ///   Looks up a localized string similar to Versions 4.4 - 4.6:
         ///*Code improvements.
         ///
         ///Version 4.3:
@@ -198,7 +198,7 @@ namespace Calculations {
         ///*New icons.
         ///
         ///Version 4.1:
-        ///*History&apos;s &apos;Use Selected...&apos; menu appears when right-clicking an [rest of string was truncated]&quot;;.
+        ///*History&apos;s &apos;Use Selected...&apos; menu appears when right-clicking an i [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ReleaseHistory {
             get {

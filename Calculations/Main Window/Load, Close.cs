@@ -127,7 +127,8 @@ namespace Calculations
             Version v = Assembly.GetExecutingAssembly().GetName().Version;
 
             chkRememberHistoryForNextTime.IsChecked = Settings.Default.RememberHistoryForNextTime;
-            lblAbout.Content = CalculationsResources.VersionLiteral + " " + v.Major + ElementsResources.DecimalSymbol + v.Minor + ElementsResources.DecimalSymbol + v.Build;
+            lblAbout.Content = CalculationsResources.VersionLiteral + " " + v.Major + ElementsResources.DecimalSymbol +
+                               v.Minor + ElementsResources.DecimalSymbol + v.Build;
 
             if (Radians)
                 rbtRadians.IsChecked = true;

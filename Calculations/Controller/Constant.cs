@@ -8,9 +8,13 @@ namespace Calculations
     {
         public partial class Constant
         {
-            public string Name { get; }
+            private string fullDescription;
+
+            private string fullUnit;
 
             private string fullValue;
+            public string Name { get; }
+
             public string Value
             {
                 get => fullValue;
@@ -22,7 +26,6 @@ namespace Calculations
                 }
             }
 
-            private string fullUnit;
             public string Unit
             {
                 get => fullUnit;
@@ -41,7 +44,6 @@ namespace Calculations
                 }
             }
 
-            private string fullDescription;
             public string Description
             {
                 get => fullDescription;
@@ -73,7 +75,6 @@ namespace Calculations
                 Value = value;
                 Unit = "";
                 Description = "";
-
             }
 
             public Constant(string name, string value, string unit, string description)
@@ -88,7 +89,6 @@ namespace Calculations
 
 
             /// <summary>
-            /// 
             /// </summary>
             /// <param name="textWithoutSpaces">Should be without spaces.</param>
             /// <returns></returns>

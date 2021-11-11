@@ -147,7 +147,7 @@ namespace Calculations
                 /// </summary>
                 public static FontFamily MainFamily =>
                     Settings.Default.FontFamily == "Hack"
-                        ? (FontFamily) Application.Current.Resources["Hack"]
+                        ? (FontFamily)Application.Current.Resources["Hack"]
                         : new FontFamily(Settings.Default.FontFamily);
 
                 /// <summary>
@@ -176,7 +176,7 @@ namespace Calculations
                 /// </summary>
                 public static void Startup()
                 {
-                    if ((FontFamily) Application.Current.Resources["Hack"] is null &&
+                    if ((FontFamily)Application.Current.Resources["Hack"] is null &&
                         Settings.Default.FontFamily == "Hack")
                     {
                         Settings.Default.FontFamily = "SegoeUI";

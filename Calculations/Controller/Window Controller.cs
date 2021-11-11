@@ -59,7 +59,7 @@
         {
             if (Default.FontWindow is null)
             {
-                Default.FontWindow = new WinFont {Owner = Default.CalculatorWindow};
+                Default.FontWindow = new WinFont { Owner = Default.CalculatorWindow };
                 Default.FontWindow.SetSizeForControls(FontController.Size.DefaultUILabels +
                                                       Settings.Default.FontSizeRelativeToDefault);
                 Default.FontWindow.Show();
@@ -77,7 +77,7 @@
         {
             if (Default.AboutWindow is null)
             {
-                Default.AboutWindow = new WinAbout {Owner = Default.CalculatorWindow};
+                Default.AboutWindow = new WinAbout { Owner = Default.CalculatorWindow };
                 Default.AboutWindow.SetFontSize(FontController.Size.DefaultUILabels +
                                                 Settings.Default.FontSizeRelativeToDefault);
                 Default.AboutWindow.Show();

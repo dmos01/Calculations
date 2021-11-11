@@ -104,7 +104,7 @@ namespace Calculations
             //-moveBy because the items are being displayed in lstHistory in reverse-order, so the item in the HistoryController will need to be moved in the reverse direction to lstHistory.
             History.MoveItem(GetReverseOfSelectedIndex(), -moveBy);
 
-            ListBoxItem toMove = (ListBoxItem) lstHistory.Items[index];
+            ListBoxItem toMove = (ListBoxItem)lstHistory.Items[index];
             lstHistory.Items.RemoveAt(index);
             lstHistory.Items.Insert(index + moveBy, toMove);
             lstHistory.SelectedIndex = index + moveBy;

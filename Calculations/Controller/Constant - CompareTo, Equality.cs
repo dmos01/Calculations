@@ -1,5 +1,6 @@
 ﻿using System;
 using static EquationElements.Utils;
+
 // ReSharper disable ArrangeMethodOrOperatorBody
 
 namespace Calculations
@@ -8,11 +9,6 @@ namespace Calculations
     {
         public partial class Constant : IComparable
         {
-            private int PrivateCompareTo(string otherNameWithoutSpaces) =>
-                string.Compare(NameWithoutSpaces, otherNameWithoutSpaces, StringComparison.Ordinal);
-
-            private bool PrivateEquals(string otherNameWithoutSpaces) => NameWithoutSpaces == otherNameWithoutSpaces;
-
             /// <summary>
             ///     <para>Compares the Constants' Names.</para>
             ///     <para>Less Than Zero - This precedes obj.</para>
@@ -32,6 +28,11 @@ namespace Calculations
                 };
             }
 
+            private int PrivateCompareTo(string otherNameWithoutSpaces) =>
+                string.Compare(NameWithoutSpaces, otherNameWithoutSpaces, StringComparison.Ordinal);
+
+            private bool PrivateEquals(string otherNameWithoutSpaces) => NameWithoutSpaces == otherNameWithoutSpaces;
+
             /// <summary>
             ///     <para>Compares the Constant's Name to otherName.</para>
             ///     <para>Less Than Zero - This precedes otherName.</para>
@@ -48,11 +49,13 @@ namespace Calculations
             ///     <para>Greater than Zero - This follows otherConstant.</para>
             /// </summary>
             /// <returns></returns>
-            public int CompareTo(Constant otherConstant) => otherConstant is null ? 1 : PrivateCompareTo(otherConstant.NameWithoutSpaces);
+            public int CompareTo(Constant otherConstant) =>
+                otherConstant is null ? 1 : PrivateCompareTo(otherConstant.NameWithoutSpaces);
 
             public bool Equals(string otherName) => PrivateEquals(RemoveSpaces(otherName));
 
-            public bool Equals(Constant otherConstant) => otherConstant is not null && PrivateEquals(otherConstant.NameWithoutSpaces);
+            public bool Equals(Constant otherConstant) =>
+                otherConstant is not null && PrivateEquals(otherConstant.NameWithoutSpaces);
 
             /// <summary>
             /// </summary>

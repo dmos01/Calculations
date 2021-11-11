@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "Calculations/4.5.1.9": {
+      "Calculations/4.6.0.10": {
         "dependencies": {
           "EquationBuilder": "2.0.1.2",
           "EquationCalculator": "1.2.1.5",
@@ -49,7 +49,7 @@
     }
   },
   "libraries": {
-    "Calculations/4.5.1.9": {
+    "Calculations/4.6.0.10": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

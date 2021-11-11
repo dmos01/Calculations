@@ -76,7 +76,7 @@ namespace Calculations
                 if (saveAfter)
                     SaveConstants();
             }
-            
+
             public List<string> SearchAllFieldsAndReturnNames(string searchText = "")
             {
                 searchText = RemoveSpaces(searchText);

@@ -1,7 +1,7 @@
 ﻿By Syed Mehroz Alam
 Changes by Marc C. Brooks, Jeffery Sax and Daniel Spencer
 
-Version 3.0.1 (Unreleased) - Daniel Spencer:
+Version 3.0.1 - Daniel Spencer (2021):
 *Expanded use of partial files.
 *GCD uses Math.Abs() to get absolute values
 *ToFraction(string) uses switch statement to check null or empty

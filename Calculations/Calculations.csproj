@@ -5,7 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
-    <Version>4.5.1.9</Version>
+    <Version>4.6.0.10</Version>
     <Authors>Daniel Spencer</Authors>
     <Product>Calculations</Product>
     <StartupObject>Calculations.App</StartupObject>

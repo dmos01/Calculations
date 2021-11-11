@@ -14,7 +14,7 @@ namespace Calculations
         {
             InitializeComponent();
             rbtConsolas.FontFamily = new FontFamily("Consolas");
-            rbtHack.FontFamily = (FontFamily) Application.Current.Resources["Hack"];
+            rbtHack.FontFamily = (FontFamily)Application.Current.Resources["Hack"];
 
             switch (FontController.Family.MainFamilyAsString)
             {
@@ -99,7 +99,8 @@ namespace Calculations
 
         private void BtnReset_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show(DialogResources.ResetFontsQuestion, DialogResources.ResetFontsQuestionTitle, MessageBoxButton.OKCancel) ==
+            if (MessageBox.Show(DialogResources.ResetFontsQuestion, DialogResources.ResetFontsQuestionTitle,
+                    MessageBoxButton.OKCancel) ==
                 MessageBoxResult.OK)
             {
                 FontController.Reset();

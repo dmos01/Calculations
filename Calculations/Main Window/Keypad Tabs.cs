@@ -10,13 +10,13 @@ namespace Calculations
         private void BtnHistory_Click(object sender, RoutedEventArgs e) => ShowHistoryWindow();
 
         private void BtnKeypad_NotFollowed_Click(object sender, RoutedEventArgs e) =>
-            InsertToCalculationTextboxAtCursor(((Button) sender).Content.ToString());
+            InsertToCalculationTextboxAtCursor(((Button)sender).Content.ToString());
 
         private void BtnKeypad_FollowedByBrackets_Click(object sender, RoutedEventArgs e) =>
-            InsertToCalculationTextboxAtCursor(((Button) sender).Content.ToString(), 1);
+            InsertToCalculationTextboxAtCursor(((Button)sender).Content.ToString(), 1);
 
         private void BtnKeypad_FollowedByBracketsAndComma_Click(object sender, RoutedEventArgs e) =>
-            InsertToCalculationTextboxAtCursor(((Button) sender).Content.ToString(), 2);
+            InsertToCalculationTextboxAtCursor(((Button)sender).Content.ToString(), 2);
 
         private void RbtRadians_Checked(object sender, RoutedEventArgs e)
         {
