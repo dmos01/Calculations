@@ -2,16 +2,6 @@ namespace MehrozFractions
 {
     public partial struct Fraction
     {
-        public static bool operator ==(Fraction left, Fraction right) => left.CompareEquality(right, false);
-        public static bool operator ==(Fraction left, long right) => left.CompareEquality(new Fraction(right), false);
-        public static bool operator ==(Fraction left, double right) => left.CompareEquality(new Fraction(right), false);
-
-
-        public static bool operator !=(Fraction left, Fraction right) => left.CompareEquality(right, true);
-        public static bool operator !=(Fraction left, long right) => left.CompareEquality(new Fraction(right), true);
-        public static bool operator !=(Fraction left, double right) => left.CompareEquality(new Fraction(right), true);
-
-
         /// <summary>
         ///     Compares two Fractions to see if left is less than right
         /// </summary>

@@ -2,8 +2,10 @@
 Changes by Marc C. Brooks, Jeffery Sax and Daniel Spencer
 
 Version 3.0.1 (Unreleased) - Daniel Spencer:
-*ToFraction uses switch statement to check null or empty.
-*Variable swapping uses Deconstruction.
+*Expanded use of partial files.
+*GCD uses Math.Abs() to get absolute values
+*ToFraction(string) uses switch statement to check null or empty
+*Variable swapping uses Deconstruction
 
 
 Version 3.0 - Daniel Spencer (2021):

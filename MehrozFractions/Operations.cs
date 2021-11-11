@@ -58,7 +58,7 @@ namespace MehrozFractions
         /// <returns>Product of the Fractions. Returns NaN if either Fraction is a NaN.</returns>
         /// <exception cref="FractionException">
         ///     Will throw if an overflow occurs. Does a cross-reduce to
-        ///     insure only the unavoidable overflows occur.
+        ///     ensure only the unavoidable overflows occur.
         /// </exception>
         private static Fraction Multiply(Fraction left, Fraction right)
         {
@@ -93,7 +93,7 @@ namespace MehrozFractions
         /// <returns>Modulus of the Fractions. Returns NaN if either Fraction is a NaN.</returns>
         /// <exception cref="FractionException">
         ///     Will throw if an overflow occurs. Does a cross-reduce to
-        ///     insure only the unavoidable overflows occur.
+        ///     ensure only the unavoidable overflows occur.
         /// </exception>
         private static Fraction Modulus(Fraction left, Fraction right)
         {
@@ -114,37 +114,6 @@ namespace MehrozFractions
             {
                 throw new FractionException(Resources.ModulusError, e);
             }
-        }
-
-        /// <summary>
-        ///     Computes the greatest common divisor for two values
-        /// </summary>
-        /// <param name="left">One value</param>
-        /// <param name="right">Another value</param>
-        /// <returns>The greatest common divisor of the two values</returns>
-        /// <example>(6, 9) returns 3 and (11, 4) returns 1</example>
-        private static long GCD(long left, long right)
-        {
-            // take absolute values
-            if (left < 0)
-                left = -left;
-
-            if (right < 0)
-                right = -right;
-
-            // if we're dealing with any zero or one, the GCD is 1
-            if (left < 2 || right < 2)
-                return 1;
-
-            do
-            {
-                if (left < right) 
-                    (left, right) = (right, left); //Swap left and right.
-
-                left %= right;
-            } while (left != 0);
-
-            return right;
         }
     }
 }
