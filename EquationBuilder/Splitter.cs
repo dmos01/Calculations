@@ -137,7 +137,7 @@ namespace EquationBuilder
 
                             if (elementBeingBuilt.Length == 0)
                             {
-                                elementBeingBuilt.Append(NumberRepresentations.ZeroSymbol);
+                                elementBeingBuilt.Append(0);
                                 elementBeingBuilt.Append(character);
                                 buildingNumber = true;
                             }

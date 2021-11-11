@@ -38,16 +38,16 @@ namespace Calculations
 
         private void SetButtonText()
         {
-            btn1.Content = NumberRepresentations.OneSymbol;
-            btn2.Content = NumberRepresentations.TwoSymbol;
-            btn3.Content = NumberRepresentations.ThreeSymbol;
-            btn4.Content = NumberRepresentations.FourSymbol;
-            btn5.Content = NumberRepresentations.FiveSymbol;
-            btn6.Content = NumberRepresentations.SixSymbol;
-            btn7.Content = NumberRepresentations.SevenSymbol;
-            btn8.Content = NumberRepresentations.EightSymbol;
-            btn9.Content = NumberRepresentations.NineSymbol;
-            btn0.Content = NumberRepresentations.ZeroSymbol;
+            btn1.Content = 1.ToString();
+            btn2.Content = 2.ToString();
+            btn3.Content = 3.ToString();
+            btn4.Content = 4.ToString();
+            btn5.Content = 5.ToString();
+            btn6.Content = 6.ToString();
+            btn7.Content = 7.ToString();
+            btn8.Content = 8.ToString();
+            btn9.Content = 9.ToString();
+            btn0.Content = 0.ToString();
 
             btnE.Content = ElementsResources.EulersSymbolUpperCase;
             btnDecimalPoint.Content = ElementsResources.DecimalSymbol;

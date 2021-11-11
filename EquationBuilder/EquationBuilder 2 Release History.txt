@@ -7,9 +7,10 @@ Known bugs:
 Version 2.0.1:
 *Renamed files.
 *string.Join() used to concatenate version numbers.
+*EquationElements 1.5.0.
 
 
-Version 2.0 - 22 July 2021 (Retroactive, includes 1.2.x):
+Version 2.0 - 22 July 2021 (Retroactive, includes changes in 1.2.x):
 
 Handling E:
 *Closing bracket to the left or opening bracket to the right is invalid.* Brackets other way round begin/end a section, therefore Eulers.

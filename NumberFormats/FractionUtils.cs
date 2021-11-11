@@ -50,9 +50,9 @@ namespace NumberFormats
                 char current = enumerator.Current;
                 bool testingForTwoThirds; //If false, 1/6.
 
-                if (current == NumberRepresentations.OneSymbol[0] && floatingString.Length >= MinDPForOneSixth)
+                if (current == 1.ToString()[0] && floatingString.Length >= MinDPForOneSixth)
                     testingForTwoThirds = false;
-                else if (current == NumberRepresentations.SixSymbol[0])
+                else if (current == 6.ToString()[0])
                     testingForTwoThirds = true;
                 else
                 {
@@ -65,12 +65,12 @@ namespace NumberFormats
                 while (enumerator.MoveNext())
                 {
                     current = enumerator.Current;
-                    if (current != NumberRepresentations.SixSymbol[0])
+                    if (current != 6.ToString()[0])
                         break;
                 }
 
-                if ((current == NumberRepresentations.SixSymbol[0] ||
-                     current == NumberRepresentations.SevenSymbol[0])
+                if ((current == 6.ToString()[0] ||
+                     current == 7.ToString()[0])
                     && enumerator.MoveNext() == false)
                 {
                     if (testingForTwoThirds)
@@ -164,7 +164,7 @@ namespace NumberFormats
 
             if (HasMinimalDifference(toDisplay.AsDouble, 0))
             {
-                outputIfStopping = NumberRepresentations.ZeroSymbol;
+                outputIfStopping = 0.ToString();
                 return true;
             }
 

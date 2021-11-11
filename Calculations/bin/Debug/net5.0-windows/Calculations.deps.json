@@ -8,39 +8,39 @@
     ".NETCoreApp,Version=v5.0": {
       "Calculations/4.5.1.9": {
         "dependencies": {
-          "EquationBuilder": "2.0.0.1",
-          "EquationCalculator": "1.1.1.4",
-          "EquationElements": "1.3.1.6",
-          "NumberFormats": "1.0.1.2"
+          "EquationBuilder": "2.0.1.2",
+          "EquationCalculator": "1.2.1.5",
+          "EquationElements": "1.5.0.7",
+          "NumberFormats": "1.1.1.3"
         },
         "runtime": {
           "Calculations.dll": {}
         }
       },
-      "EquationBuilder/2.0.0.1": {
+      "EquationBuilder/2.0.1.2": {
         "dependencies": {
-          "EquationElements": "1.3.1.6"
+          "EquationElements": "1.5.0.7"
         },
         "runtime": {
           "EquationBuilder.dll": {}
         }
       },
-      "EquationCalculator/1.1.1.4": {
+      "EquationCalculator/1.2.1.5": {
         "dependencies": {
-          "EquationElements": "1.3.1.6"
+          "EquationElements": "1.5.0.7"
         },
         "runtime": {
           "EquationCalculator.dll": {}
         }
       },
-      "EquationElements/1.3.1.6": {
+      "EquationElements/1.5.0.7": {
         "runtime": {
           "EquationElements.dll": {}
         }
       },
-      "NumberFormats/1.0.1.2": {
+      "NumberFormats/1.1.1.3": {
         "dependencies": {
-          "EquationElements": "1.3.1.6"
+          "EquationElements": "1.5.0.7"
         },
         "runtime": {
           "NumberFormats.dll": {}
@@ -54,22 +54,22 @@
       "serviceable": false,
       "sha512": ""
     },
-    "EquationBuilder/2.0.0.1": {
+    "EquationBuilder/2.0.1.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "EquationCalculator/1.1.1.4": {
+    "EquationCalculator/1.2.1.5": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "EquationElements/1.3.1.6": {
+    "EquationElements/1.5.0.7": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "NumberFormats/1.0.1.2": {
+    "NumberFormats/1.1.1.3": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

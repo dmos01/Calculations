@@ -83,7 +83,7 @@ namespace EquationBuilder
             {
                 case AdditionOperator _:
                 case SubtractionOperator _:
-                    elements.AddFirst(new Number(NumberRepresentations.ZeroSymbol));
+                    elements.AddFirst(new Number(0));
                     break;
                 case IInvalidWhenFirst _:
                     throw new Exception(BuilderExceptionMessages.FirstElementInvalidBeforeParameter +
